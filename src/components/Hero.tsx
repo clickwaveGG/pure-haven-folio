@@ -79,7 +79,7 @@ const Hero = () => {
           transition={{ duration: 2, repeat: Infinity }}
           className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
         >
-          <span className="text-xs tracking-widest uppercase">Scroll</span>
+          <span className="text-xs tracking-widest uppercase">Rolar</span>
           <ArrowDown size={20} />
         </motion.a>
       </motion.div>
