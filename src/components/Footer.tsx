@@ -1,16 +1,17 @@
 import { Instagram, Linkedin, MessageCircle } from "lucide-react";
+import logoJoile from "@/assets/logo-joile-barreto.png";
 
 const Footer = () => {
   return (
     <footer className="py-12 border-t border-border/50 bg-grain relative">
       <div className="container-luxury">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          <div>
-            <a href="#hero" className="text-2xl font-serif text-foreground tracking-wide">
-              <span className="text-primary">LUXE</span>ESTATE
+          <div className="flex flex-col items-center md:items-start">
+            <a href="#hero">
+              <img src={logoJoile} alt="Joile Barreto - Corretor de Imóveis" className="h-14 w-auto" />
             </a>
             <p className="text-xs text-muted-foreground mt-2">
-              Imóveis de alto padrão em São Paulo e região.
+              CRECI 64117 | Imóveis de alto padrão
             </p>
           </div>
 
@@ -39,7 +40,7 @@ const Footer = () => {
           </div>
 
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} LuxeEstate. Todos os direitos reservados.
+            © {new Date().getFullYear()} Joile Barreto. Todos os direitos reservados.
           </p>
         </div>
       </div>

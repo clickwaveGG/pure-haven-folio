@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import logoJoile from "@/assets/logo-joile-barreto.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,8 +34,8 @@ const Header = () => {
     >
       <div className="container-luxury">
         <nav className="flex items-center justify-between h-20 md:h-24">
-          <a href="#hero" className="text-2xl font-serif text-foreground tracking-wide">
-            <span className="text-primary">LUXE</span>ESTATE
+          <a href="#hero" className="flex items-center">
+            <img src={logoJoile} alt="Joile Barreto - Corretor de Imóveis" className="h-12 md:h-16 w-auto" />
           </a>
 
           {/* Desktop Navigation */}

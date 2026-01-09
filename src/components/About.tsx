@@ -112,7 +112,7 @@ const About = () => {
               </blockquote>
               <div className="divider-gold mb-4" />
               <p className="text-sm font-sans text-muted-foreground">
-                Compromisso com excelência
+                Joile Barreto — CRECI 64117
               </p>
             </div>
           </motion.div>
