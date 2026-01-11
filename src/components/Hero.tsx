@@ -59,7 +59,7 @@ const Hero = () => {
         <div className="container-luxury text-center">
           <span className="inline-flex items-center gap-3 text-sm font-sans tracking-[0.3em] uppercase text-primary mb-6">
             <span className="w-8 h-px bg-primary" />
-            Corretora de Imóveis
+            Corretor de Imóveis
             <span className="w-8 h-px bg-primary" />
           </span>
           
