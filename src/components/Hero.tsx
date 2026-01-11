@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import heroImage from "@/assets/hero-joile.jpg";
+import heroImageMobile from "@/assets/hero-joile-mobile.png";
 
 const Hero = () => {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image - Full screen */}
-      <div className="absolute inset-0 z-0">
+      {/* Background Image - Desktop */}
+      <div className="absolute inset-0 z-0 hidden md:block">
         <img
           src={heroImage}
           alt="Casa de alto padrão com arquitetura tropical moderna"
@@ -15,6 +16,17 @@ const Hero = () => {
         {/* Subtle gradient overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-transparent" />
+      </div>
+      
+      {/* Background Image - Mobile (square) */}
+      <div className="absolute inset-x-0 top-0 z-0 md:hidden flex justify-center">
+        <img
+          src={heroImageMobile}
+          alt="Casa de alto padrão com arquitetura tropical moderna"
+          className="w-full max-w-[100vw] aspect-square object-cover object-center"
+        />
+        {/* Gradient overlay for mobile */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
       </div>
 
       {/* Main Content - Name Typography */}
