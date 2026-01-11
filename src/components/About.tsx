@@ -63,7 +63,7 @@ const About = () => {
               
               <img
                 src={brokerPhoto}
-                alt="Joile Barreto - Corretor de Imóveis de Alto Padrão"
+                alt="Joile Barreto, Corretor de Imóveis de Alto Padrão"
                 className="w-full max-w-md mx-auto lg:max-w-none object-cover"
               />
               
@@ -88,7 +88,7 @@ const About = () => {
             <p className="text-subheadline mb-8">
               Há mais de uma década, ofereço um atendimento diferenciado e 
               personalizado, focado em entender suas necessidades e superar 
-              suas expectativas. Meu compromisso é com resultados — 
+              suas expectativas. Meu compromisso é com resultados, 
               e a satisfação dos meus clientes é a prova disso.
             </p>
             <p className="text-muted-foreground font-sans text-sm leading-relaxed mb-10">
@@ -125,7 +125,7 @@ const About = () => {
               </blockquote>
               <div className="divider-gold mb-3" />
               <p className="text-sm font-sans text-muted-foreground">
-                Joile Barreto — CRECI 64117
+                Joile Barreto, CRECI 64117
               </p>
             </div>
 

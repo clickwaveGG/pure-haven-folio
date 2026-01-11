@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="flex flex-col items-center md:items-start">
             <a href="#hero">
-              <img src={logoJoile} alt="Joile Barreto - Corretor de Imóveis" className="h-14 w-auto" />
+              <img src={logoJoile} alt="Joile Barreto, Corretor de Imóveis" className="h-14 w-auto" />
             </a>
             <p className="text-xs text-muted-foreground mt-2">
               CRECI 64117 | Imóveis de alto padrão
