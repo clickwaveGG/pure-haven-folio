@@ -39,7 +39,7 @@ const Header = () => {
       <div className="container-luxury">
         <nav className="flex items-center justify-between h-20 md:h-24">
           <a href="#hero" className="flex items-center">
-            <img src={logoJoile} alt="Joile Barreto - Corretor de Imóveis" className="h-32 md:h-28 w-auto" />
+            <img src={logoJoile} alt="Joile Barreto, Corretor de Imóveis" className="h-32 md:h-28 w-auto" />
           </a>
 
           {/* Desktop Navigation */}

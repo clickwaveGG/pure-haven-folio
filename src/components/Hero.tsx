@@ -119,8 +119,8 @@ const Hero = () => {
           href: "#about",
         },
       }}
-      title="Joíle Barreto — Seu Corretor de Confiança"
-      description="Curadoria personalizada de casas e terrenos premium para quem busca mais que um imóvel — busca um estilo de vida exclusivo em Brasília e região."
+      title="Joíle Barreto, Seu Corretor de Confiança"
+      description="Curadoria personalizada de casas e terrenos premium para quem busca mais que um imóvel, busca um estilo de vida exclusivo em Brasília e região."
       actions={[
         {
           text: "Fale Comigo",
@@ -137,7 +137,7 @@ const Hero = () => {
       ]}
       image={{
         src: currentHeroImage,
-        alt: "Joíle Barreto - Corretor de Imóveis",
+        alt: "Joíle Barreto, Corretor de Imóveis",
       }}
     />
   );
