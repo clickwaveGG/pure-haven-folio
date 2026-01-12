@@ -47,11 +47,11 @@ function HeroSection({
     <section id="hero" className="overflow-hidden bg-background pt-20 relative">
       {/* Floating 3D Houses */}
       <motion.div
-        className="absolute left-[-5%] top-[15%] w-40 md:w-56 lg:w-72 z-0 pointer-events-none"
+        className="absolute left-[2%] md:left-[5%] top-[20%] w-32 md:w-44 lg:w-56 z-0 pointer-events-none"
         initial={{ opacity: 0, y: 20 }}
         animate={{ 
-          opacity: 0.4, 
-          y: [0, -15, 0],
+          opacity: 0.7, 
+          y: [0, -12, 0],
         }}
         transition={{
           opacity: { duration: 1, delay: 0.5 },
@@ -61,16 +61,16 @@ function HeroSection({
         <img 
           src={floatingHouse1} 
           alt="" 
-          className="w-full h-auto blur-[2px] opacity-60"
+          className="w-full h-auto blur-[0.5px] opacity-80"
         />
       </motion.div>
       
       <motion.div
-        className="absolute right-[-8%] top-[25%] w-36 md:w-48 lg:w-64 z-0 pointer-events-none"
+        className="absolute right-[2%] md:right-[5%] top-[28%] w-28 md:w-40 lg:w-52 z-0 pointer-events-none"
         initial={{ opacity: 0, y: -20 }}
         animate={{ 
-          opacity: 0.35, 
-          y: [0, 12, 0],
+          opacity: 0.65, 
+          y: [0, 10, 0],
         }}
         transition={{
           opacity: { duration: 1, delay: 0.8 },
@@ -80,7 +80,7 @@ function HeroSection({
         <img 
           src={floatingHouse2} 
           alt="" 
-          className="w-full h-auto blur-[3px] opacity-50"
+          className="w-full h-auto blur-[0.5px] opacity-75"
         />
       </motion.div>
 
