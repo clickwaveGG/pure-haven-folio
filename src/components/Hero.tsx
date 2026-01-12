@@ -7,7 +7,10 @@ import { Icons } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 import heroImage from "@/assets/hero-joile.jpg";
 import heroImageMobile from "@/assets/hero-joile-mobile.png";
+import floatingHouse1 from "@/assets/floating-house-1.png";
+import floatingHouse2 from "@/assets/floating-house-2.png";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { motion } from "framer-motion";
 
 interface HeroAction {
   text: string;
@@ -41,8 +44,47 @@ function HeroSection({
   image,
 }: HeroProps) {
   return (
-    <section id="hero" className="overflow-hidden bg-background pt-20">
-      <div className="container-luxury relative">
+    <section id="hero" className="overflow-hidden bg-background pt-20 relative">
+      {/* Floating 3D Houses */}
+      <motion.div
+        className="absolute left-[-5%] top-[15%] w-40 md:w-56 lg:w-72 z-0 pointer-events-none"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ 
+          opacity: 0.4, 
+          y: [0, -15, 0],
+        }}
+        transition={{
+          opacity: { duration: 1, delay: 0.5 },
+          y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+        }}
+      >
+        <img 
+          src={floatingHouse1} 
+          alt="" 
+          className="w-full h-auto blur-[2px] opacity-60"
+        />
+      </motion.div>
+      
+      <motion.div
+        className="absolute right-[-8%] top-[25%] w-36 md:w-48 lg:w-64 z-0 pointer-events-none"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ 
+          opacity: 0.35, 
+          y: [0, 12, 0],
+        }}
+        transition={{
+          opacity: { duration: 1, delay: 0.8 },
+          y: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }
+        }}
+      >
+        <img 
+          src={floatingHouse2} 
+          alt="" 
+          className="w-full h-auto blur-[3px] opacity-50"
+        />
+      </motion.div>
+
+      <div className="container-luxury relative z-10">
         <div className="relative z-10 flex flex-col items-center gap-6 pb-8 pt-12 md:pb-12 md:pt-16 lg:pb-16 lg:pt-24">
           {/* Badge */}
           {badge && (
