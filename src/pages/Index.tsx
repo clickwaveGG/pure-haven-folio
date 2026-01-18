@@ -9,6 +9,7 @@ import FAQ from "@/components/FAQ";
 import Insights from "@/components/Insights";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { EtherealShadow } from "@/components/ui/ethereal-shadow";
 
 const Index = () => {
@@ -39,6 +40,9 @@ const Index = () => {
         </main>
         <Footer />
       </div>
+      
+      {/* WhatsApp Floating Button */}
+      <WhatsAppButton />
     </div>
   );
 };
