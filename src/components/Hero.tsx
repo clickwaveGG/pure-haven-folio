@@ -8,6 +8,7 @@ import heroImage from "@/assets/hero-joile.jpg";
 import heroImageMobile from "@/assets/hero-joile-mobile.png";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { motion } from "framer-motion";
+import { Tiles } from "@/components/ui/tiles";
 
 interface HeroAction {
   text: string;
@@ -41,10 +42,22 @@ function HeroSection({
   image,
 }: HeroProps) {
   return (
-    <section id="hero" className="overflow-hidden bg-background pt-24 pb-8 relative">
+    <section id="hero" className="overflow-hidden bg-background pt-24 pb-8 relative min-h-screen">
+      {/* Animated Tiles Background */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <Tiles
+          rows={50}
+          cols={20}
+          tileSize="lg"
+          className="opacity-60"
+        />
+        {/* Gradient overlay to fade tiles */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none" />
+      </div>
+
       {/* Decorative background shapes */}
-      <div className="absolute top-20 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-accent/5 rounded-full blur-3xl -z-10" />
+      <div className="absolute top-20 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl z-0" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-accent/5 rounded-full blur-3xl z-0" />
 
       <div className="container-luxury relative z-10">
         <div className="relative z-10 flex flex-col items-center gap-6 pb-8 pt-8 md:pb-12 md:pt-12 lg:pb-16 lg:pt-16">
