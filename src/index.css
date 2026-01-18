@@ -4,6 +4,56 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
+/* WhatsApp Button Animations */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  50%, 100% {
+    transform: translateX(150%) skewX(-20deg);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+@keyframes floatIcon {
+  0%, 100% {
+    transform: translateY(0);
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
+  }
+  50% {
+    transform: translateY(-3px);
+    filter: drop-shadow(0 6px 4px rgba(0,0,0,0.3));
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 3s infinite;
+}
+
+.animate-ripple {
+  animation: ripple 2s infinite;
+}
+
+.animate-float-icon {
+  animation: floatIcon 4s ease-in-out infinite;
+}
+
+.smooth-render {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 @layer base {
   :root {
     --background: 20 15% 6%;
