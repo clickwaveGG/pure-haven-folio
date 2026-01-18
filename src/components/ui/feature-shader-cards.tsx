@@ -143,9 +143,13 @@ export default function FeaturesCards() {
                     {feature.title}
                   </h3>
 
-                  <p className="text-sm leading-relaxed text-white/90">
+                  <p className="text-sm leading-relaxed text-white/90 flex-grow">
                     {feature.description}
                   </p>
+
+                  <span className="text-xs font-medium text-white/70 mt-4">
+                    Joile Barreto
+                  </span>
                 </div>
               </div>
             )
