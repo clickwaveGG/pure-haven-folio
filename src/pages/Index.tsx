@@ -10,6 +10,7 @@ import Insights from "@/components/Insights";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import FloatingNav from "@/components/FloatingNav";
 
 const Index = () => {
   return (
@@ -27,6 +28,9 @@ const Index = () => {
         <Contact />
       </main>
       <Footer />
+      
+      {/* Floating Navigation */}
+      <FloatingNav />
       
       {/* WhatsApp Floating Button */}
       <WhatsAppButton />

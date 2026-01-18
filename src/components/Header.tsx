@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
 import logoJoile from "@/assets/logo-joile-barreto.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,45 +59,7 @@ const Header = () => {
           <a href="#properties" className="hidden md:block welcome-button">
             Ver Imóveis
           </a>
-
-          {/* Mobile Menu Toggle */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-foreground p-2"
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </nav>
-
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden bg-background border-b border-border pb-6"
-          >
-            <ul className="flex flex-col gap-4">
-              {navItems.map((item) => (
-                <li key={item.label}>
-                  <a
-                    href={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-300"
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-              <li className="mt-4">
-                <a href="#properties" className="welcome-button w-full text-center">
-                  Ver Imóveis
-                </a>
-              </li>
-            </ul>
-          </motion.div>
-        )}
       </div>
     </motion.header>
   );
