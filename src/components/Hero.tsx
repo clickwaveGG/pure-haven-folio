@@ -6,6 +6,7 @@ import { Icons } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 import heroImage from "@/assets/hero-joile.jpg";
 import heroImageMobile from "@/assets/hero-joile-mobile.png";
+import handshake3d from "@/assets/handshake-3d.png";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { motion } from "framer-motion";
 import { DottedSurface } from "@/components/ui/dotted-surface";
@@ -56,6 +57,20 @@ function HeroSection({
 
       <div className="container-luxury relative z-10">
         <div className="relative z-10 flex flex-col items-center gap-6 pb-8 pt-8 md:pb-12 md:pt-12 lg:pb-16 lg:pt-16">
+          {/* 3D Handshake Image */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64"
+          >
+            <img
+              src={handshake3d}
+              alt="Parceria imobiliária"
+              className="w-full h-full object-contain"
+            />
+          </motion.div>
+
           {/* Badge */}
           {badge && (
             <Badge variant="outline" className="animate-appear gap-2 border-primary/30 bg-primary/5 text-primary px-4 py-1.5 rounded-full">
