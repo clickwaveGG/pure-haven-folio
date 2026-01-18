@@ -183,3 +183,12 @@
     scale: 1.2;
   }
 }
+
+/* Green/WhatsApp variant */
+.shiny-cta.shiny-cta-green {
+  --shiny-cta-bg: #25D366;
+  --shiny-cta-bg-subtle: #20bd5a;
+  --shiny-cta-fg: #ffffff;
+  --shiny-cta-highlight: #128C7E;
+  --shiny-cta-highlight-subtle: #075E54;
+}
