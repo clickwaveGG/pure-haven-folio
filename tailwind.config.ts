@@ -52,25 +52,23 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        petrol: {
+          DEFAULT: "hsl(var(--petrol))",
+          light: "hsl(var(--petrol-light))",
+          dark: "hsl(var(--petrol-dark))",
+        },
         terracotta: {
           DEFAULT: "hsl(var(--terracotta))",
           light: "hsl(var(--terracotta-light))",
           dark: "hsl(var(--terracotta-dark))",
         },
-        wood: {
-          DEFAULT: "hsl(var(--wood))",
-          light: "hsl(var(--wood-light))",
+        sage: "hsl(var(--sage))",
+        sand: "hsl(var(--sand))",
+        cream: {
+          DEFAULT: "hsl(var(--cream))",
+          dark: "hsl(var(--cream-dark))",
         },
-        sky: {
-          DEFAULT: "hsl(var(--sky))",
-          light: "hsl(var(--sky-light))",
-        },
-        forest: "hsl(var(--forest))",
-        cream: "hsl(var(--cream))",
-        charcoal: {
-          DEFAULT: "hsl(var(--charcoal))",
-          light: "hsl(var(--charcoal-light))",
-        },
+        "warm-gray": "hsl(var(--warm-gray))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -83,8 +81,8 @@ export default {
         },
       },
       fontFamily: {
-        serif: ["Playfair Display", "serif"],
-        sans: ["Inter", "sans-serif"],
+        serif: ["DM Serif Display", "serif"],
+        sans: ["Plus Jakarta Sans", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",

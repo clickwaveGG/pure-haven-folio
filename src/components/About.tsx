@@ -5,8 +5,8 @@ import brokerPhoto from "@/assets/broker-photo.png";
 
 const stats = [
   { value: 12, suffix: "+", label: "Anos de experiência" },
-  { value: 280, suffix: "+", label: "Negócios realizados" },
-  { value: 50, suffix: "M+", label: "Em transações" },
+  { value: 280, suffix: "+", label: "Famílias atendidas" },
+  { value: 98, suffix: "%", label: "Clientes satisfeitos" },
 ];
 
 const AnimatedCounter = ({ value, suffix, inView }: { value: number; suffix: string; inView: boolean }) => {
@@ -46,9 +46,9 @@ const About = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="section-padding bg-secondary/30 bg-grain relative">
+    <section id="about" className="section-padding bg-background relative">
       <div className="container-luxury">
-        <div ref={ref} className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div ref={ref} className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Column - Image */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -57,18 +57,15 @@ const About = () => {
             className="relative"
           >
             <div className="relative">
-              {/* Decorative frame */}
-              <div className="absolute -inset-4 border border-primary/20 -z-10" />
-              <div className="absolute -inset-8 border border-primary/10 -z-10" />
+              {/* Decorative elements */}
+              <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary/10 rounded-2xl -z-10" />
+              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-accent/10 rounded-2xl -z-10" />
               
               <img
                 src={brokerPhoto}
-                alt="Joile Barreto, Corretor de Imóveis de Alto Padrão"
-                className="w-full max-w-md mx-auto lg:max-w-none object-cover"
+                alt="Joile Barreto, Corretor de Imóveis"
+                className="w-full max-w-md mx-auto lg:max-w-none object-cover rounded-2xl shadow-lg"
               />
-              
-              {/* Accent decoration */}
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/10 -z-10" />
             </div>
           </motion.div>
 
@@ -78,60 +75,59 @@ const About = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <span className="inline-flex items-center gap-3 text-sm font-sans tracking-[0.3em] uppercase text-primary mb-6">
-              <span className="w-12 h-px bg-primary" />
+            <span className="inline-flex items-center gap-3 text-sm font-medium tracking-wide text-primary mb-4">
+              <span className="w-8 h-0.5 bg-primary rounded-full" />
               Sobre mim
             </span>
             <h2 className="text-headline text-foreground mb-6">
-              Excelência e dedicação em cada negociação
+              Prazer, sou Joíle Barreto
             </h2>
-            <p className="text-subheadline mb-8">
-              Há mais de uma década, ofereço um atendimento diferenciado e 
-              personalizado, focado em entender suas necessidades e superar 
-              suas expectativas. Meu compromisso é com resultados, 
-              e a satisfação dos meus clientes é a prova disso.
+            <p className="text-subheadline mb-6">
+              Há mais de uma década ajudo pessoas a encontrarem o imóvel ideal. 
+              Seja você um jovem casal comprando o primeiro apartamento ou uma 
+              família buscando mais espaço, meu compromisso é o mesmo: 
+              entender suas necessidades e transformar sonhos em realidade.
             </p>
-            <p className="text-muted-foreground font-sans text-sm leading-relaxed mb-10">
-              Combinando profissionalismo, conhecimento de mercado e uma rede 
-              de contatos exclusiva, garanto acesso às melhores oportunidades 
-              do mercado imobiliário. Cada cliente recebe atenção total, 
-              transparência em todas as etapas e a segurança de estar 
-              nas mãos de um especialista.
+            <p className="text-muted-foreground text-sm leading-relaxed mb-8">
+              Acredito que encontrar um lar vai muito além de quatro paredes. 
+              É sobre segurança, conforto e qualidade de vida. Por isso, 
+              trabalho com transparência, proximidade e dedicação em cada 
+              atendimento. Você pode contar comigo do início ao fim.
             </p>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 mb-10">
+            <div className="grid grid-cols-3 gap-4 mb-8">
               {stats.map((stat, index) => (
                 <motion.div
                   key={stat.label}
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                  className="text-center"
+                  className="text-center p-4 bg-secondary/50 rounded-xl"
                 >
-                  <div className="text-3xl md:text-4xl font-serif text-primary mb-2">
+                  <div className="text-2xl md:text-3xl font-serif text-primary mb-1">
                     <AnimatedCounter value={stat.value} suffix={stat.suffix} inView={isInView} />
                   </div>
-                  <p className="text-xs font-sans tracking-widest uppercase text-muted-foreground">
+                  <p className="text-xs text-muted-foreground">
                     {stat.label}
                   </p>
                 </motion.div>
               ))}
             </div>
 
-            <div className="luxury-card p-6 mb-8">
-              <blockquote className="text-lg font-serif italic text-foreground/90 mb-3">
-                "Meu compromisso é fazer da sua jornada imobiliária uma experiência excepcional."
+            <div className="welcome-card p-5 mb-6">
+              <blockquote className="text-base font-serif italic text-foreground/90 mb-2">
+                "Minha missão é tornar a sua jornada imobiliária simples, segura e, por que não, prazerosa."
               </blockquote>
-              <div className="divider-gold mb-3" />
-              <p className="text-sm font-sans text-muted-foreground">
+              <div className="divider-primary mb-2" />
+              <p className="text-sm text-muted-foreground">
                 Joile Barreto, CRECI 64117
               </p>
             </div>
 
             <div className="flex gap-4">
-              <a href="#contact" className="luxury-button">
-                Fale comigo
+              <a href="#contact" className="welcome-button">
+                Vamos conversar
               </a>
             </div>
           </motion.div>
