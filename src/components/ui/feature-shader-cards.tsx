@@ -110,9 +110,10 @@ export default function FeaturesCards() {
             return (
               <div
                 key={index}
-                className="group relative rounded-2xl border border-border/50 bg-card/80 backdrop-blur-sm p-1 transition-all duration-500 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1"
+                className="group relative rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
               >
-                <div className="relative h-40 w-full overflow-hidden rounded-xl">
+                {/* Shader como background de todo o card */}
+                <div className="absolute inset-0">
                   <Warp
                     colors={shaderConfig.colors}
                     proportion={shaderConfig.proportion}
@@ -132,20 +133,21 @@ export default function FeaturesCards() {
                   />
                 </div>
 
-                <div className="p-5">
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+                {/* Conteúdo do card */}
+                <div className="relative z-10 p-6 min-h-[280px] flex flex-col">
+                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white/20 backdrop-blur-sm text-white transition-all duration-300 group-hover:bg-white/30 group-hover:scale-110">
                     {feature.icon}
                   </div>
 
-                  <h3 className="mb-2 font-serif text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
+                  <h3 className="mb-3 font-serif text-xl font-semibold text-white">
                     {feature.title}
                   </h3>
 
-                  <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+                  <p className="mb-4 text-sm leading-relaxed text-white/90 flex-grow">
                     {feature.description}
                   </p>
 
-                  <div className="inline-flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition-all duration-300 group-hover:opacity-100">
+                  <div className="inline-flex items-center gap-1 text-sm font-medium text-white opacity-0 transition-all duration-300 group-hover:opacity-100">
                     Saiba mais
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </div>
