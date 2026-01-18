@@ -8,7 +8,7 @@ import heroImage from "@/assets/hero-joile.jpg";
 import heroImageMobile from "@/assets/hero-joile-mobile.png";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { motion } from "framer-motion";
-import { Tiles } from "@/components/ui/tiles";
+import { DottedSurface } from "@/components/ui/dotted-surface";
 
 interface HeroAction {
   text: string;
@@ -43,16 +43,11 @@ function HeroSection({
 }: HeroProps) {
   return (
     <section id="hero" className="overflow-hidden bg-background pt-24 pb-8 relative min-h-screen">
-      {/* Animated Tiles Background */}
+      {/* Animated 3D Dotted Surface Background */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <Tiles
-          rows={50}
-          cols={20}
-          tileSize="lg"
-          className="opacity-100"
-        />
-        {/* Gradient overlay to fade tiles */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none" />
+        <DottedSurface className="opacity-80" />
+        {/* Gradient overlay to fade effect */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/30 to-background pointer-events-none" />
       </div>
 
       {/* Decorative background shapes */}
