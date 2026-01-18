@@ -41,7 +41,7 @@ export function Tiles({
             <motion.div
               key={`tile-${i}-${j}`}
               whileHover={{
-                backgroundColor: `hsl(var(--primary) / 0.15)`,
+                backgroundColor: `hsl(var(--primary) / 0.4)`,
                 transition: { duration: 0 },
               }}
               animate={{
@@ -49,7 +49,7 @@ export function Tiles({
               }}
               className={cn(
                 tileSizes[tileSize],
-                "border-[0.5px] border-primary/5 hover:border-primary/10",
+                "border-[1px] border-primary/20 hover:border-primary/40",
                 tileClassName
               )}
             />
