@@ -56,7 +56,7 @@ function HeroSection({
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-accent/5 rounded-full blur-3xl z-0" />
 
       <div className="container-luxury relative z-10">
-        <div className="relative z-10 flex flex-col items-center gap-4 pb-8 -mt-8 md:pb-12 md:-mt-4 lg:pb-16 lg:-mt-2">
+        <div className="relative z-10 flex flex-col items-center gap-4 pb-8 -mt-20 md:pb-12 md:-mt-16 lg:pb-16 lg:-mt-14">
           {/* Badge with 3D Image */}
           {badge && (
             <div className="flex flex-col items-center">
