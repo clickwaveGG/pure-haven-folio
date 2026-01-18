@@ -35,8 +35,10 @@ const features: Feature[] = [
 ]
 
 export default function FeaturesCards() {
+  // Cada card tem sua própria paleta de cores única e configuração de shader distinta
   const getShaderConfig = (index: number) => {
     const configs = [
+      // Card 1 - Petrol Blue (Busca Personalizada) - Azul profundo e confiável
       {
         proportion: 0.3,
         softness: 0.8,
@@ -45,37 +47,40 @@ export default function FeaturesCards() {
         swirlIterations: 8,
         shape: "checks" as const,
         shapeScale: 0.08,
-        colors: ["#1a4a5e", "#2a6a7e", "#1d5a4e", "#3a7a8e"],
+        colors: ["#0d3d4d", "#1a5a6e", "#0f4a5a", "#2a7a8e", "#1d6878"],
       },
+      // Card 2 - Terracotta/Coral (Transparência) - Laranja quente e acolhedor
       {
         proportion: 0.4,
-        softness: 1.2,
+        softness: 1.0,
         distortion: 0.2,
-        swirl: 0.9,
-        swirlIterations: 12,
+        swirl: 0.85,
+        swirlIterations: 10,
         shape: "stripes" as const,
-        shapeScale: 0.12,
-        colors: ["#8b4513", "#cd853f", "#a0522d", "#d2691e"],
+        shapeScale: 0.1,
+        colors: ["#c45a3a", "#e07050", "#d86545", "#f08060", "#e87555"],
       },
+      // Card 3 - Sage Green (Acompanhamento) - Verde natural e tranquilo
       {
         proportion: 0.35,
         softness: 0.9,
         distortion: 0.18,
         swirl: 0.7,
-        swirlIterations: 10,
-        shape: "checks" as const,
-        shapeScale: 0.1,
-        colors: ["#3d5c3a", "#5a8a5e", "#4a6a48", "#6a9a6e"],
+        swirlIterations: 9,
+        shape: "edge" as const,
+        shapeScale: 0.07,
+        colors: ["#4a6b4a", "#5d8a5d", "#527552", "#6a9a6a", "#5f8f5f"],
       },
+      // Card 4 - Sand/Golden (Negociação) - Dourado elegante e confiante
       {
         proportion: 0.45,
         softness: 1.1,
         distortion: 0.22,
-        swirl: 0.8,
-        swirlIterations: 15,
-        shape: "stripes" as const,
+        swirl: 0.9,
+        swirlIterations: 12,
+        shape: "checks" as const,
         shapeScale: 0.09,
-        colors: ["#8b7355", "#c4a574", "#9d8465", "#d6b78a"],
+        colors: ["#b8965c", "#d4ad70", "#c9a264", "#e0be80", "#d5b375"],
       },
     ]
     return configs[index % configs.length]
