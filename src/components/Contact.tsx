@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Send, Phone, Mail, MapPin } from "lucide-react";
+import { Send, Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
@@ -20,8 +20,8 @@ const Contact = () => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     toast({
-      title: "Mensagem enviada!",
-      description: "Entraremos em contato em breve.",
+      title: "Mensagem enviada! 🎉",
+      description: "Entrarei em contato em breve.",
     });
 
     setIsSubmitting(false);
@@ -29,63 +29,81 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section-padding bg-grain relative">
+    <section id="contact" className="section-padding bg-secondary/30 relative">
       <div className="container-luxury">
-        <div ref={ref} className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+        <div ref={ref} className="grid lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Left Column - Content */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <span className="inline-flex items-center gap-3 text-sm font-sans tracking-[0.3em] uppercase text-primary mb-6">
-              <span className="w-12 h-px bg-primary" />
+            <span className="inline-flex items-center gap-3 text-sm font-medium tracking-wide text-primary mb-4">
+              <span className="w-8 h-0.5 bg-primary rounded-full" />
               Contato
             </span>
-            <h2 className="text-headline text-foreground mb-6">
-              Vamos criar algo extraordinário juntos
+            <h2 className="text-headline text-foreground mb-4">
+              Vamos conversar sobre seu próximo imóvel?
             </h2>
-            <p className="text-subheadline mb-12">
-              O primeiro passo para encontrar sua próxima propriedade exclusiva
-              é uma conversa. Entre em contato e descubra como posso ajudá-lo.
+            <p className="text-subheadline mb-10">
+              Estou aqui para ajudar você a encontrar o lar perfeito. 
+              Entre em contato sem compromisso, terei prazer em ouvir você.
             </p>
 
-            <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-sm bg-secondary flex items-center justify-center">
+            <div className="space-y-5">
+              <div className="flex items-center gap-4 p-4 bg-card rounded-xl border border-border">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                   <Phone size={20} className="text-primary" />
                 </div>
                 <div>
-                  <p className="text-xs font-sans tracking-widest uppercase text-muted-foreground mb-1">
+                  <p className="text-xs font-medium text-muted-foreground mb-0.5">
                     Telefone
                   </p>
-                  <p className="text-foreground font-sans">+55 11 99999-9999</p>
+                  <p className="text-foreground font-medium">+55 61 99999-9999</p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-sm bg-secondary flex items-center justify-center">
+              <div className="flex items-center gap-4 p-4 bg-card rounded-xl border border-border">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                   <Mail size={20} className="text-primary" />
                 </div>
                 <div>
-                  <p className="text-xs font-sans tracking-widest uppercase text-muted-foreground mb-1">
+                  <p className="text-xs font-medium text-muted-foreground mb-0.5">
                     Email
                   </p>
-                  <p className="text-foreground font-sans">contato@joilebarreto.com.br</p>
+                  <p className="text-foreground font-medium">contato@joilebarreto.com.br</p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-sm bg-secondary flex items-center justify-center">
+              <div className="flex items-center gap-4 p-4 bg-card rounded-xl border border-border">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                   <MapPin size={20} className="text-primary" />
                 </div>
                 <div>
-                  <p className="text-xs font-sans tracking-widest uppercase text-muted-foreground mb-1">
+                  <p className="text-xs font-medium text-muted-foreground mb-0.5">
                     Localização
                   </p>
-                  <p className="text-foreground font-sans">São Paulo, SP</p>
+                  <p className="text-foreground font-medium">Brasília, DF</p>
                 </div>
               </div>
+
+              {/* WhatsApp CTA */}
+              <a 
+                href="https://wa.me/5561999999999" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-4 bg-green-50 rounded-xl border border-green-200 hover:bg-green-100 transition-colors group"
+              >
+                <div className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0">
+                  <MessageCircle size={20} className="text-white" />
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-green-800">
+                    Prefere WhatsApp?
+                  </p>
+                  <p className="text-green-700 font-medium group-hover:underline">Clique aqui para conversar →</p>
+                </div>
+              </a>
             </div>
           </motion.div>
 
@@ -95,36 +113,41 @@ const Contact = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <form onSubmit={handleSubmit} className="luxury-card p-8 md:p-10 space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
+            <form onSubmit={handleSubmit} className="welcome-card p-6 md:p-8 space-y-5">
+              <div className="text-center mb-2">
+                <h3 className="text-xl font-serif text-foreground mb-1">Envie uma mensagem</h3>
+                <p className="text-sm text-muted-foreground">Respondo em até 24 horas</p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="block text-xs font-sans tracking-widest uppercase text-muted-foreground mb-3">
-                    Nome
+                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                    Seu nome
                   </label>
                   <Input
                     id="name"
                     name="name"
                     required
-                    className="bg-secondary border-border/50 focus:border-primary text-foreground placeholder:text-muted-foreground"
-                    placeholder="Seu nome"
+                    className="bg-background border-border focus:border-primary focus:ring-primary/20"
+                    placeholder="Como posso te chamar?"
                   />
                 </div>
                 <div>
-                  <label htmlFor="phone" className="block text-xs font-sans tracking-widest uppercase text-muted-foreground mb-3">
-                    Telefone
+                  <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
+                    WhatsApp
                   </label>
                   <Input
                     id="phone"
                     name="phone"
                     type="tel"
-                    className="bg-secondary border-border/50 focus:border-primary text-foreground placeholder:text-muted-foreground"
-                    placeholder="(11) 99999-9999"
+                    className="bg-background border-border focus:border-primary focus:ring-primary/20"
+                    placeholder="(61) 99999-9999"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-xs font-sans tracking-widest uppercase text-muted-foreground mb-3">
+                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
                   Email
                 </label>
                 <Input
@@ -132,28 +155,28 @@ const Contact = () => {
                   name="email"
                   type="email"
                   required
-                  className="bg-secondary border-border/50 focus:border-primary text-foreground placeholder:text-muted-foreground"
+                  className="bg-background border-border focus:border-primary focus:ring-primary/20"
                   placeholder="seu@email.com"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-xs font-sans tracking-widest uppercase text-muted-foreground mb-3">
-                  Mensagem
+                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                  Como posso ajudar?
                 </label>
                 <Textarea
                   id="message"
                   name="message"
                   rows={4}
-                  className="bg-secondary border-border/50 focus:border-primary text-foreground placeholder:text-muted-foreground resize-none"
-                  placeholder="Como posso ajudá-lo?"
+                  className="bg-background border-border focus:border-primary focus:ring-primary/20 resize-none"
+                  placeholder="Conte um pouco sobre o que você procura..."
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="luxury-button w-full flex items-center justify-center gap-3 disabled:opacity-50"
+                className="welcome-button w-full flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 {isSubmitting ? (
                   "Enviando..."
@@ -166,7 +189,7 @@ const Contact = () => {
               </button>
 
               <p className="text-center text-xs text-muted-foreground">
-                Respondemos em até 24 horas úteis.
+                Suas informações estão seguras e não serão compartilhadas.
               </p>
             </form>
           </motion.div>

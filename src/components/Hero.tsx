@@ -1,14 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRightIcon, Phone } from "lucide-react";
+import { ArrowRightIcon, Phone, Heart } from "lucide-react";
 import { Mockup, MockupFrame } from "@/components/ui/mockup";
-import { Glow } from "@/components/ui/glow";
 import { Icons } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 import heroImage from "@/assets/hero-joile.jpg";
 import heroImageMobile from "@/assets/hero-joile-mobile.png";
-import floatingHouse1 from "@/assets/floating-house-1.png";
-import floatingHouse2 from "@/assets/floating-house-2.png";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { motion } from "framer-motion";
 
@@ -16,7 +13,7 @@ interface HeroAction {
   text: string;
   href: string;
   icon?: React.ReactNode;
-  variant?: "default" | "glow";
+  variant?: "default" | "warm" | "outline";
 }
 
 interface HeroProps {
@@ -44,53 +41,19 @@ function HeroSection({
   image,
 }: HeroProps) {
   return (
-    <section id="hero" className="overflow-hidden bg-background pt-20 relative">
-      {/* Floating 3D Houses */}
-      <motion.div
-        className="absolute left-[2%] md:left-[5%] top-[20%] w-32 md:w-44 lg:w-56 z-0 pointer-events-none"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ 
-          opacity: 0.7, 
-          y: [0, -12, 0],
-        }}
-        transition={{
-          opacity: { duration: 1, delay: 0.5 },
-          y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
-        }}
-      >
-        <img 
-          src={floatingHouse1} 
-          alt="" 
-          className="w-full h-auto blur-[0.5px] opacity-80"
-        />
-      </motion.div>
-      
-      <motion.div
-        className="absolute right-[2%] md:right-[5%] top-[28%] w-28 md:w-40 lg:w-52 z-0 pointer-events-none"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ 
-          opacity: 0.65, 
-          y: [0, 10, 0],
-        }}
-        transition={{
-          opacity: { duration: 1, delay: 0.8 },
-          y: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }
-        }}
-      >
-        <img 
-          src={floatingHouse2} 
-          alt="" 
-          className="w-full h-auto blur-[0.5px] opacity-75"
-        />
-      </motion.div>
+    <section id="hero" className="overflow-hidden bg-background pt-24 pb-8 relative">
+      {/* Decorative background shapes */}
+      <div className="absolute top-20 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-accent/5 rounded-full blur-3xl -z-10" />
 
       <div className="container-luxury relative z-10">
-        <div className="relative z-10 flex flex-col items-center gap-6 pb-8 pt-12 md:pb-12 md:pt-16 lg:pb-16 lg:pt-24">
+        <div className="relative z-10 flex flex-col items-center gap-6 pb-8 pt-8 md:pb-12 md:pt-12 lg:pb-16 lg:pt-16">
           {/* Badge */}
           {badge && (
-            <Badge variant="outline" className="animate-appear gap-1 border-primary/30 bg-primary/5 text-primary">
+            <Badge variant="outline" className="animate-appear gap-2 border-primary/30 bg-primary/5 text-primary px-4 py-1.5 rounded-full">
+              <Heart className="h-3.5 w-3.5 fill-accent text-accent" />
               <span className="text-muted-foreground">{badge.text}</span>
-              <a href={badge.action.href} className="flex items-center gap-1 text-primary hover:text-primary/80 transition-colors">
+              <a href={badge.action.href} className="flex items-center gap-1 text-primary hover:text-primary/80 transition-colors font-medium">
                 {badge.action.text}
                 <ArrowRightIcon className="h-3 w-3" />
               </a>
@@ -98,27 +61,29 @@ function HeroSection({
           )}
 
           {/* Title */}
-          <h1 className="animate-appear text-balance text-center font-serif text-4xl font-medium tracking-tight text-foreground opacity-0 delay-100 md:text-5xl lg:text-6xl xl:text-7xl">
+          <h1 className="animate-appear text-balance text-center font-serif text-4xl font-normal tracking-tight text-foreground opacity-0 delay-100 md:text-5xl lg:text-6xl xl:text-7xl">
             {title}
           </h1>
 
           {/* Description */}
-          <p className="animate-appear max-w-2xl text-balance text-center text-base font-light text-muted-foreground opacity-0 delay-300 md:text-lg lg:text-xl">
+          <p className="animate-appear max-w-2xl text-balance text-center text-base font-normal text-muted-foreground opacity-0 delay-300 md:text-lg lg:text-xl leading-relaxed">
             {description}
           </p>
 
           {/* Actions */}
           <div className="animate-appear relative z-10 flex flex-col items-center justify-center gap-4 opacity-0 delay-300 sm:flex-row">
-            <div className="flex flex-col gap-4 sm:flex-row">
+            <div className="flex flex-col gap-3 sm:flex-row">
               {actions.map((action, index) => (
                 <Button
                   key={index}
                   asChild
                   size="lg"
                   className={cn(
-                    action.variant === "glow" && "bg-primary/10 text-primary border border-primary/30 hover:bg-primary/20 hover:border-primary/50"
+                    "rounded-lg px-6 py-3",
+                    action.variant === "warm" && "bg-accent text-accent-foreground hover:bg-accent/90",
+                    action.variant === "outline" && "border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
                   )}
-                  variant={action.variant === "glow" ? "outline" : "default"}
+                  variant={action.variant === "outline" ? "outline" : "default"}
                 >
                   <a href={action.href} className="flex items-center gap-2">
                     {action.icon}
@@ -129,10 +94,22 @@ function HeroSection({
             </div>
           </div>
 
-          {/* Image with Glow */}
-          <div className="animate-appear relative w-full pt-12 opacity-0 delay-700">
+          {/* Trust indicators */}
+          <div className="animate-appear flex items-center gap-6 text-sm text-muted-foreground opacity-0 delay-500">
+            <span className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+              Atendimento personalizado
+            </span>
+            <span className="hidden sm:flex items-center gap-2">
+              <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+              +280 clientes satisfeitos
+            </span>
+          </div>
+
+          {/* Image with soft styling */}
+          <div className="animate-appear relative w-full pt-8 opacity-0 delay-700">
             <MockupFrame size="small" className="mx-auto max-w-5xl">
-              <Mockup type="responsive" className="w-full">
+              <Mockup type="responsive" className="w-full rounded-2xl overflow-hidden shadow-xl">
                 <img
                   src={image.src}
                   alt={image.alt}
@@ -140,7 +117,6 @@ function HeroSection({
                 />
               </Mockup>
             </MockupFrame>
-            <Glow variant="bottom" className="animate-appear-zoom opacity-0 delay-1000" />
           </div>
         </div>
       </div>
@@ -155,14 +131,14 @@ const Hero = () => {
   return (
     <HeroSection
       badge={{
-        text: "Corretor de Imóveis Premium",
+        text: "Seu parceiro imobiliário",
         action: {
-          text: "Saiba mais",
+          text: "Conheça",
           href: "#about",
         },
       }}
-      title="Joíle Barreto, Seu Corretor de Confiança"
-      description="Curadoria personalizada de casas e terrenos premium para quem busca mais que um imóvel, busca um estilo de vida exclusivo em Brasília e região."
+      title="Encontre o lar dos seus sonhos"
+      description="Sou Joíle Barreto, corretor dedicado a ajudar famílias e investidores a encontrar o imóvel perfeito. Atendimento próximo, transparente e focado nas suas necessidades."
       actions={[
         {
           text: "Fale Comigo",
@@ -173,7 +149,7 @@ const Hero = () => {
         {
           text: "WhatsApp",
           href: "https://wa.me/5561999999999",
-          variant: "glow",
+          variant: "outline",
           icon: <Icons.whatsapp className="h-4 w-4" />,
         },
       ]}
