@@ -14,7 +14,7 @@ interface SlideProps {
   index: number;
   current: number;
   handleSlideClick: (index: number) => void;
-  position: number; // -2, -1, 0, 1, 2 (0 = center)
+  position: number;
 }
 
 const Slide = ({ slide, index, current, handleSlideClick, position }: SlideProps) => {
@@ -23,7 +23,6 @@ const Slide = ({ slide, index, current, handleSlideClick, position }: SlideProps
 
   const isActive = position === 0;
   
-  // Calculate transform based on position
   const getTransformX = () => {
     if (position === 0) return 0;
     if (position === -1) return -85;
@@ -71,15 +70,15 @@ const Slide = ({ slide, index, current, handleSlideClick, position }: SlideProps
     >
       <div
         ref={slideRef}
-        className="relative h-[50vmin] w-[40vmin] md:h-[60vmin] md:w-[45vmin] overflow-hidden rounded-xl bg-card"
+        className="relative h-[50vmin] w-[40vmin] md:h-[60vmin] md:w-[45vmin] overflow-hidden rounded-2xl bg-card shadow-lg"
         style={{
           transformStyle: "preserve-3d",
         }}
       >
         <div
-          className="absolute inset-0 bg-background/40 transition-opacity duration-500"
+          className="absolute inset-0 bg-foreground/20 transition-opacity duration-500"
           style={{
-            opacity: isActive ? 0 : 0.6,
+            opacity: isActive ? 0 : 0.4,
           }}
         />
         <img
@@ -92,7 +91,7 @@ const Slide = ({ slide, index, current, handleSlideClick, position }: SlideProps
         />
         {isActive && (
           <motion.div 
-            className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent"
+            className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
@@ -108,10 +107,10 @@ const Slide = ({ slide, index, current, handleSlideClick, position }: SlideProps
           }}
           transition={{ duration: 0.4, delay: isActive ? 0.1 : 0 }}
         >
-          <h3 className="font-display text-xl md:text-3xl font-bold text-cream mb-3 drop-shadow-lg">
+          <h3 className="font-serif text-xl md:text-3xl font-normal text-white mb-3 drop-shadow-lg">
             {title}
           </h3>
-          <button className="flex items-center gap-2 rounded-full bg-terracotta px-5 py-2.5 text-xs md:text-sm font-medium text-cream shadow-lg backdrop-blur-sm transition-all hover:bg-terracotta/90 hover:scale-105 active:scale-95">
+          <button className="flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-xs md:text-sm font-medium text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-105 active:scale-95">
             {button}
             <IconArrowNarrowRight className="h-4 w-4 md:h-5 md:w-5" />
           </button>
@@ -134,7 +133,7 @@ const CarouselControl = ({
 }: CarouselControlProps) => {
   return (
     <motion.button
-      className={`flex h-11 w-11 md:h-12 md:w-12 items-center justify-center rounded-full border border-terracotta/30 bg-background/80 backdrop-blur-sm transition-colors hover:bg-terracotta hover:border-terracotta group ${
+      className={`flex h-11 w-11 md:h-12 md:w-12 items-center justify-center rounded-full border border-primary/30 bg-card shadow-sm transition-colors hover:bg-primary hover:border-primary group ${
         type === "previous" ? "rotate-180" : ""
       }`}
       title={title}
@@ -142,7 +141,7 @@ const CarouselControl = ({
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
-      <IconArrowNarrowRight className="h-5 w-5 md:h-6 md:w-6 text-terracotta group-hover:text-cream transition-colors" />
+      <IconArrowNarrowRight className="h-5 w-5 md:h-6 md:w-6 text-primary group-hover:text-primary-foreground transition-colors" />
     </motion.button>
   );
 };
@@ -168,11 +167,9 @@ export function PropertyCarousel({ slides }: PropertyCarouselProps) {
     }
   };
 
-  // Calculate position relative to current slide
   const getPosition = (index: number) => {
     let diff = index - current;
     
-    // Handle wrap-around
     if (diff > slides.length / 2) {
       diff -= slides.length;
     } else if (diff < -slides.length / 2) {
@@ -209,13 +206,12 @@ export function PropertyCarousel({ slides }: PropertyCarouselProps) {
           handleClick={handlePreviousClick}
         />
         
-        {/* Dots indicator */}
         <div className="flex items-center gap-2">
           {slides.map((_, index) => (
             <motion.button
               key={index}
               className={`h-2 rounded-full transition-colors ${
-                current === index ? "bg-terracotta" : "bg-terracotta/30"
+                current === index ? "bg-primary" : "bg-primary/30"
               }`}
               animate={{ width: current === index ? 24 : 8 }}
               transition={{ duration: 0.3 }}

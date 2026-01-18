@@ -6,16 +6,16 @@ import { ArrowUpRight, Calendar } from "lucide-react";
 const insights = [
   {
     id: 1,
-    category: "Tendências",
-    title: "5 tendências do mercado imobiliário de luxo para 2024",
-    excerpt: "O que esperar do mercado de alto padrão nos próximos meses e como se posicionar.",
+    category: "Dicas",
+    title: "5 dicas para comprar seu primeiro imóvel com segurança",
+    excerpt: "O que você precisa saber antes de dar esse passo importante na sua vida.",
     date: "15 Jan 2024",
   },
   {
     id: 2,
     category: "Guia",
-    title: "Como escolher o terreno ideal para sua casa dos sonhos",
-    excerpt: "Critérios essenciais que vão além da localização e metragem.",
+    title: "Como escolher o bairro ideal para sua família",
+    excerpt: "Critérios importantes além da localização: escolas, segurança e qualidade de vida.",
     date: "08 Jan 2024",
   },
 ];
@@ -25,62 +25,62 @@ const Insights = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="section-padding bg-secondary/30 bg-grain relative">
+    <section className="section-padding bg-secondary/30 relative">
       <div className="container-luxury">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16"
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-12"
         >
           <div>
-            <span className="inline-flex items-center gap-3 text-sm font-sans tracking-[0.3em] uppercase text-primary mb-6">
-              <span className="w-12 h-px bg-primary" />
-              Insights & Ideias
+            <span className="inline-flex items-center gap-3 text-sm font-medium tracking-wide text-primary mb-4">
+              <span className="w-8 h-0.5 bg-primary rounded-full" />
+              Blog & Dicas
             </span>
             <h2 className="text-headline text-foreground">
-              Conteúdo para quem busca conhecimento
+              Conteúdo para ajudar você
             </h2>
           </div>
           <a
             href="#"
-            className="inline-flex items-center gap-2 text-primary text-sm font-sans tracking-widest uppercase hover:opacity-80 transition-opacity"
+            className="inline-flex items-center gap-2 text-primary text-sm font-medium hover:underline transition-all"
           >
             Ver todos
             <ArrowUpRight size={16} />
           </a>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6">
           {insights.map((insight, index) => (
             <motion.article
               key={insight.id}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="group luxury-card p-8 hover-lift hover-glow transition-all duration-500 cursor-pointer"
+              className="group welcome-card p-6 hover-lift transition-all duration-300 cursor-pointer"
             >
-              <div className="flex items-center gap-4 mb-6">
-                <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-sans tracking-widest uppercase">
+              <div className="flex items-center gap-4 mb-4">
+                <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">
                   {insight.category}
                 </span>
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <Calendar size={12} />
-                  <span className="text-xs font-sans">{insight.date}</span>
+                  <span className="text-xs">{insight.date}</span>
                 </div>
               </div>
 
-              <h3 className="text-xl font-serif text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
+              <h3 className="text-xl font-serif text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
                 {insight.title}
               </h3>
 
-              <p className="text-muted-foreground font-sans text-sm leading-relaxed mb-6">
+              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                 {insight.excerpt}
               </p>
 
-              <div className="flex items-center gap-2 text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span className="text-xs font-sans tracking-widest uppercase">
+              <div className="flex items-center gap-2 text-primary">
+                <span className="text-sm font-medium group-hover:underline">
                   Ler artigo
                 </span>
                 <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />

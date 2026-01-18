@@ -31,7 +31,7 @@ const WhatAreYouLookingFor = () => {
   ];
 
   return (
-    <section ref={ref} className="section-padding bg-background relative overflow-hidden">
+    <section ref={ref} className="section-padding bg-secondary/30 relative overflow-hidden">
       <div className="container-luxury">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -39,10 +39,12 @@ const WhatAreYouLookingFor = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-12"
         >
-          <span className="text-terracotta text-sm tracking-[0.3em] uppercase font-medium">
+          <span className="inline-flex items-center justify-center gap-3 text-sm font-medium tracking-wide text-primary mb-4">
+            <span className="w-8 h-0.5 bg-primary rounded-full" />
             Explore
+            <span className="w-8 h-0.5 bg-primary rounded-full" />
           </span>
-          <h2 className="text-display mt-4 text-cream">
+          <h2 className="text-headline text-foreground">
             O que você procura?
           </h2>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
