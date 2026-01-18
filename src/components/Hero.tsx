@@ -57,30 +57,26 @@ function HeroSection({
 
       <div className="container-luxury relative z-10">
         <div className="relative z-10 flex flex-col items-center gap-6 pb-8 pt-8 md:pb-12 md:pt-12 lg:pb-16 lg:pt-16">
-          {/* 3D Handshake Image */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64"
-          >
-            <img
-              src={handshake3d}
-              alt="Parceria imobiliária"
-              className="w-full h-full object-contain"
-            />
-          </motion.div>
-
-          {/* Badge */}
+          {/* Badge with 3D Image */}
           {badge && (
-            <Badge variant="outline" className="animate-appear gap-2 border-primary/30 bg-primary/5 text-primary px-4 py-1.5 rounded-full">
-              <Heart className="h-3.5 w-3.5 fill-accent text-accent" />
-              <span className="text-muted-foreground">{badge.text}</span>
-              <a href={badge.action.href} className="flex items-center gap-1 text-primary hover:text-primary/80 transition-colors font-medium">
-                {badge.action.text}
-                <ArrowRightIcon className="h-3 w-3" />
-              </a>
-            </Badge>
+            <div className="flex flex-col items-center -space-y-6">
+              <motion.img
+                src={handshake3d}
+                alt="Parceria imobiliária"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="w-32 h-32 md:w-40 md:h-40 object-contain"
+              />
+              <Badge variant="outline" className="animate-appear gap-2 border-primary/30 bg-primary/5 text-primary px-4 py-1.5 rounded-full">
+                <Heart className="h-3.5 w-3.5 fill-accent text-accent" />
+                <span className="text-muted-foreground">{badge.text}</span>
+                <a href={badge.action.href} className="flex items-center gap-1 text-primary hover:text-primary/80 transition-colors font-medium">
+                  {badge.action.text}
+                  <ArrowRightIcon className="h-3 w-3" />
+                </a>
+              </Badge>
+            </div>
           )}
 
           {/* Title */}
