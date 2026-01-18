@@ -49,7 +49,7 @@ function HeroSection({
           rows={50}
           cols={20}
           tileSize="lg"
-          className="opacity-60"
+          className="opacity-100"
         />
         {/* Gradient overlay to fade tiles */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none" />
