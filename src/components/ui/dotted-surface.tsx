@@ -25,15 +25,17 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 
     // Scene setup
     const scene = new THREE.Scene();
-    scene.fog = new THREE.Fog(0xffffff, 2000, 10000);
+    scene.fog = new THREE.Fog(0xffffff, 1500, 8000);
 
     const camera = new THREE.PerspectiveCamera(
-      60,
+      75,
       window.innerWidth / window.innerHeight,
       1,
       10000
     );
-    camera.position.set(0, 355, 1220);
+    // Posição mais alta e ângulo mais inclinado para melhor visualização
+    camera.position.set(0, 600, 800);
+    camera.lookAt(0, 0, 0);
 
     const renderer = new THREE.WebGLRenderer({
       alpha: true,
