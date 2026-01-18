@@ -62,15 +62,6 @@ const WhatsAppButton = () => {
         </motion.svg>
       </motion.div>
 
-      {/* Tooltip - only visible when expanded */}
-      <motion.div 
-        className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-white text-gray-800 px-3 py-2 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none"
-        style={{ opacity: iconOpacity }}
-      >
-        <span className="text-sm font-medium">Fale Conosco!</span>
-        {/* Arrow */}
-        <div className="absolute left-full top-1/2 -translate-y-1/2 border-8 border-transparent border-l-white" />
-      </motion.div>
     </motion.a>
   );
 };
