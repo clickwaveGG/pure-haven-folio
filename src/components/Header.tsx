@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Home, Briefcase, Building2, User, Phone } from "lucide-react";
+import { ExpandableTabs } from "@/components/ui/expandable-tabs";
 import logoJoile from "@/assets/logo-joile-barreto.png";
 
 const Header = () => {
@@ -13,12 +15,14 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = [
-    { label: "Início", href: "#hero" },
-    { label: "Serviços", href: "#services" },
-    { label: "Imóveis", href: "#properties" },
-    { label: "Sobre", href: "#about" },
-    { label: "Contato", href: "#contact" },
+  const tabs = [
+    { title: "Início", icon: Home, href: "#hero" },
+    { title: "Serviços", icon: Briefcase, href: "#services" },
+    { type: "separator" as const },
+    { title: "Imóveis", icon: Building2, href: "#properties" },
+    { title: "Sobre", icon: User, href: "#about" },
+    { type: "separator" as const },
+    { title: "Contato", icon: Phone, href: "#contact" },
   ];
 
   return (
@@ -42,19 +46,15 @@ const Header = () => {
             />
           </a>
 
-          {/* Desktop Navigation */}
-          <ul className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <li key={item.label}>
-                <a
-                  href={item.href}
-                  className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors duration-300"
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+          {/* Expandable Tabs Navigation */}
+          <div className="hidden md:block">
+            <ExpandableTabs 
+              tabs={tabs as any} 
+              activeColor="text-primary"
+              className="backdrop-blur-md bg-background/80 shadow-sm border-primary/10"
+              defaultSelected={0}
+            />
+          </div>
 
           <a href="#properties" className="hidden md:block welcome-button">
             Ver Imóveis
