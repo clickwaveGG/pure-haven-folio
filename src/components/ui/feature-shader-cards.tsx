@@ -147,8 +147,8 @@ export default function FeaturesCards() {
                     {feature.description}
                   </p>
 
-                  <span className="text-xs font-medium text-white/70 mt-4">
-                    Joile Barreto
+                  <span className="text-xs font-medium text-white/70 mt-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    Joíle Barreto
                   </span>
                 </div>
               </div>
