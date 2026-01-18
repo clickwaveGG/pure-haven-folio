@@ -66,7 +66,7 @@ function HeroSection({
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                className="w-28 h-28 md:w-36 md:h-36 object-contain -mb-4 -mt-[5px]"
+                className="w-28 h-28 md:w-36 md:h-36 object-contain mb-[1px] -mt-[5px]"
               />
               <Badge variant="outline" className="animate-appear gap-2 border-primary/30 bg-primary/5 text-primary px-4 py-1.5 rounded-full">
                 <Heart className="h-3.5 w-3.5 fill-accent text-accent" />
