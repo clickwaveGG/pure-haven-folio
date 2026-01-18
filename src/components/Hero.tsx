@@ -10,6 +10,7 @@ import handshake3d from "@/assets/handshake-3d.png";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { motion } from "framer-motion";
 import { DottedSurface } from "@/components/ui/dotted-surface";
+import { ShinyButton } from "@/components/ui/shiny-button";
 
 interface HeroAction {
   text: string;
@@ -91,24 +92,31 @@ function HeroSection({
 
           {/* Actions */}
           <div className="animate-appear relative z-10 flex flex-col items-center justify-center gap-4 opacity-0 delay-300 sm:flex-row">
-            <div className="flex flex-col gap-3 sm:flex-row">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               {actions.map((action, index) => (
-                <Button
-                  key={index}
-                  asChild
-                  size="lg"
-                  className={cn(
-                    "rounded-lg px-6 py-3",
-                    action.variant === "warm" && "bg-accent text-accent-foreground hover:bg-accent/90",
-                    action.variant === "outline" && "border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
-                  )}
-                  variant={action.variant === "outline" ? "outline" : "default"}
-                >
-                  <a href={action.href} className="flex items-center gap-2">
+                index === 0 ? (
+                  <ShinyButton key={index} href={action.href}>
                     {action.icon}
                     {action.text}
-                  </a>
-                </Button>
+                  </ShinyButton>
+                ) : (
+                  <Button
+                    key={index}
+                    asChild
+                    size="lg"
+                    className={cn(
+                      "rounded-lg px-6 py-3",
+                      action.variant === "warm" && "bg-accent text-accent-foreground hover:bg-accent/90",
+                      action.variant === "outline" && "border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
+                    )}
+                    variant={action.variant === "outline" ? "outline" : "default"}
+                  >
+                    <a href={action.href} className="flex items-center gap-2">
+                      {action.icon}
+                      {action.text}
+                    </a>
+                  </Button>
+                )
               ))}
             </div>
           </div>
