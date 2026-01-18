@@ -58,8 +58,8 @@ const Header = () => {
             ))}
           </ul>
 
-          <a href="#contact" className="hidden md:block welcome-button">
-            Fale Comigo
+          <a href="#properties" className="hidden md:block welcome-button">
+            Ver Imóveis
           </a>
 
           {/* Mobile Menu Toggle */}
@@ -93,8 +93,8 @@ const Header = () => {
                 </li>
               ))}
               <li className="mt-4">
-                <a href="#contact" className="welcome-button w-full text-center">
-                  Fale Comigo
+                <a href="#properties" className="welcome-button w-full text-center">
+                  Ver Imóveis
                 </a>
               </li>
             </ul>
