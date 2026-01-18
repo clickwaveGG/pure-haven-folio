@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRightIcon, Phone, Heart } from "lucide-react";
+import { ArrowRightIcon, Home, Heart } from "lucide-react";
 import { Mockup, MockupFrame } from "@/components/ui/mockup";
 import { Icons } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
@@ -160,10 +160,10 @@ const Hero = () => {
       description="Sou Joíle Barreto, corretor dedicado a ajudar famílias e investidores a encontrar o imóvel perfeito. Atendimento próximo, transparente e focado nas suas necessidades."
       actions={[
         {
-          text: "Fale Comigo",
-          href: "#contact",
+          text: "Ver Imóveis",
+          href: "#properties",
           variant: "default",
-          icon: <Phone className="h-4 w-4" />,
+          icon: <Home className="h-4 w-4" />,
         },
         {
           text: "WhatsApp",
