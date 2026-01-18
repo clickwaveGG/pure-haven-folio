@@ -29,6 +29,7 @@ const FloatingNav = () => {
         tabs={tabs as any} 
         activeColor="text-primary"
         className="backdrop-blur-md bg-background/95 shadow-lg border-primary/20"
+        defaultSelected={0}
       />
     </motion.div>
   );
