@@ -89,7 +89,7 @@ export default function FeaturesCards() {
   return (
     <section id="services" className="section-padding bg-secondary/30 relative overflow-hidden">
       <div className="container-luxury relative z-10">
-        <div className="text-center mb-12 lg:mb-16">
+        <div className="text-center mb-8 lg:mb-10">
           <span className="inline-flex items-center gap-3 text-sm font-medium tracking-wide text-primary mb-4">
             <span className="w-8 h-0.5 bg-primary rounded-full" />
             Como posso ajudar
