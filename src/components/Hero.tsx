@@ -59,14 +59,14 @@ function HeroSection({
         <div className="relative z-10 flex flex-col items-center gap-4 pb-8 pt-2 md:pb-12 md:pt-4 lg:pb-16 lg:pt-6">
           {/* Badge with 3D Image */}
           {badge && (
-            <div className="flex flex-col items-center gap-2">
+            <div className="flex flex-col items-center">
               <motion.img
                 src={handshake3d}
                 alt="Parceria imobiliária"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                className="w-28 h-28 md:w-36 md:h-36 object-contain mt-4"
+                className="w-28 h-28 md:w-36 md:h-36 object-contain -mb-4"
               />
               <Badge variant="outline" className="animate-appear gap-2 border-primary/30 bg-primary/5 text-primary px-4 py-1.5 rounded-full">
                 <Heart className="h-3.5 w-3.5 fill-accent text-accent" />
