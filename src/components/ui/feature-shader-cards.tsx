@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { Warp } from "@paper-design/shaders-react"
-import { Home, Shield, Handshake, TrendingUp, ArrowRight } from "lucide-react"
+import { Home, Shield, Handshake, TrendingUp } from "lucide-react"
 
 interface Feature {
   title: string
@@ -143,14 +143,9 @@ export default function FeaturesCards() {
                     {feature.title}
                   </h3>
 
-                  <p className="mb-4 text-sm leading-relaxed text-white/90 flex-grow">
+                  <p className="text-sm leading-relaxed text-white/90">
                     {feature.description}
                   </p>
-
-                  <div className="inline-flex items-center gap-1 text-sm font-medium text-white opacity-0 transition-all duration-300 group-hover:opacity-100">
-                    Saiba mais
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </div>
                 </div>
               </div>
             )
