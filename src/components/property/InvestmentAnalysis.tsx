@@ -34,7 +34,7 @@ const InvestmentAnalysis = ({
       className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl p-6 space-y-6"
     >
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-serif text-foreground">Análise de Investimento</h2>
+        <h2 className="text-2xl font-semibold text-foreground">Análise de Investimento</h2>
         <span className="flex items-center gap-1 px-3 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full">
           <TrendingUp size={14} />
           Mercado em Alta
@@ -52,7 +52,7 @@ const InvestmentAnalysis = ({
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">Média na Zona</span>
-                <span className="font-medium text-foreground">{avgPricePerM2}/m²</span>
+                <span className="font-semibold text-foreground" style={{ fontFamily: "'Montserrat', sans-serif" }}>{avgPricePerM2}/m²</span>
               </div>
               <div className="h-2 bg-muted rounded-full overflow-hidden">
                 <div className="h-full bg-muted-foreground/40 rounded-full" style={{ width: "75%" }} />
@@ -62,7 +62,7 @@ const InvestmentAnalysis = ({
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
                 <span className="text-primary font-medium">Este Imóvel (Oportunidade)</span>
-                <span className="font-medium text-primary">{pricePerM2}/m²</span>
+                <span className="font-semibold text-primary" style={{ fontFamily: "'Montserrat', sans-serif" }}>{pricePerM2}/m²</span>
               </div>
               <div className="h-2 bg-primary/20 rounded-full overflow-hidden">
                 <div className="h-full bg-primary rounded-full" style={{ width: "65%" }} />
@@ -78,7 +78,7 @@ const InvestmentAnalysis = ({
         {/* Walk Score & Nearby */}
         <div className="space-y-4">
           <div className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm">
-            <div className={`text-4xl font-bold ${getScoreColor(walkScore)}`}>
+            <div className={`text-4xl font-bold ${getScoreColor(walkScore)}`} style={{ fontFamily: "'Montserrat', sans-serif" }}>
               {walkScore}
             </div>
             <div>

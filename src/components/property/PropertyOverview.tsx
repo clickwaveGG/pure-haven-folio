@@ -44,7 +44,7 @@ const PropertyOverview = ({
           )}
         </div>
 
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif text-foreground leading-tight">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground leading-tight">
           {title}
         </h1>
 
@@ -56,7 +56,7 @@ const PropertyOverview = ({
 
       {/* Price */}
       <div className="space-y-2">
-        <p className="text-3xl md:text-4xl font-serif text-primary font-medium">
+        <p className="text-3xl md:text-4xl text-primary font-semibold" style={{ fontFamily: "'Montserrat', sans-serif" }}>
           {price}
         </p>
         <div className="flex items-center gap-2 text-sm text-green-600">
@@ -69,22 +69,22 @@ const PropertyOverview = ({
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-border">
         <div className="text-center p-4 bg-muted/50 rounded-xl">
           <Maximize size={24} className="mx-auto mb-2 text-primary" />
-          <p className="text-xl font-serif text-foreground">{area}</p>
+          <p className="text-xl font-semibold text-foreground" style={{ fontFamily: "'Montserrat', sans-serif" }}>{area}</p>
           <p className="text-xs text-muted-foreground uppercase tracking-wide">Área Útil</p>
         </div>
         <div className="text-center p-4 bg-muted/50 rounded-xl">
           <Bed size={24} className="mx-auto mb-2 text-primary" />
-          <p className="text-xl font-serif text-foreground">{bedrooms}</p>
+          <p className="text-xl font-semibold text-foreground" style={{ fontFamily: "'Montserrat', sans-serif" }}>{bedrooms}</p>
           <p className="text-xs text-muted-foreground uppercase tracking-wide">Suítes</p>
         </div>
         <div className="text-center p-4 bg-muted/50 rounded-xl">
           <Bath size={24} className="mx-auto mb-2 text-primary" />
-          <p className="text-xl font-serif text-foreground">{bathrooms}</p>
+          <p className="text-xl font-semibold text-foreground" style={{ fontFamily: "'Montserrat', sans-serif" }}>{bathrooms}</p>
           <p className="text-xs text-muted-foreground uppercase tracking-wide">Banheiros</p>
         </div>
         <div className="text-center p-4 bg-muted/50 rounded-xl">
           <Car size={24} className="mx-auto mb-2 text-primary" />
-          <p className="text-xl font-serif text-foreground">{parking}</p>
+          <p className="text-xl font-semibold text-foreground" style={{ fontFamily: "'Montserrat', sans-serif" }}>{parking}</p>
           <p className="text-xs text-muted-foreground uppercase tracking-wide">Vagas</p>
         </div>
       </div>
