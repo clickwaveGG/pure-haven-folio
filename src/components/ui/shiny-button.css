@@ -23,9 +23,9 @@
 }
 
 .shiny-cta {
-  --shiny-cta-bg: hsl(var(--primary));
-  --shiny-cta-bg-subtle: hsl(var(--primary) / 0.8);
-  --shiny-cta-fg: hsl(var(--primary-foreground));
+  --shiny-cta-bg: hsl(224 100% 50%);
+  --shiny-cta-bg-subtle: hsl(224 100% 45%);
+  --shiny-cta-fg: hsl(0 0% 100%);
   --shiny-cta-highlight: hsl(var(--accent));
   --shiny-cta-highlight-subtle: hsl(var(--accent) / 0.7);
   --animation: gradient-angle linear infinite;
