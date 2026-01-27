@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { MapPin, Maximize, ArrowUpRight } from "lucide-react";
 import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";
@@ -40,6 +41,11 @@ const FeaturedProperties = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const navigate = useNavigate();
+
+  const handlePropertyClick = (propertyId: number) => {
+    navigate(`/imovel/${propertyId}`);
+  };
 
   return (
     <section id="properties" className="section-padding bg-background relative">
@@ -73,6 +79,7 @@ const FeaturedProperties = () => {
               transition={{ duration: 0.8, delay: index * 0.15 }}
               onMouseEnter={() => setHoveredId(property.id)}
               onMouseLeave={() => setHoveredId(null)}
+              onClick={() => handlePropertyClick(property.id)}
               className="group welcome-card overflow-hidden cursor-pointer hover-lift"
             >
               {/* Image */}
