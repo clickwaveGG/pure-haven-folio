@@ -107,7 +107,7 @@ const FeaturedProperties = () => {
                   <span className="text-sm">{property.location}</span>
                 </div>
 
-                <h3 className="text-xl font-serif text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-xl font-display font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
                   {property.title}
                 </h3>
 

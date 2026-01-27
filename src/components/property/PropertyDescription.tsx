@@ -14,7 +14,7 @@ const PropertyDescription = ({ description, fullDescription }: PropertyDescripti
       transition={{ delay: 0.3, duration: 0.5 }}
       className="space-y-4"
     >
-      <h2 className="text-2xl font-serif text-foreground">Sobre a Propriedade</h2>
+      <h2 className="text-2xl font-display font-semibold text-foreground">Sobre a Propriedade</h2>
       
       <div className="space-y-4 text-muted-foreground leading-relaxed">
         <p>{description}</p>

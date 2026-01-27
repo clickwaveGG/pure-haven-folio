@@ -71,7 +71,7 @@ const Insights = () => {
                 </div>
               </div>
 
-              <h3 className="text-xl font-serif text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+              <h3 className="text-xl font-display font-semibold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
                 {insight.title}
               </h3>
 
