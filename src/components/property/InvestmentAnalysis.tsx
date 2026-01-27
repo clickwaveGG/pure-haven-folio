@@ -52,7 +52,7 @@ const InvestmentAnalysis = ({
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">Média na Zona</span>
-                <span className="font-semibold text-foreground" style={{ fontFamily: "'Arial Black', sans-serif" }}>{avgPricePerM2}/m²</span>
+                <span className="font-semibold text-foreground" style={{ fontFamily: "Helvetica, sans-serif" }}>{avgPricePerM2}/m²</span>
               </div>
               <div className="h-2 bg-muted rounded-full overflow-hidden">
                 <div className="h-full bg-muted-foreground/40 rounded-full" style={{ width: "75%" }} />
@@ -62,7 +62,7 @@ const InvestmentAnalysis = ({
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
                 <span className="text-primary font-medium">Este Imóvel (Oportunidade)</span>
-                <span className="font-semibold text-primary" style={{ fontFamily: "'Arial Black', sans-serif" }}>{pricePerM2}/m²</span>
+                <span className="font-semibold text-primary" style={{ fontFamily: "Helvetica, sans-serif" }}>{pricePerM2}/m²</span>
               </div>
               <div className="h-2 bg-primary/20 rounded-full overflow-hidden">
                 <div className="h-full bg-primary rounded-full" style={{ width: "65%" }} />
@@ -78,7 +78,7 @@ const InvestmentAnalysis = ({
         {/* Walk Score & Nearby */}
         <div className="space-y-4">
           <div className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm">
-            <div className={`text-4xl font-bold ${getScoreColor(walkScore)}`} style={{ fontFamily: "'Arial Black', sans-serif" }}>
+            <div className={`text-4xl font-bold ${getScoreColor(walkScore)}`} style={{ fontFamily: "Helvetica, sans-serif" }}>
               {walkScore}
             </div>
             <div>
