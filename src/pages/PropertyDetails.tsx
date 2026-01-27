@@ -39,7 +39,9 @@ const properties = [
     pricePerM2: "R$ 3.778",
     avgPricePerM2: "R$ 4.200",
     walkScore: 85,
-    coordinates: "15.8267° S, 47.9218° W",
+    coordinates: "15.8350° S, 48.0267° W",
+    latitude: -15.835046,
+    longitude: -48.026712,
     mapsUrl: "https://maps.app.goo.gl/fiAFNBeH43ieYeB1A",
     nearbyPlaces: [
       { icon: "school", name: "Colégio Sigma", distance: "8 min a pé" },
@@ -195,7 +197,9 @@ const PropertyDetails = () => {
 
             <PropertyLocation 
               location={property.location} 
-              coordinates={property.coordinates || "15.8267° S, 47.9218° W"}
+              coordinates={property.coordinates}
+              latitude={property.latitude}
+              longitude={property.longitude}
               mapsUrl={property.mapsUrl}
             />
           </div>
