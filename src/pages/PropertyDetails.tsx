@@ -116,7 +116,7 @@ const PropertyDetails = () => {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-serif text-foreground mb-4">Imóvel não encontrado</h1>
+          <h1 className="text-2xl font-display font-semibold text-foreground mb-4">Imóvel não encontrado</h1>
           <Button onClick={() => navigate("/")} variant="outline">
             Voltar para o início
           </Button>

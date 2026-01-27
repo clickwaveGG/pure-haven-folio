@@ -134,7 +134,7 @@ const AllProperties = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-8"
           >
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif text-foreground mb-4">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-semibold text-foreground mb-4">
               Todos os Imóveis
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -252,7 +252,7 @@ const AllProperties = () => {
                       <span className="text-sm">{property.location}</span>
                     </div>
 
-                    <h3 className="text-lg font-serif text-foreground mb-1 group-hover:text-primary transition-colors duration-300 line-clamp-1">
+                    <h3 className="text-lg font-display font-semibold text-foreground mb-1 group-hover:text-primary transition-colors duration-300 line-clamp-1">
                       {property.title}
                     </h3>
 
