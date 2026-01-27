@@ -81,8 +81,8 @@ export default {
         },
       },
       fontFamily: {
-        serif: ["DM Serif Display", "serif"],
-        sans: ["Plus Jakarta Sans", "sans-serif"],
+        display: ["Outfit", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+        sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
