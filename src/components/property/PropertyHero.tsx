@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Play, Camera } from "lucide-react";
+import { Camera } from "lucide-react";
 
 interface PropertyHeroProps {
   image: string;
@@ -25,16 +25,6 @@ const PropertyHero = ({ image, title, imageCount = 18 }: PropertyHeroProps) => {
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-          
-          {/* Virtual Tour Button */}
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="absolute bottom-4 left-4 flex items-center gap-2 px-4 py-2 bg-white/95 backdrop-blur-sm text-foreground text-sm font-medium rounded-full shadow-lg hover:bg-white transition-colors"
-          >
-            <Play size={16} className="fill-primary text-primary" />
-            Tour Virtual 3D
-          </motion.button>
         </div>
 
         {/* Secondary Images */}
