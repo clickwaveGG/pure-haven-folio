@@ -140,9 +140,12 @@ const FeaturedProperties = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="text-center mt-8"
         >
-          <a href="#contact" className="welcome-button-outline">
+          <button 
+            onClick={() => navigate("/imoveis")} 
+            className="welcome-button-outline"
+          >
             Ver todos os imóveis
-          </a>
+          </button>
         </motion.div>
       </div>
     </section>
