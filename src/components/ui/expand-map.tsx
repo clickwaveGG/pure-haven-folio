@@ -8,6 +8,8 @@ import { MapPin, ExternalLink, Maximize2, Minimize2 } from "lucide-react"
 interface LocationMapProps {
   location?: string
   coordinates?: string
+  latitude?: number
+  longitude?: number
   mapsUrl?: string
   className?: string
 }
@@ -15,6 +17,8 @@ interface LocationMapProps {
 export function LocationMap({
   location = "San Francisco, CA",
   coordinates = "37.7749° N, 122.4194° W",
+  latitude,
+  longitude,
   mapsUrl,
   className,
 }: LocationMapProps) {
@@ -58,10 +62,14 @@ export function LocationMap({
     }
   }
 
-  // Create Google Maps embed URL from the location
+  // Create Google Maps embed URL - use exact coordinates if available
   const getEmbedUrl = () => {
+    if (latitude && longitude) {
+      // Use exact coordinates with a marker
+      return `https://www.google.com/maps?q=${latitude},${longitude}&z=17&output=embed`
+    }
     const encodedLocation = encodeURIComponent(location)
-    return `https://www.google.com/maps?q=${encodedLocation}&output=embed`
+    return `https://www.google.com/maps?q=${encodedLocation}&z=15&output=embed`
   }
 
   return (
