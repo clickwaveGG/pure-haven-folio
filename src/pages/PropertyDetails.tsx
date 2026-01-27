@@ -191,7 +191,12 @@ const PropertyDetails = () => {
               nearbyPlaces={property.nearbyPlaces}
             />
 
-            <PropertyLocation location={property.location} />
+            <PropertyLocation 
+              location={property.location} 
+              coordinates={property.category === "Casa" ? "15.8267° S, 47.9218° W" : 
+                          property.category === "Apartamento" ? "15.7975° S, 47.8919° W" : 
+                          "15.8347° S, 47.9022° W"} 
+            />
           </div>
 
           {/* Right Column - Sidebar */}
