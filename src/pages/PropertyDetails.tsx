@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -99,6 +100,11 @@ const PropertyDetails = () => {
   const navigate = useNavigate();
   
   const property = properties.find((p) => p.id === Number(id));
+
+  // Scroll to top when page loads
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   if (!property) {
     return (
