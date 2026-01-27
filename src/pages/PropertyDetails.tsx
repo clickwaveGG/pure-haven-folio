@@ -11,7 +11,7 @@ import PropertyAmenities from "@/components/property/PropertyAmenities";
 import PropertyLocation from "@/components/property/PropertyLocation";
 import InvestmentAnalysis from "@/components/property/InvestmentAnalysis";
 import AgentContact from "@/components/property/AgentContact";
-import FinancialSimulation from "@/components/property/FinancialSimulation";
+
 
 // Assets
 import property1 from "@/assets/property-1.jpg";
@@ -189,8 +189,6 @@ const PropertyDetails = () => {
               phoneNumber="+5561999999999"
               email="contato@joilebarreto.com.br"
             />
-
-            <FinancialSimulation propertyPrice={property.priceNumber} />
           </div>
         </div>
       </div>
