@@ -66,8 +66,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 20% 20%;
 
-    /* Petrol blue - trust and professionalism */
-    --primary: 195 65% 35%;
+    /* Vibrant blue - trust and professionalism */
+    --primary: 224 100% 50%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 40 25% 94%;
@@ -90,9 +90,9 @@
     --radius: 0.5rem;
 
     /* Custom welcoming tokens */
-    --petrol: 195 65% 35%;
-    --petrol-light: 195 55% 50%;
-    --petrol-dark: 195 70% 25%;
+    --petrol: 224 100% 50%;
+    --petrol-light: 224 100% 60%;
+    --petrol-dark: 224 100% 40%;
     --terracotta: 18 60% 55%;
     --terracotta-light: 20 55% 70%;
     --terracotta-dark: 15 65% 40%;
@@ -103,7 +103,7 @@
     --sand: 35 30% 85%;
     
     /* Gradients - soft and inviting */
-    --gradient-primary: linear-gradient(135deg, hsl(195 65% 35%), hsl(195 55% 50%));
+    --gradient-primary: linear-gradient(135deg, hsl(224 100% 50%), hsl(224 100% 60%));
     --gradient-warm: linear-gradient(135deg, hsl(18 60% 55%), hsl(20 55% 70%));
     --gradient-light: linear-gradient(180deg, hsl(40 33% 98%), hsl(40 25% 94%));
     --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(40 25% 97%));
