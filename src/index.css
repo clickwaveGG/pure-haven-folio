@@ -139,7 +139,7 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'SF Pro Display', 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     overflow-x: hidden;
     width: 100%;
     max-width: 100vw;
@@ -148,7 +148,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'SF Pro Display', 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
     letter-spacing: -0.022em;
     font-weight: 600;
   }

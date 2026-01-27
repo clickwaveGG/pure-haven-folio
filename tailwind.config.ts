@@ -81,8 +81,8 @@ export default {
         },
       },
       fontFamily: {
-        display: ["SF Pro Display", "Montserrat", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
-        sans: ["SF Pro Display", "Montserrat", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
+        display: ["Montserrat", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+        sans: ["SF Pro Display", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
