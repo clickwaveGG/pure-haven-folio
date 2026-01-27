@@ -138,7 +138,7 @@ const PropertyDetails = () => {
       >
         <div className="container-luxury py-4 flex items-center justify-between">
           <button
-            onClick={() => navigate("/")}
+            onClick={() => navigate(-1)}
             className="flex items-center gap-2 text-foreground hover:text-primary transition-colors"
           >
             <ArrowLeft size={20} />
