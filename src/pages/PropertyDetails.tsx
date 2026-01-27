@@ -145,7 +145,7 @@ const PropertyDetails = () => {
             <span className="font-medium hidden sm:inline">Voltar</span>
           </button>
           
-          <img src={logo} alt="Joíle Barreto" className="h-10 object-contain" />
+          <img src={logo} alt="Joíle Barreto" className="h-14 md:h-16 object-contain" />
           
           <span className="text-sm text-muted-foreground">{property.category}</span>
         </div>
