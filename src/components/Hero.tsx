@@ -11,6 +11,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { motion } from "framer-motion";
 import { DottedSurface } from "@/components/ui/dotted-surface";
 import { ShinyButton } from "@/components/ui/shiny-button";
+import { useSkipAnimations } from "@/pages/Index";
 
 interface HeroAction {
   text: string;
@@ -43,6 +44,9 @@ function HeroSection({
   actions,
   image,
 }: HeroProps) {
+  const skipAnimations = useSkipAnimations();
+  const animationClass = skipAnimations ? "" : "animate-appear opacity-0";
+  
   return (
     <section id="hero" className="overflow-hidden bg-background pt-24 pb-8 relative min-h-screen">
       {/* Animated 3D Dotted Surface Background */}
@@ -64,12 +68,12 @@ function HeroSection({
               <motion.img
                 src={handshake3d}
                 alt="Parceria imobiliária"
-                initial={{ opacity: 0, y: 10 }}
+                initial={skipAnimations ? false : { opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 className="w-28 h-28 md:w-36 md:h-36 object-contain mb-[1px] -mt-[5px]"
               />
-              <Badge variant="outline" className="animate-appear gap-2 border-primary/30 bg-primary/5 text-primary px-4 py-1.5 rounded-full">
+              <Badge variant="outline" className={`${animationClass} gap-2 border-primary/30 bg-primary/5 text-primary px-4 py-1.5 rounded-full`}>
                 <Heart className="h-3.5 w-3.5 fill-accent text-accent" />
                 <span className="text-muted-foreground">{badge.text}</span>
                 <a href={badge.action.href} className="flex items-center gap-1 text-primary hover:text-primary/80 transition-colors font-medium">
@@ -81,17 +85,17 @@ function HeroSection({
           )}
 
           {/* Title */}
-          <h1 className="animate-appear text-balance text-center font-serif text-4xl font-normal tracking-tight text-foreground opacity-0 delay-100 md:text-5xl lg:text-6xl xl:text-7xl">
+          <h1 className={`${animationClass} text-balance text-center font-serif text-4xl font-normal tracking-tight text-foreground ${skipAnimations ? '' : 'delay-100'} md:text-5xl lg:text-6xl xl:text-7xl`}>
             {title}
           </h1>
 
           {/* Description */}
-          <p className="animate-appear max-w-2xl text-balance text-center text-base font-normal text-muted-foreground opacity-0 delay-300 md:text-lg lg:text-xl leading-relaxed">
+          <p className={`${animationClass} max-w-2xl text-balance text-center text-base font-normal text-muted-foreground ${skipAnimations ? '' : 'delay-300'} md:text-lg lg:text-xl leading-relaxed`}>
             {description}
           </p>
 
           {/* Actions */}
-          <div className="animate-appear relative z-10 flex flex-col items-center justify-center gap-4 opacity-0 delay-300 sm:flex-row">
+          <div className={`${animationClass} relative z-10 flex flex-col items-center justify-center gap-4 ${skipAnimations ? '' : 'delay-300'} sm:flex-row`}>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               {actions.map((action, index) => (
                 <ShinyButton 
@@ -107,7 +111,7 @@ function HeroSection({
           </div>
 
           {/* Trust indicators */}
-          <div className="animate-appear flex items-center gap-6 text-sm text-muted-foreground opacity-0 delay-500">
+          <div className={`${animationClass} flex items-center gap-6 text-sm text-muted-foreground ${skipAnimations ? '' : 'delay-500'}`}>
             <span className="flex items-center gap-2">
               <span className="w-2 h-2 bg-green-500 rounded-full"></span>
               Atendimento personalizado
@@ -119,7 +123,7 @@ function HeroSection({
           </div>
 
           {/* Image with soft styling */}
-          <div className="animate-appear relative w-full pt-8 opacity-0 delay-700">
+          <div className={`${animationClass} relative w-full pt-8 ${skipAnimations ? '' : 'delay-700'}`}>
             <MockupFrame size="small" className="mx-auto max-w-5xl">
               <Mockup type="responsive" className="w-full rounded-2xl overflow-hidden shadow-xl">
                 <img

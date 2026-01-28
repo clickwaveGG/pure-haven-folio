@@ -2,9 +2,11 @@ import { PropertyCarousel } from "@/components/ui/property-carousel";
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
+import { useSkipAnimations } from "@/pages/Index";
 
 const WhatAreYouLookingFor = () => {
   const ref = useRef(null);
+  const skipAnimations = useSkipAnimations();
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const slideData = [
@@ -34,8 +36,8 @@ const WhatAreYouLookingFor = () => {
     <section ref={ref} className="section-padding bg-secondary/30 relative overflow-hidden">
       <div className="container-luxury">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          initial={skipAnimations ? false : { opacity: 0, y: 30 }}
+          animate={skipAnimations ? { opacity: 1, y: 0 } : (isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 })}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-12"
         >
@@ -53,9 +55,9 @@ const WhatAreYouLookingFor = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          initial={skipAnimations ? false : { opacity: 0, y: 50 }}
+          animate={skipAnimations ? { opacity: 1, y: 0 } : (isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 })}
+          transition={{ duration: 0.8, delay: skipAnimations ? 0 : 0.2, ease: "easeOut" }}
         >
           <PropertyCarousel slides={slideData} />
         </motion.div>

@@ -7,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useSkipAnimations } from "@/pages/Index";
 
 const faqs = [
   {
@@ -33,6 +34,7 @@ const faqs = [
 
 const FAQ = () => {
   const ref = useRef(null);
+  const skipAnimations = useSkipAnimations();
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
@@ -41,8 +43,8 @@ const FAQ = () => {
         <div ref={ref} className="grid lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Left Column - Title */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            initial={skipAnimations ? false : { opacity: 0, x: -40 }}
+            animate={skipAnimations ? { opacity: 1, x: 0 } : (isInView ? { opacity: 1, x: 0 } : {})}
             transition={{ duration: 0.8 }}
             className="lg:sticky lg:top-32 lg:self-start"
           >
@@ -61,9 +63,9 @@ const FAQ = () => {
 
           {/* Right Column - FAQ */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={skipAnimations ? false : { opacity: 0, y: 30 }}
+            animate={skipAnimations ? { opacity: 1, y: 0 } : (isInView ? { opacity: 1, y: 0 } : {})}
+            transition={{ duration: 0.8, delay: skipAnimations ? 0 : 0.2 }}
           >
             <Accordion type="single" collapsible className="space-y-3">
               {faqs.map((faq, index) => (

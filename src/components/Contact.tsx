@@ -5,9 +5,11 @@ import { Send, Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { useSkipAnimations } from "@/pages/Index";
 
 const Contact = () => {
   const ref = useRef(null);
+  const skipAnimations = useSkipAnimations();
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -34,8 +36,8 @@ const Contact = () => {
         <div ref={ref} className="grid lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Left Column - Content */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            initial={skipAnimations ? false : { opacity: 0, x: -40 }}
+            animate={skipAnimations ? { opacity: 1, x: 0 } : (isInView ? { opacity: 1, x: 0 } : {})}
             transition={{ duration: 0.8 }}
           >
             <span className="inline-flex items-center gap-3 text-sm font-medium tracking-wide text-primary mb-4">
@@ -109,9 +111,9 @@ const Contact = () => {
 
           {/* Right Column - Form */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={skipAnimations ? false : { opacity: 0, x: 40 }}
+            animate={skipAnimations ? { opacity: 1, x: 0 } : (isInView ? { opacity: 1, x: 0 } : {})}
+            transition={{ duration: 0.8, delay: skipAnimations ? 0 : 0.2 }}
           >
             <form onSubmit={handleSubmit} className="welcome-card p-6 md:p-8 space-y-5">
               <div className="text-center mb-2">

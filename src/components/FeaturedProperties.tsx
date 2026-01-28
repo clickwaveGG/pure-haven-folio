@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MapPin, Maximize, ArrowUpRight } from "lucide-react";
 import { usePageTransition } from "@/contexts/PageTransitionContext";
+import { useSkipAnimations } from "@/pages/Index";
 import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";
 import property3 from "@/assets/property-3.jpg";
@@ -41,6 +42,7 @@ const properties = [
 const FeaturedProperties = () => {
   const ref = useRef(null);
   const cardRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
+  const skipAnimations = useSkipAnimations();
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const navigate = useNavigate();
@@ -71,8 +73,8 @@ const FeaturedProperties = () => {
       <div className="container-luxury">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={skipAnimations ? false : { opacity: 0, y: 30 }}
+          animate={skipAnimations ? { opacity: 1, y: 0 } : (isInView ? { opacity: 1, y: 0 } : {})}
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
@@ -89,14 +91,13 @@ const FeaturedProperties = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {properties.map((property, index) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">{properties.map((property, index) => (
             <motion.div
               key={property.id}
               ref={(el) => { cardRefs.current[property.id] = el; }}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.15 }}
+              initial={skipAnimations ? false : { opacity: 0, y: 40 }}
+              animate={skipAnimations ? { opacity: 1, y: 0 } : (isInView ? { opacity: 1, y: 0 } : {})}
+              transition={{ duration: 0.8, delay: skipAnimations ? 0 : index * 0.15 }}
               onMouseEnter={() => setHoveredId(property.id)}
               onMouseLeave={() => setHoveredId(null)}
               onClick={(e) => handlePropertyClick(property, e)}
@@ -155,9 +156,9 @@ const FeaturedProperties = () => {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          initial={skipAnimations ? false : { opacity: 0, y: 20 }}
+          animate={skipAnimations ? { opacity: 1, y: 0 } : (isInView ? { opacity: 1, y: 0 } : {})}
+          transition={{ duration: 0.6, delay: skipAnimations ? 0 : 0.6 }}
           className="text-center mt-8"
         >
           <button 
