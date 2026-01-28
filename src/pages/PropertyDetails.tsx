@@ -102,22 +102,31 @@ const properties = [
 const PropertyDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { isTransitioning } = usePageTransition();
-  const [showContent, setShowContent] = useState(false);
+  const { transitionData, endTransition, isTransitioning } = usePageTransition();
+  const [animationPhase, setAnimationPhase] = useState<"initial" | "animating" | "complete">("initial");
   
   const property = properties.find((p) => p.id === Number(id));
 
-  // Scroll to top and show content after transition
+  // Handle the page entry animation
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     
-    // Show content after transition animation completes
-    const timer = setTimeout(() => {
-      setShowContent(true);
-    }, 600);
-    
-    return () => clearTimeout(timer);
-  }, [id]);
+    if (transitionData?.rect && isTransitioning) {
+      // Start animation immediately
+      setAnimationPhase("animating");
+      
+      // Complete animation after transition
+      const timer = setTimeout(() => {
+        setAnimationPhase("complete");
+        endTransition();
+      }, 600);
+      
+      return () => clearTimeout(timer);
+    } else {
+      // No transition data, show immediately
+      setAnimationPhase("complete");
+    }
+  }, [id, transitionData, isTransitioning, endTransition]);
 
   if (!property) {
     return (
@@ -135,18 +144,45 @@ const PropertyDetails = () => {
   const whatsappMessage = encodeURIComponent(`Olá! Tenho interesse no imóvel: ${property.title} - ${property.location}`);
   const whatsappLink = `https://wa.me/5561999999999?text=${whatsappMessage}`;
 
+  // Calculate initial transform based on card position
+  const hasTransition = transitionData?.rect && animationPhase !== "complete";
+  const rect = transitionData?.rect;
+  
+  const initialTransform = rect ? {
+    x: rect.left + rect.width / 2 - window.innerWidth / 2,
+    y: rect.top + rect.height / 2 - window.innerHeight / 2,
+    scale: Math.min(rect.width / window.innerWidth, rect.height / window.innerHeight),
+  } : { x: 0, y: 0, scale: 0.8 };
+
   return (
     <motion.div 
       className="min-h-screen bg-background"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: showContent ? 1 : 0 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
+      initial={hasTransition ? {
+        opacity: 0,
+        scale: initialTransform.scale,
+        x: initialTransform.x,
+        y: initialTransform.y,
+        borderRadius: 16,
+      } : { opacity: 0 }}
+      animate={{
+        opacity: 1,
+        scale: 1,
+        x: 0,
+        y: 0,
+        borderRadius: 0,
+      }}
+      transition={{
+        type: "spring",
+        damping: 28,
+        stiffness: 180,
+        mass: 0.8,
+      }}
     >
       {/* Header */}
       <motion.header
         initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: showContent ? 1 : 0, y: showContent ? 0 : -20 }}
-        transition={{ delay: 0.1, duration: 0.4 }}
+        animate={{ opacity: animationPhase === "complete" ? 1 : 0, y: animationPhase === "complete" ? 0 : -20 }}
+        transition={{ delay: 0.3, duration: 0.4 }}
         className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border"
       >
         <div className="container-luxury py-4 flex items-center justify-between">
