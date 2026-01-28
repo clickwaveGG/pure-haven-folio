@@ -1,8 +1,9 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { PropertyEntryAnimation } from "@/components/ui/expandable-card";
 
 // Property Components
 import PropertyHero from "@/components/property/PropertyHero";
@@ -12,7 +13,6 @@ import PropertyAmenities from "@/components/property/PropertyAmenities";
 import PropertyLocation from "@/components/property/PropertyLocation";
 import InvestmentAnalysis from "@/components/property/InvestmentAnalysis";
 import AgentContact from "@/components/property/AgentContact";
-
 
 // Assets
 import property1 from "@/assets/property-1.jpg";
@@ -102,6 +102,7 @@ const properties = [
 const PropertyDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [animationComplete, setAnimationComplete] = useState(false);
   
   const property = properties.find((p) => p.id === Number(id));
 
@@ -133,98 +134,106 @@ const PropertyDetails = () => {
   const whatsappLink = `https://wa.me/5561999999999?text=${whatsappMessage}`;
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <motion.header
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border"
-      >
-        <div className="container-luxury py-4 flex items-center justify-between">
-          <button
-            onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-foreground hover:text-primary transition-colors"
-          >
-            <ArrowLeft size={20} />
-            <span className="font-medium hidden sm:inline">Voltar</span>
-          </button>
-          
-          <img src={logo} alt="Joíle Barreto" className="h-14 md:h-16 object-contain" />
-          
-          <span className="text-sm text-muted-foreground">{property.category}</span>
-        </div>
-      </motion.header>
-
-      {/* Hero Gallery */}
-      <div className="pt-16">
-        <PropertyHero
-          image={property.image}
-          title={property.title}
-          imageCount={18}
-        />
-      </div>
-
-      {/* Main Content */}
-      <div className="container-luxury py-8 lg:py-12">
-        <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
-          {/* Left Column - Property Details */}
-          <div className="lg:col-span-2 space-y-8">
-            <PropertyOverview
-              title={property.title}
-              location={property.location}
-              price={property.price}
-              area={property.area}
-              bedrooms={property.bedrooms}
-              bathrooms={property.bathrooms}
-              parking={property.parking}
-              category={property.category}
-              isExclusive={true}
-            />
-
-            <PropertyDescription
-              description={property.description}
-              fullDescription={property.fullDescription}
-            />
-
-            <PropertyAmenities amenities={property.features} />
-
-            <InvestmentAnalysis
-              pricePerM2={property.pricePerM2}
-              avgPricePerM2={property.avgPricePerM2}
-              walkScore={property.walkScore}
-              nearbyPlaces={property.nearbyPlaces}
-            />
-
-            <PropertyLocation 
-              location={property.location} 
-              coordinates={property.coordinates}
-              latitude={property.latitude}
-              longitude={property.longitude}
-              mapsUrl={property.mapsUrl}
-            />
+    <PropertyEntryAnimation
+      image={property.image}
+      title={property.title}
+      location={property.location}
+      onAnimationComplete={() => setAnimationComplete(true)}
+    >
+      <div className="min-h-screen bg-background">
+        {/* Header */}
+        <motion.header
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: animationComplete ? 1 : 0, y: animationComplete ? 0 : -20 }}
+          transition={{ delay: 0.2 }}
+          className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border"
+        >
+          <div className="container-luxury py-4 flex items-center justify-between">
+            <button
+              onClick={() => navigate(-1)}
+              className="flex items-center gap-2 text-foreground hover:text-primary transition-colors"
+            >
+              <ArrowLeft size={20} />
+              <span className="font-medium hidden sm:inline">Voltar</span>
+            </button>
+            
+            <img src={logo} alt="Joíle Barreto" className="h-14 md:h-16 object-contain" />
+            
+            <span className="text-sm text-muted-foreground">{property.category}</span>
           </div>
+        </motion.header>
 
-          {/* Right Column - Sidebar */}
-          <div className="space-y-6">
-            <AgentContact
-              whatsappLink={whatsappLink}
-              phoneNumber="+5561999999999"
-              email="contato@joilebarreto.com.br"
-            />
+        {/* Hero Gallery */}
+        <div className="pt-16">
+          <PropertyHero
+            image={property.image}
+            title={property.title}
+            imageCount={18}
+          />
+        </div>
+
+        {/* Main Content */}
+        <div className="container-luxury py-8 lg:py-12">
+          <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
+            {/* Left Column - Property Details */}
+            <div className="lg:col-span-2 space-y-8">
+              <PropertyOverview
+                title={property.title}
+                location={property.location}
+                price={property.price}
+                area={property.area}
+                bedrooms={property.bedrooms}
+                bathrooms={property.bathrooms}
+                parking={property.parking}
+                category={property.category}
+                isExclusive={true}
+              />
+
+              <PropertyDescription
+                description={property.description}
+                fullDescription={property.fullDescription}
+              />
+
+              <PropertyAmenities amenities={property.features} />
+
+              <InvestmentAnalysis
+                pricePerM2={property.pricePerM2}
+                avgPricePerM2={property.avgPricePerM2}
+                walkScore={property.walkScore}
+                nearbyPlaces={property.nearbyPlaces}
+              />
+
+              <PropertyLocation 
+                location={property.location} 
+                coordinates={property.coordinates}
+                latitude={property.latitude}
+                longitude={property.longitude}
+                mapsUrl={property.mapsUrl}
+              />
+            </div>
+
+            {/* Right Column - Sidebar */}
+            <div className="space-y-6">
+              <AgentContact
+                whatsappLink={whatsappLink}
+                phoneNumber="+5561999999999"
+                email="contato@joilebarreto.com.br"
+              />
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Footer */}
-      <footer className="bg-foreground text-background py-8">
-        <div className="container-luxury text-center">
-          <img src={logo} alt="Joíle Barreto" className="h-10 mx-auto mb-4 brightness-0 invert" />
-          <p className="text-sm opacity-70">
-            © 2024 Joíle Barreto. CRECI: 64117. Todos os direitos reservados.
-          </p>
-        </div>
-      </footer>
-    </div>
+        {/* Footer */}
+        <footer className="bg-foreground text-background py-8">
+          <div className="container-luxury text-center">
+            <img src={logo} alt="Joíle Barreto" className="h-10 mx-auto mb-4 brightness-0 invert" />
+            <p className="text-sm opacity-70">
+              © 2024 Joíle Barreto. CRECI: 64117. Todos os direitos reservados.
+            </p>
+          </div>
+        </footer>
+      </div>
+    </PropertyEntryAnimation>
   );
 };
 
