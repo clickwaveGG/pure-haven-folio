@@ -3,6 +3,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { PageTransitionProvider } from "@/contexts/PageTransitionContext";
+import { PageTransitionOverlay } from "@/components/ui/page-transition-overlay";
 import Index from "./pages/Index";
 import PropertyDetails from "./pages/PropertyDetails";
 import AllProperties from "./pages/AllProperties";
@@ -13,17 +15,20 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/imoveis" element={<AllProperties />} />
-          <Route path="/imovel/:id" element={<PropertyDetails />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <PageTransitionProvider>
+        <Toaster />
+        <Sonner />
+        <PageTransitionOverlay />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/imoveis" element={<AllProperties />} />
+            <Route path="/imovel/:id" element={<PropertyDetails />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </PageTransitionProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

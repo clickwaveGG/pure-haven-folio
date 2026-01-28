@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MapPin, Maximize, ArrowUpRight } from "lucide-react";
+import { usePageTransition } from "@/contexts/PageTransitionContext";
 import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";
 import property3 from "@/assets/property-3.jpg";
@@ -39,12 +40,30 @@ const properties = [
 
 const FeaturedProperties = () => {
   const ref = useRef(null);
+  const cardRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const navigate = useNavigate();
+  const { startTransition } = usePageTransition();
 
-  const handlePropertyClick = (propertyId: number) => {
-    navigate(`/imovel/${propertyId}`);
+  const handlePropertyClick = (property: typeof properties[0], e: React.MouseEvent) => {
+    const cardElement = cardRefs.current[property.id];
+    if (cardElement) {
+      const rect = cardElement.getBoundingClientRect();
+      startTransition({
+        rect,
+        image: property.image,
+        title: property.title,
+        location: property.location,
+      });
+      
+      // Navigate after a small delay to let the animation start
+      setTimeout(() => {
+        navigate(`/imovel/${property.id}`);
+      }, 50);
+    } else {
+      navigate(`/imovel/${property.id}`);
+    }
   };
 
   return (
@@ -74,12 +93,13 @@ const FeaturedProperties = () => {
           {properties.map((property, index) => (
             <motion.div
               key={property.id}
+              ref={(el) => { cardRefs.current[property.id] = el; }}
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.15 }}
               onMouseEnter={() => setHoveredId(property.id)}
               onMouseLeave={() => setHoveredId(null)}
-              onClick={() => handlePropertyClick(property.id)}
+              onClick={(e) => handlePropertyClick(property, e)}
               className="group welcome-card overflow-hidden cursor-pointer hover-lift"
             >
               {/* Image */}
