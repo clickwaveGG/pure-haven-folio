@@ -62,9 +62,8 @@ const Slide = ({ slide, index, current, handleSlideClick, position }: SlideProps
       }}
       transition={{
         type: "spring",
-        stiffness: 300,
-        damping: 30,
-        mass: 1,
+        stiffness: 400,
+        damping: 35,
       }}
       onClick={() => handleSlideClick(index)}
     >
@@ -82,7 +81,9 @@ const Slide = ({ slide, index, current, handleSlideClick, position }: SlideProps
           }}
         />
         <img
-          className="absolute inset-0 h-full w-full object-cover transition-all duration-500"
+          className="absolute inset-0 h-full w-full object-cover transition-all duration-300"
+          loading="lazy"
+          decoding="async"
           style={{
             filter: isActive ? "none" : "grayscale(30%)",
           }}

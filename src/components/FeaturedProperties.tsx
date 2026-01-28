@@ -108,11 +108,12 @@ const FeaturedProperties = () => {
                 <motion.img
                   src={property.image}
                   alt={property.title}
-                  className="w-full h-full object-cover"
-                  animate={{
-                    scale: hoveredId === property.id ? 1.05 : 1,
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transition-transform duration-400"
+                  style={{
+                    transform: hoveredId === property.id ? 'scale(1.05)' : 'scale(1)',
                   }}
-                  transition={{ duration: 0.4 }}
                 />
                 <div className="absolute top-3 left-3">
                   <span className="inline-block px-3 py-1.5 bg-primary text-primary-foreground text-xs font-medium rounded-full">
@@ -142,13 +143,15 @@ const FeaturedProperties = () => {
                     <span className="text-sm font-medium text-foreground">{property.area}</span>
                   </div>
 
-                  <motion.div
-                    className="flex items-center gap-1 text-primary"
-                    animate={{ x: hoveredId === property.id ? 4 : 0 }}
+                  <div
+                    className="flex items-center gap-1 text-primary transition-transform duration-200"
+                    style={{
+                      transform: hoveredId === property.id ? 'translateX(4px)' : 'translateX(0)',
+                    }}
                   >
                     <span className="text-sm font-medium">Ver mais</span>
                     <ArrowUpRight size={14} />
-                  </motion.div>
+                  </div>
                 </div>
               </div>
             </motion.div>
