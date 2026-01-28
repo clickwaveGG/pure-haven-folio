@@ -13,6 +13,7 @@ interface PageTransitionContextType {
   isTransitioning: boolean;
   startTransition: (data: TransitionData) => void;
   endTransition: () => void;
+  clearTransition: () => void;
 }
 
 const PageTransitionContext = createContext<PageTransitionContextType | null>(null);
@@ -28,8 +29,12 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
 
   const endTransition = useCallback(() => {
     setIsTransitioning(false);
-    // Keep data for a bit for exit animation
-    setTimeout(() => setTransitionData(null), 500);
+    setTransitionData(null);
+  }, []);
+
+  const clearTransition = useCallback(() => {
+    setIsTransitioning(false);
+    setTransitionData(null);
   }, []);
 
   return (
@@ -40,6 +45,7 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
         isTransitioning,
         startTransition,
         endTransition,
+        clearTransition,
       }}
     >
       {children}
