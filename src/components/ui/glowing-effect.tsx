@@ -1,8 +1,7 @@
 "use client";
 
-import { memo, useCallback, useEffect, useRef } from "react";
+import { memo, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { animate } from "framer-motion";
 
 interface GlowingEffectProps {
   blur?: number;
@@ -13,110 +12,70 @@ interface GlowingEffectProps {
   glow?: boolean;
   className?: string;
   disabled?: boolean;
-  movementDuration?: number;
   borderWidth?: number;
 }
 
+// Highly optimized version - removes expensive animate() calls and uses CSS transitions
 const GlowingEffect = memo(
   ({
     blur = 0,
-    inactiveZone = 0.7,
-    proximity = 0,
     spread = 20,
     variant = "default",
     glow = false,
     className,
-    movementDuration = 2,
     borderWidth = 1,
     disabled = false,
   }: GlowingEffectProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
-    const lastPosition = useRef({ x: 0, y: 0 });
-    const animationFrameRef = useRef<number>(0);
-
-    const handleMove = useCallback(
-      (e?: MouseEvent | { x: number; y: number }) => {
-        if (!containerRef.current) return;
-
-        if (animationFrameRef.current) {
-          cancelAnimationFrame(animationFrameRef.current);
-        }
-
-        animationFrameRef.current = requestAnimationFrame(() => {
-          const element = containerRef.current;
-          if (!element) return;
-
-          const { left, top, width, height } = element.getBoundingClientRect();
-          const mouseX = e?.x ?? lastPosition.current.x;
-          const mouseY = e?.y ?? lastPosition.current.y;
-
-          if (e) {
-            lastPosition.current = { x: mouseX, y: mouseY };
-          }
-
-          const center = [left + width * 0.5, top + height * 0.5];
-          const distanceFromCenter = Math.hypot(
-            mouseX - center[0],
-            mouseY - center[1]
-          );
-          const inactiveRadius = 0.5 * Math.min(width, height) * inactiveZone;
-
-          if (distanceFromCenter < inactiveRadius) {
-            element.style.setProperty("--active", "0");
-            return;
-          }
-
-          const isActive =
-            mouseX > left - proximity &&
-            mouseX < left + width + proximity &&
-            mouseY > top - proximity &&
-            mouseY < top + height + proximity;
-
-          element.style.setProperty("--active", isActive ? "1" : "0");
-
-          if (!isActive) return;
-
-          const currentAngle =
-            parseFloat(element.style.getPropertyValue("--start")) || 0;
-          let targetAngle =
-            (180 * Math.atan2(mouseY - center[1], mouseX - center[0])) /
-              Math.PI +
-            90;
-
-          const angleDiff = ((targetAngle - currentAngle + 180) % 360) - 180;
-          const newAngle = currentAngle + angleDiff;
-
-          animate(currentAngle, newAngle, {
-            duration: movementDuration,
-            ease: [0.16, 1, 0.3, 1],
-            onUpdate: (value) => {
-              element.style.setProperty("--start", String(value));
-            },
-          });
-        });
-      },
-      [inactiveZone, proximity, movementDuration]
-    );
 
     useEffect(() => {
       if (disabled) return;
 
-      const handleScroll = () => handleMove();
-      const handlePointerMove = (e: PointerEvent) => handleMove(e);
+      const element = containerRef.current;
+      if (!element) return;
 
-      window.addEventListener("scroll", handleScroll, { passive: true });
-      document.body.addEventListener("pointermove", handlePointerMove, {
-        passive: true,
-      });
+      let rafId: number | null = null;
+
+      const handlePointerMove = (e: PointerEvent) => {
+        if (rafId) return; // Throttle to animation frame
+
+        rafId = requestAnimationFrame(() => {
+          rafId = null;
+          if (!element) return;
+
+          const { left, top, width, height } = element.getBoundingClientRect();
+          const mouseX = e.clientX;
+          const mouseY = e.clientY;
+
+          const isActive =
+            mouseX > left - 50 &&
+            mouseX < left + width + 50 &&
+            mouseY > top - 50 &&
+            mouseY < top + height + 50;
+
+          if (isActive) {
+            const center = [left + width * 0.5, top + height * 0.5];
+            const angle =
+              (180 * Math.atan2(mouseY - center[1], mouseX - center[0])) /
+                Math.PI +
+              90;
+            element.style.setProperty("--start", String(angle));
+            element.style.setProperty("--active", "1");
+          } else {
+            element.style.setProperty("--active", "0");
+          }
+        });
+      };
+
+      document.addEventListener("pointermove", handlePointerMove, { passive: true });
 
       return () => {
-        if (animationFrameRef.current) {
-          cancelAnimationFrame(animationFrameRef.current);
-        }
-        window.removeEventListener("scroll", handleScroll);
-        document.body.removeEventListener("pointermove", handlePointerMove);
+        if (rafId) cancelAnimationFrame(rafId);
+        document.removeEventListener("pointermove", handlePointerMove);
       };
-    }, [handleMove, disabled]);
+    }, [disabled]);
+
+    if (disabled) return null;
 
     return (
       <div
@@ -128,33 +87,31 @@ const GlowingEffect = memo(
             "--start": "0",
             "--active": "0",
             "--glowingeffect-border-width": `${borderWidth}px`,
-            "--repeating-conic-gradient-times": "5",
             "--gradient":
               variant === "white"
                 ? `repeating-conic-gradient(
                     from calc(var(--start) * 1deg),
                     hsl(0 0% 100% / 0.15) 0%,
-                    hsl(0 0% 100% / 0.25) calc(100% / var(--repeating-conic-gradient-times)),
-                    hsl(0 0% 100% / 0.15) calc(100% / var(--repeating-conic-gradient-times))
+                    hsl(0 0% 100% / 0.25) 20%,
+                    hsl(0 0% 100% / 0.15) 20%
                   )`
                 : `radial-gradient(circle, hsl(0 0% 100% / 0.15) 0%, transparent 70%),
                    repeating-conic-gradient(
                     from calc(var(--start) * 1deg),
                     hsl(var(--primary)) 0%,
-                    hsl(var(--accent)) calc(25% / var(--repeating-conic-gradient-times)),
-                    hsl(195 55% 50%) calc(50% / var(--repeating-conic-gradient-times)),
-                    hsl(var(--accent)) calc(75% / var(--repeating-conic-gradient-times)),
-                    hsl(var(--primary)) calc(100% / var(--repeating-conic-gradient-times))
+                    hsl(var(--accent)) 5%,
+                    hsl(195 55% 50%) 10%,
+                    hsl(var(--accent)) 15%,
+                    hsl(var(--primary)) 20%
                   )`,
           } as React.CSSProperties
         }
         className={cn(
-          "pointer-events-none absolute -inset-px rounded-[inherit] opacity-[var(--active)] transition-opacity duration-500",
+          "pointer-events-none absolute -inset-px rounded-[inherit] opacity-[var(--active)] transition-opacity duration-300",
           glow &&
             "after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:bg-[var(--gradient)] after:opacity-30 after:blur-xl after:content-['']",
           blur > 0 && "blur-[var(--blur)]",
-          className,
-          disabled && "!hidden"
+          className
         )}
       >
         <div

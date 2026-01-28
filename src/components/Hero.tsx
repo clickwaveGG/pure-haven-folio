@@ -49,10 +49,9 @@ function HeroSection({
   
   return (
     <section id="hero" className="overflow-hidden bg-background pt-24 pb-8 relative min-h-screen">
-      {/* Animated 3D Dotted Surface Background */}
+      {/* Lightweight dotted background */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <DottedSurface className="opacity-80" />
-        {/* Gradient overlay to fade effect */}
+        <DottedSurface className="opacity-60" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/30 to-background pointer-events-none" />
       </div>
 
