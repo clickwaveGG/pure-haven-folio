@@ -56,7 +56,15 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
 export function usePageTransition() {
   const context = useContext(PageTransitionContext);
   if (!context) {
-    throw new Error("usePageTransition must be used within a PageTransitionProvider");
+    // Return a safe fallback during HMR or edge cases
+    return {
+      transitionData: null,
+      setTransitionData: () => {},
+      isTransitioning: false,
+      startTransition: () => {},
+      endTransition: () => {},
+      clearTransition: () => {},
+    } as PageTransitionContextType;
   }
   return context;
 }
