@@ -102,10 +102,17 @@ const properties = [
 const PropertyDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { transitionData, endTransition, isTransitioning } = usePageTransition();
+  const { transitionData, endTransition, isTransitioning, clearTransition } = usePageTransition();
   const [animationPhase, setAnimationPhase] = useState<"initial" | "animating" | "complete">("initial");
   
   const property = properties.find((p) => p.id === Number(id));
+
+  // Clear transition on unmount (when navigating back)
+  useEffect(() => {
+    return () => {
+      clearTransition();
+    };
+  }, [clearTransition]);
 
   // Handle the page entry animation
   useEffect(() => {
