@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import brokerPhoto from "@/assets/broker-photo.png";
+import { useSkipAnimations } from "@/pages/Index";
 
 const stats = [
   { value: 12, suffix: "+", label: "Anos de experiência" },
@@ -9,11 +10,11 @@ const stats = [
   { value: 98, suffix: "%", label: "Clientes satisfeitos" },
 ];
 
-const AnimatedCounter = ({ value, suffix, inView }: { value: number; suffix: string; inView: boolean }) => {
-  const [count, setCount] = useState(0);
+const AnimatedCounter = ({ value, suffix, inView, skipAnimations }: { value: number; suffix: string; inView: boolean; skipAnimations: boolean }) => {
+  const [count, setCount] = useState(skipAnimations ? value : 0);
 
   useEffect(() => {
-    if (!inView) return;
+    if (skipAnimations || !inView) return;
 
     const duration = 2000;
     const steps = 60;
@@ -31,7 +32,7 @@ const AnimatedCounter = ({ value, suffix, inView }: { value: number; suffix: str
     }, duration / steps);
 
     return () => clearInterval(timer);
-  }, [value, inView]);
+  }, [value, inView, skipAnimations]);
 
   return (
     <span>
@@ -43,7 +44,9 @@ const AnimatedCounter = ({ value, suffix, inView }: { value: number; suffix: str
 
 const About = () => {
   const ref = useRef(null);
+  const skipAnimations = useSkipAnimations();
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const shouldAnimate = !skipAnimations && isInView;
 
   return (
     <section id="about" className="section-padding bg-background relative">
@@ -51,8 +54,8 @@ const About = () => {
         <div ref={ref} className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Column - Image */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            initial={skipAnimations ? false : { opacity: 0, x: -40 }}
+            animate={skipAnimations ? { opacity: 1, x: 0 } : (isInView ? { opacity: 1, x: 0 } : {})}
             transition={{ duration: 0.8 }}
             className="relative"
           >
@@ -71,9 +74,9 @@ const About = () => {
 
           {/* Right Column - Content */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={skipAnimations ? false : { opacity: 0, x: 40 }}
+            animate={skipAnimations ? { opacity: 1, x: 0 } : (isInView ? { opacity: 1, x: 0 } : {})}
+            transition={{ duration: 0.8, delay: skipAnimations ? 0 : 0.2 }}
           >
             <span className="inline-flex items-center gap-3 text-sm font-medium tracking-wide text-primary mb-4">
               <span className="w-8 h-0.5 bg-primary rounded-full" />
@@ -100,13 +103,13 @@ const About = () => {
               {stats.map((stat, index) => (
                 <motion.div
                   key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                  initial={skipAnimations ? false : { opacity: 0, y: 20 }}
+                  animate={skipAnimations ? { opacity: 1, y: 0 } : (isInView ? { opacity: 1, y: 0 } : {})}
+                  transition={{ duration: 0.6, delay: skipAnimations ? 0 : 0.4 + index * 0.1 }}
                   className="text-center p-4 bg-secondary/50 rounded-xl"
                 >
                   <div className="text-2xl md:text-3xl font-serif text-primary mb-1">
-                    <AnimatedCounter value={stat.value} suffix={stat.suffix} inView={isInView} />
+                    <AnimatedCounter value={stat.value} suffix={stat.suffix} inView={isInView} skipAnimations={skipAnimations} />
                   </div>
                   <p className="text-xs text-muted-foreground">
                     {stat.label}

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Star } from "lucide-react";
+import { useSkipAnimations } from "@/pages/Index";
 
 const testimonials = [
   {
@@ -29,6 +30,7 @@ const testimonials = [
 
 const Testimonials = () => {
   const ref = useRef(null);
+  const skipAnimations = useSkipAnimations();
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
@@ -36,8 +38,8 @@ const Testimonials = () => {
       <div className="container-luxury">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={skipAnimations ? false : { opacity: 0, y: 30 }}
+          animate={skipAnimations ? { opacity: 1, y: 0 } : (isInView ? { opacity: 1, y: 0 } : {})}
           transition={{ duration: 0.8 }}
           className="mb-12"
         >
@@ -71,9 +73,9 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
+              initial={skipAnimations ? false : { opacity: 0, y: 30 }}
+              animate={skipAnimations ? { opacity: 1, y: 0 } : (isInView ? { opacity: 1, y: 0 } : {})}
+              transition={{ duration: 0.6, delay: skipAnimations ? 0 : index * 0.15 }}
               className="welcome-card p-6 hover-lift transition-all duration-300"
             >
               <div className="flex gap-1 mb-4">
