@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, MapPin, Maximize, ArrowUpRight, Search, SlidersHorizontal } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { usePageTransition } from "@/contexts/PageTransitionContext";
 import {
   Select,
   SelectContent,
@@ -61,15 +62,35 @@ const allProperties = [
     bathrooms: 0,
     description: "Terreno em condomínio fechado com infraestrutura completa. Realize o sonho de construir sua casa ideal.",
   },
-  // Adicione mais imóveis conforme necessário
 ];
 
 const AllProperties = () => {
   const navigate = useNavigate();
+  const cardRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
+  const { startTransition } = usePageTransition();
   const [searchTerm, setSearchTerm] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [sortBy, setSortBy] = useState("recent");
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+
+  const handlePropertyClick = (property: typeof allProperties[0]) => {
+    const cardElement = cardRefs.current[property.id];
+    if (cardElement) {
+      const rect = cardElement.getBoundingClientRect();
+      startTransition({
+        rect,
+        image: property.image,
+        title: property.title,
+        location: property.location,
+      });
+      
+      setTimeout(() => {
+        navigate(`/imovel/${property.id}`);
+      }, 50);
+    } else {
+      navigate(`/imovel/${property.id}`);
+    }
+  };
 
   // Filtrar imóveis
   const filteredProperties = allProperties
@@ -219,12 +240,13 @@ const AllProperties = () => {
               {filteredProperties.map((property, index) => (
                 <motion.div
                   key={property.id}
+                  ref={(el) => { cardRefs.current[property.id] = el; }}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                   onMouseEnter={() => setHoveredId(property.id)}
                   onMouseLeave={() => setHoveredId(null)}
-                  onClick={() => navigate(`/imovel/${property.id}`)}
+                  onClick={() => handlePropertyClick(property)}
                   className="group bg-card rounded-2xl overflow-hidden cursor-pointer border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300"
                 >
                   {/* Image */}
