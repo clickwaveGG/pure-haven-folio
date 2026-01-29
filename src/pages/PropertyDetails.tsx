@@ -24,77 +24,85 @@ const properties = [
   {
     id: 1,
     image: property1,
-    title: "Casa Família Silva",
-    location: "Águas Claras, DF",
+    title: "Casa Alto da Colina",
+    location: "Centro, Irecê",
     area: "180m²",
     category: "Casa",
-    description: "Casa espaçosa com 3 quartos, quintal e área de lazer. Perfeita para famílias que buscam conforto e praticidade.",
-    fullDescription: "Esta casa encantadora oferece o ambiente perfeito para famílias que buscam qualidade de vida. Com 3 quartos espaçosos, sendo 1 suíte master, sala de estar e jantar integradas, cozinha planejada e área de lazer completa com churrasqueira. O quintal amplo é ideal para crianças e pets. Localizada em uma das melhores quadras de Águas Claras, próxima a escolas, supermercados e parques.",
-    features: ["Domótica Integrada", "Piso Aquecido", "Churrasqueira", "Isolamento Acústico", "Segurança 24h", "Cozinha Planejada"],
-    price: "R$ 680.000",
-    priceNumber: 680000,
+    description: "Casa espaçosa com 3 quartos, quintal e área de lazer. Perfeita para famílias que buscam conforto e praticidade no coração de Irecê.",
+    fullDescription: "Esta casa encantadora oferece o ambiente perfeito para famílias que buscam qualidade de vida. Com 3 quartos espaçosos, sendo 1 suíte master, sala de estar e jantar integradas, cozinha planejada e área de lazer completa com churrasqueira. O quintal amplo é ideal para crianças e pets. Localizada em uma das melhores áreas de Irecê, próxima a escolas, supermercados e comércio local.",
+    features: ["Quintal Amplo", "Churrasqueira", "Garagem Coberta", "Cozinha Planejada", "Área de Serviço", "Piso Cerâmico"],
+    price: "R$ 380.000",
+    priceNumber: 380000,
     bedrooms: 3,
     bathrooms: 2,
     parking: 2,
-    pricePerM2: "R$ 3.778",
-    avgPricePerM2: "R$ 4.200",
+    pricePerM2: "R$ 2.111",
+    avgPricePerM2: "R$ 2.500",
     walkScore: 85,
-    coordinates: "15.8350° S, 48.0267° W",
-    latitude: -15.835046,
-    longitude: -48.026712,
-    mapsUrl: "https://maps.app.goo.gl/fiAFNBeH43ieYeB1A",
+    coordinates: "11.3039° S, 41.8559° W",
+    latitude: -11.3039,
+    longitude: -41.8559,
+    mapsUrl: "https://maps.app.goo.gl/irece",
     nearbyPlaces: [
-      { icon: "school", name: "Colégio Sigma", distance: "8 min a pé" },
-      { icon: "market", name: "Supermercado Extra", distance: "5 min a pé" },
-      { icon: "metro", name: "Metrô Águas Claras", distance: "10 min a pé" },
+      { icon: "school", name: "Colégio Municipal", distance: "5 min a pé" },
+      { icon: "market", name: "Supermercado Atakarejo", distance: "3 min a pé" },
+      { icon: "metro", name: "Centro Comercial", distance: "8 min a pé" },
     ],
   },
   {
     id: 2,
     image: property2,
-    title: "Apartamento Jardins",
-    location: "Sudoeste, Brasília",
-    area: "95m²",
+    title: "Apartamento Jardim das Flores",
+    location: "Bairro São José, Irecê",
+    area: "75m²",
     category: "Apartamento",
-    description: "Apartamento sofisticado no coração do Sudoeste, uma das regiões mais valorizadas de Brasília. Com acabamentos de alto padrão e vista panorâmica deslumbrante.",
-    fullDescription: "Este imóvel oferece 2 quartos sendo 1 suíte, sala ampla com varanda gourmet e vista privilegiada. Cozinha americana integrada, área de serviço e 2 vagas de garagem. O condomínio conta com academia, salão de festas, playground e segurança 24h. Os acabamentos incluem piso porcelanato, armários planejados e sistema de ar condicionado split em todos os ambientes.",
-    features: ["Varanda Gourmet", "Academia no Prédio", "Segurança 24h", "Piscina", "Ar Condicionado", "Armários Planejados"],
-    price: "R$ 520.000",
-    priceNumber: 520000,
+    description: "Apartamento moderno em condomínio com área de lazer. Localizado em um dos bairros mais tranquilos de Irecê.",
+    fullDescription: "Este imóvel oferece 2 quartos sendo 1 suíte, sala ampla com varanda e vista privilegiada. Cozinha americana integrada, área de serviço e 1 vaga de garagem. O condomínio conta com área de lazer, playground e segurança 24h. Os acabamentos incluem piso porcelanato e armários planejados.",
+    features: ["Varanda", "Condomínio com Lazer", "Segurança 24h", "Portaria", "Armários Planejados", "Área de Serviço"],
+    price: "R$ 220.000",
+    priceNumber: 220000,
     bedrooms: 2,
     bathrooms: 2,
-    parking: 2,
-    pricePerM2: "R$ 5.474",
-    avgPricePerM2: "R$ 6.100",
-    walkScore: 92,
+    parking: 1,
+    pricePerM2: "R$ 2.933",
+    avgPricePerM2: "R$ 3.200",
+    walkScore: 88,
+    coordinates: "11.3039° S, 41.8559° W",
+    latitude: -11.3039,
+    longitude: -41.8559,
+    mapsUrl: "https://maps.app.goo.gl/irece",
     nearbyPlaces: [
-      { icon: "school", name: "Escola Maple Bear", distance: "4 min a pé" },
-      { icon: "market", name: "Mercado Orgânico", distance: "2 min a pé" },
-      { icon: "metro", name: "Metrô Sudoeste", distance: "6 min a pé" },
+      { icon: "school", name: "Escola Estadual", distance: "4 min a pé" },
+      { icon: "market", name: "Mercado Central", distance: "2 min a pé" },
+      { icon: "metro", name: "Praça da Bandeira", distance: "6 min a pé" },
     ],
   },
   {
     id: 3,
     image: property3,
-    title: "Terreno Vista Verde",
-    location: "Lago Sul, Brasília",
-    area: "450m²",
+    title: "Terreno Vila Nova",
+    location: "Bairro Vila Nova, Irecê",
+    area: "360m²",
     category: "Terreno",
-    description: "Oportunidade única de construir a casa dos seus sonhos no exclusivo Lago Sul. Terreno em condomínio fechado com segurança e infraestrutura completa.",
-    fullDescription: "Este terreno de 450m² está localizado em um condomínio fechado com segurança 24h, área verde preservada e infraestrutura completa. Topografia plana, ideal para projetos arquitetônicos. Próximo ao Lago Paranoá, escolas internacionais e centros comerciais de alto padrão. O condomínio oferece ruas pavimentadas, iluminação pública, rede de água e esgoto.",
-    features: ["Condomínio Fechado", "Topografia Plana", "Área Verde", "Segurança 24h", "Infraestrutura Completa", "Próximo ao Lago"],
-    price: "R$ 1.200.000",
-    priceNumber: 1200000,
+    description: "Oportunidade única de construir a casa dos seus sonhos em Irecê. Terreno plano em área valorizada com infraestrutura completa.",
+    fullDescription: "Este terreno de 360m² está localizado em uma área residencial em pleno crescimento. Topografia plana, ideal para projetos arquitetônicos. Próximo a comércios, escolas e com fácil acesso às principais vias da cidade. Infraestrutura completa com água, luz e esgoto.",
+    features: ["Topografia Plana", "Área Residencial", "Infraestrutura Completa", "Documentação OK", "Próximo ao Comércio", "Fácil Acesso"],
+    price: "R$ 120.000",
+    priceNumber: 120000,
     bedrooms: 0,
     bathrooms: 0,
     parking: 0,
-    pricePerM2: "R$ 2.667",
-    avgPricePerM2: "R$ 3.200",
-    walkScore: 45,
+    pricePerM2: "R$ 333",
+    avgPricePerM2: "R$ 400",
+    walkScore: 70,
+    coordinates: "11.3039° S, 41.8559° W",
+    latitude: -11.3039,
+    longitude: -41.8559,
+    mapsUrl: "https://maps.app.goo.gl/irece",
     nearbyPlaces: [
-      { icon: "school", name: "Escola Americana", distance: "5 min de carro" },
-      { icon: "market", name: "Iguatemi Brasília", distance: "8 min de carro" },
-      { icon: "metro", name: "Centro da cidade", distance: "15 min de carro" },
+      { icon: "school", name: "Escola Municipal", distance: "10 min a pé" },
+      { icon: "market", name: "Comércio Local", distance: "5 min a pé" },
+      { icon: "metro", name: "Centro de Irecê", distance: "8 min de carro" },
     ],
   },
 ];
@@ -149,7 +157,7 @@ const PropertyDetails = () => {
   }
 
   const whatsappMessage = encodeURIComponent(`Olá! Tenho interesse no imóvel: ${property.title} - ${property.location}`);
-  const whatsappLink = `https://wa.me/5561999999999?text=${whatsappMessage}`;
+  const whatsappLink = `https://wa.me/5574999999999?text=${whatsappMessage}`;
 
   // Calculate initial transform based on card position
   const hasTransition = transitionData?.rect && animationPhase !== "complete";
@@ -260,8 +268,8 @@ const PropertyDetails = () => {
           <div className="space-y-6">
             <AgentContact
               whatsappLink={whatsappLink}
-              phoneNumber="+5561999999999"
-              email="contato@joilebarreto.com.br"
+              phoneNumber="+5574999999999"
+              email="joile@remaxgardense.com.br"
             />
           </div>
         </div>
@@ -270,9 +278,9 @@ const PropertyDetails = () => {
       {/* Footer */}
       <footer className="bg-foreground text-background py-8">
         <div className="container-luxury text-center">
-          <img src={logo} alt="Joíle Barreto" className="h-10 mx-auto mb-4 brightness-0 invert" />
+          <img src={logo} alt="Joíle Barreto - RE/MAX Gardense" className="h-10 mx-auto mb-4 brightness-0 invert" />
           <p className="text-sm opacity-70">
-            © 2024 Joíle Barreto. CRECI: 64117. Todos os direitos reservados.
+            © 2024 Joíle Barreto | RE/MAX Gardense | Irecê, BA. Todos os direitos reservados.
           </p>
         </div>
       </footer>

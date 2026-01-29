@@ -1,8 +1,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const WhatsAppButton = () => {
-  const whatsappNumber = "5511999999999"; // Substitua pelo número real
-  const message = encodeURIComponent("Olá! Gostaria de mais informações.");
+  const whatsappNumber = "5574999999999"; // Número de Irecê, BA
+  const message = encodeURIComponent("Olá! Gostaria de mais informações sobre imóveis em Irecê.");
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
 
   const { scrollY } = useScroll();
