@@ -1,10 +1,11 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, MapPin, Maximize, ArrowUpRight, Search, SlidersHorizontal } from "lucide-react";
+import { ArrowLeft, Search, SlidersHorizontal } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { usePageTransition } from "@/contexts/PageTransitionContext";
+import { PropertyCard } from "@/components/ui/property-card";
 import {
   Select,
   SelectContent,
@@ -30,9 +31,9 @@ const allProperties = [
     category: "Terreno",
     price: "R$ 280.000",
     priceNumber: 280000,
-    bedrooms: 0,
-    bathrooms: 0,
     description: "Oportunidade única! Terreno 7x30m com acesso duplo (duas frentes). Próximo à UPA, Faculdade FAI e Av. 1º de Janeiro.",
+    dimensions: "7x30m",
+    fronts: 2,
   },
   {
     id: 1,
@@ -44,8 +45,6 @@ const allProperties = [
     category: "Casa",
     price: "R$ 380.000",
     priceNumber: 380000,
-    bedrooms: 3,
-    bathrooms: 2,
     description: "Casa espaçosa com 3 quartos, quintal e área de lazer. Perfeita para famílias que buscam conforto e praticidade.",
   },
   {
@@ -58,8 +57,6 @@ const allProperties = [
     category: "Apartamento",
     price: "R$ 220.000",
     priceNumber: 220000,
-    bedrooms: 2,
-    bathrooms: 2,
     description: "Apartamento moderno com 2 quartos em condomínio com área de lazer. Ideal para casais e jovens profissionais.",
   },
   {
@@ -72,9 +69,9 @@ const allProperties = [
     category: "Terreno",
     price: "R$ 120.000",
     priceNumber: 120000,
-    bedrooms: 0,
-    bathrooms: 0,
     description: "Terreno plano em área residencial com infraestrutura completa. Realize o sonho de construir sua casa ideal.",
+    dimensions: "12x30m",
+    fronts: 1,
   },
 ];
 
@@ -85,7 +82,6 @@ const AllProperties = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [sortBy, setSortBy] = useState("recent");
-  const [hoveredId, setHoveredId] = useState<number | null>(null);
 
   const handlePropertyClick = (property: typeof allProperties[0]) => {
     const cardElement = cardRefs.current[property.id];
@@ -258,69 +254,19 @@ const AllProperties = () => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
-                  onMouseEnter={() => setHoveredId(property.id)}
-                  onMouseLeave={() => setHoveredId(null)}
-                  onClick={() => handlePropertyClick(property)}
-                  className="group bg-card rounded-2xl overflow-hidden cursor-pointer border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300"
                 >
-                  {/* Image */}
-                  <div className="relative h-48 overflow-hidden">
-                    <motion.img
-                      src={property.image}
-                      alt={property.title}
-                      className="w-full h-full object-cover"
-                      animate={{
-                        scale: hoveredId === property.id ? 1.05 : 1,
-                      }}
-                      transition={{ duration: 0.4 }}
-                    />
-                    <div className="absolute top-3 left-3">
-                      <span className="inline-block px-3 py-1.5 bg-primary text-primary-foreground text-xs font-medium rounded-full">
-                        {property.category}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-4">
-                    <div className="flex items-center gap-2 text-muted-foreground mb-2">
-                      <MapPin size={14} className="text-accent" />
-                      <span className="text-sm">{property.location}</span>
-                    </div>
-
-                    <h3 className="text-lg font-display font-semibold text-foreground mb-1 group-hover:text-primary transition-colors duration-300 line-clamp-1">
-                      {property.title}
-                    </h3>
-
-                    <p
-                      className="text-xl font-semibold text-primary mb-3"
-                      style={{ fontFamily: "Helvetica, sans-serif" }}
-                    >
-                      {property.price}
-                    </p>
-
-                    <div className="flex items-center justify-between pt-3 border-t border-border">
-                      <div className="flex items-center gap-2">
-                        <Maximize size={14} className="text-muted-foreground" />
-                        <span className="text-sm text-muted-foreground">
-                          {property.area}
-                        </span>
-                      </div>
-
-                      {property.bedrooms > 0 && (
-                        <span className="text-sm text-muted-foreground">
-                          {property.bedrooms} quartos
-                        </span>
-                      )}
-
-                      <motion.div
-                        className="flex items-center text-primary"
-                        animate={{ x: hoveredId === property.id ? 4 : 0 }}
-                      >
-                        <ArrowUpRight size={16} />
-                      </motion.div>
-                    </div>
-                  </div>
+                  <PropertyCard
+                    imageUrl={property.image}
+                    title={property.title}
+                    location={property.location}
+                    category={property.category}
+                    description={property.description}
+                    area={property.area}
+                    dimensions={property.dimensions}
+                    fronts={property.fronts}
+                    price={property.price}
+                    onDetailsClick={() => handlePropertyClick(property)}
+                  />
                 </motion.div>
               ))}
             </div>
