@@ -84,7 +84,7 @@ const InvestmentAnalysis = ({
             <div>
               <div className="flex items-center gap-1 text-foreground font-medium">
                 <Footprints size={16} />
-                Walker's Paradise
+                Pontuação do Andarilho
               </div>
               <p className="text-xs text-muted-foreground">
                 Não necessita de carro para o dia a dia.
