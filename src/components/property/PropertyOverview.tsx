@@ -76,33 +76,79 @@ const PropertyOverview = ({
         </div>
       </div>
 
-      {/* Key Features Grid - Different for Land vs Property */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-border">
+      {/* Key Features - Different for Land vs Property */}
+      <div className="pt-6 border-t border-border">
         {isLand ? (
-          <>
-            <div className="text-center p-4 bg-muted/50 rounded-xl">
-              <Maximize size={24} className="mx-auto mb-2 text-primary" />
-              <p className="text-xl font-semibold text-foreground" style={{ fontFamily: "Helvetica, sans-serif" }}>{area}</p>
-              <p className="text-xs text-muted-foreground uppercase tracking-wide">Área Total</p>
+          <div className="grid grid-cols-2 gap-3">
+            {/* Area Total - Featured */}
+            <div className="col-span-2 relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-5 border border-primary/20">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
+              <div className="relative flex items-center gap-4">
+                <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-primary/15 backdrop-blur-sm">
+                  <Maximize size={28} className="text-primary" />
+                </div>
+                <div>
+                  <p className="text-3xl font-bold text-foreground tracking-tight" style={{ fontFamily: "Helvetica, sans-serif" }}>{area}</p>
+                  <p className="text-sm text-muted-foreground font-medium">Área Total</p>
+                </div>
+              </div>
             </div>
-            <div className="text-center p-4 bg-muted/50 rounded-xl">
-              <Ruler size={24} className="mx-auto mb-2 text-primary" />
-              <p className="text-xl font-semibold text-foreground" style={{ fontFamily: "Helvetica, sans-serif" }}>{dimensions || "7x30m"}</p>
-              <p className="text-xs text-muted-foreground uppercase tracking-wide">Dimensões</p>
+
+            {/* Dimensões */}
+            <div className="relative overflow-hidden rounded-2xl bg-card p-4 border border-border hover:border-primary/30 transition-colors group">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative flex flex-col gap-3">
+                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-muted">
+                  <Ruler size={20} className="text-primary" />
+                </div>
+                <div>
+                  <p className="text-xl font-bold text-foreground" style={{ fontFamily: "Helvetica, sans-serif" }}>{dimensions || "7x30m"}</p>
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wide">Dimensões</p>
+                </div>
+              </div>
             </div>
-            <div className="text-center p-4 bg-muted/50 rounded-xl">
-              <LayoutGrid size={24} className="mx-auto mb-2 text-primary" />
-              <p className="text-xl font-semibold text-foreground" style={{ fontFamily: "Helvetica, sans-serif" }}>{fronts || 2}</p>
-              <p className="text-xs text-muted-foreground uppercase tracking-wide">Frentes</p>
+
+            {/* Frentes */}
+            <div className="relative overflow-hidden rounded-2xl bg-card p-4 border border-border hover:border-primary/30 transition-colors group">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative flex flex-col gap-3">
+                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-muted">
+                  <LayoutGrid size={20} className="text-primary" />
+                </div>
+                <div>
+                  <p className="text-xl font-bold text-foreground" style={{ fontFamily: "Helvetica, sans-serif" }}>{fronts || 2} frentes</p>
+                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wide">Acessos</p>
+                </div>
+              </div>
             </div>
-            <div className="text-center p-4 bg-muted/50 rounded-xl">
-              <Zap size={24} className="mx-auto mb-2 text-primary" />
-              <p className="text-xl font-semibold text-foreground" style={{ fontFamily: "Helvetica, sans-serif" }}>{hasInfrastructure ? "Sim" : "Não"}</p>
-              <p className="text-xs text-muted-foreground uppercase tracking-wide">Infraestrutura</p>
+
+            {/* Infraestrutura & Documentação */}
+            <div className="col-span-2 rounded-2xl bg-card p-4 border border-border">
+              <div className="flex items-center gap-6">
+                <div className="flex items-center gap-3 flex-1">
+                  <div className={`flex items-center justify-center w-10 h-10 rounded-full ${hasInfrastructure ? 'bg-green-500/15' : 'bg-muted'}`}>
+                    <Zap size={18} className={hasInfrastructure ? 'text-green-600' : 'text-muted-foreground'} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-foreground">{hasInfrastructure ? "Infraestrutura" : "Sem Infraestrutura"}</p>
+                    <p className="text-xs text-muted-foreground">Água, luz, esgoto</p>
+                  </div>
+                </div>
+                <div className="w-px h-10 bg-border" />
+                <div className="flex items-center gap-3 flex-1">
+                  <div className={`flex items-center justify-center w-10 h-10 rounded-full ${hasDocumentation ? 'bg-green-500/15' : 'bg-muted'}`}>
+                    <FileCheck size={18} className={hasDocumentation ? 'text-green-600' : 'text-muted-foreground'} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-foreground">{hasDocumentation ? "Documentação OK" : "Verificar Docs"}</p>
+                    <p className="text-xs text-muted-foreground">Escritura, IPTU</p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </>
+          </div>
         ) : (
-          <>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             <div className="text-center p-4 bg-muted/50 rounded-xl">
               <Maximize size={24} className="mx-auto mb-2 text-primary" />
               <p className="text-xl font-semibold text-foreground" style={{ fontFamily: "Helvetica, sans-serif" }}>{area}</p>
@@ -123,7 +169,7 @@ const PropertyOverview = ({
               <p className="text-xl font-semibold text-foreground" style={{ fontFamily: "Helvetica, sans-serif" }}>{parking}</p>
               <p className="text-xs text-muted-foreground uppercase tracking-wide">Vagas</p>
             </div>
-          </>
+          </div>
         )}
       </div>
     </motion.div>
