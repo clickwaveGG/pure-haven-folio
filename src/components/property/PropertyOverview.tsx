@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { MapPin, TrendingUp, Maximize, Bed, Bath, Car, Ruler, LayoutGrid, Zap, FileCheck } from "lucide-react";
+import { MapPin, TrendingUp, Maximize, Bed, Bath, Car, Ruler, LayoutGrid, Zap, FileCheck, Map, Sun, LucideIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface PropertyOverviewProps {
   title: string;
@@ -11,12 +12,71 @@ interface PropertyOverviewProps {
   parking: number;
   category: string;
   isExclusive?: boolean;
-  // Land-specific properties
   dimensions?: string;
   fronts?: number;
   hasInfrastructure?: boolean;
   hasDocumentation?: boolean;
 }
+
+interface FeatureCardProps {
+  icon: LucideIcon;
+  label: string;
+  value: string;
+  subtext?: string;
+  highlight?: boolean;
+}
+
+const FeatureCard = ({ icon: Icon, label, value, subtext, highlight = false }: FeatureCardProps) => (
+  <div className={cn(
+    "group relative overflow-hidden rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1",
+    highlight 
+      ? "bg-primary text-primary-foreground shadow-xl" 
+      : "bg-card text-card-foreground shadow-lg hover:shadow-xl border border-border"
+  )}>
+    <div className="flex items-start justify-between mb-3">
+      <div className={cn(
+        "p-2.5 rounded-xl transition-colors duration-300",
+        highlight ? "bg-primary-foreground/20" : "bg-primary/10 group-hover:bg-primary/15"
+      )}>
+        <Icon className={cn("w-5 h-5", highlight ? "text-primary-foreground" : "text-primary")} />
+      </div>
+      {highlight && (
+        <span className="text-xs font-medium bg-primary-foreground/20 px-2 py-1 rounded-full backdrop-blur-sm">
+          Destaque
+        </span>
+      )}
+    </div>
+    
+    <div className="relative z-10">
+      <h3 className={cn(
+        "text-2xl font-bold mb-0.5 tracking-tight",
+        highlight ? "text-primary-foreground" : "text-foreground"
+      )} style={{ fontFamily: "Helvetica, sans-serif" }}>
+        {value}
+      </h3>
+      <p className={cn(
+        "text-xs font-semibold uppercase tracking-wider mb-0.5",
+        highlight ? "text-primary-foreground/80" : "text-muted-foreground"
+      )}>
+        {label}
+      </p>
+      {subtext && (
+        <p className={cn(
+          "text-xs",
+          highlight ? "text-primary-foreground/60" : "text-muted-foreground/70"
+        )}>
+          {subtext}
+        </p>
+      )}
+    </div>
+
+    {/* Decorative background icon */}
+    <Icon className={cn(
+      "absolute -bottom-3 -right-3 w-20 h-20 opacity-[0.07] rotate-12 transition-transform duration-500 group-hover:scale-110",
+      highlight ? "text-primary-foreground" : "text-primary"
+    )} />
+  </div>
+);
 
 const PropertyOverview = ({
   title,
@@ -34,6 +94,46 @@ const PropertyOverview = ({
   hasDocumentation = true,
 }: PropertyOverviewProps) => {
   const isLand = category === "Terreno";
+
+  const landFeatures: FeatureCardProps[] = [
+    {
+      icon: Maximize,
+      label: "Área Total",
+      value: area,
+      subtext: "100% Aproveitável",
+      highlight: true
+    },
+    {
+      icon: Ruler,
+      label: "Dimensões",
+      value: dimensions || "7x30m",
+      subtext: "Geometria Regular"
+    },
+    {
+      icon: LayoutGrid,
+      label: "Frentes",
+      value: String(fronts || 2),
+      subtext: fronts === 2 ? "Acesso Duplo" : "Acesso Único"
+    },
+    {
+      icon: Zap,
+      label: "Infraestrutura",
+      value: hasInfrastructure ? "Completa" : "Parcial",
+      subtext: "Água, Luz e Esgoto"
+    },
+    {
+      icon: Map,
+      label: "Topografia",
+      value: "Plano",
+      subtext: "Pronto para construir"
+    },
+    {
+      icon: FileCheck,
+      label: "Documentação",
+      value: hasDocumentation ? "100% OK" : "Verificar",
+      subtext: "Escritura e Registro"
+    },
+  ];
 
   return (
     <motion.div
@@ -70,82 +170,19 @@ const PropertyOverview = ({
         <p className="text-3xl md:text-4xl text-primary font-semibold" style={{ fontFamily: "Helvetica, sans-serif" }}>
           {price}
         </p>
-        <div className="flex items-center gap-2 text-sm text-green-600">
+        <div className="flex items-center gap-2 text-sm text-emerald-600 dark:text-emerald-500">
           <TrendingUp size={16} />
           <span>Valorização de 12% na zona</span>
         </div>
       </div>
 
-      {/* Key Features - Different for Land vs Property */}
+      {/* Key Features */}
       <div className="pt-6 border-t border-border">
         {isLand ? (
-          <div className="grid grid-cols-2 gap-3">
-            {/* Area Total - Featured */}
-            <div className="col-span-2 relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-5 border border-primary/20">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
-              <div className="relative flex items-center gap-4">
-                <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-primary/15 backdrop-blur-sm">
-                  <Maximize size={28} className="text-primary" />
-                </div>
-                <div>
-                  <p className="text-3xl font-bold text-foreground tracking-tight" style={{ fontFamily: "Helvetica, sans-serif" }}>{area}</p>
-                  <p className="text-sm text-muted-foreground font-medium">Área Total</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Dimensões */}
-            <div className="relative overflow-hidden rounded-2xl bg-card p-4 border border-border hover:border-primary/30 transition-colors group">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="relative flex flex-col gap-3">
-                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-muted">
-                  <Ruler size={20} className="text-primary" />
-                </div>
-                <div>
-                  <p className="text-xl font-bold text-foreground" style={{ fontFamily: "Helvetica, sans-serif" }}>{dimensions || "7x30m"}</p>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wide">Dimensões</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Frentes */}
-            <div className="relative overflow-hidden rounded-2xl bg-card p-4 border border-border hover:border-primary/30 transition-colors group">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="relative flex flex-col gap-3">
-                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-muted">
-                  <LayoutGrid size={20} className="text-primary" />
-                </div>
-                <div>
-                  <p className="text-xl font-bold text-foreground" style={{ fontFamily: "Helvetica, sans-serif" }}>{fronts || 2} frentes</p>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wide">Acessos</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Infraestrutura & Documentação */}
-            <div className="col-span-2 rounded-2xl bg-card p-4 border border-border">
-              <div className="flex items-center gap-6">
-                <div className="flex items-center gap-3 flex-1">
-                  <div className={`flex items-center justify-center w-10 h-10 rounded-full ${hasInfrastructure ? 'bg-green-500/15' : 'bg-muted'}`}>
-                    <Zap size={18} className={hasInfrastructure ? 'text-green-600' : 'text-muted-foreground'} />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-foreground">{hasInfrastructure ? "Infraestrutura" : "Sem Infraestrutura"}</p>
-                    <p className="text-xs text-muted-foreground">Água, luz, esgoto</p>
-                  </div>
-                </div>
-                <div className="w-px h-10 bg-border" />
-                <div className="flex items-center gap-3 flex-1">
-                  <div className={`flex items-center justify-center w-10 h-10 rounded-full ${hasDocumentation ? 'bg-green-500/15' : 'bg-muted'}`}>
-                    <FileCheck size={18} className={hasDocumentation ? 'text-green-600' : 'text-muted-foreground'} />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-foreground">{hasDocumentation ? "Documentação OK" : "Verificar Docs"}</p>
-                    <p className="text-xs text-muted-foreground">Escritura, IPTU</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+            {landFeatures.map((feature, index) => (
+              <FeatureCard key={index} {...feature} />
+            ))}
           </div>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
