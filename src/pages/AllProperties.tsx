@@ -21,6 +21,20 @@ import logo from "@/assets/logo-joile-barreto.png";
 
 const allProperties = [
   {
+    id: 4,
+    image: property1,
+    title: "Terreno Asa Sul com Duas Frentes",
+    location: "Bairro Asa Sul, Irecê",
+    area: "210m²",
+    areaNumber: 210,
+    category: "Terreno",
+    price: "R$ 280.000",
+    priceNumber: 280000,
+    bedrooms: 0,
+    bathrooms: 0,
+    description: "Oportunidade única! Terreno 7x30m com acesso duplo (duas frentes). Próximo à UPA, Faculdade FAI e Av. 1º de Janeiro.",
+  },
+  {
     id: 1,
     image: property1,
     title: "Casa Alto da Colina",

@@ -11,6 +11,15 @@ import property3 from "@/assets/property-3.jpg";
 
 const properties = [
   {
+    id: 4,
+    image: property1,
+    title: "Terreno Asa Sul com Duas Frentes",
+    location: "Bairro Asa Sul, Irecê",
+    area: "210m²",
+    category: "Terreno",
+    description: "Oportunidade única! Terreno 7x30m com acesso duplo (duas frentes). Próximo à UPA, Faculdade FAI e Av. 1º de Janeiro.",
+  },
+  {
     id: 1,
     image: property1,
     title: "Casa Alto da Colina",
@@ -27,15 +36,6 @@ const properties = [
     area: "75m²",
     category: "Apartamento",
     description: "Apartamento moderno com 2 quartos em condomínio com área de lazer. Ideal para casais e jovens profissionais.",
-  },
-  {
-    id: 3,
-    image: property3,
-    title: "Terreno Vila Nova",
-    location: "Bairro Vila Nova, Irecê",
-    area: "360m²",
-    category: "Terreno",
-    description: "Terreno plano em área residencial com infraestrutura completa. Realize o sonho de construir sua casa ideal.",
   },
 ];
 
