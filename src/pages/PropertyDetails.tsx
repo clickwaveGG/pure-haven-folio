@@ -120,6 +120,11 @@ const properties = [
     bedrooms: 0,
     bathrooms: 0,
     parking: 0,
+    // Land-specific properties
+    dimensions: "7x30m",
+    fronts: 2,
+    hasInfrastructure: true,
+    hasDocumentation: true,
     pricePerM2: "R$ 1.333",
     avgPricePerM2: "R$ 1.500",
     walkScore: 92,
@@ -268,6 +273,10 @@ const PropertyDetails = () => {
               parking={property.parking}
               category={property.category}
               isExclusive={true}
+              dimensions={property.dimensions}
+              fronts={property.fronts}
+              hasInfrastructure={property.hasInfrastructure}
+              hasDocumentation={property.hasDocumentation}
             />
 
             <PropertyDescription
