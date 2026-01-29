@@ -61,7 +61,7 @@ const Contact = () => {
                   <p className="text-xs font-medium text-muted-foreground mb-0.5">
                     Telefone
                   </p>
-                  <p className="text-foreground font-medium">+55 61 99999-9999</p>
+                  <p className="text-foreground font-medium">+55 74 99999-9999</p>
                 </div>
               </div>
 
@@ -73,7 +73,7 @@ const Contact = () => {
                   <p className="text-xs font-medium text-muted-foreground mb-0.5">
                     Email
                   </p>
-                  <p className="text-foreground font-medium">contato@joilebarreto.com.br</p>
+                  <p className="text-foreground font-medium">joile@remaxgardense.com.br</p>
                 </div>
               </div>
 
@@ -85,13 +85,13 @@ const Contact = () => {
                   <p className="text-xs font-medium text-muted-foreground mb-0.5">
                     Localização
                   </p>
-                  <p className="text-foreground font-medium">Brasília, DF</p>
+                  <p className="text-foreground font-medium">Irecê, Bahia</p>
                 </div>
               </div>
 
               {/* WhatsApp CTA */}
               <a 
-                href="https://wa.me/5561999999999" 
+                href="https://wa.me/5574999999999" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-4 bg-green-50 rounded-xl border border-green-200 hover:bg-green-100 transition-colors group"
@@ -143,7 +143,7 @@ const Contact = () => {
                     name="phone"
                     type="tel"
                     className="bg-background border-border focus:border-primary focus:ring-primary/20"
-                    placeholder="(61) 99999-9999"
+                    placeholder="(74) 99999-9999"
                   />
                 </div>
               </div>

@@ -146,14 +146,14 @@ const Hero = () => {
   return (
     <HeroSection
       badge={{
-        text: "Seu parceiro imobiliário",
+        text: "RE/MAX Gardense",
         action: {
           text: "Conheça",
           href: "#about",
         },
       }}
-      title="Encontre o lar dos seus sonhos"
-      description="Sou Joíle Barreto, corretor dedicado a ajudar famílias e investidores a encontrar o imóvel perfeito. Atendimento próximo, transparente e focado nas suas necessidades."
+      title="Seu imóvel em Irecê está aqui"
+      description="Sou Joíle Barreto, corretor RE/MAX dedicado a ajudar famílias e investidores a encontrar o imóvel perfeito em Irecê e região. Atendimento próximo, transparente e focado nas suas necessidades."
       actions={[
         {
           text: "Ver Imóveis",
@@ -163,14 +163,14 @@ const Hero = () => {
         },
         {
           text: "WhatsApp",
-          href: "https://wa.me/5561999999999",
+          href: "https://wa.me/5574999999999",
           variant: "outline",
           icon: <Icons.whatsapp className="h-4 w-4" />,
         },
       ]}
       image={{
         src: currentHeroImage,
-        alt: "Joíle Barreto, Corretor de Imóveis",
+        alt: "Joíle Barreto - Corretor RE/MAX Gardense em Irecê, BA",
       }}
     />
   );

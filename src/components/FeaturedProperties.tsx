@@ -13,8 +13,8 @@ const properties = [
   {
     id: 1,
     image: property1,
-    title: "Casa Família Silva",
-    location: "Águas Claras, DF",
+    title: "Casa Alto da Colina",
+    location: "Centro, Irecê",
     area: "180m²",
     category: "Casa",
     description: "Casa espaçosa com 3 quartos, quintal e área de lazer. Perfeita para famílias que buscam conforto e praticidade.",
@@ -22,20 +22,20 @@ const properties = [
   {
     id: 2,
     image: property2,
-    title: "Apartamento Jardins",
-    location: "Sudoeste, Brasília",
-    area: "95m²",
+    title: "Apartamento Jardim das Flores",
+    location: "Bairro São José, Irecê",
+    area: "75m²",
     category: "Apartamento",
-    description: "Apartamento moderno com 2 quartos, varanda gourmet e vista privilegiada. Ideal para casais e jovens profissionais.",
+    description: "Apartamento moderno com 2 quartos em condomínio com área de lazer. Ideal para casais e jovens profissionais.",
   },
   {
     id: 3,
     image: property3,
-    title: "Terreno Vista Verde",
-    location: "Lago Sul, Brasília",
-    area: "450m²",
+    title: "Terreno Vila Nova",
+    location: "Bairro Vila Nova, Irecê",
+    area: "360m²",
     category: "Terreno",
-    description: "Terreno em condomínio fechado com infraestrutura completa. Realize o sonho de construir sua casa ideal.",
+    description: "Terreno plano em área residencial com infraestrutura completa. Realize o sonho de construir sua casa ideal.",
   },
 ];
 
@@ -84,10 +84,10 @@ const FeaturedProperties = () => {
             <span className="w-8 h-0.5 bg-primary rounded-full" />
           </span>
           <h2 className="text-headline text-foreground mb-4">
-            Encontre seu próximo lar
+            Imóveis em Irecê e região
           </h2>
           <p className="text-subheadline max-w-2xl mx-auto">
-            Uma seleção de imóveis para diferentes necessidades e momentos de vida.
+            Uma seleção de imóveis para diferentes necessidades e momentos de vida na nossa cidade.
           </p>
         </motion.div>
 

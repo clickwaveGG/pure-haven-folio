@@ -5,8 +5,8 @@ import brokerPhoto from "@/assets/broker-photo.png";
 import { useSkipAnimations } from "@/pages/Index";
 
 const stats = [
-  { value: 12, suffix: "+", label: "Anos de experiência" },
-  { value: 280, suffix: "+", label: "Famílias atendidas" },
+  { value: 8, suffix: "+", label: "Anos de experiência" },
+  { value: 150, suffix: "+", label: "Famílias atendidas" },
   { value: 98, suffix: "%", label: "Clientes satisfeitos" },
 ];
 
@@ -86,16 +86,17 @@ const About = () => {
               Prazer, sou Joíle Barreto
             </h2>
             <p className="text-subheadline mb-6">
-              Há mais de uma década ajudo pessoas a encontrarem o imóvel ideal. 
-              Seja você um jovem casal comprando o primeiro apartamento ou uma 
-              família buscando mais espaço, meu compromisso é o mesmo: 
-              entender suas necessidades e transformar sonhos em realidade.
+              Corretor afiliado à RE/MAX Gardense em Irecê, Bahia. Há anos ajudo 
+              pessoas a encontrarem o imóvel ideal na nossa região. Seja você um 
+              jovem casal comprando o primeiro apartamento ou uma família buscando 
+              mais espaço, meu compromisso é o mesmo: entender suas necessidades 
+              e transformar sonhos em realidade.
             </p>
             <p className="text-muted-foreground text-sm leading-relaxed mb-8">
-              Acredito que encontrar um lar vai muito além de quatro paredes. 
-              É sobre segurança, conforto e qualidade de vida. Por isso, 
-              trabalho com transparência, proximidade e dedicação em cada 
-              atendimento. Você pode contar comigo do início ao fim.
+              Como parte da maior rede imobiliária do mundo, ofereço acesso a 
+              ferramentas exclusivas, treinamento de excelência e uma metodologia 
+              comprovada. Trabalho com transparência, proximidade e dedicação em 
+              cada atendimento. Você pode contar comigo do início ao fim.
             </p>
 
             {/* Stats */}
@@ -124,7 +125,7 @@ const About = () => {
               </blockquote>
               <div className="divider-primary mb-2" />
               <p className="text-sm text-muted-foreground">
-                Joile Barreto, CRECI 64117
+                Joíle Barreto | RE/MAX Gardense | CRECI BA
               </p>
             </div>
 

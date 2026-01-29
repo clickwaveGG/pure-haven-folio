@@ -57,72 +57,72 @@
 
 @layer base {
   :root {
-    /* Warm, welcoming light theme */
-    --background: 40 33% 98%;
-    --foreground: 220 20% 20%;
+    /* RE/MAX inspired light theme - Clean and professional */
+    --background: 0 0% 99%;
+    --foreground: 220 20% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 20%;
+    --card-foreground: 220 20% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 20%;
+    --popover-foreground: 220 20% 15%;
 
-    /* Vibrant blue - trust and professionalism */
-    --primary: 224 100% 50%;
+    /* RE/MAX Blue - primary brand color */
+    --primary: 215 100% 45%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 40 25% 94%;
-    --secondary-foreground: 220 20% 25%;
+    --secondary: 220 15% 95%;
+    --secondary-foreground: 220 20% 20%;
 
-    --muted: 40 20% 92%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 220 10% 92%;
+    --muted-foreground: 220 10% 40%;
 
-    /* Terracotta accent - warmth and welcoming */
-    --accent: 18 60% 55%;
+    /* RE/MAX Red - accent color */
+    --accent: 0 85% 50%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 40 20% 88%;
-    --input: 40 20% 88%;
-    --ring: 195 65% 35%;
+    --border: 220 15% 90%;
+    --input: 220 15% 90%;
+    --ring: 215 100% 45%;
 
     --radius: 0.5rem;
 
-    /* Custom welcoming tokens */
-    --petrol: 224 100% 50%;
-    --petrol-light: 224 100% 60%;
-    --petrol-dark: 224 100% 40%;
-    --terracotta: 18 60% 55%;
-    --terracotta-light: 20 55% 70%;
-    --terracotta-dark: 15 65% 40%;
-    --warm-gray: 40 15% 60%;
-    --cream: 40 33% 98%;
-    --cream-dark: 40 25% 92%;
+    /* RE/MAX brand tokens */
+    --remax-blue: 215 100% 45%;
+    --remax-blue-light: 215 100% 55%;
+    --remax-blue-dark: 215 100% 35%;
+    --remax-red: 0 85% 50%;
+    --remax-red-light: 0 80% 60%;
+    --remax-red-dark: 0 90% 40%;
+    --warm-gray: 220 10% 55%;
+    --cream: 0 0% 99%;
+    --cream-dark: 220 15% 95%;
     --sage: 145 25% 45%;
     --sand: 35 30% 85%;
     
-    /* Gradients - soft and inviting */
-    --gradient-primary: linear-gradient(135deg, hsl(224 100% 50%), hsl(224 100% 60%));
-    --gradient-warm: linear-gradient(135deg, hsl(18 60% 55%), hsl(20 55% 70%));
-    --gradient-light: linear-gradient(180deg, hsl(40 33% 98%), hsl(40 25% 94%));
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(40 25% 97%));
+    /* Gradients - RE/MAX inspired */
+    --gradient-primary: linear-gradient(135deg, hsl(215 100% 45%), hsl(215 100% 55%));
+    --gradient-warm: linear-gradient(135deg, hsl(0 85% 50%), hsl(0 80% 60%));
+    --gradient-light: linear-gradient(180deg, hsl(0 0% 99%), hsl(220 15% 95%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(220 15% 97%));
     
-    /* Shadows - soft and subtle */
-    --shadow-soft: 0 4px 20px -4px hsl(220 20% 20% / 0.08);
-    --shadow-card: 0 2px 12px -2px hsl(220 20% 20% / 0.06);
-    --shadow-elevated: 0 20px 40px -12px hsl(220 20% 20% / 0.12);
+    /* Shadows - clean and modern */
+    --shadow-soft: 0 4px 20px -4px hsl(220 20% 15% / 0.08);
+    --shadow-card: 0 2px 12px -2px hsl(220 20% 15% / 0.06);
+    --shadow-elevated: 0 20px 40px -12px hsl(220 20% 15% / 0.12);
     
     /* Sidebar tokens */
     --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 220 20% 25%;
-    --sidebar-primary: 195 65% 35%;
+    --sidebar-foreground: 220 20% 20%;
+    --sidebar-primary: 215 100% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 40 25% 94%;
-    --sidebar-accent-foreground: 220 20% 25%;
-    --sidebar-border: 40 20% 88%;
-    --sidebar-ring: 195 65% 35%;
+    --sidebar-accent: 220 15% 95%;
+    --sidebar-accent-foreground: 220 20% 20%;
+    --sidebar-border: 220 15% 90%;
+    --sidebar-ring: 215 100% 45%;
   }
 }
 

@@ -23,13 +23,13 @@ const allProperties = [
   {
     id: 1,
     image: property1,
-    title: "Casa Família Silva",
-    location: "Águas Claras, DF",
+    title: "Casa Alto da Colina",
+    location: "Centro, Irecê",
     area: "180m²",
     areaNumber: 180,
     category: "Casa",
-    price: "R$ 680.000",
-    priceNumber: 680000,
+    price: "R$ 380.000",
+    priceNumber: 380000,
     bedrooms: 3,
     bathrooms: 2,
     description: "Casa espaçosa com 3 quartos, quintal e área de lazer. Perfeita para famílias que buscam conforto e praticidade.",
@@ -37,30 +37,30 @@ const allProperties = [
   {
     id: 2,
     image: property2,
-    title: "Apartamento Jardins",
-    location: "Sudoeste, Brasília",
-    area: "95m²",
-    areaNumber: 95,
+    title: "Apartamento Jardim das Flores",
+    location: "Bairro São José, Irecê",
+    area: "75m²",
+    areaNumber: 75,
     category: "Apartamento",
-    price: "R$ 520.000",
-    priceNumber: 520000,
+    price: "R$ 220.000",
+    priceNumber: 220000,
     bedrooms: 2,
     bathrooms: 2,
-    description: "Apartamento moderno com 2 quartos, varanda gourmet e vista privilegiada. Ideal para casais e jovens profissionais.",
+    description: "Apartamento moderno com 2 quartos em condomínio com área de lazer. Ideal para casais e jovens profissionais.",
   },
   {
     id: 3,
     image: property3,
-    title: "Terreno Vista Verde",
-    location: "Lago Sul, Brasília",
-    area: "450m²",
-    areaNumber: 450,
+    title: "Terreno Vila Nova",
+    location: "Bairro Vila Nova, Irecê",
+    area: "360m²",
+    areaNumber: 360,
     category: "Terreno",
-    price: "R$ 1.200.000",
-    priceNumber: 1200000,
+    price: "R$ 120.000",
+    priceNumber: 120000,
     bedrooms: 0,
     bathrooms: 0,
-    description: "Terreno em condomínio fechado com infraestrutura completa. Realize o sonho de construir sua casa ideal.",
+    description: "Terreno plano em área residencial com infraestrutura completa. Realize o sonho de construir sua casa ideal.",
   },
 ];
 
@@ -138,7 +138,7 @@ const AllProperties = () => {
 
           <img
             src={logo}
-            alt="Joíle Barreto"
+            alt="Joíle Barreto - RE/MAX Gardense"
             className="h-10 object-contain cursor-pointer"
             onClick={() => navigate("/")}
           />
@@ -156,10 +156,10 @@ const AllProperties = () => {
             className="text-center mb-8"
           >
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-semibold text-foreground mb-4">
-              Todos os Imóveis
+              Imóveis em Irecê
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Explore nossa seleção completa de imóveis em Brasília e região
+              Explore nossa seleção completa de imóveis em Irecê e região
             </p>
           </motion.div>
 
@@ -334,11 +334,11 @@ const AllProperties = () => {
         <div className="container-luxury text-center">
           <img
             src={logo}
-            alt="Joíle Barreto"
+            alt="Joíle Barreto - RE/MAX Gardense"
             className="h-10 mx-auto mb-4 brightness-0 invert"
           />
           <p className="text-sm opacity-70">
-            © 2024 Joíle Barreto. CRECI: 64117. Todos os direitos reservados.
+            © 2024 Joíle Barreto | RE/MAX Gardense | Irecê, BA. Todos os direitos reservados.
           </p>
         </div>
       </footer>

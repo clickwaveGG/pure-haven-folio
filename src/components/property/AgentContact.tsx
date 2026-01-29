@@ -28,7 +28,7 @@ const AgentContact = ({ whatsappLink, phoneNumber, email }: AgentContactProps) =
         </div>
         <div>
           <h3 className="font-serif text-lg text-foreground">Joíle Barreto</h3>
-          <p className="text-sm text-muted-foreground">Consultor Imobiliário</p>
+          <p className="text-sm text-muted-foreground">Corretor RE/MAX Gardense</p>
           <div className="flex items-center gap-1 mt-1">
             {[...Array(5)].map((_, i) => (
               <Star key={i} size={12} className="fill-yellow-400 text-yellow-400" />
