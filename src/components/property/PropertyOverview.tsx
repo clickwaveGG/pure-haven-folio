@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, TrendingUp, Maximize, Bed, Bath, Car } from "lucide-react";
+import { MapPin, TrendingUp, Maximize, Bed, Bath, Car, Ruler, LayoutGrid, Zap, FileCheck } from "lucide-react";
 
 interface PropertyOverviewProps {
   title: string;
@@ -11,6 +11,11 @@ interface PropertyOverviewProps {
   parking: number;
   category: string;
   isExclusive?: boolean;
+  // Land-specific properties
+  dimensions?: string;
+  fronts?: number;
+  hasInfrastructure?: boolean;
+  hasDocumentation?: boolean;
 }
 
 const PropertyOverview = ({
@@ -23,7 +28,13 @@ const PropertyOverview = ({
   parking,
   category,
   isExclusive = true,
+  dimensions,
+  fronts,
+  hasInfrastructure = true,
+  hasDocumentation = true,
 }: PropertyOverviewProps) => {
+  const isLand = category === "Terreno";
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -65,28 +76,55 @@ const PropertyOverview = ({
         </div>
       </div>
 
-      {/* Key Features Grid */}
+      {/* Key Features Grid - Different for Land vs Property */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-border">
-        <div className="text-center p-4 bg-muted/50 rounded-xl">
-          <Maximize size={24} className="mx-auto mb-2 text-primary" />
-          <p className="text-xl font-semibold text-foreground" style={{ fontFamily: "Helvetica, sans-serif" }}>{area}</p>
-          <p className="text-xs text-muted-foreground uppercase tracking-wide">Área Útil</p>
-        </div>
-        <div className="text-center p-4 bg-muted/50 rounded-xl">
-          <Bed size={24} className="mx-auto mb-2 text-primary" />
-          <p className="text-xl font-semibold text-foreground" style={{ fontFamily: "Helvetica, sans-serif" }}>{bedrooms}</p>
-          <p className="text-xs text-muted-foreground uppercase tracking-wide">Suítes</p>
-        </div>
-        <div className="text-center p-4 bg-muted/50 rounded-xl">
-          <Bath size={24} className="mx-auto mb-2 text-primary" />
-          <p className="text-xl font-semibold text-foreground" style={{ fontFamily: "Helvetica, sans-serif" }}>{bathrooms}</p>
-          <p className="text-xs text-muted-foreground uppercase tracking-wide">Banheiros</p>
-        </div>
-        <div className="text-center p-4 bg-muted/50 rounded-xl">
-          <Car size={24} className="mx-auto mb-2 text-primary" />
-          <p className="text-xl font-semibold text-foreground" style={{ fontFamily: "Helvetica, sans-serif" }}>{parking}</p>
-          <p className="text-xs text-muted-foreground uppercase tracking-wide">Vagas</p>
-        </div>
+        {isLand ? (
+          <>
+            <div className="text-center p-4 bg-muted/50 rounded-xl">
+              <Maximize size={24} className="mx-auto mb-2 text-primary" />
+              <p className="text-xl font-semibold text-foreground" style={{ fontFamily: "Helvetica, sans-serif" }}>{area}</p>
+              <p className="text-xs text-muted-foreground uppercase tracking-wide">Área Total</p>
+            </div>
+            <div className="text-center p-4 bg-muted/50 rounded-xl">
+              <Ruler size={24} className="mx-auto mb-2 text-primary" />
+              <p className="text-xl font-semibold text-foreground" style={{ fontFamily: "Helvetica, sans-serif" }}>{dimensions || "7x30m"}</p>
+              <p className="text-xs text-muted-foreground uppercase tracking-wide">Dimensões</p>
+            </div>
+            <div className="text-center p-4 bg-muted/50 rounded-xl">
+              <LayoutGrid size={24} className="mx-auto mb-2 text-primary" />
+              <p className="text-xl font-semibold text-foreground" style={{ fontFamily: "Helvetica, sans-serif" }}>{fronts || 2}</p>
+              <p className="text-xs text-muted-foreground uppercase tracking-wide">Frentes</p>
+            </div>
+            <div className="text-center p-4 bg-muted/50 rounded-xl">
+              <Zap size={24} className="mx-auto mb-2 text-primary" />
+              <p className="text-xl font-semibold text-foreground" style={{ fontFamily: "Helvetica, sans-serif" }}>{hasInfrastructure ? "Sim" : "Não"}</p>
+              <p className="text-xs text-muted-foreground uppercase tracking-wide">Infraestrutura</p>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="text-center p-4 bg-muted/50 rounded-xl">
+              <Maximize size={24} className="mx-auto mb-2 text-primary" />
+              <p className="text-xl font-semibold text-foreground" style={{ fontFamily: "Helvetica, sans-serif" }}>{area}</p>
+              <p className="text-xs text-muted-foreground uppercase tracking-wide">Área Útil</p>
+            </div>
+            <div className="text-center p-4 bg-muted/50 rounded-xl">
+              <Bed size={24} className="mx-auto mb-2 text-primary" />
+              <p className="text-xl font-semibold text-foreground" style={{ fontFamily: "Helvetica, sans-serif" }}>{bedrooms}</p>
+              <p className="text-xs text-muted-foreground uppercase tracking-wide">Suítes</p>
+            </div>
+            <div className="text-center p-4 bg-muted/50 rounded-xl">
+              <Bath size={24} className="mx-auto mb-2 text-primary" />
+              <p className="text-xl font-semibold text-foreground" style={{ fontFamily: "Helvetica, sans-serif" }}>{bathrooms}</p>
+              <p className="text-xs text-muted-foreground uppercase tracking-wide">Banheiros</p>
+            </div>
+            <div className="text-center p-4 bg-muted/50 rounded-xl">
+              <Car size={24} className="mx-auto mb-2 text-primary" />
+              <p className="text-xl font-semibold text-foreground" style={{ fontFamily: "Helvetica, sans-serif" }}>{parking}</p>
+              <p className="text-xs text-muted-foreground uppercase tracking-wide">Vagas</p>
+            </div>
+          </>
+        )}
       </div>
     </motion.div>
   );
