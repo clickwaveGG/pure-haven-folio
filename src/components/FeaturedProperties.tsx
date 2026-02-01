@@ -1,17 +1,19 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { usePageTransition } from "@/contexts/PageTransitionContext";
 import { useSkipAnimations } from "@/pages/Index";
 import { PropertyCard } from "@/components/ui/property-card";
+import { PropertyPreviewModal } from "@/components/ui/property-preview-modal";
 import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";
 import property3 from "@/assets/property-3.jpg";
+import terrenoAsaSul1 from "@/assets/terreno-asa-sul-1.jpg";
 
 const properties = [
   {
     id: 4,
-    image: property1,
+    image: terrenoAsaSul1,
     title: "Terreno Asa Sul com Duas Frentes",
     location: "Bairro Asa Sul, Irecê",
     area: "210m²",
@@ -50,24 +52,41 @@ const FeaturedProperties = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const navigate = useNavigate();
   const { startTransition } = usePageTransition();
+  
+  // Preview modal state
+  const [selectedProperty, setSelectedProperty] = useState<typeof properties[0] | null>(null);
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
   const handlePropertyClick = (property: typeof properties[0]) => {
-    const cardElement = cardRefs.current[property.id];
-    if (cardElement) {
-      const rect = cardElement.getBoundingClientRect();
-      startTransition({
-        rect,
-        image: property.image,
-        title: property.title,
-        location: property.location,
-      });
-      
-      setTimeout(() => {
-        navigate(`/imovel/${property.id}`);
-      }, 50);
-    } else {
-      navigate(`/imovel/${property.id}`);
-    }
+    // Show preview modal instead of navigating directly
+    setSelectedProperty(property);
+    setIsPreviewOpen(true);
+  };
+
+  const handleViewDetails = () => {
+    if (!selectedProperty) return;
+    
+    const cardElement = cardRefs.current[selectedProperty.id];
+    setIsPreviewOpen(false);
+    
+    // Small delay to allow modal to close before transitioning
+    setTimeout(() => {
+      if (cardElement) {
+        const rect = cardElement.getBoundingClientRect();
+        startTransition({
+          rect,
+          image: selectedProperty.image,
+          title: selectedProperty.title,
+          location: selectedProperty.location,
+        });
+        
+        setTimeout(() => {
+          navigate(`/imovel/${selectedProperty.id}`);
+        }, 50);
+      } else {
+        navigate(`/imovel/${selectedProperty.id}`);
+      }
+    }, 150);
   };
 
   return (
@@ -131,6 +150,14 @@ const FeaturedProperties = () => {
             Ver todos os imóveis
           </button>
         </motion.div>
+
+        {/* Property Preview Modal */}
+        <PropertyPreviewModal
+          isOpen={isPreviewOpen}
+          onClose={() => setIsPreviewOpen(false)}
+          onViewDetails={handleViewDetails}
+          property={selectedProperty}
+        />
       </div>
     </section>
   );
