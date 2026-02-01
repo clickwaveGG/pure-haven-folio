@@ -109,7 +109,7 @@ const properties = [
     id: 4,
     image: property1,
     title: "Terreno Asa Sul com Duas Frentes",
-    location: "Bairro Asa Sul, Irecê",
+    location: "128 Rua Rio Tapajós, Asa Sul, Irecê, Bahia",
     area: "210m²",
     category: "Terreno",
     description: "Oportunidade única no Asa Sul! Terreno 7x30m com acesso duplo (duas frentes), ideal para casa ou comércio. Localização estratégica próxima à UPA, Faculdade FAI e Av. 1º de Janeiro.",
