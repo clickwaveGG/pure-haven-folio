@@ -18,6 +18,9 @@ import AgentContact from "@/components/property/AgentContact";
 import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";
 import property3 from "@/assets/property-3.jpg";
+import terrenoAsaSul1 from "@/assets/terreno-asa-sul-1.jpg";
+import terrenoAsaSul2 from "@/assets/terreno-asa-sul-2.jpg";
+import terrenoAsaSul3 from "@/assets/terreno-asa-sul-3.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const properties = [
@@ -107,7 +110,8 @@ const properties = [
   },
   {
     id: 4,
-    image: property1,
+    image: terrenoAsaSul1,
+    images: [terrenoAsaSul1, terrenoAsaSul2, terrenoAsaSul3],
     title: "Terreno Asa Sul com Duas Frentes",
     location: "128 Rua Rio Tapajós, Asa Sul, Irecê, Bahia",
     area: "210m²",
