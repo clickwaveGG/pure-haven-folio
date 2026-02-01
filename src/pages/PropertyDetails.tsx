@@ -257,8 +257,8 @@ const PropertyDetails = () => {
       <div className="pt-16">
         <PropertyHero
           image={property.image}
+          images={property.images}
           title={property.title}
-          imageCount={18}
         />
       </div>
 
