@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
-import { Camera } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Camera, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
 
 interface PropertyHeroProps {
   image: string;
@@ -9,80 +10,143 @@ interface PropertyHeroProps {
 }
 
 const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) => {
-  // Use the images array if provided, otherwise fall back to repeating the single image
   const displayImages = images && images.length > 0 ? images : [image];
   const totalImages = imageCount ?? displayImages.length;
-  
-  // For the grid, we need up to 3 images (1 main + 2 secondary)
-  const mainImage = displayImages[0];
-  const secondaryImages = displayImages.slice(1, 3);
-  
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % displayImages.length);
+  }, [displayImages.length]);
+
+  const prevSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + displayImages.length) % displayImages.length);
+  }, [displayImages.length]);
+
+  const goToSlide = (index: number) => {
+    setCurrentIndex(index);
+    setIsAutoPlaying(false);
+  };
+
+  // Auto-play effect
+  useEffect(() => {
+    if (!isAutoPlaying || displayImages.length <= 1) return;
+    
+    const interval = setInterval(nextSlide, 4000);
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, nextSlide, displayImages.length]);
+
+  // Resume auto-play after user interaction
+  useEffect(() => {
+    if (isAutoPlaying) return;
+    
+    const timeout = setTimeout(() => setIsAutoPlaying(true), 8000);
+    return () => clearTimeout(timeout);
+  }, [isAutoPlaying, currentIndex]);
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="relative min-h-[calc(50vh+3rem)] md:min-h-[calc(65vh+3.5rem)] lg:min-h-[calc(70vh+3.5rem)] w-full pt-12 md:pt-14"
+      className="relative min-h-[50vh] md:min-h-[65vh] lg:min-h-[70vh] w-full pt-12 md:pt-14"
     >
-      {/* Main Image Grid - Adjusted for 3 images */}
-      <div className="h-full grid grid-cols-1 md:grid-cols-3 gap-2 p-2">
-        {/* Main Image - Takes 2/3 of the space */}
-        <div className="relative md:col-span-2 rounded-2xl overflow-hidden group cursor-pointer">
-          <img
-            src={mainImage}
-            alt={title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-        </div>
+      <div className="h-full p-2">
+        {/* Main Carousel */}
+        <div 
+          className="relative h-[45vh] md:h-[60vh] lg:h-[65vh] rounded-2xl overflow-hidden group"
+          onMouseEnter={() => setIsAutoPlaying(false)}
+          onMouseLeave={() => setIsAutoPlaying(true)}
+        >
+          {/* Images */}
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={currentIndex}
+              src={displayImages[currentIndex]}
+              alt={`${title} - Foto ${currentIndex + 1}`}
+              className="absolute inset-0 w-full h-full object-cover"
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.5 }}
+            />
+          </AnimatePresence>
 
-        {/* Secondary Images Column */}
-        <div className="hidden md:flex flex-col gap-2">
-          {secondaryImages.map((img, index) => (
-            <div 
-              key={index} 
-              className={`relative flex-1 rounded-2xl overflow-hidden group cursor-pointer ${
-                index === secondaryImages.length - 1 && totalImages > displayImages.length ? '' : ''
-              }`}
-            >
-              <img
-                src={img}
-                alt={`${title} - Vista ${index + 2}`}
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-              />
-              {/* Show "more photos" overlay on the last image if there are more */}
-              {index === secondaryImages.length - 1 && totalImages > 3 && (
-                <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                  <span className="flex items-center gap-2 text-white font-medium">
-                    <Camera size={18} />
-                    + {totalImages - 3} Fotos
-                  </span>
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
+          {/* Navigation Arrows */}
+          {displayImages.length > 1 && (
+            <>
+              <motion.button
+                onClick={(e) => { e.stopPropagation(); prevSlide(); setIsAutoPlaying(false); }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 rounded-full bg-background/80 backdrop-blur-sm shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-background"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
+              </motion.button>
+              <motion.button
+                onClick={(e) => { e.stopPropagation(); nextSlide(); setIsAutoPlaying(false); }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 rounded-full bg-background/80 backdrop-blur-sm shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-background"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
+              </motion.button>
+            </>
+          )}
+
+          {/* Photo Counter Badge */}
+          <div className="absolute top-4 right-4 z-10 flex items-center gap-2 px-3 py-1.5 rounded-full bg-background/80 backdrop-blur-sm text-foreground text-sm font-medium">
+            <Camera size={16} />
+            {currentIndex + 1} / {totalImages}
+          </div>
+
+          {/* Dot Indicators */}
+          {displayImages.length > 1 && (
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2">
+              {displayImages.map((_, index) => (
+                <motion.button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`h-2 rounded-full transition-colors ${
+                    currentIndex === index ? "bg-primary" : "bg-white/50"
+                  }`}
+                  animate={{ width: currentIndex === index ? 24 : 8 }}
+                  transition={{ duration: 0.3 }}
+                  whileHover={{ scale: 1.2 }}
+                />
+              ))}
+            </div>
+          )}
+
+          {/* Thumbnail Strip - Hidden on Mobile */}
+          {displayImages.length > 1 && (
+            <div className="absolute bottom-14 left-1/2 -translate-x-1/2 z-10 hidden md:flex items-center gap-2 p-2 rounded-xl bg-background/60 backdrop-blur-md">
+              {displayImages.slice(0, 6).map((img, index) => (
+                <motion.button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`relative w-16 h-12 rounded-lg overflow-hidden transition-all ${
+                    currentIndex === index ? "ring-2 ring-primary ring-offset-2 ring-offset-background/60" : "opacity-60 hover:opacity-100"
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <img
+                    src={img}
+                    alt={`Miniatura ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                </motion.button>
+              ))}
+              {displayImages.length > 6 && (
+                <div className="flex items-center justify-center w-16 h-12 rounded-lg bg-muted/80 text-muted-foreground text-xs font-medium">
+                  +{displayImages.length - 6}
                 </div>
               )}
             </div>
-          ))}
-          
-          {/* If only 1 secondary image, show placeholder or repeat for balance */}
-          {secondaryImages.length === 1 && (
-            <div className="relative flex-1 rounded-2xl overflow-hidden bg-muted flex items-center justify-center">
-              <span className="flex items-center gap-2 text-muted-foreground font-medium">
-                <Camera size={18} />
-                {totalImages} Fotos
-              </span>
-            </div>
-          )}
-          
-          {/* If no secondary images, show photo count */}
-          {secondaryImages.length === 0 && (
-            <>
-              <div className="relative flex-1 rounded-2xl overflow-hidden bg-muted flex items-center justify-center">
-                <span className="flex items-center gap-2 text-muted-foreground font-medium">
-                  <Camera size={18} />
-                  {totalImages} Foto{totalImages !== 1 ? 's' : ''}
-                </span>
-              </div>
-              <div className="relative flex-1 rounded-2xl overflow-hidden bg-muted" />
-            </>
           )}
         </div>
       </div>
