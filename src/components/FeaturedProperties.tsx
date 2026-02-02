@@ -4,10 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { usePageTransition } from "@/contexts/PageTransitionContext";
 import { useSkipAnimations } from "@/pages/Index";
 import { PropertyCard } from "@/components/ui/property-card";
-import property2 from "@/assets/property-2.jpg";
-import property3 from "@/assets/property-3.jpg";
 import terrenoAsaSul1 from "@/assets/terreno-asa-sul-1.jpg";
 import predioAdolfo1 from "@/assets/predio-adolfo-moitinho-1.jpg";
+import terrenoGreenville1 from "@/assets/terreno-greenville-1.jpg";
 
 const properties = [
   {
@@ -36,13 +35,15 @@ const properties = [
   },
   {
     id: 2,
-    image: property2,
-    title: "Apartamento Jardim das Flores",
-    location: "Bairro São José, Irecê",
-    area: "75m²",
-    category: "Apartamento",
-    description: "Apartamento moderno com 2 quartos em condomínio com área de lazer. Ideal para casais e jovens profissionais.",
-    price: "R$ 220.000",
+    image: terrenoGreenville1,
+    title: "Terreno Condomínio Green Ville",
+    location: "Cond. Green Ville, Irecê",
+    area: "200m²",
+    category: "Terreno",
+    description: "Terreno privilegiado nas primeiras quadras do condomínio. Piscina, churrasqueira, parquinhos e segurança 24h.",
+    dimensions: "10x20m",
+    fronts: 1,
+    price: "R$ 85.000",
   },
 ];
 
