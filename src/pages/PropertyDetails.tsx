@@ -279,13 +279,11 @@ const PropertyDetails = () => {
       </motion.header>
 
       {/* Hero Gallery */}
-      <div className="pt-16">
-        <PropertyHero
-          image={property.image}
-          images={property.images}
-          title={property.title}
-        />
-      </div>
+      <PropertyHero
+        image={property.image}
+        images={property.images}
+        title={property.title}
+      />
 
       {/* Main Content */}
       <div className="container-luxury py-8 lg:py-12">
