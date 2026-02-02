@@ -1,14 +1,13 @@
 import { motion } from "framer-motion";
-import { Phone, MessageCircle, Mail, Star } from "lucide-react";
+import { Phone, MessageCircle, Star } from "lucide-react";
 import brokerPhoto from "@/assets/broker-photo.png";
 
 interface AgentContactProps {
   whatsappLink: string;
   phoneNumber: string;
-  email: string;
 }
 
-const AgentContact = ({ whatsappLink, phoneNumber, email }: AgentContactProps) => {
+const AgentContact = ({ whatsappLink, phoneNumber }: AgentContactProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -57,13 +56,6 @@ const AgentContact = ({ whatsappLink, phoneNumber, email }: AgentContactProps) =
           Agendar Visita
         </a>
 
-        <a
-          href={`mailto:${email}`}
-          className="flex items-center justify-center gap-2 w-full px-6 py-3 border-2 border-primary text-primary rounded-xl font-medium hover:bg-primary hover:text-primary-foreground transition-colors"
-        >
-          <Mail size={20} />
-          Enviar E-mail
-        </a>
       </div>
     </motion.div>
   );
