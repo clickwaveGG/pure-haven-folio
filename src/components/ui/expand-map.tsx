@@ -62,12 +62,41 @@ export function LocationMap({
     }
   }
 
-  // Create Google Maps embed URL - use exact coordinates if available
+  // Extract coordinates from Google Maps URL or use provided lat/lng
+  const extractCoordsFromUrl = (url: string): { lat: number; lng: number } | null => {
+    // Pattern for URLs like: https://maps.app.goo.gl/xxx or https://goo.gl/maps/xxx
+    // These short URLs need to be used as-is with Place ID or search
+    
+    // Pattern for: @-11.3039,-41.8559 or q=-11.3039,-41.8559
+    const coordsPattern = /@(-?\d+\.?\d*),(-?\d+\.?\d*)|q=(-?\d+\.?\d*),(-?\d+\.?\d*)/
+    const match = url.match(coordsPattern)
+    if (match) {
+      const lat = parseFloat(match[1] || match[3])
+      const lng = parseFloat(match[2] || match[4])
+      if (!isNaN(lat) && !isNaN(lng)) {
+        return { lat, lng }
+      }
+    }
+    return null
+  }
+
+  // Create Google Maps embed URL
   const getEmbedUrl = () => {
+    // First priority: explicit coordinates
     if (latitude && longitude) {
-      // Use exact coordinates with a marker
       return `https://www.google.com/maps?q=${latitude},${longitude}&z=17&output=embed`
     }
+    
+    // Second priority: extract from mapsUrl
+    if (mapsUrl) {
+      const coords = extractCoordsFromUrl(mapsUrl)
+      if (coords) {
+        return `https://www.google.com/maps?q=${coords.lat},${coords.lng}&z=17&output=embed`
+      }
+      // For short URLs (goo.gl/maps), use place search with the location name
+    }
+    
+    // Fallback: use location name
     const encodedLocation = encodeURIComponent(location)
     return `https://www.google.com/maps?q=${encodedLocation}&z=15&output=embed`
   }
