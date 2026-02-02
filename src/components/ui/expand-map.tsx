@@ -3,7 +3,7 @@
 import type React from "react"
 import { useState, useRef } from "react"
 import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from "framer-motion"
-import { ExternalLink } from "lucide-react"
+import { ExternalLink, ArrowRight, MapPin } from "lucide-react"
 
 interface LocationMapProps {
   location?: string
@@ -237,21 +237,45 @@ export function LocationMap({
           )}
         </AnimatePresence>
 
-        {/* Google Maps Button - Outside of pointer-events-none container */}
+        {/* Google Maps Button - Eye-catching CTA */}
         <AnimatePresence>
           {isExpanded && (
             <motion.button
               onClick={handleOpenMaps}
-              className="absolute bottom-4 right-4 z-20 flex items-center gap-2 px-3 py-2 bg-primary text-primary-foreground rounded-full shadow-lg text-xs font-medium hover:bg-primary/90 transition-colors"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 10 }}
-              transition={{ duration: 0.3, delay: 0.5 }}
-              whileHover={{ scale: 1.05 }}
+              className="absolute bottom-4 right-4 z-20 group flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground rounded-full shadow-lg text-sm font-semibold overflow-hidden"
+              initial={{ opacity: 0, y: 20, scale: 0.8 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 10, scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 400, damping: 25, delay: 0.4 }}
+              whileHover={{ scale: 1.08, boxShadow: "0 10px 40px -10px hsl(var(--primary) / 0.5)" }}
               whileTap={{ scale: 0.95 }}
             >
-              <ExternalLink size={14} />
-              Ver no Google Maps
+              {/* Shimmer effect */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12"
+                initial={{ x: "-100%" }}
+                animate={{ x: "200%" }}
+                transition={{ repeat: Infinity, duration: 2, ease: "linear", repeatDelay: 1 }}
+              />
+              
+              {/* Pulse ring */}
+              <motion.div
+                className="absolute inset-0 rounded-full border-2 border-primary-foreground/30"
+                animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0, 0.5] }}
+                transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+              />
+              
+              <MapPin size={16} className="relative z-10" />
+              <span className="relative z-10">Ver no Google Maps</span>
+              
+              {/* Animated arrow */}
+              <motion.div
+                className="relative z-10"
+                animate={{ x: [0, 4, 0] }}
+                transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}
+              >
+                <ArrowRight size={18} className="stroke-[2.5]" />
+              </motion.div>
             </motion.button>
           )}
         </AnimatePresence>
