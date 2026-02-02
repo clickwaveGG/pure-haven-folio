@@ -7,11 +7,12 @@ import { PropertyCard } from "@/components/ui/property-card";
 import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";
 import property3 from "@/assets/property-3.jpg";
+import terrenoAsaSul1 from "@/assets/terreno-asa-sul-1.jpg";
 
 const properties = [
   {
     id: 4,
-    image: property1,
+    image: terrenoAsaSul1,
     title: "Terreno Asa Sul com Duas Frentes",
     location: "Bairro Asa Sul, Irecê",
     area: "210m²",
