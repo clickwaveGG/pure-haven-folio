@@ -22,6 +22,7 @@ import terrenoSaoGabriel1 from "@/assets/terreno-sao-gabriel-1.jpg";
 import casaDonaMarta1 from "@/assets/casa-dona-marta-1.jpg";
 import terrenoAltoMoura1 from "@/assets/terreno-alto-moura-1.jpg";
 import fazendaMocozeiro1 from "@/assets/fazenda-mocozeiro-1.jpg";
+import terrenoMocozeiro2_1 from "@/assets/terreno-mocozeiro2-1.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const allProperties = [
@@ -119,6 +120,19 @@ const allProperties = [
     priceNumber: 800000,
     description: "Fazenda de 7,5 tarefas com 2 poços artesianos, energia solar e internet. Região de grande valorização, ideal para agropecuária.",
     highlights: ["2 Poços Artesianos", "Energia Solar"],
+  },
+  {
+    id: 9,
+    image: terrenoMocozeiro2_1,
+    title: "Oito Tarefas de Terras no Mocozeiro 2",
+    location: "Mocozeiro 2, Irecê",
+    area: "34.848m²",
+    areaNumber: 34848,
+    category: "Terreno Rural",
+    price: "R$ 180.000",
+    priceNumber: 180000,
+    description: "Terreno de 8 tarefas próximo à BA-800 e grandes condomínios. O mais barato da região com grande potencial de valorização!",
+    highlights: ["8 Tarefas", "Mais Barato da Região"],
   },
 ];
 

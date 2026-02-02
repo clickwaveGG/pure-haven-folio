@@ -65,6 +65,10 @@ import fazendaMocozeiro6 from "@/assets/fazenda-mocozeiro-6.jpg";
 import fazendaMocozeiro7 from "@/assets/fazenda-mocozeiro-7.jpg";
 import fazendaMocozeiro8 from "@/assets/fazenda-mocozeiro-8.jpg";
 import fazendaMocozeiro9 from "@/assets/fazenda-mocozeiro-9.jpg";
+import terrenoMocozeiro2_1 from "@/assets/terreno-mocozeiro2-1.jpg";
+import terrenoMocozeiro2_2 from "@/assets/terreno-mocozeiro2-2.jpg";
+import terrenoMocozeiro2_3 from "@/assets/terreno-mocozeiro2-3.jpg";
+import terrenoMocozeiro2_4 from "@/assets/terreno-mocozeiro2-4.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const properties = [
@@ -337,6 +341,41 @@ const properties = [
       { icon: "school", name: "Condomínio de Chácaras", distance: "Próximo" },
       { icon: "hospital", name: "Outras Fazendas", distance: "Vizinhas" },
       { icon: "bank", name: "Centro de Irecê", distance: "15 min de carro" },
+    ],
+  },
+  {
+    id: 9,
+    image: terrenoMocozeiro2_1,
+    images: [terrenoMocozeiro2_1, terrenoMocozeiro2_2, terrenoMocozeiro2_3, terrenoMocozeiro2_4],
+    title: "Oito Tarefas de Terras no Mocozeiro 2",
+    location: "Mocozeiro 2, Zona Rural, Irecê, Bahia",
+    area: "34.848m²",
+    category: "Terreno Rural",
+    description: "Terreno de 8 tarefas (34.848m²) próximo à BA-800 e grandes condomínios. O mais barato da região com grande potencial de valorização!",
+    fullDescription: "Apresentamos uma excelente oportunidade de investimento na região que mais se valoriza em Irecê e arredores. Este terreno com 8 tarefas de terras (equivalente a 34.848 metros quadrados) está localizado no Mocozeiro 2, uma das localidades em ascensão da cidade, próximo à BA-800, proporcionando fácil acesso tanto à Sede Municipal, Irecê, quanto aos povoados vizinhos.\n\nAlém disso, está em uma área estratégica, com proximidade a grandes condomínios residenciais que estão se estabelecendo na região, o que torna a localização ainda mais promissora para quem busca valorização imobiliária nos próximos anos.\n\nCom um valor total de R$ 180.000,00, o terreno apresenta um custo competitivo, sendo o mais barato por tarefa de terra na área, o que torna essa proposta uma excelente oportunidade para quem busca investir em um local com grande potencial de valorização. Cada tarefa de terra, com uma área de aproximadamente 4.360 metros quadrados, proporciona amplo espaço para a realização de projetos diversos, sejam eles residenciais, comerciais ou mesmo agrícolas.\n\nA área oferece um terreno plano, com boa topografia e fácil acesso, ideal para quem deseja construir em uma região em pleno crescimento, com infraestrutura em expansão. A proximidade com a BA-800, uma das principais rodovias que interliga o município de Irecê a outras localidades, torna o acesso ao centro da cidade e aos demais pontos de interesse muito mais rápido e conveniente.\n\nA valorização da região é evidente, com a chegada de novos empreendimentos e a ampliação da infraestrutura local. A presença de grandes condomínios residenciais e a crescente procura por áreas tranquilas e com boa qualidade de vida fazem deste terreno uma excelente opção para quem deseja morar ou investir.\n\nEste terreno representa uma oportunidade rara no mercado local, com preço competitivo e uma localização estratégica que oferece fácil acesso a serviços essenciais e um futuro de crescimento e valorização.",
+    features: ["8 Tarefas (34.848m²)", "Mais Barato da Região", "Próximo à BA-800", "Próximo a Condomínios", "Terreno Plano", "Boa Topografia", "Fácil Acesso", "Região em Valorização", "Ideal para Investimento", "Documentação OK"],
+    price: "R$ 180.000",
+    priceNumber: 180000,
+    bedrooms: 0,
+    bathrooms: 0,
+    parking: 0,
+    hasInfrastructure: false,
+    hasDocumentation: true,
+    // Rural land specific
+    totalArea: "34.848m²",
+    tarefas: "8 tarefas",
+    pricePerM2: "R$ 5,17",
+    avgPricePerM2: "R$ 8",
+    walkScore: 35,
+    coordinates: "-11.2750° S, -41.9050° W",
+    latitude: -11.2750,
+    longitude: -41.9050,
+    mapsUrl: "https://maps.app.goo.gl/irece-mocozeiro",
+    nearbyPlaces: [
+      { icon: "market", name: "BA-800", distance: "Próximo" },
+      { icon: "school", name: "Condomínios Residenciais", distance: "Próximo" },
+      { icon: "hospital", name: "Centro de Irecê", distance: "10 min de carro" },
+      { icon: "bank", name: "Povoados Vizinhos", distance: "Fácil Acesso" },
     ],
   },
 ];
