@@ -15,7 +15,6 @@ import InvestmentAnalysis from "@/components/property/InvestmentAnalysis";
 import AgentContact from "@/components/property/AgentContact";
 
 // Assets
-import property2 from "@/assets/property-2.jpg";
 import property3 from "@/assets/property-3.jpg";
 import terrenoAsaSul1 from "@/assets/terreno-asa-sul-1.jpg";
 import terrenoAsaSul2 from "@/assets/terreno-asa-sul-2.jpg";
@@ -23,6 +22,15 @@ import terrenoAsaSul3 from "@/assets/terreno-asa-sul-3.jpg";
 import predioAdolfo1 from "@/assets/predio-adolfo-moitinho-1.jpg";
 import predioAdolfo2 from "@/assets/predio-adolfo-moitinho-2.jpg";
 import predioAdolfo3 from "@/assets/predio-adolfo-moitinho-3.jpg";
+import terrenoGreenville1 from "@/assets/terreno-greenville-1.jpg";
+import terrenoGreenville2 from "@/assets/terreno-greenville-2.jpg";
+import terrenoGreenville3 from "@/assets/terreno-greenville-3.jpg";
+import terrenoGreenville4 from "@/assets/terreno-greenville-4.jpg";
+import terrenoGreenville5 from "@/assets/terreno-greenville-5.jpg";
+import terrenoGreenville6 from "@/assets/terreno-greenville-6.jpg";
+import terrenoGreenville7 from "@/assets/terreno-greenville-7.jpg";
+import terrenoGreenville8 from "@/assets/terreno-greenville-8.jpg";
+import terrenoGreenville9 from "@/assets/terreno-greenville-9.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const properties = [
@@ -63,30 +71,37 @@ const properties = [
   },
   {
     id: 2,
-    image: property2,
-    title: "Apartamento Jardim das Flores",
-    location: "Bairro São José, Irecê",
-    area: "75m²",
-    category: "Apartamento",
-    description: "Apartamento moderno em condomínio com área de lazer. Localizado em um dos bairros mais tranquilos de Irecê.",
-    fullDescription: "Este imóvel oferece 2 quartos sendo 1 suíte, sala ampla com varanda e vista privilegiada. Cozinha americana integrada, área de serviço e 1 vaga de garagem. O condomínio conta com área de lazer, playground e segurança 24h. Os acabamentos incluem piso porcelanato e armários planejados.",
-    features: ["Varanda", "Condomínio com Lazer", "Segurança 24h", "Portaria", "Armários Planejados", "Área de Serviço"],
-    price: "R$ 220.000",
-    priceNumber: 220000,
-    bedrooms: 2,
-    bathrooms: 2,
-    parking: 1,
-    pricePerM2: "R$ 2.933",
-    avgPricePerM2: "R$ 3.200",
-    walkScore: 88,
+    image: terrenoGreenville1,
+    images: [terrenoGreenville1, terrenoGreenville2, terrenoGreenville3, terrenoGreenville4, terrenoGreenville5, terrenoGreenville6, terrenoGreenville7, terrenoGreenville8, terrenoGreenville9],
+    title: "Terreno Condomínio Green Ville",
+    location: "Condomínio Residencial Green Ville, Irecê, Bahia",
+    area: "200m²",
+    category: "Terreno",
+    description: "Terreno privilegiado nas primeiras quadras do condomínio. Piscina, churrasqueira, parquinhos e segurança 24h. Próximo à BA-052.",
+    fullDescription: "Apresentamos uma oportunidade imperdível de adquirir um terreno privilegiado no Condomínio Residencial Green Ville. Com dimensões ideais de 10 metros de frente por 20 metros de fundo, totalizando 200 m², este terreno oferece o espaço perfeito para você tirar do papel o projeto da sua casa.\n\nA localização é um dos grandes diferenciais: situado em uma das primeiras quadras do condomínio, garantindo facilidade de acesso e proximidade com a portaria e as principais áreas de lazer.\n\nO Condomínio foi cuidadosamente planejado com infraestrutura completa: piscina refrescante, churrasqueira ideal para confraternizações, e parquinhos seguros para as crianças. Com portaria e controle de acesso, você e sua família desfrutarão de total tranquilidade e privacidade.\n\nSituado próximo à BA-052, uma das principais vias da região, o Green Ville permite fácil e rápido deslocamento para o centro de Irecê e outras cidades próximas. Irecê é uma cidade em constante crescimento, com um mercado imobiliário aquecido e um potencial de valorização que não para de crescer.",
+    features: ["Condomínio Fechado", "Piscina", "Churrasqueira", "Parquinhos", "Portaria 24h", "Controle de Acesso", "Primeiras Quadras", "Próximo à BA-052", "Infraestrutura Completa", "Documentação OK"],
+    price: "R$ 85.000",
+    priceNumber: 85000,
+    bedrooms: 0,
+    bathrooms: 0,
+    parking: 0,
+    // Land-specific properties
+    dimensions: "10x20m",
+    fronts: 1,
+    hasInfrastructure: true,
+    hasDocumentation: true,
+    pricePerM2: "R$ 425",
+    avgPricePerM2: "R$ 500",
+    walkScore: 75,
     coordinates: "11.3039° S, 41.8559° W",
     latitude: -11.3039,
     longitude: -41.8559,
     mapsUrl: "https://maps.app.goo.gl/irece",
     nearbyPlaces: [
-      { icon: "school", name: "Escola Estadual", distance: "4 min a pé" },
-      { icon: "market", name: "Mercado Central", distance: "2 min a pé" },
-      { icon: "metro", name: "Praça da Bandeira", distance: "6 min a pé" },
+      { icon: "market", name: "BA-052", distance: "2 min de carro" },
+      { icon: "school", name: "Centro de Irecê", distance: "5 min de carro" },
+      { icon: "hospital", name: "Área de Lazer", distance: "No condomínio" },
+      { icon: "bank", name: "Portaria 24h", distance: "No local" },
     ],
   },
   {
