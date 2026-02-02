@@ -21,6 +21,7 @@ import terrenoGreenville1 from "@/assets/terreno-greenville-1.jpg";
 import terrenoSaoGabriel1 from "@/assets/terreno-sao-gabriel-1.jpg";
 import casaDonaMarta1 from "@/assets/casa-dona-marta-1.jpg";
 import terrenoAltoMoura1 from "@/assets/terreno-alto-moura-1.jpg";
+import fazendaMocozeiro1 from "@/assets/fazenda-mocozeiro-1.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const allProperties = [
@@ -105,6 +106,19 @@ const allProperties = [
     priceNumber: 210000,
     description: "Terreno residencial de 375m² no Alto do Moura. Área tranquila com fácil acesso a escolas, comércio e serviços.",
     highlights: ["Área Tranquila", "Em Valorização"],
+  },
+  {
+    id: 8,
+    image: fazendaMocozeiro1,
+    title: "Fazenda Estrada do Mocozeiro 2",
+    location: "Estrada do Mocozeiro 2, Irecê",
+    area: "32.670m²",
+    areaNumber: 32670,
+    category: "Fazenda",
+    price: "R$ 800.000",
+    priceNumber: 800000,
+    description: "Fazenda de 7,5 tarefas com 2 poços artesianos, energia solar e internet. Região de grande valorização, ideal para agropecuária.",
+    highlights: ["2 Poços Artesianos", "Energia Solar"],
   },
 ];
 

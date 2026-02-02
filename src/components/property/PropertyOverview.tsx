@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, TrendingUp, Maximize, Bed, Bath, Car, Ruler, LayoutGrid, Zap, FileCheck, Map, Building2, Square, Layers, Shield, Waves, Home, LucideIcon } from "lucide-react";
+import { MapPin, TrendingUp, Maximize, Bed, Bath, Car, Ruler, LayoutGrid, Zap, FileCheck, Map, Building2, Square, Layers, Shield, Waves, Home, Droplets, Sun, Wifi, Tractor, LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface PropertyOverviewProps {
@@ -22,6 +22,12 @@ interface PropertyOverviewProps {
   facadeWidth?: string;
   landArea?: string;
   builtArea?: string;
+  // Farm specific
+  tarefas?: string;
+  waterWells?: number;
+  hasSolarEnergy?: boolean;
+  hasElectricity?: boolean;
+  hasInternet?: boolean;
 }
 
 interface FeatureCardProps {
@@ -103,9 +109,15 @@ const PropertyOverview = ({
   facadeWidth,
   landArea,
   builtArea,
+  tarefas,
+  waterWells,
+  hasSolarEnergy = false,
+  hasElectricity = true,
+  hasInternet = false,
 }: PropertyOverviewProps) => {
   const isLand = category === "Terreno";
   const isCommercialBuilding = category === "Prédio Comercial";
+  const isFarm = category === "Fazenda";
   const isCondominiumLand = isLand && isGatedCommunity;
 
   const commercialFeatures: FeatureCardProps[] = [
@@ -145,6 +157,46 @@ const PropertyOverview = ({
       label: "Documentação",
       value: "100% OK",
       subtext: "Escritura e Registro"
+    },
+  ];
+
+  const farmFeatures: FeatureCardProps[] = [
+    {
+      icon: Maximize,
+      label: "Área Total",
+      value: area,
+      subtext: tarefas || "7,5 Tarefas",
+      highlight: true
+    },
+    {
+      icon: Droplets,
+      label: "Poços Artesianos",
+      value: String(waterWells || 2),
+      subtext: "Água Abundante"
+    },
+    {
+      icon: Zap,
+      label: "Energia Elétrica",
+      value: hasElectricity ? "Rede Pública" : "Não",
+      subtext: "Instalada"
+    },
+    {
+      icon: Sun,
+      label: "Energia Solar",
+      value: hasSolarEnergy ? "Sim" : "Não",
+      subtext: hasSolarEnergy ? "Economia e Autonomia" : ""
+    },
+    {
+      icon: Wifi,
+      label: "Internet",
+      value: hasInternet ? "Disponível" : "Não",
+      subtext: hasInternet ? "Conexão Rural" : ""
+    },
+    {
+      icon: Tractor,
+      label: "Potencial",
+      value: "Agropecuária",
+      subtext: "Grãos, Gado, Orgânicos"
     },
   ];
 
@@ -271,7 +323,13 @@ const PropertyOverview = ({
 
       {/* Key Features */}
       <div className="pt-6 border-t border-border">
-        {isCondominiumLand ? (
+        {isFarm ? (
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+            {farmFeatures.map((feature, index) => (
+              <FeatureCard key={index} {...feature} />
+            ))}
+          </div>
+        ) : isCondominiumLand ? (
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
             {condominiumLandFeatures.map((feature, index) => (
               <FeatureCard key={index} {...feature} />
