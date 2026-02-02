@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { X, MapPin, Maximize, ArrowRight, Ruler, LayoutGrid } from "lucide-react";
+import { X, MapPin, Maximize, ArrowRight, Ruler, LayoutGrid, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface PropertyPreviewModalProps {
@@ -16,6 +16,9 @@ interface PropertyPreviewModalProps {
     dimensions?: string;
     fronts?: number;
     price?: string;
+    builtArea?: string;
+    landArea?: string;
+    floors?: number;
   } | null;
 }
 
@@ -26,6 +29,9 @@ export function PropertyPreviewModal({
   property,
 }: PropertyPreviewModalProps) {
   if (!property) return null;
+
+  const isCommercial = property.category === "Prédio Comercial";
+  const isLand = property.category === "Terreno";
 
   return (
     <AnimatePresence>
@@ -99,17 +105,45 @@ export function PropertyPreviewModal({
                 {property.description}
               </p>
 
-              {/* Stats */}
+              {/* Stats - Dynamic based on property type */}
               <div className="grid grid-cols-3 gap-3">
+                {/* Common: Area */}
                 <div className="flex items-center gap-2 justify-center p-3 bg-muted/50 rounded-xl">
                   <Maximize size={18} className="text-primary" />
                   <div className="flex flex-col">
-                    <span className="text-sm font-semibold text-foreground">{property.area}</span>
-                    <span className="text-[10px] text-muted-foreground uppercase">Área</span>
+                    <span className="text-sm font-semibold text-foreground">
+                      {isCommercial ? property.builtArea || property.area : property.area}
+                    </span>
+                    <span className="text-[10px] text-muted-foreground uppercase">
+                      {isCommercial ? "Construído" : "Área"}
+                    </span>
                   </div>
                 </div>
+
+                {/* Commercial: Floors */}
+                {isCommercial && property.floors && (
+                  <div className="flex items-center gap-2 justify-center p-3 bg-muted/50 rounded-xl">
+                    <Building2 size={18} className="text-primary" />
+                    <div className="flex flex-col">
+                      <span className="text-sm font-semibold text-foreground">{property.floors}</span>
+                      <span className="text-[10px] text-muted-foreground uppercase">Pavimentos</span>
+                    </div>
+                  </div>
+                )}
+
+                {/* Commercial: Land Area */}
+                {isCommercial && property.landArea && (
+                  <div className="flex items-center gap-2 justify-center p-3 bg-muted/50 rounded-xl">
+                    <LayoutGrid size={18} className="text-primary" />
+                    <div className="flex flex-col">
+                      <span className="text-sm font-semibold text-foreground">{property.landArea}</span>
+                      <span className="text-[10px] text-muted-foreground uppercase">Terreno</span>
+                    </div>
+                  </div>
+                )}
                 
-                {property.dimensions && (
+                {/* Land: Dimensions */}
+                {isLand && property.dimensions && (
                   <div className="flex items-center gap-2 justify-center p-3 bg-muted/50 rounded-xl">
                     <Ruler size={18} className="text-primary" />
                     <div className="flex flex-col">
@@ -119,7 +153,8 @@ export function PropertyPreviewModal({
                   </div>
                 )}
                 
-                {property.fronts && (
+                {/* Land: Fronts */}
+                {isLand && property.fronts && (
                   <div className="flex items-center gap-2 justify-center p-3 bg-muted/50 rounded-xl">
                     <LayoutGrid size={18} className="text-primary" />
                     <div className="flex flex-col">
@@ -129,7 +164,8 @@ export function PropertyPreviewModal({
                   </div>
                 )}
 
-                {!property.dimensions && !property.fronts && (
+                {/* Fallback for other property types */}
+                {!isCommercial && !isLand && (
                   <>
                     <div className="flex items-center gap-2 justify-center p-3 bg-muted/50 rounded-xl">
                       <Ruler size={18} className="text-primary" />
