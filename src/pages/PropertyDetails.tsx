@@ -15,41 +15,75 @@ import InvestmentAnalysis from "@/components/property/InvestmentAnalysis";
 import AgentContact from "@/components/property/AgentContact";
 
 // Assets
-import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";
 import property3 from "@/assets/property-3.jpg";
 import terrenoAsaSul1 from "@/assets/terreno-asa-sul-1.jpg";
 import terrenoAsaSul2 from "@/assets/terreno-asa-sul-2.jpg";
 import terrenoAsaSul3 from "@/assets/terreno-asa-sul-3.jpg";
+import predioComercial1 from "@/assets/predio-comercial-1.jpg";
+import predioComercial2 from "@/assets/predio-comercial-2.jpg";
+import predioComercial3 from "@/assets/predio-comercial-3.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const properties = [
   {
     id: 1,
-    image: property1,
-    title: "Casa Alto da Colina",
-    location: "Centro, Irecê",
-    area: "180m²",
-    category: "Casa",
-    description: "Casa espaçosa com 3 quartos, quintal e área de lazer. Perfeita para famílias que buscam conforto e praticidade no coração de Irecê.",
-    fullDescription: "Esta casa encantadora oferece o ambiente perfeito para famílias que buscam qualidade de vida. Com 3 quartos espaçosos, sendo 1 suíte master, sala de estar e jantar integradas, cozinha planejada e área de lazer completa com churrasqueira. O quintal amplo é ideal para crianças e pets. Localizada em uma das melhores áreas de Irecê, próxima a escolas, supermercados e comércio local.",
-    features: ["Quintal Amplo", "Churrasqueira", "Garagem Coberta", "Cozinha Planejada", "Área de Serviço", "Piso Cerâmico"],
-    price: "R$ 380.000",
-    priceNumber: 380000,
-    bedrooms: 3,
-    bathrooms: 2,
-    parking: 2,
-    pricePerM2: "R$ 2.111",
-    avgPricePerM2: "R$ 2.500",
-    walkScore: 85,
+    image: predioComercial1,
+    images: [predioComercial1, predioComercial2, predioComercial3],
+    title: "Prédio Comercial Av. Adolfo Moitinho",
+    location: "Av. Adolfo Moitinho, Centro, Irecê, Bahia",
+    area: "416,64m²",
+    category: "Prédio Comercial",
+    description: "OPORTUNIDADE DE INVESTIMENTO NO CORAÇÃO DE IRECÊ! Prédio Comercial na Av. Adolfo Moitinho com 416 m² de Potencial!",
+    fullDescription: `Esta é a sua chance de adquirir um imóvel no epicentro comercial de Irecê!
+
+Apresentamos este sobrado/prédio comercial estrategicamente localizado na Avenida Adolfo Moitinho, a via de maior fluxo de pessoas e negócios da cidade. Com uma fachada de 6,40 metros e um terreno de 138,88 m², o imóvel conta com 416,64 m² de área construída, distribuídos em três pavimentos.
+
+UM VERDADEIRO ÍMÃ DE OPORTUNIDADES!
+
+A maior vantagem deste imóvel é sua incrível versatilidade. A estrutura robusta e a localização permitem uma transformação para uso misto, maximizando seu potencial de rentabilidade:
+
+• Térreo Comercial: Perfeito para uma loja âncora, farmácia, clínica, consultórios ou escritório de grande visibilidade, aproveitando o tráfego intenso da avenida.
+
+• Andares Superiores (Residencial/Serviços): Ideal para a criação de apartamentos modernos (altamente procurados para locação no centro) ou para a instalação de salas comerciais, cursos ou um centro de saúde.
+
+LOCALIZAÇÃO ESTRATÉGICA É TUDO!
+
+Estar na Adolfo Moitinho já é um diferencial, mas este ponto se destaca por estar cercado por outros polos geradores de tráfego. Com um valor atrativo pela metragem e localização, este sobrado não é apenas um imóvel, é um investimento com retorno garantido. Seja para estabelecer sua empresa no melhor ponto da cidade ou para gerar renda passiva com aluguéis (comerciais e residenciais), esta é a escolha inteligente.`,
+    features: [
+      "3 Pavimentos Completos",
+      "416,64m² Área Construída",
+      "Fachada 6,40m",
+      "Terreno 138,88m²",
+      "Estrutura Robusta",
+      "Uso Misto (Comercial/Residencial)",
+      "Alta Visibilidade",
+      "Localização Premium",
+      "Próximo ao Hospital",
+      "Próximo à Rodoviária",
+    ],
+    price: "R$ 2.500.000",
+    priceNumber: 2500000,
+    bedrooms: 0,
+    bathrooms: 0,
+    parking: 0,
+    // Commercial building specific
+    builtArea: "416,64m²",
+    landArea: "138,88m²",
+    frontage: "6,40m",
+    floors: 3,
+    pricePerM2: "R$ 6.000",
+    avgPricePerM2: "R$ 7.500",
+    walkScore: 98,
     coordinates: "11.3039° S, 41.8559° W",
     latitude: -11.3039,
     longitude: -41.8559,
     mapsUrl: "https://maps.app.goo.gl/irece",
     nearbyPlaces: [
-      { icon: "school", name: "Colégio Municipal", distance: "5 min a pé" },
-      { icon: "market", name: "Supermercado Atakarejo", distance: "3 min a pé" },
-      { icon: "metro", name: "Centro Comercial", distance: "8 min a pé" },
+      { icon: "hospital", name: "Hospital de Irecê", distance: "2 min a pé" },
+      { icon: "market", name: "Rodoviária", distance: "3 min a pé" },
+      { icon: "metro", name: "Av. 1º de Janeiro", distance: "1 min a pé" },
+      { icon: "school", name: "Bancos e Comércios", distance: "No local" },
     ],
   },
   {
@@ -281,6 +315,10 @@ const PropertyDetails = () => {
               fronts={property.fronts}
               hasInfrastructure={property.hasInfrastructure}
               hasDocumentation={property.hasDocumentation}
+              builtArea={property.builtArea}
+              landArea={property.landArea}
+              frontage={property.frontage}
+              floors={property.floors}
             />
 
             <PropertyDescription

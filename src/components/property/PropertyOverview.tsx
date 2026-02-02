@@ -16,6 +16,11 @@ interface PropertyOverviewProps {
   fronts?: number;
   hasInfrastructure?: boolean;
   hasDocumentation?: boolean;
+  // Commercial building specific
+  builtArea?: string;
+  landArea?: string;
+  frontage?: string;
+  floors?: number;
 }
 
 interface FeatureCardProps {
@@ -92,8 +97,53 @@ const PropertyOverview = ({
   fronts,
   hasInfrastructure = true,
   hasDocumentation = true,
+  builtArea,
+  landArea,
+  frontage,
+  floors,
 }: PropertyOverviewProps) => {
   const isLand = category === "Terreno";
+  const isCommercial = category === "Prédio Comercial";
+
+  const commercialFeatures: FeatureCardProps[] = [
+    {
+      icon: Maximize,
+      label: "Área Construída",
+      value: builtArea || area,
+      subtext: "3 Pavimentos",
+      highlight: true
+    },
+    {
+      icon: Map,
+      label: "Área do Terreno",
+      value: landArea || "138,88m²",
+      subtext: "Localização Premium"
+    },
+    {
+      icon: Ruler,
+      label: "Fachada",
+      value: frontage || "6,40m",
+      subtext: "Alta Visibilidade"
+    },
+    {
+      icon: LayoutGrid,
+      label: "Pavimentos",
+      value: String(floors || 3),
+      subtext: "Uso Misto"
+    },
+    {
+      icon: Sun,
+      label: "Potencial",
+      value: "Comercial",
+      subtext: "Térreo + Residencial"
+    },
+    {
+      icon: FileCheck,
+      label: "Estrutura",
+      value: "Completa",
+      subtext: "Pronta para uso"
+    },
+  ];
 
   const landFeatures: FeatureCardProps[] = [
     {
@@ -181,6 +231,12 @@ const PropertyOverview = ({
         {isLand ? (
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
             {landFeatures.map((feature, index) => (
+              <FeatureCard key={index} {...feature} />
+            ))}
+          </div>
+        ) : isCommercial ? (
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+            {commercialFeatures.map((feature, index) => (
               <FeatureCard key={index} {...feature} />
             ))}
           </div>
