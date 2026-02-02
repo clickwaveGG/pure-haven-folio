@@ -20,6 +20,7 @@ import predioAdolfo1 from "@/assets/predio-adolfo-moitinho-1.jpg";
 import terrenoGreenville1 from "@/assets/terreno-greenville-1.jpg";
 import terrenoSaoGabriel1 from "@/assets/terreno-sao-gabriel-1.jpg";
 import casaDonaMarta1 from "@/assets/casa-dona-marta-1.jpg";
+import terrenoAltoMoura1 from "@/assets/terreno-alto-moura-1.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const allProperties = [
@@ -91,6 +92,19 @@ const allProperties = [
     highlights: ["Alto Padrão", "Piscina + Gourmet"],
     bedrooms: 5,
     bathrooms: 4,
+  },
+  {
+    id: 7,
+    image: terrenoAltoMoura1,
+    title: "Terreno Alto do Moura",
+    location: "Alto do Moura, Irecê",
+    area: "375m²",
+    areaNumber: 375,
+    category: "Terreno",
+    price: "R$ 210.000",
+    priceNumber: 210000,
+    description: "Terreno residencial de 375m² no Alto do Moura. Área tranquila com fácil acesso a escolas, comércio e serviços.",
+    highlights: ["Área Tranquila", "Em Valorização"],
   },
 ];
 
