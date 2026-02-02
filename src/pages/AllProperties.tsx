@@ -19,6 +19,7 @@ import terrenoAsaSul1 from "@/assets/terreno-asa-sul-1.jpg";
 import predioAdolfo1 from "@/assets/predio-adolfo-moitinho-1.jpg";
 import terrenoGreenville1 from "@/assets/terreno-greenville-1.jpg";
 import terrenoSaoGabriel1 from "@/assets/terreno-sao-gabriel-1.jpg";
+import casaDonaMarta1 from "@/assets/casa-dona-marta-1.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const allProperties = [
@@ -75,6 +76,21 @@ const allProperties = [
     priceNumber: 25000,
     description: "Ao lado do novo Colégio Integral e entrada principal da cidade. Potencial de valorização garantido!",
     highlights: ["Próx. Colégio Integral", "Entrada da Cidade"],
+  },
+  {
+    id: 6,
+    image: casaDonaMarta1,
+    title: "Casa de Alto Padrão Cond. Dona Marta",
+    location: "Cond. Dona Marta, Irecê",
+    area: "600m²",
+    areaNumber: 600,
+    category: "Casa",
+    price: "Consulte",
+    priceNumber: 0,
+    description: "Exclusiva casa de alto padrão com 5 quartos, 2 suítes, piscina, espaço gourmet e sacada panorâmica.",
+    highlights: ["Alto Padrão", "Piscina + Gourmet"],
+    bedrooms: 5,
+    bathrooms: 4,
   },
 ];
 
