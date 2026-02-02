@@ -15,41 +15,50 @@ import InvestmentAnalysis from "@/components/property/InvestmentAnalysis";
 import AgentContact from "@/components/property/AgentContact";
 
 // Assets
-import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";
 import property3 from "@/assets/property-3.jpg";
 import terrenoAsaSul1 from "@/assets/terreno-asa-sul-1.jpg";
 import terrenoAsaSul2 from "@/assets/terreno-asa-sul-2.jpg";
 import terrenoAsaSul3 from "@/assets/terreno-asa-sul-3.jpg";
+import predioAdolfo1 from "@/assets/predio-adolfo-moitinho-1.jpg";
+import predioAdolfo2 from "@/assets/predio-adolfo-moitinho-2.jpg";
+import predioAdolfo3 from "@/assets/predio-adolfo-moitinho-3.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const properties = [
   {
     id: 1,
-    image: property1,
-    title: "Casa Alto da Colina",
-    location: "Centro, Irecê",
-    area: "180m²",
-    category: "Casa",
-    description: "Casa espaçosa com 3 quartos, quintal e área de lazer. Perfeita para famílias que buscam conforto e praticidade no coração de Irecê.",
-    fullDescription: "Esta casa encantadora oferece o ambiente perfeito para famílias que buscam qualidade de vida. Com 3 quartos espaçosos, sendo 1 suíte master, sala de estar e jantar integradas, cozinha planejada e área de lazer completa com churrasqueira. O quintal amplo é ideal para crianças e pets. Localizada em uma das melhores áreas de Irecê, próxima a escolas, supermercados e comércio local.",
-    features: ["Quintal Amplo", "Churrasqueira", "Garagem Coberta", "Cozinha Planejada", "Área de Serviço", "Piso Cerâmico"],
-    price: "R$ 380.000",
-    priceNumber: 380000,
-    bedrooms: 3,
-    bathrooms: 2,
-    parking: 2,
-    pricePerM2: "R$ 2.111",
-    avgPricePerM2: "R$ 2.500",
-    walkScore: 85,
+    image: predioAdolfo1,
+    images: [predioAdolfo1, predioAdolfo2, predioAdolfo3],
+    title: "Prédio Comercial Av. Adolfo Moitinho",
+    location: "Av. Adolfo Moitinho, Centro, Irecê, Bahia",
+    area: "416m²",
+    category: "Prédio Comercial",
+    description: "Oportunidade de investimento no epicentro comercial de Irecê! Sobrado/prédio com 416m² de área construída em 3 pavimentos. Localização privilegiada na via de maior fluxo da cidade.",
+    fullDescription: "Esta é a sua chance de adquirir um imóvel no epicentro comercial de Irecê! Apresentamos este sobrado/prédio comercial estrategicamente localizado na Avenida Adolfo Moitinho, a via de maior fluxo de pessoas e negócios da cidade. Com uma fachada de 6,40 metros e um terreno de 138,88m², o imóvel conta com 416,64m² de área construída, distribuídos em três pavimentos.\n\nA maior vantagem deste imóvel é sua incrível versatilidade. A estrutura robusta e a localização permitem uma transformação para uso misto, maximizando seu potencial de rentabilidade: Térreo Comercial perfeito para loja âncora, farmácia, clínica ou escritório de grande visibilidade. Andares Superiores ideais para apartamentos modernos (altamente procurados para locação no centro) ou salas comerciais.\n\nCom um valor atrativo pela metragem e localização, este sobrado não é apenas um imóvel, é um investimento com retorno garantido.",
+    features: ["Uso Misto (Comercial/Residencial)", "3 Pavimentos", "Fachada 6,40m", "Térreo Comercial", "Andares p/ Apartamentos", "Alta Visibilidade", "Próximo ao Hospital", "Próximo à Rodoviária", "Próximo à Av. 1º de Janeiro", "Cercado de Bancos e Lojas"],
+    price: "R$ 2.500.000",
+    priceNumber: 2500000,
+    bedrooms: 0,
+    bathrooms: 0,
+    parking: 0,
+    // Building-specific properties
+    floors: 3,
+    facadeWidth: "6,40m",
+    landArea: "138,88m²",
+    builtArea: "416,64m²",
+    pricePerM2: "R$ 6.000",
+    avgPricePerM2: "R$ 7.000",
+    walkScore: 98,
     coordinates: "11.3039° S, 41.8559° W",
     latitude: -11.3039,
     longitude: -41.8559,
     mapsUrl: "https://maps.app.goo.gl/irece",
     nearbyPlaces: [
-      { icon: "school", name: "Colégio Municipal", distance: "5 min a pé" },
-      { icon: "market", name: "Supermercado Atakarejo", distance: "3 min a pé" },
-      { icon: "metro", name: "Centro Comercial", distance: "8 min a pé" },
+      { icon: "hospital", name: "Hospital", distance: "2 min a pé" },
+      { icon: "bus", name: "Rodoviária", distance: "3 min a pé" },
+      { icon: "market", name: "Av. 1º de Janeiro", distance: "1 min a pé" },
+      { icon: "bank", name: "Bancos e Serviços", distance: "No local" },
     ],
   },
   {
