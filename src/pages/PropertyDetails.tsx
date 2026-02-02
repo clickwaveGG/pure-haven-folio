@@ -290,6 +290,10 @@ const PropertyDetails = () => {
               fronts={property.fronts}
               hasInfrastructure={property.hasInfrastructure}
               hasDocumentation={property.hasDocumentation}
+              floors={property.floors}
+              facadeWidth={property.facadeWidth}
+              landArea={property.landArea}
+              builtArea={property.builtArea}
             />
 
             <PropertyDescription

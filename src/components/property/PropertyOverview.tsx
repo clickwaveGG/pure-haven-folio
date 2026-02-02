@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, TrendingUp, Maximize, Bed, Bath, Car, Ruler, LayoutGrid, Zap, FileCheck, Map, Sun, LucideIcon } from "lucide-react";
+import { MapPin, TrendingUp, Maximize, Bed, Bath, Car, Ruler, LayoutGrid, Zap, FileCheck, Map, Building2, Square, Layers, LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface PropertyOverviewProps {
@@ -16,6 +16,11 @@ interface PropertyOverviewProps {
   fronts?: number;
   hasInfrastructure?: boolean;
   hasDocumentation?: boolean;
+  // Commercial building specific
+  floors?: number;
+  facadeWidth?: string;
+  landArea?: string;
+  builtArea?: string;
 }
 
 interface FeatureCardProps {
@@ -92,8 +97,53 @@ const PropertyOverview = ({
   fronts,
   hasInfrastructure = true,
   hasDocumentation = true,
+  floors,
+  facadeWidth,
+  landArea,
+  builtArea,
 }: PropertyOverviewProps) => {
   const isLand = category === "Terreno";
+  const isCommercialBuilding = category === "Prédio Comercial";
+
+  const commercialFeatures: FeatureCardProps[] = [
+    {
+      icon: Maximize,
+      label: "Área Construída",
+      value: builtArea || area,
+      subtext: "3 Pavimentos",
+      highlight: true
+    },
+    {
+      icon: Square,
+      label: "Área do Terreno",
+      value: landArea || "138,88m²",
+      subtext: "Escriturado"
+    },
+    {
+      icon: Layers,
+      label: "Pavimentos",
+      value: String(floors || 3),
+      subtext: "Térreo + 2 Andares"
+    },
+    {
+      icon: Ruler,
+      label: "Fachada",
+      value: facadeWidth || "6,40m",
+      subtext: "Alta Visibilidade"
+    },
+    {
+      icon: Building2,
+      label: "Uso",
+      value: "Misto",
+      subtext: "Comercial/Residencial"
+    },
+    {
+      icon: FileCheck,
+      label: "Documentação",
+      value: "100% OK",
+      subtext: "Escritura e Registro"
+    },
+  ];
 
   const landFeatures: FeatureCardProps[] = [
     {
@@ -181,6 +231,12 @@ const PropertyOverview = ({
         {isLand ? (
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
             {landFeatures.map((feature, index) => (
+              <FeatureCard key={index} {...feature} />
+            ))}
+          </div>
+        ) : isCommercialBuilding ? (
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+            {commercialFeatures.map((feature, index) => (
               <FeatureCard key={index} {...feature} />
             ))}
           </div>
