@@ -95,9 +95,9 @@ const properties = [
     avgPricePerM2: "R$ 500",
     walkScore: 75,
     coordinates: "11.3039° S, 41.8559° W",
-    latitude: -11.3039,
-    longitude: -41.8559,
-    mapsUrl: "https://maps.app.goo.gl/irece",
+    latitude: -11.3050,
+    longitude: -41.8700,
+    mapsUrl: "https://www.google.com/maps/@-11.3050,-41.8700,17z",
     nearbyPlaces: [
       { icon: "market", name: "BA-052", distance: "2 min de carro" },
       { icon: "school", name: "Centro de Irecê", distance: "5 min de carro" },
