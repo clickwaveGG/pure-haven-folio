@@ -3,7 +3,7 @@
 import type React from "react"
 import { useState, useRef } from "react"
 import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from "framer-motion"
-import { ExternalLink, ArrowRight, MapPin } from "lucide-react"
+import { ExternalLink, ArrowRight, MapPin, MousePointerClick } from "lucide-react"
 
 interface LocationMapProps {
   location?: string
@@ -386,19 +386,41 @@ export function LocationMap({
         </div>
       </motion.div>
 
-      {/* Click hint */}
-      <motion.p
-        className="absolute -bottom-6 left-1/2 text-[10px] text-muted-foreground whitespace-nowrap"
-        style={{ x: "-50%" }}
-        initial={{ opacity: 0 }}
-        animate={{
-          opacity: isHovered && !isExpanded ? 1 : 0,
-          y: isHovered ? 0 : 4,
-        }}
-        transition={{ duration: 0.2 }}
-      >
-        Clique para expandir
-      </motion.p>
+      {/* Click hint - Enhanced with icon and animation */}
+      <AnimatePresence>
+        {!isExpanded && (
+          <motion.div
+            className="absolute -bottom-8 left-1/2 flex items-center gap-2"
+            style={{ x: "-50%" }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 5 }}
+            transition={{ duration: 0.3 }}
+          >
+            {/* Bouncing pointer icon */}
+            <motion.div
+              animate={{ y: [0, -4, 0] }}
+              transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}
+            >
+              <MousePointerClick size={14} className="text-primary" />
+            </motion.div>
+            
+            <span className="text-xs text-muted-foreground font-medium">
+              Clique para ver a localização
+            </span>
+            
+            {/* Animated arrow pointing up */}
+            <motion.div
+              animate={{ y: [0, -3, 0] }}
+              transition={{ repeat: Infinity, duration: 0.8, ease: "easeInOut", delay: 0.2 }}
+            >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" className="text-primary rotate-180">
+                <path d="M12 5L12 19M12 19L5 12M12 19L19 12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   )
 }
