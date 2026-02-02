@@ -45,6 +45,16 @@ import casaDonaMarta7 from "@/assets/casa-dona-marta-7.jpg";
 import casaDonaMarta8 from "@/assets/casa-dona-marta-8.jpg";
 import casaDonaMarta9 from "@/assets/casa-dona-marta-9.jpg";
 import casaDonaMarta10 from "@/assets/casa-dona-marta-10.jpg";
+import casaDonaMarta11 from "@/assets/casa-dona-marta-11.jpg";
+import casaDonaMarta12 from "@/assets/casa-dona-marta-12.jpg";
+import casaDonaMarta13 from "@/assets/casa-dona-marta-13.jpg";
+import casaDonaMarta14 from "@/assets/casa-dona-marta-14.jpg";
+import casaDonaMarta15 from "@/assets/casa-dona-marta-15.jpg";
+import casaDonaMarta16 from "@/assets/casa-dona-marta-16.jpg";
+import casaDonaMarta17 from "@/assets/casa-dona-marta-17.jpg";
+import casaDonaMarta18 from "@/assets/casa-dona-marta-18.jpg";
+import casaDonaMarta19 from "@/assets/casa-dona-marta-19.jpg";
+import casaDonaMarta20 from "@/assets/casa-dona-marta-20.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const properties = [
@@ -218,7 +228,7 @@ const properties = [
   {
     id: 6,
     image: casaDonaMarta1,
-    images: [casaDonaMarta1, casaDonaMarta2, casaDonaMarta3, casaDonaMarta4, casaDonaMarta5, casaDonaMarta6, casaDonaMarta7, casaDonaMarta8, casaDonaMarta9, casaDonaMarta10],
+    images: [casaDonaMarta1, casaDonaMarta2, casaDonaMarta3, casaDonaMarta4, casaDonaMarta5, casaDonaMarta6, casaDonaMarta7, casaDonaMarta8, casaDonaMarta9, casaDonaMarta10, casaDonaMarta11, casaDonaMarta12, casaDonaMarta13, casaDonaMarta14, casaDonaMarta15, casaDonaMarta16, casaDonaMarta17, casaDonaMarta18, casaDonaMarta19, casaDonaMarta20],
     title: "Casa de Alto Padrão Condomínio Dona Marta",
     location: "Condomínio Dona Marta, Irecê, Bahia",
     area: "600m²",
