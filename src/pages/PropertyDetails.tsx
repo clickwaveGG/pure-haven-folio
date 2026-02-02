@@ -264,15 +264,20 @@ const PropertyDetails = () => {
         className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border"
       >
         <div className="container-luxury py-2 flex items-center justify-between">
+          {/* Logo com botão de voltar à página principal */}
           <button
-            onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-foreground hover:text-primary transition-colors"
+            onClick={() => navigate("/")}
+            className="flex items-center gap-2 text-foreground hover:text-primary transition-colors group"
           >
-            <ArrowLeft size={18} />
-            <span className="font-medium hidden sm:inline text-sm">Voltar</span>
+            <motion.div 
+              className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <ArrowLeft size={16} className="text-primary" />
+            </motion.div>
+            <img src={logo} alt="Joíle Barreto" className="h-10 md:h-12 object-contain" />
           </button>
-          
-          <img src={logo} alt="Joíle Barreto" className="h-10 md:h-12 object-contain" />
           
           <span className="text-xs text-muted-foreground">{property.category}</span>
         </div>
