@@ -160,7 +160,7 @@ const properties = [
     coordinates: "11.3039° S, 41.8559° W",
     latitude: -11.3039,
     longitude: -41.8559,
-    mapsUrl: "https://maps.app.goo.gl/irece",
+    mapsUrl: "https://maps.app.goo.gl/pUngTUbG9wmc27cd6",
     nearbyPlaces: [
       { icon: "hospital", name: "UPA Irecê", distance: "3 min a pé" },
       { icon: "school", name: "Faculdade FAI", distance: "2 min a pé" },
