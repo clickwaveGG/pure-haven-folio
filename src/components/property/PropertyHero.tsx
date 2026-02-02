@@ -22,7 +22,7 @@ const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) =
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="relative h-[50vh] md:h-[65vh] lg:h-[70vh] w-full pt-16 md:pt-20"
+      className="relative min-h-[calc(50vh+4rem)] md:min-h-[calc(65vh+5rem)] lg:min-h-[calc(70vh+5rem)] w-full pt-16 md:pt-20"
     >
       {/* Main Image Grid - Adjusted for 3 images */}
       <div className="h-full grid grid-cols-1 md:grid-cols-3 gap-2 p-2">
