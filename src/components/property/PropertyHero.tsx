@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Camera, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 
 interface PropertyHeroProps {
   image: string;
@@ -13,7 +13,6 @@ const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) =
   const displayImages = images && images.length > 0 ? images : [image];
   const totalImages = imageCount ?? displayImages.length;
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % displayImages.length);
@@ -25,38 +24,19 @@ const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) =
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
-    setIsAutoPlaying(false);
   };
-
-  // Auto-play effect
-  useEffect(() => {
-    if (!isAutoPlaying || displayImages.length <= 1) return;
-    
-    const interval = setInterval(nextSlide, 4000);
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, nextSlide, displayImages.length]);
-
-  // Resume auto-play after user interaction
-  useEffect(() => {
-    if (isAutoPlaying) return;
-    
-    const timeout = setTimeout(() => setIsAutoPlaying(true), 8000);
-    return () => clearTimeout(timeout);
-  }, [isAutoPlaying, currentIndex]);
 
   return (
     <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="relative min-h-[50vh] md:min-h-[65vh] lg:min-h-[70vh] w-full pt-12 md:pt-14"
+      className="relative w-full pt-12 md:pt-14"
     >
       <div className="h-full p-2">
         {/* Main Carousel */}
         <div 
-          className="relative h-[45vh] md:h-[60vh] lg:h-[65vh] rounded-2xl overflow-hidden group"
-          onMouseEnter={() => setIsAutoPlaying(false)}
-          onMouseLeave={() => setIsAutoPlaying(true)}
+          className="relative h-[35vh] md:h-[45vh] lg:h-[50vh] rounded-2xl overflow-hidden group"
         >
           {/* Images */}
           <AnimatePresence mode="wait">
@@ -75,20 +55,20 @@ const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) =
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
-          {/* Navigation Arrows */}
+          {/* Navigation Arrows - Always visible */}
           {displayImages.length > 1 && (
             <>
               <motion.button
-                onClick={(e) => { e.stopPropagation(); prevSlide(); setIsAutoPlaying(false); }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 rounded-full bg-background/80 backdrop-blur-sm shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-background"
+                onClick={(e) => { e.stopPropagation(); prevSlide(); }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 rounded-full bg-background/80 backdrop-blur-sm shadow-lg hover:bg-background transition-colors"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
                 <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
               </motion.button>
               <motion.button
-                onClick={(e) => { e.stopPropagation(); nextSlide(); setIsAutoPlaying(false); }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 rounded-full bg-background/80 backdrop-blur-sm shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-background"
+                onClick={(e) => { e.stopPropagation(); nextSlide(); }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 rounded-full bg-background/80 backdrop-blur-sm shadow-lg hover:bg-background transition-colors"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
@@ -116,7 +96,7 @@ const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) =
                   animate={{ width: currentIndex === index ? 24 : 8 }}
                   transition={{ duration: 0.3 }}
                   whileHover={{ scale: 1.2 }}
-                />
+                 />
               ))}
             </div>
           )}
