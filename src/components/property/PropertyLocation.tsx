@@ -4,9 +4,10 @@ import { LocationMap } from "@/components/ui/expand-map";
 interface PropertyLocationProps {
   location: string;
   coordinates?: string;
+  mapsUrl?: string;
 }
 
-const PropertyLocation = ({ location, coordinates }: PropertyLocationProps) => {
+const PropertyLocation = ({ location, coordinates, mapsUrl }: PropertyLocationProps) => {
   return (
     <motion.section
       initial={{ opacity: 0, y: 20 }}
@@ -19,6 +20,7 @@ const PropertyLocation = ({ location, coordinates }: PropertyLocationProps) => {
       <LocationMap 
         location={location}
         coordinates={coordinates || "Brasília, Distrito Federal"}
+        mapsUrl={mapsUrl}
       />
     </motion.section>
   );
