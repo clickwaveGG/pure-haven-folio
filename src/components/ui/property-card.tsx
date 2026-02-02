@@ -1,6 +1,6 @@
 import * as React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, MapPin, Maximize, Ruler, LayoutGrid, Shield, Waves } from "lucide-react";
+import { ArrowRight, MapPin, Maximize, Ruler, LayoutGrid, Shield, Waves, Star, TrendingUp, School, MapPinned } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
@@ -18,6 +18,7 @@ interface PropertyCardProps {
   floors?: number;
   facadeWidth?: string;
   isGatedCommunity?: boolean;
+  highlights?: string[];
   price?: string;
   onDetailsClick?: () => void;
 }
@@ -38,6 +39,7 @@ const PropertyCard = React.forwardRef<HTMLDivElement, PropertyCardProps>(
       floors,
       facadeWidth,
       isGatedCommunity,
+      highlights,
       price,
       onDetailsClick,
     },
@@ -154,8 +156,23 @@ const PropertyCard = React.forwardRef<HTMLDivElement, PropertyCardProps>(
               </div>
             </div>
             
-            {/* Gated Community Land - show security and leisure */}
-            {isGatedCommunity ? (
+            {/* Custom highlights - priority over other stats */}
+            {highlights && highlights.length >= 2 ? (
+              <>
+                <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
+                  <School size={16} className="text-primary" />
+                  <div className="flex flex-col">
+                    <span className="text-xs font-semibold text-foreground leading-tight">{highlights[0]}</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
+                  <MapPinned size={16} className="text-primary" />
+                  <div className="flex flex-col">
+                    <span className="text-xs font-semibold text-foreground leading-tight">{highlights[1]}</span>
+                  </div>
+                </div>
+              </>
+            ) : isGatedCommunity ? (
               <>
                 <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
                   <Shield size={16} className="text-primary" />
