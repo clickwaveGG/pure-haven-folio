@@ -1,6 +1,6 @@
 import * as React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, MapPin, Maximize, Ruler, LayoutGrid } from "lucide-react";
+import { ArrowRight, MapPin, Maximize, Ruler, LayoutGrid, Shield, Waves } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
@@ -17,6 +17,7 @@ interface PropertyCardProps {
   fronts?: number;
   floors?: number;
   facadeWidth?: string;
+  isGatedCommunity?: boolean;
   price?: string;
   onDetailsClick?: () => void;
 }
@@ -36,6 +37,7 @@ const PropertyCard = React.forwardRef<HTMLDivElement, PropertyCardProps>(
       fronts,
       floors,
       facadeWidth,
+      isGatedCommunity,
       price,
       onDetailsClick,
     },
@@ -152,62 +154,84 @@ const PropertyCard = React.forwardRef<HTMLDivElement, PropertyCardProps>(
               </div>
             </div>
             
-            {dimensions && (
-              <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
-                <Ruler size={16} className="text-primary" />
-                <div className="flex flex-col">
-                  <span className="text-sm font-semibold text-foreground">{dimensions}</span>
-                  <span className="text-[10px] text-muted-foreground uppercase">Dimensões</span>
-                </div>
-              </div>
-            )}
-            
-            {fronts && (
-              <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
-                <LayoutGrid size={16} className="text-primary" />
-                <div className="flex flex-col">
-                  <span className="text-sm font-semibold text-foreground">{fronts}</span>
-                  <span className="text-[10px] text-muted-foreground uppercase">Frentes</span>
-                </div>
-              </div>
-            )}
-
-            {floors && (
-              <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
-                <LayoutGrid size={16} className="text-primary" />
-                <div className="flex flex-col">
-                  <span className="text-sm font-semibold text-foreground">{floors}</span>
-                  <span className="text-[10px] text-muted-foreground uppercase">Pavimentos</span>
-                </div>
-              </div>
-            )}
-
-            {facadeWidth && !floors && (
-              <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
-                <Ruler size={16} className="text-primary" />
-                <div className="flex flex-col">
-                  <span className="text-sm font-semibold text-foreground">{facadeWidth}</span>
-                  <span className="text-[10px] text-muted-foreground uppercase">Fachada</span>
-                </div>
-              </div>
-            )}
-
-            {!dimensions && !fronts && !floors && !facadeWidth && (
+            {/* Gated Community Land - show security and leisure */}
+            {isGatedCommunity ? (
               <>
                 <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
-                  <Ruler size={16} className="text-primary" />
+                  <Shield size={16} className="text-primary" />
                   <div className="flex flex-col">
-                    <span className="text-sm font-semibold text-foreground">—</span>
-                    <span className="text-[10px] text-muted-foreground uppercase">Dimensões</span>
+                    <span className="text-sm font-semibold text-foreground">24h</span>
+                    <span className="text-[10px] text-muted-foreground uppercase">Segurança</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
-                  <LayoutGrid size={16} className="text-primary" />
+                  <Waves size={16} className="text-primary" />
                   <div className="flex flex-col">
-                    <span className="text-sm font-semibold text-foreground">—</span>
-                    <span className="text-[10px] text-muted-foreground uppercase">Frentes</span>
+                    <span className="text-sm font-semibold text-foreground">Sim</span>
+                    <span className="text-[10px] text-muted-foreground uppercase">Lazer</span>
                   </div>
                 </div>
+              </>
+            ) : (
+              <>
+                {dimensions && (
+                  <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
+                    <Ruler size={16} className="text-primary" />
+                    <div className="flex flex-col">
+                      <span className="text-sm font-semibold text-foreground">{dimensions}</span>
+                      <span className="text-[10px] text-muted-foreground uppercase">Dimensões</span>
+                    </div>
+                  </div>
+                )}
+                
+                {fronts && (
+                  <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
+                    <LayoutGrid size={16} className="text-primary" />
+                    <div className="flex flex-col">
+                      <span className="text-sm font-semibold text-foreground">{fronts}</span>
+                      <span className="text-[10px] text-muted-foreground uppercase">Frentes</span>
+                    </div>
+                  </div>
+                )}
+
+                {floors && (
+                  <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
+                    <LayoutGrid size={16} className="text-primary" />
+                    <div className="flex flex-col">
+                      <span className="text-sm font-semibold text-foreground">{floors}</span>
+                      <span className="text-[10px] text-muted-foreground uppercase">Pavimentos</span>
+                    </div>
+                  </div>
+                )}
+
+                {facadeWidth && !floors && (
+                  <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
+                    <Ruler size={16} className="text-primary" />
+                    <div className="flex flex-col">
+                      <span className="text-sm font-semibold text-foreground">{facadeWidth}</span>
+                      <span className="text-[10px] text-muted-foreground uppercase">Fachada</span>
+                    </div>
+                  </div>
+                )}
+
+                {!dimensions && !fronts && !floors && !facadeWidth && (
+                  <>
+                    <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
+                      <Ruler size={16} className="text-primary" />
+                      <div className="flex flex-col">
+                        <span className="text-sm font-semibold text-foreground">—</span>
+                        <span className="text-[10px] text-muted-foreground uppercase">Dimensões</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
+                      <LayoutGrid size={16} className="text-primary" />
+                      <div className="flex flex-col">
+                        <span className="text-sm font-semibold text-foreground">—</span>
+                        <span className="text-[10px] text-muted-foreground uppercase">Frentes</span>
+                      </div>
+                    </div>
+                  </>
+                )}
               </>
             )}
           </div>
