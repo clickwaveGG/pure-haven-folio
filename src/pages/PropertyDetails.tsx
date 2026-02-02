@@ -35,6 +35,16 @@ import terrenoSaoGabriel1 from "@/assets/terreno-sao-gabriel-1.jpg";
 import terrenoSaoGabriel2 from "@/assets/terreno-sao-gabriel-2.jpg";
 import terrenoSaoGabriel3 from "@/assets/terreno-sao-gabriel-3.jpg";
 import terrenoSaoGabriel4 from "@/assets/terreno-sao-gabriel-4.jpg";
+import casaDonaMarta1 from "@/assets/casa-dona-marta-1.jpg";
+import casaDonaMarta2 from "@/assets/casa-dona-marta-2.jpg";
+import casaDonaMarta3 from "@/assets/casa-dona-marta-3.jpg";
+import casaDonaMarta4 from "@/assets/casa-dona-marta-4.jpg";
+import casaDonaMarta5 from "@/assets/casa-dona-marta-5.jpg";
+import casaDonaMarta6 from "@/assets/casa-dona-marta-6.jpg";
+import casaDonaMarta7 from "@/assets/casa-dona-marta-7.jpg";
+import casaDonaMarta8 from "@/assets/casa-dona-marta-8.jpg";
+import casaDonaMarta9 from "@/assets/casa-dona-marta-9.jpg";
+import casaDonaMarta10 from "@/assets/casa-dona-marta-10.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const properties = [
@@ -203,6 +213,38 @@ const properties = [
       { icon: "market", name: "Entrada Principal", distance: "Ao lado" },
       { icon: "bus", name: "Centro de São Gabriel", distance: "5 min de carro" },
       { icon: "hospital", name: "Serviços Essenciais", distance: "Próximo" },
+    ],
+  },
+  {
+    id: 6,
+    image: casaDonaMarta1,
+    images: [casaDonaMarta1, casaDonaMarta2, casaDonaMarta3, casaDonaMarta4, casaDonaMarta5, casaDonaMarta6, casaDonaMarta7, casaDonaMarta8, casaDonaMarta9, casaDonaMarta10],
+    title: "Casa de Alto Padrão Condomínio Dona Marta",
+    location: "Condomínio Dona Marta, Irecê, Bahia",
+    area: "600m²",
+    category: "Casa",
+    description: "Exclusiva casa de alto padrão no Condomínio Dona Marta, Irecê/BA. Com 600 m², oferece 5 quartos (2 suítes), 4 banheiros e 3 cozinhas. Desfrute da piscina, amplo espaço gourmet e sacada panorâmica. Viva o luxo, conforto e lazer em um dos condomínios mais valorizados da cidade.",
+    fullDescription: "Um oásis de luxo e exclusividade espera por você no Condomínio Dona Marta, em Irecê/Bahia. Esta magnífica residência de alto padrão, com uma área total de 600 m², é a personificação do conforto, da sofisticação e do lazer, projetada para atender aos mais exigentes padrões de vida. Desde o momento em que você cruza seus portões, é envolvido por uma atmosfera de requinte e tranquilidade, onde cada detalhe foi meticulosamente planejado para oferecer uma experiência de moradia inigualável.\n\nA arquitetura imponente e o design contemporâneo desta casa se harmonizam perfeitamente com a paisagem do condomínio, criando um visual deslumbrante que se destaca pela elegância.\n\nCom cinco quartos espaçosos, sendo duas suítes primorosas, esta casa oferece o refúgio perfeito para cada membro da família. As suítes são projetadas para o máximo relaxamento, com acabamentos de alta qualidade, armários planejados e banheiros com funcionalidade. Os outros quartos, igualmente confortáveis, são ideais para crianças, hóspedes ou até mesmo para a criação de um escritório, adaptando-se às suas necessidades. Os quatro banheiros, distribuídos estrategicamente pela casa, seguem o mesmo padrão de excelência.\n\nA vida social e gastronômica encontra seu ápice nesta residência, que dispõe de três cozinhas independentes, cada uma com sua personalidade e funcionalidade. A cozinha principal, equipada com bancadas amplas, armários planejados e espaço de sobra. As outras duas cozinhas oferecem flexibilidade, seja para refeições rápidas, para o preparo de churrascos no espaço gourmet, ou para atender a eventos maiores sem comprometer a organização da casa. Essa versatilidade é um diferencial que eleva a experiência de morar e receber.\n\nA piscina, um verdadeiro cartão-postal, é o coração da diversão, perfeita para refrescar-se nos dias quentes de Irecê ou para momentos de descontração com a família e amigos. Ao lado da piscina, o espaço gourmet amplo é um convite para celebrações.\n\nNo andar superior, a sacada ampla é um dos pontos altos da casa. Com vistas panorâmicas do condomínio, é o local ideal para desfrutar do nascer ou pôr do sol, para um café da manhã tranquilo ou para relaxar ao final do dia.\n\nLocalizada no Condomínio Dona Marta, um dos mais valorizados de Irecê, esta casa oferece não apenas uma moradia, mas um estilo de vida. O condomínio proporciona infraestrutura completa e um ambiente familiar, com áreas verdes e espaços para lazer e caminhadas, garantindo tranquilidade e bem-estar para toda a família.\n\nEsta é uma oportunidade única de adquirir uma propriedade que une luxo, conforto e funcionalidade. Um investimento no seu bem-estar e na qualidade de vida da sua família, esta casa está pronta para ser o seu novo lar, onde cada dia será uma celebração.",
+    features: ["Alto Padrão", "5 Quartos (2 Suítes)", "4 Banheiros", "3 Cozinhas", "Piscina", "Espaço Gourmet", "Sacada Panorâmica", "Armários Planejados", "Design Contemporâneo", "Condomínio Fechado", "Áreas Verdes", "Infraestrutura Completa"],
+    price: "Consulte",
+    priceNumber: 0,
+    bedrooms: 5,
+    bathrooms: 4,
+    parking: 2,
+    builtArea: "600m²",
+    isGatedCommunity: true,
+    pricePerM2: "Consulte",
+    avgPricePerM2: "Consulte",
+    walkScore: 80,
+    coordinates: "11.3039° S, 41.8559° W",
+    latitude: -11.3039,
+    longitude: -41.8559,
+    mapsUrl: "https://maps.app.goo.gl/irece",
+    nearbyPlaces: [
+      { icon: "market", name: "Centro de Irecê", distance: "10 min de carro" },
+      { icon: "hospital", name: "Área de Lazer", distance: "No condomínio" },
+      { icon: "bank", name: "Portaria 24h", distance: "No local" },
+      { icon: "school", name: "Áreas Verdes", distance: "No condomínio" },
     ],
   },
 ];
