@@ -56,6 +56,15 @@ import casaDonaMarta18 from "@/assets/casa-dona-marta-18.jpg";
 import casaDonaMarta19 from "@/assets/casa-dona-marta-19.jpg";
 import casaDonaMarta20 from "@/assets/casa-dona-marta-20.jpg";
 import terrenoAltoMoura1 from "@/assets/terreno-alto-moura-1.jpg";
+import fazendaMocozeiro1 from "@/assets/fazenda-mocozeiro-1.jpg";
+import fazendaMocozeiro2 from "@/assets/fazenda-mocozeiro-2.jpg";
+import fazendaMocozeiro3 from "@/assets/fazenda-mocozeiro-3.jpg";
+import fazendaMocozeiro4 from "@/assets/fazenda-mocozeiro-4.jpg";
+import fazendaMocozeiro5 from "@/assets/fazenda-mocozeiro-5.jpg";
+import fazendaMocozeiro6 from "@/assets/fazenda-mocozeiro-6.jpg";
+import fazendaMocozeiro7 from "@/assets/fazenda-mocozeiro-7.jpg";
+import fazendaMocozeiro8 from "@/assets/fazenda-mocozeiro-8.jpg";
+import fazendaMocozeiro9 from "@/assets/fazenda-mocozeiro-9.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const properties = [
@@ -290,6 +299,46 @@ const properties = [
       { icon: "bank", name: "Centro de Irecê", distance: "10 min de carro" },
     ],
   },
+  {
+    id: 8,
+    image: fazendaMocozeiro1,
+    images: [fazendaMocozeiro1, fazendaMocozeiro2, fazendaMocozeiro3, fazendaMocozeiro4, fazendaMocozeiro5, fazendaMocozeiro6, fazendaMocozeiro7, fazendaMocozeiro8, fazendaMocozeiro9],
+    title: "Fazenda Estrada do Mocozeiro 2",
+    location: "Estrada do Mocozeiro 2, Zona Rural, Irecê, Bahia",
+    area: "32.670m²",
+    category: "Fazenda",
+    description: "Fazenda de 7,5 tarefas com 2 poços artesianos, energia elétrica, energia solar e internet. Localizada em região de grande valorização, cercada por outras fazendas. Ideal para agropecuária ou investimentos no campo.",
+    fullDescription: "Localizada em uma das regiões mais promissoras da área rural de Irecê, na Bahia, esta fazenda oferece uma excelente oportunidade de investimento em um local estratégico e de constante valorização. A propriedade, com 7 tarefas e meia de extensão (32.670m²), está situada na Estrada do Mocozeiro 2, um ponto de fácil acesso e com grande potencial de desenvolvimento devido à proximidade com outras fazendas e um Condomínio de Chácaras.\n\nA fazenda é equipada com 2 poços artesianos, garantindo água abundante para diversas atividades rurais. Além disso, conta com energia elétrica, fornecida pela rede pública, e um sistema de energia solar, o que proporciona autonomia e economia no consumo de energia. A internet também está disponível, permitindo uma conexão eficiente para quem busca equilibrar o campo com as vantagens da tecnologia e comunicação.\n\nA região do Mocozeiro 2 é um dos polos de maior crescimento da área rural de Irecê, com constantes investimentos em infraestrutura e aumento da procura por propriedades rurais. A localização da fazenda é estratégica, situada na estrada principal, o que facilita o acesso e a logística.\n\nA fazenda tem grande potencial para atividades agropecuárias, incluindo cultivo de grãos, criação de gado, lazer ou até mesmo agricultura orgânica, aproveitando os recursos naturais da região e a crescente demanda por produtos diferenciados.\n\nCom uma localização privilegiada, infraestrutura completa e um mercado local em expansão, esta fazenda representa uma oportunidade única de negócio, seja para quem busca um local produtivo ou para aqueles que desejam investir em uma área em pleno crescimento.",
+    features: ["7,5 Tarefas (32.670m²)", "2 Poços Artesianos", "Energia Elétrica", "Energia Solar", "Internet Disponível", "Estrada Principal", "Região em Valorização", "Próximo a Chácaras", "Ideal para Agropecuária", "Documentação OK"],
+    price: "R$ 800.000",
+    priceNumber: 800000,
+    bedrooms: 0,
+    bathrooms: 0,
+    parking: 0,
+    hasInfrastructure: true,
+    hasDocumentation: true,
+    // Farm-specific
+    totalArea: "32.670m²",
+    tarefas: "7,5 tarefas",
+    hasWaterWell: true,
+    waterWells: 2,
+    hasSolarEnergy: true,
+    hasElectricity: true,
+    hasInternet: true,
+    pricePerM2: "R$ 24,50",
+    avgPricePerM2: "R$ 30",
+    walkScore: 45,
+    coordinates: "-11.2800° S, -41.9000° W",
+    latitude: -11.2800,
+    longitude: -41.9000,
+    mapsUrl: "https://maps.app.goo.gl/irece-rural",
+    nearbyPlaces: [
+      { icon: "market", name: "Estrada Principal", distance: "No local" },
+      { icon: "school", name: "Condomínio de Chácaras", distance: "Próximo" },
+      { icon: "hospital", name: "Outras Fazendas", distance: "Vizinhas" },
+      { icon: "bank", name: "Centro de Irecê", distance: "15 min de carro" },
+    ],
+  },
 ];
 
 const PropertyDetails = () => {
@@ -436,6 +485,11 @@ const PropertyDetails = () => {
               facadeWidth={property.facadeWidth}
               landArea={property.landArea}
               builtArea={property.builtArea}
+              tarefas={property.tarefas}
+              waterWells={property.waterWells}
+              hasSolarEnergy={property.hasSolarEnergy}
+              hasElectricity={property.hasElectricity}
+              hasInternet={property.hasInternet}
             />
 
             <PropertyDescription
