@@ -339,7 +339,6 @@ const PropertyDetails = () => {
             <AgentContact
               whatsappLink={whatsappLink}
               phoneNumber="+5574999999999"
-              email="joile@remaxgardense.com.br"
             />
           </div>
         </div>
