@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { usePageTransition } from "@/contexts/PageTransitionContext";
 import { useSkipAnimations } from "@/pages/Index";
 import { PropertyCard } from "@/components/ui/property-card";
-import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";
 import property3 from "@/assets/property-3.jpg";
 import terrenoAsaSul1 from "@/assets/terreno-asa-sul-1.jpg";
+import predioAdolfo1 from "@/assets/predio-adolfo-moitinho-1.jpg";
 
 const properties = [
   {
@@ -24,13 +24,15 @@ const properties = [
   },
   {
     id: 1,
-    image: property1,
-    title: "Casa Alto da Colina",
+    image: predioAdolfo1,
+    title: "Prédio Comercial Av. Adolfo Moitinho",
     location: "Centro, Irecê",
-    area: "180m²",
-    category: "Casa",
-    description: "Casa espaçosa com 3 quartos, quintal e área de lazer. Perfeita para famílias que buscam conforto e praticidade.",
-    price: "R$ 380.000",
+    area: "416m²",
+    category: "Prédio Comercial",
+    description: "Investimento no epicentro comercial! Sobrado com 416m² em 3 pavimentos na via de maior fluxo de Irecê.",
+    floors: 3,
+    facadeWidth: "6,40m",
+    price: "R$ 2.500.000",
   },
   {
     id: 2,
@@ -112,6 +114,8 @@ const FeaturedProperties = () => {
                 area={property.area}
                 dimensions={property.dimensions}
                 fronts={property.fronts}
+                floors={property.floors}
+                facadeWidth={property.facadeWidth}
                 price={property.price}
                 onDetailsClick={() => handlePropertyClick(property)}
               />

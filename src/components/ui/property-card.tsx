@@ -15,6 +15,8 @@ interface PropertyCardProps {
   area: string;
   dimensions?: string;
   fronts?: number;
+  floors?: number;
+  facadeWidth?: string;
   price?: string;
   onDetailsClick?: () => void;
 }
@@ -32,6 +34,8 @@ const PropertyCard = React.forwardRef<HTMLDivElement, PropertyCardProps>(
       area,
       dimensions,
       fronts,
+      floors,
+      facadeWidth,
       price,
       onDetailsClick,
     },
@@ -168,7 +172,27 @@ const PropertyCard = React.forwardRef<HTMLDivElement, PropertyCardProps>(
               </div>
             )}
 
-            {!dimensions && !fronts && (
+            {floors && (
+              <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
+                <LayoutGrid size={16} className="text-primary" />
+                <div className="flex flex-col">
+                  <span className="text-sm font-semibold text-foreground">{floors}</span>
+                  <span className="text-[10px] text-muted-foreground uppercase">Pavimentos</span>
+                </div>
+              </div>
+            )}
+
+            {facadeWidth && !floors && (
+              <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
+                <Ruler size={16} className="text-primary" />
+                <div className="flex flex-col">
+                  <span className="text-sm font-semibold text-foreground">{facadeWidth}</span>
+                  <span className="text-[10px] text-muted-foreground uppercase">Fachada</span>
+                </div>
+              </div>
+            )}
+
+            {!dimensions && !fronts && !floors && !facadeWidth && (
               <>
                 <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
                   <Ruler size={16} className="text-primary" />
