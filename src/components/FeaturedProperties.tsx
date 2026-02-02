@@ -1,7 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { usePageTransition } from "@/contexts/PageTransitionContext";
 import { useSkipAnimations } from "@/pages/Index";
 import { PropertyCard } from "@/components/ui/property-card";
 import { PropertyPreviewModal } from "@/components/ui/property-preview-modal";
@@ -49,46 +48,17 @@ const properties = [
 
 const FeaturedProperties = () => {
   const ref = useRef(null);
-  const cardRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
   const skipAnimations = useSkipAnimations();
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const navigate = useNavigate();
-  const { startTransition } = usePageTransition();
   
   // Preview modal state
   const [selectedProperty, setSelectedProperty] = useState<typeof properties[0] | null>(null);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
   const handlePropertyClick = (property: typeof properties[0]) => {
-    // Show preview modal instead of navigating directly
     setSelectedProperty(property);
     setIsPreviewOpen(true);
-  };
-
-  const handleViewDetails = () => {
-    if (!selectedProperty) return;
-    
-    const cardElement = cardRefs.current[selectedProperty.id];
-    setIsPreviewOpen(false);
-    
-    // Small delay to allow modal to close before transitioning
-    setTimeout(() => {
-      if (cardElement) {
-        const rect = cardElement.getBoundingClientRect();
-        startTransition({
-          rect,
-          image: selectedProperty.image,
-          title: selectedProperty.title,
-          location: selectedProperty.location,
-        });
-        
-        setTimeout(() => {
-          navigate(`/imovel/${selectedProperty.id}`);
-        }, 50);
-      } else {
-        navigate(`/imovel/${selectedProperty.id}`);
-      }
-    }, 150);
   };
 
   return (
@@ -118,7 +88,6 @@ const FeaturedProperties = () => {
           {properties.map((property, index) => (
             <motion.div
               key={property.id}
-              ref={(el) => { cardRefs.current[property.id] = el; }}
               initial={skipAnimations ? false : { opacity: 0, y: 40 }}
               animate={skipAnimations ? { opacity: 1, y: 0 } : (isInView ? { opacity: 1, y: 0 } : {})}
               transition={{ duration: 0.8, delay: skipAnimations ? 0 : index * 0.15 }}
@@ -157,7 +126,6 @@ const FeaturedProperties = () => {
         <PropertyPreviewModal
           isOpen={isPreviewOpen}
           onClose={() => setIsPreviewOpen(false)}
-          onViewDetails={handleViewDetails}
           property={selectedProperty}
         />
       </div>

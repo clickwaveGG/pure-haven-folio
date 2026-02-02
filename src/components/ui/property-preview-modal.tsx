@@ -1,12 +1,12 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X, MapPin, Maximize, ArrowRight, Ruler, LayoutGrid, Building2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 interface PropertyPreviewModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onViewDetails: () => void;
   property: {
+    id: number;
     image: string;
     title: string;
     location: string;
@@ -25,17 +25,22 @@ interface PropertyPreviewModalProps {
 export function PropertyPreviewModal({
   isOpen,
   onClose,
-  onViewDetails,
   property,
 }: PropertyPreviewModalProps) {
-  if (!property) return null;
+  const navigate = useNavigate();
 
-  const isCommercial = property.category === "Prédio Comercial";
-  const isLand = property.category === "Terreno";
+  const handleViewDetails = () => {
+    if (!property) return;
+    onClose();
+    navigate(`/imovel/${property.id}`);
+  };
+
+  const isCommercial = property?.category === "Prédio Comercial";
+  const isLand = property?.category === "Terreno";
 
   return (
     <AnimatePresence>
-      {isOpen && (
+      {isOpen && property && (
         <>
           {/* Backdrop */}
           <motion.div
@@ -53,10 +58,12 @@ export function PropertyPreviewModal({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed inset-4 md:inset-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-50 md:max-w-2xl md:w-full md:max-h-[85vh] overflow-hidden rounded-2xl bg-card shadow-2xl flex flex-col"
+            className="fixed inset-4 md:inset-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-[51] md:max-w-2xl md:w-full md:max-h-[85vh] overflow-hidden rounded-2xl bg-card shadow-2xl flex flex-col"
+            onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
+              type="button"
               onClick={onClose}
               className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
             >
@@ -188,14 +195,14 @@ export function PropertyPreviewModal({
 
             {/* CTA Button */}
             <div className="p-6 pt-0">
-              <Button
-                onClick={onViewDetails}
-                className="w-full py-6 text-base font-semibold"
-                size="lg"
+              <button
+                type="button"
+                onClick={handleViewDetails}
+                className="w-full py-4 bg-primary text-primary-foreground rounded-lg text-base font-semibold hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
               >
                 Ver página do imóvel
                 <ArrowRight size={18} />
-              </Button>
+              </button>
             </div>
           </motion.div>
         </>
