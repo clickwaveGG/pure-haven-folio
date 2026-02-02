@@ -4,14 +4,9 @@ import { LocationMap } from "@/components/ui/expand-map";
 interface PropertyLocationProps {
   location: string;
   coordinates?: string;
-  latitude?: number;
-  longitude?: number;
-  mapsUrl?: string;
 }
 
-const PropertyLocation = ({ location, coordinates, latitude, longitude, mapsUrl }: PropertyLocationProps) => {
-  const defaultMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`;
-  const finalMapsUrl = mapsUrl || defaultMapsUrl;
+const PropertyLocation = ({ location, coordinates }: PropertyLocationProps) => {
   return (
     <motion.section
       initial={{ opacity: 0, y: 20 }}
@@ -24,9 +19,6 @@ const PropertyLocation = ({ location, coordinates, latitude, longitude, mapsUrl 
       <LocationMap 
         location={location}
         coordinates={coordinates || "Brasília, Distrito Federal"}
-        latitude={latitude}
-        longitude={longitude}
-        mapsUrl={finalMapsUrl}
       />
     </motion.section>
   );
