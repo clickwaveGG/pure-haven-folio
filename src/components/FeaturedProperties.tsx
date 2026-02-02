@@ -41,8 +41,7 @@ const properties = [
     area: "200m²",
     category: "Terreno",
     description: "Terreno privilegiado nas primeiras quadras do condomínio. Piscina, churrasqueira, parquinhos e segurança 24h.",
-    dimensions: "10x20m",
-    fronts: 1,
+    isGatedCommunity: true,
     price: "R$ 85.000",
   },
 ];
@@ -117,6 +116,7 @@ const FeaturedProperties = () => {
                 fronts={property.fronts}
                 floors={property.floors}
                 facadeWidth={property.facadeWidth}
+                isGatedCommunity={property.isGatedCommunity}
                 price={property.price}
                 onDetailsClick={() => handlePropertyClick(property)}
               />
