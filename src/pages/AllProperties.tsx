@@ -71,11 +71,10 @@ const allProperties = [
     area: "200m²",
     areaNumber: 200,
     category: "Terreno",
-    price: "Consulte",
-    priceNumber: 0,
-    description: "Investimento inteligente! Lote 10x20m ao lado do novo Colégio Integral e entrada principal da cidade.",
-    dimensions: "10x20m",
-    fronts: 1,
+    price: "R$ 25.000",
+    priceNumber: 25000,
+    description: "Ao lado do novo Colégio Integral e entrada principal da cidade. Potencial de valorização garantido!",
+    highlights: ["Próx. Colégio Integral", "Entrada da Cidade"],
   },
 ];
 
@@ -276,6 +275,7 @@ const AllProperties = () => {
                     floors={property.floors}
                     facadeWidth={property.facadeWidth}
                     isGatedCommunity={property.isGatedCommunity}
+                    highlights={property.highlights}
                     price={property.price}
                     onDetailsClick={() => handlePropertyClick(property)}
                   />
