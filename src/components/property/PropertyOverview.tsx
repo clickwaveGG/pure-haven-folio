@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, TrendingUp, Maximize, Bed, Bath, Car, Ruler, LayoutGrid, Zap, FileCheck, Map, Building2, Square, Layers, LucideIcon } from "lucide-react";
+import { MapPin, TrendingUp, Maximize, Bed, Bath, Car, Ruler, LayoutGrid, Zap, FileCheck, Map, Building2, Square, Layers, Shield, Waves, Home, LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface PropertyOverviewProps {
@@ -16,6 +16,7 @@ interface PropertyOverviewProps {
   fronts?: number;
   hasInfrastructure?: boolean;
   hasDocumentation?: boolean;
+  isGatedCommunity?: boolean;
   // Commercial building specific
   floors?: number;
   facadeWidth?: string;
@@ -97,6 +98,7 @@ const PropertyOverview = ({
   fronts,
   hasInfrastructure = true,
   hasDocumentation = true,
+  isGatedCommunity = false,
   floors,
   facadeWidth,
   landArea,
@@ -104,6 +106,7 @@ const PropertyOverview = ({
 }: PropertyOverviewProps) => {
   const isLand = category === "Terreno";
   const isCommercialBuilding = category === "Prédio Comercial";
+  const isCondominiumLand = isLand && isGatedCommunity;
 
   const commercialFeatures: FeatureCardProps[] = [
     {
@@ -141,6 +144,46 @@ const PropertyOverview = ({
       icon: FileCheck,
       label: "Documentação",
       value: "100% OK",
+      subtext: "Escritura e Registro"
+    },
+  ];
+
+  const condominiumLandFeatures: FeatureCardProps[] = [
+    {
+      icon: Maximize,
+      label: "Área Total",
+      value: area,
+      subtext: "100% Aproveitável",
+      highlight: true
+    },
+    {
+      icon: Ruler,
+      label: "Dimensões",
+      value: dimensions || "10x20m",
+      subtext: "Geometria Regular"
+    },
+    {
+      icon: Shield,
+      label: "Segurança",
+      value: "24h",
+      subtext: "Portaria e Controle"
+    },
+    {
+      icon: Waves,
+      label: "Área de Lazer",
+      value: "Completa",
+      subtext: "Piscina e Churrasqueira"
+    },
+    {
+      icon: Home,
+      label: "Localização",
+      value: "Privilegiada",
+      subtext: "Primeiras Quadras"
+    },
+    {
+      icon: FileCheck,
+      label: "Documentação",
+      value: hasDocumentation ? "100% OK" : "Verificar",
       subtext: "Escritura e Registro"
     },
   ];
@@ -228,7 +271,13 @@ const PropertyOverview = ({
 
       {/* Key Features */}
       <div className="pt-6 border-t border-border">
-        {isLand ? (
+        {isCondominiumLand ? (
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+            {condominiumLandFeatures.map((feature, index) => (
+              <FeatureCard key={index} {...feature} />
+            ))}
+          </div>
+        ) : isLand ? (
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
             {landFeatures.map((feature, index) => (
               <FeatureCard key={index} {...feature} />

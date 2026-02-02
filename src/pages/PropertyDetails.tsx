@@ -90,6 +90,7 @@ const properties = [
     fronts: 1,
     hasInfrastructure: true,
     hasDocumentation: true,
+    isGatedCommunity: true,
     pricePerM2: "R$ 425",
     avgPricePerM2: "R$ 500",
     walkScore: 75,
@@ -305,6 +306,7 @@ const PropertyDetails = () => {
               fronts={property.fronts}
               hasInfrastructure={property.hasInfrastructure}
               hasDocumentation={property.hasDocumentation}
+              isGatedCommunity={property.isGatedCommunity}
               floors={property.floors}
               facadeWidth={property.facadeWidth}
               landArea={property.landArea}
