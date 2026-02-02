@@ -5,10 +5,9 @@ import { usePageTransition } from "@/contexts/PageTransitionContext";
 import { useSkipAnimations } from "@/pages/Index";
 import { PropertyCard } from "@/components/ui/property-card";
 import { PropertyPreviewModal } from "@/components/ui/property-preview-modal";
-import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";
-import property3 from "@/assets/property-3.jpg";
 import terrenoAsaSul1 from "@/assets/terreno-asa-sul-1.jpg";
+import predioComercial1 from "@/assets/predio-comercial-1.jpg";
 
 const properties = [
   {
@@ -25,13 +24,16 @@ const properties = [
   },
   {
     id: 1,
-    image: property1,
-    title: "Casa Alto da Colina",
-    location: "Centro, Irecê",
-    area: "180m²",
-    category: "Casa",
-    description: "Casa espaçosa com 3 quartos, quintal e área de lazer. Perfeita para famílias que buscam conforto e praticidade.",
-    price: "R$ 380.000",
+    image: predioComercial1,
+    title: "Prédio Comercial Av. Adolfo Moitinho",
+    location: "Av. Adolfo Moitinho, Centro, Irecê",
+    area: "416m²",
+    category: "Prédio Comercial",
+    description: "Investimento no epicentro comercial de Irecê! Sobrado com 3 pavimentos, 416m² construídos. Ideal para uso misto: comércio no térreo e apartamentos/salas nos andares superiores.",
+    builtArea: "416,64m²",
+    landArea: "138,88m²",
+    floors: 3,
+    price: "R$ 2.500.000",
   },
   {
     id: 2,
