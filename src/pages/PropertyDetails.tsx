@@ -263,18 +263,18 @@ const PropertyDetails = () => {
         transition={{ delay: 0.3, duration: 0.4 }}
         className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border"
       >
-        <div className="container-luxury py-4 flex items-center justify-between">
+        <div className="container-luxury py-2 flex items-center justify-between">
           <button
             onClick={() => navigate(-1)}
             className="flex items-center gap-2 text-foreground hover:text-primary transition-colors"
           >
-            <ArrowLeft size={20} />
-            <span className="font-medium hidden sm:inline">Voltar</span>
+            <ArrowLeft size={18} />
+            <span className="font-medium hidden sm:inline text-sm">Voltar</span>
           </button>
           
-          <img src={logo} alt="Joíle Barreto" className="h-14 md:h-16 object-contain" />
+          <img src={logo} alt="Joíle Barreto" className="h-10 md:h-12 object-contain" />
           
-          <span className="text-sm text-muted-foreground">{property.category}</span>
+          <span className="text-xs text-muted-foreground">{property.category}</span>
         </div>
       </motion.header>
 
