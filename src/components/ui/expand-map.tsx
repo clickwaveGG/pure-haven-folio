@@ -232,22 +232,27 @@ export function LocationMap({
                 </svg>
               </motion.div>
 
-              {/* Google Maps Button */}
-              <motion.button
-                onClick={handleOpenMaps}
-                className="absolute bottom-4 right-4 flex items-center gap-2 px-3 py-2 bg-primary text-primary-foreground rounded-full shadow-lg text-xs font-medium pointer-events-auto hover:bg-primary/90 transition-colors"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.5 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <ExternalLink size={14} />
-                Ver no Google Maps
-              </motion.button>
-
               <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60 pointer-events-none" />
             </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Google Maps Button - Outside of pointer-events-none container */}
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.button
+              onClick={handleOpenMaps}
+              className="absolute bottom-4 right-4 z-20 flex items-center gap-2 px-3 py-2 bg-primary text-primary-foreground rounded-full shadow-lg text-xs font-medium hover:bg-primary/90 transition-colors"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ duration: 0.3, delay: 0.5 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <ExternalLink size={14} />
+              Ver no Google Maps
+            </motion.button>
           )}
         </AnimatePresence>
 
