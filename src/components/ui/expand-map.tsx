@@ -3,23 +3,16 @@
 import type React from "react"
 import { useState, useRef } from "react"
 import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from "framer-motion"
-import { MapPin, ExternalLink, Maximize2, Minimize2 } from "lucide-react"
 
 interface LocationMapProps {
   location?: string
   coordinates?: string
-  latitude?: number
-  longitude?: number
-  mapsUrl?: string
   className?: string
 }
 
 export function LocationMap({
   location = "San Francisco, CA",
   coordinates = "37.7749° N, 122.4194° W",
-  latitude,
-  longitude,
-  mapsUrl,
   className,
 }: LocationMapProps) {
   const [isHovered, setIsHovered] = useState(false)
@@ -29,14 +22,14 @@ export function LocationMap({
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
 
-  const rotateX = useTransform(mouseY, [-50, 50], [4, -4])
-  const rotateY = useTransform(mouseX, [-50, 50], [-4, 4])
+  const rotateX = useTransform(mouseY, [-50, 50], [8, -8])
+  const rotateY = useTransform(mouseX, [-50, 50], [-8, 8])
 
   const springRotateX = useSpring(rotateX, { stiffness: 300, damping: 30 })
   const springRotateY = useSpring(rotateY, { stiffness: 300, damping: 30 })
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!containerRef.current || isExpanded) return
+    if (!containerRef.current) return
     const rect = containerRef.current.getBoundingClientRect()
     const centerX = rect.left + rect.width / 2
     const centerY = rect.top + rect.height / 2
@@ -50,165 +43,310 @@ export function LocationMap({
     setIsHovered(false)
   }
 
-  const handleExpandClick = (e: React.MouseEvent) => {
-    e.stopPropagation()
+  const handleClick = () => {
     setIsExpanded(!isExpanded)
   }
 
-  const handleMapsClick = (e: React.MouseEvent) => {
-    e.stopPropagation()
-    if (mapsUrl) {
-      window.open(mapsUrl, '_blank', 'noopener,noreferrer')
-    }
-  }
-
-  // Extract coordinates from Google Maps URL or use provided lat/lng
-  const extractCoordsFromUrl = (url: string): { lat: number; lng: number } | null => {
-    // Pattern for URLs like: https://maps.app.goo.gl/xxx or https://goo.gl/maps/xxx
-    // These short URLs need to be used as-is with Place ID or search
-    
-    // Pattern for: @-11.3039,-41.8559 or q=-11.3039,-41.8559
-    const coordsPattern = /@(-?\d+\.?\d*),(-?\d+\.?\d*)|q=(-?\d+\.?\d*),(-?\d+\.?\d*)/
-    const match = url.match(coordsPattern)
-    if (match) {
-      const lat = parseFloat(match[1] || match[3])
-      const lng = parseFloat(match[2] || match[4])
-      if (!isNaN(lat) && !isNaN(lng)) {
-        return { lat, lng }
-      }
-    }
-    return null
-  }
-
-  // Create Google Maps embed URL
-  const getEmbedUrl = () => {
-    // First priority: explicit coordinates
-    if (latitude && longitude) {
-      return `https://www.google.com/maps?q=${latitude},${longitude}&z=17&output=embed`
-    }
-    
-    // Second priority: extract from mapsUrl
-    if (mapsUrl) {
-      const coords = extractCoordsFromUrl(mapsUrl)
-      if (coords) {
-        return `https://www.google.com/maps?q=${coords.lat},${coords.lng}&z=17&output=embed`
-      }
-      // For short URLs (goo.gl/maps), use place search with the location name
-    }
-    
-    // Fallback: use location name
-    const encodedLocation = encodeURIComponent(location)
-    return `https://www.google.com/maps?q=${encodedLocation}&z=15&output=embed`
-  }
-
   return (
-    <div className={`relative ${className}`}>
+    <motion.div
+      ref={containerRef}
+      className={`relative cursor-pointer select-none ${className}`}
+      style={{
+        perspective: 1000,
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
+    >
       <motion.div
-        ref={containerRef}
-        className="relative w-full overflow-hidden cursor-pointer"
+        className="relative overflow-hidden rounded-2xl bg-background border border-border"
         style={{
-          perspective: 1000,
+          rotateX: springRotateX,
+          rotateY: springRotateY,
           transformStyle: "preserve-3d",
         }}
         animate={{
-          height: isExpanded ? 400 : 288,
+          width: isExpanded ? 360 : 240,
+          height: isExpanded ? 280 : 140,
         }}
-        transition={{ duration: 0.4, ease: "easeOut" }}
-        onMouseMove={handleMouseMove}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={handleMouseLeave}
+        transition={{
+          type: "spring",
+          stiffness: 400,
+          damping: 35,
+        }}
       >
+        {/* Subtle gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-muted/20 via-transparent to-muted/40" />
+
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.div
+              className="absolute inset-0 pointer-events-none"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+            >
+              <div className="absolute inset-0 bg-muted" />
+              <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+                {/* Main roads - using foreground with opacity */}
+                <motion.line
+                  x1="0%"
+                  y1="35%"
+                  x2="100%"
+                  y2="35%"
+                  className="stroke-foreground/25"
+                  strokeWidth="4"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                />
+                <motion.line
+                  x1="0%"
+                  y1="65%"
+                  x2="100%"
+                  y2="65%"
+                  className="stroke-foreground/25"
+                  strokeWidth="4"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                />
+                {/* Vertical main roads */}
+                <motion.line
+                  x1="30%"
+                  y1="0%"
+                  x2="30%"
+                  y2="100%"
+                  className="stroke-foreground/20"
+                  strokeWidth="3"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                />
+                <motion.line
+                  x1="70%"
+                  y1="0%"
+                  x2="70%"
+                  y2="100%"
+                  className="stroke-foreground/20"
+                  strokeWidth="3"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                />
+                {/* Secondary streets */}
+                {[20, 50, 80].map((y, i) => (
+                  <motion.line
+                    key={`h-${i}`}
+                    x1="0%"
+                    y1={`${y}%`}
+                    x2="100%"
+                    y2={`${y}%`}
+                    className="stroke-foreground/10"
+                    strokeWidth="1.5"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 0.5, delay: 0.6 + i * 0.1 }}
+                  />
+                ))}
+                {[15, 45, 55, 85].map((x, i) => (
+                  <motion.line
+                    key={`v-${i}`}
+                    x1={`${x}%`}
+                    y1="0%"
+                    x2={`${x}%`}
+                    y2="100%"
+                    className="stroke-foreground/10"
+                    strokeWidth="1.5"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 0.5, delay: 0.7 + i * 0.1 }}
+                  />
+                ))}
+              </svg>
+              {/* Buildings - using muted-foreground */}
+              <motion.div
+                className="absolute top-[40%] left-[10%] w-[15%] h-[20%] rounded-sm bg-muted-foreground/30 border border-muted-foreground/20"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.5 }}
+              />
+              <motion.div
+                className="absolute top-[15%] left-[35%] w-[12%] h-[15%] rounded-sm bg-muted-foreground/25 border border-muted-foreground/15"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.6 }}
+              />
+              <motion.div
+                className="absolute top-[70%] left-[75%] w-[18%] h-[18%] rounded-sm bg-muted-foreground/28 border border-muted-foreground/18"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.7 }}
+              />
+              <motion.div
+                className="absolute top-[20%] right-[10%] w-[10%] h-[25%] rounded-sm bg-muted-foreground/22 border border-muted-foreground/15"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.55 }}
+              />
+              <motion.div
+                className="absolute top-[55%] left-[5%] w-[8%] h-[12%] rounded-sm bg-muted-foreground/20 border border-muted-foreground/12"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.65 }}
+              />
+              <motion.div
+                className="absolute top-[8%] left-[75%] w-[14%] h-[10%] rounded-sm bg-muted-foreground/22 border border-muted-foreground/15"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.75 }}
+              />
+
+              <motion.div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                initial={{ scale: 0, y: -20 }}
+                animate={{ scale: 1, y: 0 }}
+                transition={{ type: "spring", stiffness: 400, damping: 20, delay: 0.3 }}
+              >
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="drop-shadow-lg"
+                  style={{ filter: "drop-shadow(0 0 10px rgba(52, 211, 153, 0.5))" }}
+                >
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#34D399" />
+                  <circle cx="12" cy="9" r="2.5" className="fill-background" />
+                </svg>
+              </motion.div>
+
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Grid pattern - only show when collapsed */}
         <motion.div
-          className="relative w-full h-full bg-card border border-border rounded-2xl overflow-hidden"
-          style={{
-            rotateX: isHovered && !isExpanded ? springRotateX : 0,
-            rotateY: isHovered && !isExpanded ? springRotateY : 0,
-            transformStyle: "preserve-3d",
-          }}
+          className="absolute inset-0 opacity-[0.03]"
+          animate={{ opacity: isExpanded ? 0 : 0.03 }}
+          transition={{ duration: 0.3 }}
         >
-          {/* Real Map Iframe */}
-          <div className="absolute inset-0">
-            <iframe
-              src={getEmbedUrl()}
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="w-full h-full"
-              title={`Mapa de ${location}`}
+          <svg width="100%" height="100%" className="absolute inset-0">
+            <defs>
+              <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M 20 0 L 0 0 0 20" fill="none" className="stroke-foreground" strokeWidth="0.5" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+          </svg>
+        </motion.div>
+
+        {/* Content */}
+        <div className="relative z-10 h-full flex flex-col justify-between p-5">
+          {/* Top section */}
+          <div className="flex items-start justify-between">
+            <div className="relative">
+              <motion.div
+                className="relative"
+                animate={{
+                  opacity: isExpanded ? 0 : 1,
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                {/* Map Icon SVG */}
+                <motion.svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-emerald-400"
+                  animate={{
+                    filter: isHovered
+                      ? "drop-shadow(0 0 8px rgba(52, 211, 153, 0.6))"
+                      : "drop-shadow(0 0 4px rgba(52, 211, 153, 0.3))",
+                  }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" />
+                  <line x1="9" x2="9" y1="3" y2="18" />
+                  <line x1="15" x2="15" y1="6" y2="21" />
+                </motion.svg>
+              </motion.div>
+            </div>
+
+            {/* Status indicator */}
+            <motion.div
+              className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-foreground/5 backdrop-blur-sm"
+              animate={{
+                scale: isHovered ? 1.05 : 1,
+                backgroundColor: isHovered ? "hsl(var(--foreground) / 0.08)" : "hsl(var(--foreground) / 0.05)",
+              }}
+              transition={{ duration: 0.2 }}
+            >
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <span className="text-[10px] font-medium text-muted-foreground tracking-wide uppercase">Live</span>
+            </motion.div>
+          </div>
+
+          {/* Bottom section */}
+          <div className="space-y-1">
+            <motion.h3
+              className="text-foreground font-medium text-sm tracking-tight"
+              animate={{
+                x: isHovered ? 4 : 0,
+              }}
+              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            >
+              {location}
+            </motion.h3>
+
+            <AnimatePresence>
+              {isExpanded && (
+                <motion.p
+                  className="text-muted-foreground text-xs font-mono"
+                  initial={{ opacity: 0, y: -10, height: 0 }}
+                  animate={{ opacity: 1, y: 0, height: "auto" }}
+                  exit={{ opacity: 0, y: -10, height: 0 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  {coordinates}
+                </motion.p>
+              )}
+            </AnimatePresence>
+
+            {/* Animated underline */}
+            <motion.div
+              className="h-px bg-gradient-to-r from-emerald-500/50 via-emerald-400/30 to-transparent"
+              initial={{ scaleX: 0, originX: 0 }}
+              animate={{
+                scaleX: isHovered || isExpanded ? 1 : 0.3,
+              }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
             />
           </div>
-
-          {/* Gradient overlay for better text readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent pointer-events-none" />
-
-          {/* Top overlay with location pin indicator */}
-          <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-background/60 to-transparent p-4 pointer-events-none">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-background/80 backdrop-blur-sm border border-border pointer-events-auto">
-                <motion.div
-                  className="w-2 h-2 rounded-full bg-emerald-500"
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                />
-                <span className="text-xs font-medium text-foreground">Mapa em tempo real</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom content */}
-          <div className="absolute bottom-0 left-0 right-0 p-4 pointer-events-none">
-            <div className="flex items-end justify-between">
-              <div className="space-y-1">
-                <motion.h3
-                  className="text-lg font-display font-semibold text-foreground drop-shadow-sm"
-                >
-                  {location}
-                </motion.h3>
-                <AnimatePresence>
-                  {isExpanded && (
-                    <motion.p
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="text-sm text-muted-foreground"
-                    >
-                      {coordinates}
-                    </motion.p>
-                  )}
-                </AnimatePresence>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+        </div>
       </motion.div>
 
-      {/* Action buttons */}
-      <div className="absolute bottom-4 right-4 z-20 flex gap-2">
-        <motion.button
-          onClick={handleExpandClick}
-          className="flex items-center justify-center w-10 h-10 bg-background/90 backdrop-blur-sm text-foreground rounded-full shadow-lg border border-border hover:bg-background transition-all"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          title={isExpanded ? "Reduzir mapa" : "Expandir mapa"}
-        >
-          {isExpanded ? <Minimize2 size={18} /> : <Maximize2 size={18} />}
-        </motion.button>
-        
-        <motion.button
-          onClick={handleMapsClick}
-          className="flex items-center gap-2 px-4 py-2.5 bg-primary text-primary-foreground rounded-full shadow-lg font-medium text-sm hover:shadow-xl transition-all"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <MapPin size={16} />
-          <span className="hidden sm:inline">Ver no Google Maps</span>
-          <span className="sm:hidden">Maps</span>
-          <ExternalLink size={14} />
-        </motion.button>
-      </div>
-    </div>
+      {/* Click hint */}
+      <motion.p
+        className="absolute -bottom-6 left-1/2 text-[10px] text-muted-foreground whitespace-nowrap"
+        style={{ x: "-50%" }}
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: isHovered && !isExpanded ? 1 : 0,
+          y: isHovered ? 0 : 4,
+        }}
+        transition={{ duration: 0.2 }}
+      >
+        Clique para expandir
+      </motion.p>
+    </motion.div>
   )
 }

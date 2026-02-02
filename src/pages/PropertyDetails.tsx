@@ -328,9 +328,6 @@ const PropertyDetails = () => {
             <PropertyLocation 
               location={property.location} 
               coordinates={property.coordinates}
-              latitude={property.latitude}
-              longitude={property.longitude}
-              mapsUrl={property.mapsUrl}
             />
           </div>
 
