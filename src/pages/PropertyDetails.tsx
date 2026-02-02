@@ -55,6 +55,7 @@ import casaDonaMarta17 from "@/assets/casa-dona-marta-17.jpg";
 import casaDonaMarta18 from "@/assets/casa-dona-marta-18.jpg";
 import casaDonaMarta19 from "@/assets/casa-dona-marta-19.jpg";
 import casaDonaMarta20 from "@/assets/casa-dona-marta-20.jpg";
+import terrenoAltoMoura1 from "@/assets/terreno-alto-moura-1.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const properties = [
@@ -255,6 +256,38 @@ const properties = [
       { icon: "hospital", name: "Área de Lazer", distance: "No condomínio" },
       { icon: "bank", name: "Portaria 24h", distance: "No local" },
       { icon: "school", name: "Áreas Verdes", distance: "No condomínio" },
+    ],
+  },
+  {
+    id: 7,
+    image: terrenoAltoMoura1,
+    images: [terrenoAltoMoura1],
+    title: "Terreno Alto do Moura",
+    location: "Rua Santa Catarina, S/N, Alto do Moura, Irecê, Bahia",
+    area: "375m²",
+    category: "Terreno",
+    description: "Terreno residencial de 375m² no Alto do Moura em Irecê, Bahia. Área tranquila, com acesso a escolas, comércio e serviços. O terreno oferece amplo espaço para construção.",
+    fullDescription: "Oportunidade de adquirir um terreno residencial desocupado, localizado no Alto do Moura, Irecê, Bahia. Com um espaço total de 375 m², este terreno está localizado na Rua Santa Catarina e oferece um excelente potencial para a realização do seu projeto.\n\nO Alto do Moura é conhecido por sua tranquilidade e ambiente residencial. Situado numa área em crescimento, assegura valorização ao longo do tempo. Com fácil acesso a escolas, comércio local, e serviços essenciais, o terreno é ideal para quem busca qualidade de vida.\n\nSeu tamanho de 375 m² possibilita várias opções de construção, seja a casa dos seus sonhos, um projeto comercial ou investimento para o futuro.\n\nNão perca essa chance! Entre em contato para mais detalhes e agende uma visita ao local.",
+    features: ["375m² de Área", "Área Tranquila", "Em Valorização", "Fácil Acesso", "Próximo a Escolas", "Próximo ao Comércio", "Serviços Essenciais", "Ambiente Residencial", "Documentação OK", "Desocupado"],
+    price: "R$ 210.000",
+    priceNumber: 210000,
+    bedrooms: 0,
+    bathrooms: 0,
+    parking: 0,
+    hasInfrastructure: true,
+    hasDocumentation: true,
+    pricePerM2: "R$ 560",
+    avgPricePerM2: "R$ 650",
+    walkScore: 78,
+    coordinates: "-11.3039° S, -41.8559° W",
+    latitude: -11.3039,
+    longitude: -41.8559,
+    mapsUrl: "https://maps.app.goo.gl/irece",
+    nearbyPlaces: [
+      { icon: "school", name: "Escolas Locais", distance: "Próximo" },
+      { icon: "market", name: "Comércio Local", distance: "Próximo" },
+      { icon: "hospital", name: "Serviços Essenciais", distance: "Fácil Acesso" },
+      { icon: "bank", name: "Centro de Irecê", distance: "10 min de carro" },
     ],
   },
 ];
