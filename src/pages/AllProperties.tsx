@@ -18,6 +18,7 @@ import {
 import terrenoAsaSul1 from "@/assets/terreno-asa-sul-1.jpg";
 import predioAdolfo1 from "@/assets/predio-adolfo-moitinho-1.jpg";
 import terrenoGreenville1 from "@/assets/terreno-greenville-1.jpg";
+import terrenoSaoGabriel1 from "@/assets/terreno-sao-gabriel-1.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const allProperties = [
@@ -61,6 +62,20 @@ const allProperties = [
     priceNumber: 85000,
     description: "Terreno privilegiado nas primeiras quadras do condomínio. Piscina, churrasqueira, parquinhos e segurança 24h.",
     isGatedCommunity: true,
+  },
+  {
+    id: 5,
+    image: terrenoSaoGabriel1,
+    title: "Lote Loteamento Caboré",
+    location: "São Gabriel, BA",
+    area: "200m²",
+    areaNumber: 200,
+    category: "Terreno",
+    price: "Consulte",
+    priceNumber: 0,
+    description: "Investimento inteligente! Lote 10x20m ao lado do novo Colégio Integral e entrada principal da cidade.",
+    dimensions: "10x20m",
+    fronts: 1,
   },
 ];
 

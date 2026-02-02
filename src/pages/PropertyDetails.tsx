@@ -31,6 +31,10 @@ import terrenoGreenville6 from "@/assets/terreno-greenville-6.jpg";
 import terrenoGreenville7 from "@/assets/terreno-greenville-7.jpg";
 import terrenoGreenville8 from "@/assets/terreno-greenville-8.jpg";
 import terrenoGreenville9 from "@/assets/terreno-greenville-9.jpg";
+import terrenoSaoGabriel1 from "@/assets/terreno-sao-gabriel-1.jpg";
+import terrenoSaoGabriel2 from "@/assets/terreno-sao-gabriel-2.jpg";
+import terrenoSaoGabriel3 from "@/assets/terreno-sao-gabriel-3.jpg";
+import terrenoSaoGabriel4 from "@/assets/terreno-sao-gabriel-4.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const properties = [
@@ -149,7 +153,6 @@ const properties = [
     bedrooms: 0,
     bathrooms: 0,
     parking: 0,
-    // Land-specific properties
     dimensions: "7x30m",
     fronts: 2,
     hasInfrastructure: true,
@@ -166,6 +169,40 @@ const properties = [
       { icon: "school", name: "Faculdade FAI", distance: "2 min a pé" },
       { icon: "school", name: "Colégio Cometa", distance: "3 min a pé" },
       { icon: "market", name: "Av. 1º de Janeiro", distance: "5 min a pé" },
+    ],
+  },
+  {
+    id: 5,
+    image: terrenoSaoGabriel1,
+    images: [terrenoSaoGabriel1, terrenoSaoGabriel2, terrenoSaoGabriel3, terrenoSaoGabriel4],
+    title: "Lote Loteamento Caboré",
+    location: "Lote 20, Rua Cantionílio Alves Durães, Loteamento Caboré, São Gabriel, Bahia",
+    area: "200m²",
+    category: "Terreno",
+    description: "Investimento inteligente em São Gabriel/BA! Lote de 200m² (10x20m) em localização estratégica: ao lado do novo Colégio de Tempo Integral e da entrada principal da cidade. Potencial de valorização garantido.",
+    fullDescription: "Pronto para fazer um investimento inteligente? Apresentamos a você uma oportunidade imperdível na cidade de São Gabriel, Bahia! Este é o momento ideal para adquirir um lote em uma localização estratégica, que oferece não apenas um espaço para construir, mas um caminho para a valorização.\n\nEste lote de 200 m², com generosas dimensões de 10 metros de frente por 20 metros de fundo, é o alicerce perfeito para o seu próximo projeto, seja ele a construção de sua casa, um comércio promissor ou um investimento com retorno garantido.\n\nSua localização é um dos pontos mais fortes: o loteamento está situado atrás do novo Colégio de Tempo Integral que está em construção. Imagine o fluxo de pessoas e o potencial de valorização que a proximidade com uma instituição de ensino moderna trará para a região. Escolas são âncoras de desenvolvimento, e ter um imóvel tão próximo significa estar no caminho do crescimento.\n\nAlém de estar ao lado do futuro colégio, o loteamento se beneficia de sua posição ao lado da entrada principal da cidade de São Gabriel. Essa característica é um diferencial enorme, pois garante fácil acesso para quem chega e sai da cidade, além de uma visibilidade que impulsiona o valor do seu investimento.\n\nEste não é apenas mais um lote à venda; trata-se de um ótimo investimento, pois está bem precificado, dentro da realidade de mercado. A chegada do novo Colégio Integral e o desenvolvimento urbano ao redor da entrada da cidade são indicadores claros de uma expansão que trará valorização imobiliária.",
+    features: ["10x20m (200m²)", "Próximo ao Colégio Integral", "Entrada Principal da Cidade", "Alta Visibilidade", "Potencial de Valorização", "Ideal para Casa ou Comércio", "Documentação OK", "Infraestrutura em Expansão", "Fácil Acesso", "Preço Justo"],
+    price: "Consulte",
+    priceNumber: 0,
+    bedrooms: 0,
+    bathrooms: 0,
+    parking: 0,
+    dimensions: "10x20m",
+    fronts: 1,
+    hasInfrastructure: true,
+    hasDocumentation: true,
+    pricePerM2: "Consulte",
+    avgPricePerM2: "Consulte",
+    walkScore: 85,
+    coordinates: "-11.2286° S, -41.9164° W",
+    latitude: -11.2286,
+    longitude: -41.9164,
+    mapsUrl: "https://maps.app.goo.gl/sao-gabriel-ba",
+    nearbyPlaces: [
+      { icon: "school", name: "Colégio Integral (em construção)", distance: "Ao lado" },
+      { icon: "market", name: "Entrada Principal", distance: "Ao lado" },
+      { icon: "bus", name: "Centro de São Gabriel", distance: "5 min de carro" },
+      { icon: "hospital", name: "Serviços Essenciais", distance: "Próximo" },
     ],
   },
 ];
