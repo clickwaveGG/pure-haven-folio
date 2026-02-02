@@ -15,15 +15,15 @@ import {
 } from "@/components/ui/select";
 
 // Assets
-import property1 from "@/assets/property-1.jpg";
-import property2 from "@/assets/property-2.jpg";
-import property3 from "@/assets/property-3.jpg";
+import terrenoAsaSul1 from "@/assets/terreno-asa-sul-1.jpg";
+import predioAdolfo1 from "@/assets/predio-adolfo-moitinho-1.jpg";
+import terrenoGreenville1 from "@/assets/terreno-greenville-1.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const allProperties = [
   {
     id: 4,
-    image: property1,
+    image: terrenoAsaSul1,
     title: "Terreno Asa Sul com Duas Frentes",
     location: "Bairro Asa Sul, Irecê",
     area: "210m²",
@@ -37,41 +37,30 @@ const allProperties = [
   },
   {
     id: 1,
-    image: property1,
-    title: "Casa Alto da Colina",
+    image: predioAdolfo1,
+    title: "Prédio Comercial Av. Adolfo Moitinho",
     location: "Centro, Irecê",
-    area: "180m²",
-    areaNumber: 180,
-    category: "Casa",
-    price: "R$ 380.000",
-    priceNumber: 380000,
-    description: "Casa espaçosa com 3 quartos, quintal e área de lazer. Perfeita para famílias que buscam conforto e praticidade.",
+    area: "416m²",
+    areaNumber: 416,
+    category: "Prédio Comercial",
+    price: "R$ 2.500.000",
+    priceNumber: 2500000,
+    description: "Investimento no epicentro comercial! Sobrado com 416m² em 3 pavimentos na via de maior fluxo de Irecê.",
+    floors: 3,
+    facadeWidth: "6,40m",
   },
   {
     id: 2,
-    image: property2,
-    title: "Apartamento Jardim das Flores",
-    location: "Bairro São José, Irecê",
-    area: "75m²",
-    areaNumber: 75,
-    category: "Apartamento",
-    price: "R$ 220.000",
-    priceNumber: 220000,
-    description: "Apartamento moderno com 2 quartos em condomínio com área de lazer. Ideal para casais e jovens profissionais.",
-  },
-  {
-    id: 3,
-    image: property3,
-    title: "Terreno Vila Nova",
-    location: "Bairro Vila Nova, Irecê",
-    area: "360m²",
-    areaNumber: 360,
+    image: terrenoGreenville1,
+    title: "Terreno Condomínio Green Ville",
+    location: "Cond. Green Ville, Irecê",
+    area: "200m²",
+    areaNumber: 200,
     category: "Terreno",
-    price: "R$ 120.000",
-    priceNumber: 120000,
-    description: "Terreno plano em área residencial com infraestrutura completa. Realize o sonho de construir sua casa ideal.",
-    dimensions: "12x30m",
-    fronts: 1,
+    price: "R$ 85.000",
+    priceNumber: 85000,
+    description: "Terreno privilegiado nas primeiras quadras do condomínio. Piscina, churrasqueira, parquinhos e segurança 24h.",
+    isGatedCommunity: true,
   },
 ];
 
@@ -264,6 +253,9 @@ const AllProperties = () => {
                     area={property.area}
                     dimensions={property.dimensions}
                     fronts={property.fronts}
+                    floors={property.floors}
+                    facadeWidth={property.facadeWidth}
+                    isGatedCommunity={property.isGatedCommunity}
                     price={property.price}
                     onDetailsClick={() => handlePropertyClick(property)}
                   />
