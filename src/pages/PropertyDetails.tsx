@@ -81,6 +81,18 @@ import terrenoAlphaGarden9 from "@/assets/terreno-alpha-garden-9.jpg";
 import terrenoAlphaGarden10 from "@/assets/terreno-alpha-garden-10.jpg";
 import terrenoAlphaGarden11 from "@/assets/terreno-alpha-garden-11.jpg";
 import terrenoAlphaGarden12 from "@/assets/terreno-alpha-garden-12.jpg";
+import terrenoAlphaGarden2_1 from "@/assets/terreno-alpha-garden2-1.jpg";
+import terrenoAlphaGarden2_2 from "@/assets/terreno-alpha-garden2-2.jpg";
+import terrenoAlphaGarden2_3 from "@/assets/terreno-alpha-garden2-3.jpg";
+import terrenoAlphaGarden2_4 from "@/assets/terreno-alpha-garden2-4.jpg";
+import terrenoAlphaGarden2_5 from "@/assets/terreno-alpha-garden2-5.jpg";
+import terrenoAlphaGarden2_6 from "@/assets/terreno-alpha-garden2-6.jpg";
+import terrenoAlphaGarden2_7 from "@/assets/terreno-alpha-garden2-7.jpg";
+import terrenoAlphaGarden2_8 from "@/assets/terreno-alpha-garden2-8.jpg";
+import terrenoAlphaGarden2_9 from "@/assets/terreno-alpha-garden2-9.jpg";
+import terrenoAlphaGarden2_10 from "@/assets/terreno-alpha-garden2-10.jpg";
+import terrenoAlphaGarden2_11 from "@/assets/terreno-alpha-garden2-11.jpg";
+import terrenoAlphaGarden2_12 from "@/assets/terreno-alpha-garden2-12.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const properties = [
@@ -407,6 +419,41 @@ const properties = [
     bathrooms: 0,
     parking: 0,
     dimensions: "10x30m",
+    fronts: 1,
+    hasInfrastructure: true,
+    hasDocumentation: true,
+    isGatedCommunity: true,
+    pricePerM2: "R$ 350",
+    avgPricePerM2: "R$ 425",
+    walkScore: 70,
+    coordinates: "-11.3039° S, -41.8559° W",
+    latitude: -11.3039,
+    longitude: -41.8559,
+    mapsUrl: "https://maps.app.goo.gl/irece",
+    nearbyPlaces: [
+      { icon: "market", name: "BA-800", distance: "No local" },
+      { icon: "hospital", name: "Área de Lazer Completa", distance: "No condomínio" },
+      { icon: "bank", name: "Segurança 24h", distance: "No local" },
+      { icon: "school", name: "Centro de Irecê", distance: "10 min de carro" },
+    ],
+  },
+  {
+    id: 11,
+    image: terrenoAlphaGarden2_1,
+    images: [terrenoAlphaGarden2_1, terrenoAlphaGarden2_2, terrenoAlphaGarden2_3, terrenoAlphaGarden2_4, terrenoAlphaGarden2_5, terrenoAlphaGarden2_6, terrenoAlphaGarden2_7, terrenoAlphaGarden2_8, terrenoAlphaGarden2_9, terrenoAlphaGarden2_10, terrenoAlphaGarden2_11, terrenoAlphaGarden2_12],
+    title: "Terreno Alpha Garden - 378m²",
+    location: "BA-800, Meia Hora, Zona Rural, Irecê, Bahia",
+    area: "378m²",
+    category: "Terreno",
+    description: "Terreno diferenciado de 378m² (13,5x28m) no Condomínio Alpha Garden, na BA-800 em Irecê. Condomínio com apenas 282 unidades, segurança 24h e lazer completo. Aceita permuta.",
+    fullDescription: "Você está convidado a descobrir um novo padrão de viver bem em Irecê. Apresentamos uma oportunidade ímpar de construir a residência dos seus sonhos no Condomínio Alpha Garden, estrategicamente localizado na BA-800.\n\nEste terreno diferenciado de 378m², com dimensões generosas de 13,5 metros de frente por 28 metros de fundo, oferece amplo espaço para projetos arquitetônicos arrojados. É o passaporte para um estilo de vida onde a segurança da sua família, o lazer e o contato com a natureza coexistem em perfeita harmonia.\n\nO Alpha Garden foi meticulosamente planejado para oferecer uma experiência residencial inigualável, com apenas 282 unidades, garantindo privacidade e um senso de comunidade mais forte.\n\nO condomínio foi projetado com sistema de segurança completo, começando pela Guarita 24 horas, com profissionais treinados, controle de acesso rigoroso e monitoramento constante.\n\nA área de lazer é um dos grandes diferenciais: duas piscinas (adulto e infantil), academia equipada, salão de festas climatizado, churrasqueira, quadra poliesportiva e quadra de tênis.\n\nSituado na BA-800, Meia Hora, o condomínio está em localização privilegiada — longe do barulho, mas a poucos minutos de todas as conveniências. A demanda por condomínios fechados com infraestrutura completa é crescente em Irecê, o que impulsiona a valorização do imóvel.\n\nEste imóvel aceita permuta, tornando a negociação ainda mais flexível para você.",
+    features: ["Condomínio Fechado", "Segurança 24h", "2 Piscinas (Adulto e Infantil)", "Academia", "Salão de Festas", "Churrasqueira", "Quadra Poliesportiva", "Quadra de Tênis", "Rua Asfaltada", "Apenas 282 Unidades", "Aceita Permuta", "Documentação OK"],
+    price: "R$ 132.300",
+    priceNumber: 132300,
+    bedrooms: 0,
+    bathrooms: 0,
+    parking: 0,
+    dimensions: "13,5x28m",
     fronts: 1,
     hasInfrastructure: true,
     hasDocumentation: true,
