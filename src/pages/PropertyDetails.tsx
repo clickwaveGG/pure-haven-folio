@@ -69,6 +69,18 @@ import terrenoMocozeiro2_1 from "@/assets/terreno-mocozeiro2-1.jpg";
 import terrenoMocozeiro2_2 from "@/assets/terreno-mocozeiro2-2.jpg";
 import terrenoMocozeiro2_3 from "@/assets/terreno-mocozeiro2-3.jpg";
 import terrenoMocozeiro2_4 from "@/assets/terreno-mocozeiro2-4.jpg";
+import terrenoAlphaGarden1 from "@/assets/terreno-alpha-garden-1.jpg";
+import terrenoAlphaGarden2 from "@/assets/terreno-alpha-garden-2.jpg";
+import terrenoAlphaGarden3 from "@/assets/terreno-alpha-garden-3.jpg";
+import terrenoAlphaGarden4 from "@/assets/terreno-alpha-garden-4.jpg";
+import terrenoAlphaGarden5 from "@/assets/terreno-alpha-garden-5.jpg";
+import terrenoAlphaGarden6 from "@/assets/terreno-alpha-garden-6.jpg";
+import terrenoAlphaGarden7 from "@/assets/terreno-alpha-garden-7.jpg";
+import terrenoAlphaGarden8 from "@/assets/terreno-alpha-garden-8.jpg";
+import terrenoAlphaGarden9 from "@/assets/terreno-alpha-garden-9.jpg";
+import terrenoAlphaGarden10 from "@/assets/terreno-alpha-garden-10.jpg";
+import terrenoAlphaGarden11 from "@/assets/terreno-alpha-garden-11.jpg";
+import terrenoAlphaGarden12 from "@/assets/terreno-alpha-garden-12.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const properties = [
@@ -376,6 +388,41 @@ const properties = [
       { icon: "school", name: "Condomínios Residenciais", distance: "Próximo" },
       { icon: "hospital", name: "Centro de Irecê", distance: "10 min de carro" },
       { icon: "bank", name: "Povoados Vizinhos", distance: "Fácil Acesso" },
+    ],
+  },
+  {
+    id: 10,
+    image: terrenoAlphaGarden1,
+    images: [terrenoAlphaGarden1, terrenoAlphaGarden2, terrenoAlphaGarden3, terrenoAlphaGarden4, terrenoAlphaGarden5, terrenoAlphaGarden6, terrenoAlphaGarden7, terrenoAlphaGarden8, terrenoAlphaGarden9, terrenoAlphaGarden10, terrenoAlphaGarden11, terrenoAlphaGarden12],
+    title: "Terreno Condomínio Alpha Garden",
+    location: "BA-800, Meia Hora, Zona Rural, Irecê, Bahia",
+    area: "300m²",
+    category: "Terreno",
+    description: "Oportunidade exclusiva de construir a residência dos seus sonhos no Condomínio Alpha Garden, estrategicamente localizado na BA-800 em Irecê. Terreno de 300m² em condomínio com apenas 282 unidades.",
+    fullDescription: "Você está convidado a descobrir um novo padrão de viver bem em Irecê. Apresentamos uma oportunidade ímpar de construir a residência dos seus sonhos no Condomínio Alpha Garden, estrategicamente localizado na BA-800.\n\nEste não é apenas um terreno. É o passaporte para um estilo de vida onde a segurança da sua família, o lazer e o contato com a natureza coexistem em perfeita harmonia. O Alpha Garden foi meticulosamente planejado para oferecer uma experiência residencial inigualável.\n\nOferecemos um terreno exclusivo, pronto para construir, inserido em um condomínio com apenas 282 unidades. Essa exclusividade garante não apenas privacidade, mas também um senso de comunidade mais forte e uma gestão de condomínio mais eficiente.\n\nViver no Alpha Garden é sinônimo de tranquilidade. O condomínio foi projetado com sistema de segurança, começando pela Guarita 24 horas, contando com profissionais treinados, controle de acesso rigoroso de visitantes e prestadores de serviço, além de monitoramento constante.\n\nO grande diferencial do Alpha Garden é sua área de lazer completa: duas piscinas (adulto e infantil), academia equipada, salão de festas climatizado, churrasqueira, quadra poliesportiva e quadra de tênis.\n\nSituado na BA-800, Meia Hora, o Condomínio Alpha Garden está em uma localização privilegiada. Longe do barulho e do trânsito intenso do centro, mas a poucos minutos de todas as conveniências que você precisa.\n\nAdquirir um terreno no Alpha Garden é investir em um patrimônio sólido. A demanda por condomínios fechados com infraestrutura completa e segurança de alto nível é crescente em Irecê. A combinação de localização, lazer exclusivo e o número limitado de lotes (apenas 282) cria uma escassez que impulsiona a valorização do imóvel a curto, médio e longo prazo.",
+    features: ["Condomínio Fechado", "Segurança 24h", "2 Piscinas (Adulto e Infantil)", "Academia", "Salão de Festas", "Churrasqueira", "Quadra Poliesportiva", "Quadra de Tênis", "Rua Asfaltada", "Apenas 282 Unidades", "Aceita Permuta", "Documentação OK"],
+    price: "R$ 105.000",
+    priceNumber: 105000,
+    bedrooms: 0,
+    bathrooms: 0,
+    parking: 0,
+    dimensions: "10x30m",
+    fronts: 1,
+    hasInfrastructure: true,
+    hasDocumentation: true,
+    isGatedCommunity: true,
+    pricePerM2: "R$ 350",
+    avgPricePerM2: "R$ 425",
+    walkScore: 70,
+    coordinates: "-11.3039° S, -41.8559° W",
+    latitude: -11.3039,
+    longitude: -41.8559,
+    mapsUrl: "https://maps.app.goo.gl/irece",
+    nearbyPlaces: [
+      { icon: "market", name: "BA-800", distance: "No local" },
+      { icon: "hospital", name: "Área de Lazer Completa", distance: "No condomínio" },
+      { icon: "bank", name: "Segurança 24h", distance: "No local" },
+      { icon: "school", name: "Centro de Irecê", distance: "10 min de carro" },
     ],
   },
 ];
