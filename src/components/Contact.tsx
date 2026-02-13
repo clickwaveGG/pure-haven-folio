@@ -61,7 +61,7 @@ const Contact = () => {
                   <p className="text-xs font-medium text-muted-foreground mb-0.5">
                     Telefone
                   </p>
-                  <p className="text-foreground font-medium">+55 74 99999-9999</p>
+                  <p className="text-foreground font-medium">+55 74 99999-3009</p>
                 </div>
               </div>
 
@@ -91,7 +91,7 @@ const Contact = () => {
 
               {/* WhatsApp CTA */}
               <a 
-                href="https://wa.me/5574999999999" 
+                href="https://wa.me/5574999993009" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-4 bg-green-50 rounded-xl border border-green-200 hover:bg-green-100 transition-colors group"
@@ -143,7 +143,7 @@ const Contact = () => {
                     name="phone"
                     type="tel"
                     className="bg-background border-border focus:border-primary focus:ring-primary/20"
-                    placeholder="(74) 99999-9999"
+                    placeholder="(74) 99999-3009"
                   />
                 </div>
               </div>

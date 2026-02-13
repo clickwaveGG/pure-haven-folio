@@ -163,7 +163,7 @@ const Hero = () => {
         },
         {
           text: "WhatsApp",
-          href: "https://wa.me/5574999999999",
+          href: "https://wa.me/5574999993009",
           variant: "outline",
           icon: <Icons.whatsapp className="h-4 w-4" />,
         },

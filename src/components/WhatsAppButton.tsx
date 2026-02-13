@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const WhatsAppButton = () => {
-  const whatsappNumber = "5574999999999"; // Número de Irecê, BA
+  const whatsappNumber = "5574999993009"; // Número de Irecê, BA
   const message = encodeURIComponent("Olá! Gostaria de mais informações sobre imóveis em Irecê.");
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
 

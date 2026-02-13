@@ -687,7 +687,7 @@ const PropertyDetails = () => {
   }
 
   const whatsappMessage = encodeURIComponent(`Olá! Tenho interesse no imóvel: ${property.title} - ${property.location}`);
-  const whatsappLink = `https://wa.me/5574999999999?text=${whatsappMessage}`;
+  const whatsappLink = `https://wa.me/5574999993009?text=${whatsappMessage}`;
 
   // Calculate initial transform based on card position
   const hasTransition = transitionData?.rect && animationPhase !== "complete";
@@ -813,7 +813,7 @@ const PropertyDetails = () => {
           <div className="space-y-6">
             <AgentContact
               whatsappLink={whatsappLink}
-              phoneNumber="+5574999999999"
+              phoneNumber="+5574999993009"
             />
           </div>
         </div>
