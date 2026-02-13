@@ -26,6 +26,7 @@ import terrenoMocozeiro2_1 from "@/assets/terreno-mocozeiro2-1.jpg";
 import terrenoAlphaGarden1 from "@/assets/terreno-alpha-garden-1.jpg";
 import terrenoAlphaGarden2_1 from "@/assets/terreno-alpha-garden2-1.jpg";
 import loteAcquaville1 from "@/assets/lote-acquaville-1.jpg";
+import lotePiemont1 from "@/assets/lote-piemont-1.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const allProperties = [
@@ -181,6 +182,21 @@ const allProperties = [
     isGatedCommunity: true,
     highlights: ["Parque Aquático", "Passaporte Vitalício"],
     dimensions: "10x15m",
+  },
+  {
+    id: 13,
+    image: lotePiemont1,
+    title: "Lote Reserva Piemont 2",
+    location: "BA-144, Morro do Chapéu",
+    area: "375m²",
+    areaNumber: 375,
+    category: "Terreno",
+    price: "R$ 55.000",
+    priceNumber: 55000,
+    description: "Lote de 375m² no Reserva Piemont 2, Morro do Chapéu. Condomínio estilo europeu com vista para o Vale do Agreste, piscina aquecida e lareiras.",
+    isGatedCommunity: true,
+    highlights: ["Estilo Europeu", "Vista Montanhosa"],
+    dimensions: "15x25m",
   },
 ];
 
