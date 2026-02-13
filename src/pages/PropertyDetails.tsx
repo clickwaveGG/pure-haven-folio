@@ -147,7 +147,7 @@ const properties = [
     coordinates: "11.3039° S, 41.8559° W",
     latitude: -11.3039,
     longitude: -41.8559,
-    mapsUrl: "https://maps.app.goo.gl/irece",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Av+Adolfo+Moitinho,+Centro,+Irec%C3%AA,+Bahia",
     nearbyPlaces: [
       { icon: "hospital", name: "Hospital", distance: "2 min a pé" },
       { icon: "bus", name: "Rodoviária", distance: "3 min a pé" },
@@ -183,7 +183,7 @@ const properties = [
     coordinates: "11.3039° S, 41.8559° W",
     latitude: -11.3050,
     longitude: -41.8700,
-    mapsUrl: "https://www.google.com/maps/@-11.3050,-41.8700,17z",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Condom%C3%ADnio+Residencial+Green+Ville,+Irec%C3%AA,+Bahia",
     nearbyPlaces: [
       { icon: "market", name: "BA-052", distance: "2 min de carro" },
       { icon: "school", name: "Centro de Irecê", distance: "5 min de carro" },
@@ -212,7 +212,7 @@ const properties = [
     coordinates: "11.3039° S, 41.8559° W",
     latitude: -11.3039,
     longitude: -41.8559,
-    mapsUrl: "https://maps.app.goo.gl/irece",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Bairro+Vila+Nova,+Irec%C3%AA,+Bahia",
     nearbyPlaces: [
       { icon: "school", name: "Escola Municipal", distance: "10 min a pé" },
       { icon: "market", name: "Comércio Local", distance: "5 min a pé" },
@@ -279,7 +279,7 @@ const properties = [
     coordinates: "-11.2286° S, -41.9164° W",
     latitude: -11.2286,
     longitude: -41.9164,
-    mapsUrl: "https://maps.app.goo.gl/sao-gabriel-ba",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Loteamento+Cabor%C3%A9,+S%C3%A3o+Gabriel,+Bahia",
     nearbyPlaces: [
       { icon: "school", name: "Colégio Integral (em construção)", distance: "Ao lado" },
       { icon: "market", name: "Entrada Principal", distance: "Ao lado" },
@@ -311,7 +311,7 @@ const properties = [
     coordinates: "11.3039° S, 41.8559° W",
     latitude: -11.3039,
     longitude: -41.8559,
-    mapsUrl: "https://maps.app.goo.gl/irece",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Condom%C3%ADnio+Dona+Marta,+Irec%C3%AA,+Bahia",
     nearbyPlaces: [
       { icon: "market", name: "Centro de Irecê", distance: "10 min de carro" },
       { icon: "hospital", name: "Área de Lazer", distance: "No condomínio" },
@@ -343,7 +343,7 @@ const properties = [
     coordinates: "-11.3039° S, -41.8559° W",
     latitude: -11.3039,
     longitude: -41.8559,
-    mapsUrl: "https://maps.app.goo.gl/irece",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Rua+Santa+Catarina,+Alto+do+Moura,+Irec%C3%AA,+Bahia",
     nearbyPlaces: [
       { icon: "school", name: "Escolas Locais", distance: "Próximo" },
       { icon: "market", name: "Comércio Local", distance: "Próximo" },
@@ -383,7 +383,7 @@ const properties = [
     coordinates: "-11.2800° S, -41.9000° W",
     latitude: -11.2800,
     longitude: -41.9000,
-    mapsUrl: "https://maps.app.goo.gl/irece-rural",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Estrada+do+Mocozeiro+2,+Irec%C3%AA,+Bahia",
     nearbyPlaces: [
       { icon: "market", name: "Estrada Principal", distance: "No local" },
       { icon: "school", name: "Condomínio de Chácaras", distance: "Próximo" },
@@ -418,7 +418,7 @@ const properties = [
     coordinates: "-11.2750° S, -41.9050° W",
     latitude: -11.2750,
     longitude: -41.9050,
-    mapsUrl: "https://maps.app.goo.gl/irece-mocozeiro",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Mocozeiro+2,+Irec%C3%AA,+Bahia",
     nearbyPlaces: [
       { icon: "market", name: "BA-800", distance: "Próximo" },
       { icon: "school", name: "Condomínios Residenciais", distance: "Próximo" },
@@ -453,7 +453,7 @@ const properties = [
     coordinates: "-11.3039° S, -41.8559° W",
     latitude: -11.3039,
     longitude: -41.8559,
-    mapsUrl: "https://maps.app.goo.gl/irece",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Condom%C3%ADnio+Alpha+Garden,+BA-800,+Irec%C3%AA,+Bahia",
     nearbyPlaces: [
       { icon: "market", name: "BA-800", distance: "No local" },
       { icon: "hospital", name: "Área de Lazer Completa", distance: "No condomínio" },
@@ -488,7 +488,7 @@ const properties = [
     coordinates: "-11.3039° S, -41.8559° W",
     latitude: -11.3039,
     longitude: -41.8559,
-    mapsUrl: "https://maps.app.goo.gl/irece",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Condom%C3%ADnio+Alpha+Garden,+BA-800,+Irec%C3%AA,+Bahia",
     nearbyPlaces: [
       { icon: "market", name: "BA-800", distance: "No local" },
       { icon: "hospital", name: "Área de Lazer Completa", distance: "No condomínio" },
@@ -523,7 +523,7 @@ const properties = [
     coordinates: "-11.2900° S, -41.9200° W",
     latitude: -11.2900,
     longitude: -41.9200,
-    mapsUrl: "https://maps.app.goo.gl/irece",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Acquaville+Park+Show,+BA-052+Km+354,+Irec%C3%AA,+Bahia",
     nearbyPlaces: [
       { icon: "market", name: "BA-052", distance: "No local" },
       { icon: "hospital", name: "Parque Aquático", distance: "No condomínio" },
@@ -558,7 +558,7 @@ const properties = [
     coordinates: "-11.5500° S, -41.1600° W",
     latitude: -11.5500,
     longitude: -41.1600,
-    mapsUrl: "https://maps.app.goo.gl/morro-do-chapeu",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Reserva+Piemont+2,+BA-144+Km+03,+Morro+do+Chap%C3%A9u,+Bahia",
     nearbyPlaces: [
       { icon: "market", name: "BA-144", distance: "No local" },
       { icon: "hospital", name: "Vale do Agreste", distance: "Vista panorâmica" },
@@ -592,7 +592,7 @@ const properties = [
     coordinates: "-11.2286° S, -41.9164° W",
     latitude: -11.2286,
     longitude: -41.9164,
-    mapsUrl: "https://maps.app.goo.gl/sao-gabriel-ba",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Loteamento+Cabor%C3%A9,+S%C3%A3o+Gabriel,+Bahia",
     nearbyPlaces: [
       { icon: "school", name: "Colégio Integral (em construção)", distance: "Ao lado" },
       { icon: "market", name: "Entrada Principal", distance: "Ao lado" },
@@ -627,7 +627,7 @@ const properties = [
     coordinates: "-11.3050° S, -41.8700° W",
     latitude: -11.3050,
     longitude: -41.8700,
-    mapsUrl: "https://www.google.com/maps/@-11.3050,-41.8700,17z",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Condom%C3%ADnio+Residencial+Green+Ville,+Irec%C3%AA,+Bahia",
     nearbyPlaces: [
       { icon: "market", name: "BA-052", distance: "2 min de carro" },
       { icon: "school", name: "Centro de Irecê", distance: "5 min de carro" },
