@@ -31,7 +31,7 @@ const Footer = () => {
               <Linkedin size={18} />
             </a>
             <a
-              href="https://wa.me/5574999999999"
+              href="https://wa.me/5574999993009"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
