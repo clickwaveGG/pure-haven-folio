@@ -25,6 +25,7 @@ import fazendaMocozeiro1 from "@/assets/fazenda-mocozeiro-1.jpg";
 import terrenoMocozeiro2_1 from "@/assets/terreno-mocozeiro2-1.jpg";
 import terrenoAlphaGarden1 from "@/assets/terreno-alpha-garden-1.jpg";
 import terrenoAlphaGarden2_1 from "@/assets/terreno-alpha-garden2-1.jpg";
+import loteAcquaville1 from "@/assets/lote-acquaville-1.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const allProperties = [
@@ -165,6 +166,21 @@ const allProperties = [
     isGatedCommunity: true,
     highlights: ["378m² Esquina", "Aceita Permuta"],
     dimensions: "13,5x28m",
+  },
+  {
+    id: 12,
+    image: loteAcquaville1,
+    title: "Lote Acquaville Park Show",
+    location: "KM 354, BA-052, Irecê",
+    area: "150m²",
+    areaNumber: 150,
+    category: "Terreno",
+    price: "R$ 90.000",
+    priceNumber: 90000,
+    description: "Lote exclusivo de 150m² no Acquaville Park Show com passaporte vitalício ao parque aquático. Piscina semi-olímpica e segurança 24h.",
+    isGatedCommunity: true,
+    highlights: ["Parque Aquático", "Passaporte Vitalício"],
+    dimensions: "10x15m",
   },
 ];
 

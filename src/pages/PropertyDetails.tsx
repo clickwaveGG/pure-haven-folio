@@ -93,6 +93,12 @@ import terrenoAlphaGarden2_9 from "@/assets/terreno-alpha-garden2-9.jpg";
 import terrenoAlphaGarden2_10 from "@/assets/terreno-alpha-garden2-10.jpg";
 import terrenoAlphaGarden2_11 from "@/assets/terreno-alpha-garden2-11.jpg";
 import terrenoAlphaGarden2_12 from "@/assets/terreno-alpha-garden2-12.jpg";
+import loteAcquaville1 from "@/assets/lote-acquaville-1.jpg";
+import loteAcquaville2 from "@/assets/lote-acquaville-2.jpg";
+import loteAcquaville3 from "@/assets/lote-acquaville-3.jpg";
+import loteAcquaville4 from "@/assets/lote-acquaville-4.jpg";
+import loteAcquaville5 from "@/assets/lote-acquaville-5.jpg";
+import loteAcquaville6 from "@/assets/lote-acquaville-6.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const properties = [
@@ -470,6 +476,41 @@ const properties = [
       { icon: "hospital", name: "Área de Lazer Completa", distance: "No condomínio" },
       { icon: "bank", name: "Segurança 24h", distance: "No local" },
       { icon: "school", name: "Centro de Irecê", distance: "10 min de carro" },
+    ],
+  },
+  {
+    id: 12,
+    image: loteAcquaville1,
+    images: [loteAcquaville1, loteAcquaville2, loteAcquaville3, loteAcquaville4, loteAcquaville5, loteAcquaville6],
+    title: "Lote Acquaville Park Show",
+    location: "KM 354, BA-052, Zona Rural, Irecê, Bahia",
+    area: "150m²",
+    category: "Terreno",
+    description: "Oportunidade única no coração do Acquaville Park Show, o principal parque aquático de Irecê! Lote exclusivo de 150m² para construção de chalé, com passaporte vitalício ao parque aquático.",
+    fullDescription: "Apresentamos a você uma oportunidade única e imperdível no coração do Acquaville Park Show, o principal parque aquático de Irecê! Imagine acordar todos os dias com a energia contagiante de um paraíso aquático à sua porta, onde diversão, relaxamento e momentos inesquecíveis se encontram.\n\nEste lote exclusivo de 150m², com dimensões de 10 metros de frente por 15 metros de fundo, oferece o espaço perfeito para você construir um chalé, seguindo o padrão charmoso e funcional do Acquaville. Localizado estrategicamente no KM 354 da BA-052, o Acquaville Park Show é facilmente acessível e se tornou um marco na região.\n\nO grande diferencial desta oferta é o Passaporte Vitalício ao Parque Aquático que acompanha a aquisição do lote. Uma vez proprietário, você e sua família terão acesso ilimitado e para sempre a todas as atrações que o Acquaville Park Show oferece. Este é um benefício que agrega um valor inestimável ao seu investimento.\n\nO Acquaville Park Show não é apenas um parque aquático; é um complexo de lazer completo que se destaca pela sua infraestrutura moderna, segurança e uma variedade de atrações para todas as idades.\n\nEsta é a oportunidade perfeita para quem busca um investimento inteligente, com potencial de valorização, e ao mesmo tempo um refúgio para desfrutar da vida ao máximo. Seja para passar fins de semana, feriados ou até mesmo para morar, ter um chalé no Acquaville Park Show com acesso vitalício ao parque é um privilégio que poucos podem ter.",
+    features: ["Passaporte Vitalício", "Parque Aquático Completo", "Piscina Semi-Olímpica", "Segurança 24h", "Condomínio Fechado", "Próximo à BA-052", "Ideal para Chalé", "Lazer para Toda Família", "Investimento Inteligente", "Documentação OK"],
+    price: "R$ 90.000",
+    priceNumber: 90000,
+    bedrooms: 0,
+    bathrooms: 0,
+    parking: 0,
+    dimensions: "10x15m",
+    fronts: 1,
+    hasInfrastructure: true,
+    hasDocumentation: true,
+    isGatedCommunity: true,
+    pricePerM2: "R$ 600",
+    avgPricePerM2: "R$ 700",
+    walkScore: 60,
+    coordinates: "-11.2900° S, -41.9200° W",
+    latitude: -11.2900,
+    longitude: -41.9200,
+    mapsUrl: "https://maps.app.goo.gl/irece",
+    nearbyPlaces: [
+      { icon: "market", name: "BA-052", distance: "No local" },
+      { icon: "hospital", name: "Parque Aquático", distance: "No condomínio" },
+      { icon: "bank", name: "Segurança 24h", distance: "No local" },
+      { icon: "school", name: "Centro de Irecê", distance: "15 min de carro" },
     ],
   },
 ];
