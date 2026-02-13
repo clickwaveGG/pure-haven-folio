@@ -7,6 +7,7 @@ interface SlideData {
   title: string;
   button: string;
   src: string;
+  href?: string;
 }
 
 interface SlideProps {
@@ -14,10 +15,11 @@ interface SlideProps {
   index: number;
   current: number;
   handleSlideClick: (index: number) => void;
+  handleButtonClick: (href?: string) => void;
   position: number;
 }
 
-const Slide = ({ slide, index, current, handleSlideClick, position }: SlideProps) => {
+const Slide = ({ slide, index, current, handleSlideClick, handleButtonClick, position }: SlideProps) => {
   const slideRef = useRef<HTMLDivElement>(null);
   const { src, button, title } = slide;
 
@@ -111,7 +113,10 @@ const Slide = ({ slide, index, current, handleSlideClick, position }: SlideProps
           <h3 className="font-serif text-xl md:text-3xl font-normal text-white mb-3 drop-shadow-lg">
             {title}
           </h3>
-          <button className="flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-xs md:text-sm font-medium text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-105 active:scale-95">
+          <button 
+            className="flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-xs md:text-sm font-medium text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-105 active:scale-95"
+            onClick={(e) => { e.stopPropagation(); handleButtonClick(slide.href); }}
+          >
             {button}
             <IconArrowNarrowRight className="h-4 w-4 md:h-5 md:w-5" />
           </button>
@@ -149,9 +154,10 @@ const CarouselControl = ({
 
 interface PropertyCarouselProps {
   slides: SlideData[];
+  onButtonClick?: (href?: string) => void;
 }
 
-export function PropertyCarousel({ slides }: PropertyCarouselProps) {
+export function PropertyCarousel({ slides, onButtonClick }: PropertyCarouselProps) {
   const [current, setCurrent] = useState(0);
 
   const handlePreviousClick = () => {
@@ -195,6 +201,7 @@ export function PropertyCarousel({ slides }: PropertyCarouselProps) {
             index={index}
             current={current}
             handleSlideClick={handleSlideClick}
+            handleButtonClick={(href) => onButtonClick?.(href)}
             position={getPosition(index)}
           />
         ))}

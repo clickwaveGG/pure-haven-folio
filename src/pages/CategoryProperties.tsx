@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { usePageTransition } from "@/contexts/PageTransitionContext";
 import { PropertyCard } from "@/components/ui/property-card";
+import { allProperties, Property } from "@/data/properties";
 import {
   Select,
   SelectContent,
@@ -13,24 +14,27 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
-import { allProperties } from "@/data/properties";
 import logo from "@/assets/logo-joile-barreto.png";
 
-const AllProperties = () => {
+interface CategoryPropertiesProps {
+  title: string;
+  subtitle: string;
+  categoryFilter: string[];
+  emptyMessage?: string;
+}
+
+const CategoryProperties = ({ title, subtitle, categoryFilter, emptyMessage }: CategoryPropertiesProps) => {
   const navigate = useNavigate();
   const cardRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
   const { startTransition } = usePageTransition();
   const [searchTerm, setSearchTerm] = useState("");
-  const [categoryFilter, setCategoryFilter] = useState("all");
   const [sortBy, setSortBy] = useState("recent");
 
-  // Scroll to top when page loads
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, []);
 
-  const handlePropertyClick = (property: typeof allProperties[0]) => {
+  const handlePropertyClick = (property: Property) => {
     const cardElement = cardRefs.current[property.id];
     if (cardElement) {
       const rect = cardElement.getBoundingClientRect();
@@ -40,45 +44,33 @@ const AllProperties = () => {
         title: property.title,
         location: property.location,
       });
-      
-      setTimeout(() => {
-        navigate(`/imovel/${property.id}`);
-      }, 50);
+      setTimeout(() => navigate(`/imovel/${property.id}`), 50);
     } else {
       navigate(`/imovel/${property.id}`);
     }
   };
 
-  // Filtrar imóveis
-  const filteredProperties = allProperties
-    .filter((property) => {
-      const matchesSearch =
-        property.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        property.location.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesCategory =
-        categoryFilter === "all" || property.category === categoryFilter;
-      return matchesSearch && matchesCategory;
-    })
+  const categoryProperties = allProperties.filter((p) =>
+    categoryFilter.some((cat) => p.category.toLowerCase().includes(cat.toLowerCase()))
+  );
+
+  const filteredProperties = categoryProperties
+    .filter((property) =>
+      property.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      property.location.toLowerCase().includes(searchTerm.toLowerCase())
+    )
     .sort((a, b) => {
       switch (sortBy) {
-        case "price-asc":
-          return a.priceNumber - b.priceNumber;
-        case "price-desc":
-          return b.priceNumber - a.priceNumber;
-        case "area-asc":
-          return a.areaNumber - b.areaNumber;
-        case "area-desc":
-          return b.areaNumber - a.areaNumber;
-        default:
-          return 0;
+        case "price-asc": return a.priceNumber - b.priceNumber;
+        case "price-desc": return b.priceNumber - a.priceNumber;
+        case "area-asc": return a.areaNumber - b.areaNumber;
+        case "area-desc": return b.areaNumber - a.areaNumber;
+        default: return 0;
       }
     });
 
-  const categories = ["all", ...new Set(allProperties.map((p) => p.category))];
-
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
       <motion.header
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -92,19 +84,16 @@ const AllProperties = () => {
             <ArrowLeft size={20} />
             <span className="font-medium hidden sm:inline">Voltar</span>
           </button>
-
           <img
             src={logo}
             alt="Joíle Barreto - RE/MAX Gardense"
             className="h-10 object-contain cursor-pointer"
             onClick={() => navigate("/")}
           />
-
           <div className="w-20" />
         </div>
       </motion.header>
 
-      {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/5 to-background py-12 lg:py-16">
         <div className="container-luxury">
           <motion.div
@@ -113,14 +102,13 @@ const AllProperties = () => {
             className="text-center mb-8"
           >
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-semibold text-foreground mb-4">
-              Imóveis em Irecê
+              {title}
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Explore nossa seleção completa de imóveis em Irecê e região
+              {subtitle}
             </p>
           </motion.div>
 
-          {/* Search and Filters */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -128,12 +116,8 @@ const AllProperties = () => {
             className="bg-card rounded-2xl p-4 md:p-6 shadow-sm border border-border"
           >
             <div className="flex flex-col md:flex-row gap-4">
-              {/* Search Input */}
               <div className="relative flex-1">
-                <Search
-                  size={18}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
-                />
+                <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
                 <Input
                   placeholder="Buscar por nome ou localização..."
                   value={searchTerm}
@@ -141,26 +125,6 @@ const AllProperties = () => {
                   className="pl-10 h-12"
                 />
               </div>
-
-              {/* Category Filter */}
-              <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-                <SelectTrigger className="w-full md:w-48 h-12">
-                  <SlidersHorizontal size={16} className="mr-2" />
-                  <SelectValue placeholder="Categoria" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">Todas categorias</SelectItem>
-                  {categories
-                    .filter((c) => c !== "all")
-                    .map((category) => (
-                      <SelectItem key={category} value={category}>
-                        {category}
-                      </SelectItem>
-                    ))}
-                </SelectContent>
-              </Select>
-
-              {/* Sort */}
               <Select value={sortBy} onValueChange={setSortBy}>
                 <SelectTrigger className="w-full md:w-48 h-12">
                   <SelectValue placeholder="Ordenar por" />
@@ -178,20 +142,15 @@ const AllProperties = () => {
         </div>
       </section>
 
-      {/* Results */}
       <section className="py-8 lg:py-12">
         <div className="container-luxury">
-          {/* Results count */}
           <div className="flex items-center justify-between mb-6">
             <p className="text-muted-foreground">
-              <span className="font-medium text-foreground">
-                {filteredProperties.length}
-              </span>{" "}
+              <span className="font-medium text-foreground">{filteredProperties.length}</span>{" "}
               {filteredProperties.length === 1 ? "imóvel encontrado" : "imóveis encontrados"}
             </p>
           </div>
 
-          {/* Properties Grid */}
           {filteredProperties.length > 0 ? (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {filteredProperties.map((property, index) => (
@@ -224,23 +183,16 @@ const AllProperties = () => {
           ) : (
             <div className="text-center py-16">
               <p className="text-muted-foreground text-lg mb-4">
-                Nenhum imóvel encontrado com os filtros selecionados.
+                {emptyMessage || "Nenhum imóvel encontrado nesta categoria no momento."}
               </p>
-              <Button
-                variant="outline"
-                onClick={() => {
-                  setSearchTerm("");
-                  setCategoryFilter("all");
-                }}
-              >
-                Limpar filtros
+              <Button variant="outline" onClick={() => navigate("/imoveis")}>
+                Ver todos os imóveis
               </Button>
             </div>
           )}
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-foreground text-background py-8">
         <div className="container-luxury text-center">
           <img
@@ -257,4 +209,4 @@ const AllProperties = () => {
   );
 };
 
-export default AllProperties;
+export default CategoryProperties;
