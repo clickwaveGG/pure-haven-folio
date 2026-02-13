@@ -99,6 +99,11 @@ import loteAcquaville3 from "@/assets/lote-acquaville-3.jpg";
 import loteAcquaville4 from "@/assets/lote-acquaville-4.jpg";
 import loteAcquaville5 from "@/assets/lote-acquaville-5.jpg";
 import loteAcquaville6 from "@/assets/lote-acquaville-6.jpg";
+import lotePiemont1 from "@/assets/lote-piemont-1.jpg";
+import lotePiemont2 from "@/assets/lote-piemont-2.jpg";
+import lotePiemont3 from "@/assets/lote-piemont-3.jpg";
+import lotePiemont4 from "@/assets/lote-piemont-4.jpg";
+import lotePiemont5 from "@/assets/lote-piemont-5.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const properties = [
@@ -511,6 +516,41 @@ const properties = [
       { icon: "hospital", name: "Parque Aquático", distance: "No condomínio" },
       { icon: "bank", name: "Segurança 24h", distance: "No local" },
       { icon: "school", name: "Centro de Irecê", distance: "15 min de carro" },
+    ],
+  },
+  {
+    id: 13,
+    image: lotePiemont1,
+    images: [lotePiemont1, lotePiemont2, lotePiemont3, lotePiemont4, lotePiemont5],
+    title: "Lote Reserva Piemont 2",
+    location: "BA-144, Km 03, Morro do Chapéu, Bahia",
+    area: "375m²",
+    category: "Terreno",
+    description: "Lote exclusivo de 375m² no Condomínio Reserva Piemont 2, em Morro do Chapéu. Empreendimento com arquitetura inspirada no estilo europeu, vista para o Vale do Agreste e apenas 103 unidades.",
+    fullDescription: "O Condomínio Reserva Piemont 2 está localizado em Morro do Chapéu, na BA-144, Km 03. Em um cenário fascinante, com belíssimo relevo montanhoso, cercada pela natureza e vista para o Vale do Agreste.\n\nDesenvolvido como um empreendimento único, inovador e que contempla os anseios de moradores e turistas da região, o Reserva Piemont 2 traz requinte, charme, lazer e arquitetura inspirada no estilo europeu.\n\nTrata-se de um Condomínio Exclusivo, com apenas 103 unidades, onde os Lotes contam com uma área total de 375m² (15x25m).\n\nO Condomínio contará com uma Piscina parcialmente aquecida e vista exuberante. O Reserva Piemont preparou 2 lareiras ricas em detalhes, madeiras e estofados.\n\nO Salão de Festas foi decorado para trazer requinte, sofisticação e praticidade, e está localizado numa área incrível com vista privilegiada para o Vale do Agreste, envolvido com área de preservação.\n\nO Reserva Piemont 2 conta com os melhores profissionais para deixar o paisagismo incrível. Serão disponibilizados 4 layouts de Chalés padronizados para você escolher o que mais se adequa ao seu estilo, conforto e bem-estar.",
+    features: ["Condomínio Fechado", "Estilo Europeu", "Apenas 103 Unidades", "Piscina Aquecida", "2 Lareiras", "Salão de Festas", "Espaço Gourmet", "Vista para o Vale do Agreste", "Segurança 24h", "Câmeras de Segurança", "Paisagismo Profissional", "4 Layouts de Chalés"],
+    price: "R$ 55.000",
+    priceNumber: 55000,
+    bedrooms: 0,
+    bathrooms: 0,
+    parking: 0,
+    dimensions: "15x25m",
+    fronts: 1,
+    hasInfrastructure: true,
+    hasDocumentation: true,
+    isGatedCommunity: true,
+    pricePerM2: "R$ 147",
+    avgPricePerM2: "R$ 200",
+    walkScore: 45,
+    coordinates: "-11.5500° S, -41.1600° W",
+    latitude: -11.5500,
+    longitude: -41.1600,
+    mapsUrl: "https://maps.app.goo.gl/morro-do-chapeu",
+    nearbyPlaces: [
+      { icon: "market", name: "BA-144", distance: "No local" },
+      { icon: "hospital", name: "Vale do Agreste", distance: "Vista panorâmica" },
+      { icon: "bank", name: "Segurança 24h", distance: "No local" },
+      { icon: "school", name: "Centro de Morro do Chapéu", distance: "3 min de carro" },
     ],
   },
 ];
