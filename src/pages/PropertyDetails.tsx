@@ -104,6 +104,10 @@ import lotePiemont2 from "@/assets/lote-piemont-2.jpg";
 import lotePiemont3 from "@/assets/lote-piemont-3.jpg";
 import lotePiemont4 from "@/assets/lote-piemont-4.jpg";
 import lotePiemont5 from "@/assets/lote-piemont-5.jpg";
+import loteCabore2_1 from "@/assets/lote-cabore2-1.jpg";
+import loteCabore2_2 from "@/assets/lote-cabore2-2.jpg";
+import loteCabore2_3 from "@/assets/lote-cabore2-3.jpg";
+import loteCabore2_4 from "@/assets/lote-cabore2-4.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const properties = [
@@ -551,6 +555,40 @@ const properties = [
       { icon: "hospital", name: "Vale do Agreste", distance: "Vista panorâmica" },
       { icon: "bank", name: "Segurança 24h", distance: "No local" },
       { icon: "school", name: "Centro de Morro do Chapéu", distance: "3 min de carro" },
+    ],
+  },
+  {
+    id: 14,
+    image: loteCabore2_1,
+    images: [loteCabore2_1, loteCabore2_2, loteCabore2_3, loteCabore2_4],
+    title: "Lote Caboré - São Gabriel",
+    location: "Loteamento Caboré, São Gabriel, Bahia",
+    area: "200m²",
+    category: "Terreno",
+    description: "Investimento inteligente em São Gabriel/BA! Lote de 200m² (10x20m) no Loteamento Caboré, próximo ao novo Colégio Integral e à entrada principal da cidade.",
+    fullDescription: "Pronto para fazer um investimento inteligente? Apresentamos a você uma oportunidade imperdível na cidade de São Gabriel, Bahia! Este é o momento ideal para adquirir um lote em uma localização estratégica, que oferece não apenas um espaço para construir, mas um caminho para a valorização.\n\nEste lote de 200m², com generosas dimensões de 10 metros de frente por 20 metros de fundo, é o alicerce perfeito para o seu próximo projeto, seja ele a construção de sua casa, um comércio promissor ou um investimento com retorno garantido.\n\nSua localização é um dos pontos mais fortes: o loteamento está situado atrás do novo Colégio de Tempo Integral que está em construção. Imagine o fluxo de pessoas e o potencial de valorização que a proximidade com uma instituição de ensino moderna trará para a região. Escolas são âncoras de desenvolvimento, e ter um imóvel tão próximo significa estar no caminho do crescimento.\n\nAlém de estar ao lado do futuro colégio, o loteamento se beneficia de sua posição ao lado da entrada principal da cidade de São Gabriel. Essa característica é um diferencial enorme, pois garante fácil acesso para quem chega e sai da cidade, além de uma visibilidade que impulsiona o valor do seu investimento.\n\nEste não é apenas mais um lote à venda; trata-se de um ótimo investimento, pois está bem precificado, dentro da realidade de mercado. A chegada do novo Colégio Integral e o desenvolvimento urbano ao redor da entrada da cidade são indicadores claros de uma expansão que trará valorização imobiliária.",
+    features: ["10x20m (200m²)", "Próximo ao Colégio Integral", "Entrada Principal da Cidade", "Alta Visibilidade", "Potencial de Valorização", "Fácil Acesso", "Área Residencial", "Perto de Escolas", "Bom Tráfego", "Documentação OK"],
+    price: "R$ 35.000",
+    priceNumber: 35000,
+    bedrooms: 0,
+    bathrooms: 0,
+    parking: 0,
+    dimensions: "10x20m",
+    fronts: 1,
+    hasInfrastructure: true,
+    hasDocumentation: true,
+    pricePerM2: "R$ 175",
+    avgPricePerM2: "R$ 200",
+    walkScore: 80,
+    coordinates: "-11.2286° S, -41.9164° W",
+    latitude: -11.2286,
+    longitude: -41.9164,
+    mapsUrl: "https://maps.app.goo.gl/sao-gabriel-ba",
+    nearbyPlaces: [
+      { icon: "school", name: "Colégio Integral (em construção)", distance: "Ao lado" },
+      { icon: "market", name: "Entrada Principal", distance: "Ao lado" },
+      { icon: "bus", name: "Centro de São Gabriel", distance: "5 min de carro" },
+      { icon: "hospital", name: "Serviços Essenciais", distance: "Próximo" },
     ],
   },
 ];

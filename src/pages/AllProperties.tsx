@@ -27,6 +27,7 @@ import terrenoAlphaGarden1 from "@/assets/terreno-alpha-garden-1.jpg";
 import terrenoAlphaGarden2_1 from "@/assets/terreno-alpha-garden2-1.jpg";
 import loteAcquaville1 from "@/assets/lote-acquaville-1.jpg";
 import lotePiemont1 from "@/assets/lote-piemont-1.jpg";
+import loteCabore2_1 from "@/assets/lote-cabore2-1.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const allProperties = [
@@ -197,6 +198,20 @@ const allProperties = [
     isGatedCommunity: true,
     highlights: ["Estilo Europeu", "Vista Montanhosa"],
     dimensions: "15x25m",
+  },
+  {
+    id: 14,
+    image: loteCabore2_1,
+    title: "Lote Caboré - São Gabriel",
+    location: "Loteamento Caboré, São Gabriel, BA",
+    area: "200m²",
+    areaNumber: 200,
+    category: "Terreno",
+    price: "R$ 35.000",
+    priceNumber: 35000,
+    description: "Lote de 200m² (10x20m) no Loteamento Caboré, São Gabriel. Próximo ao Colégio Integral e entrada principal da cidade.",
+    highlights: ["Próx. Colégio Integral", "R$ 35 mil"],
+    dimensions: "10x20m",
   },
 ];
 
