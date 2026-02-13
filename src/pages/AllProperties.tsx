@@ -28,6 +28,7 @@ import terrenoAlphaGarden2_1 from "@/assets/terreno-alpha-garden2-1.jpg";
 import loteAcquaville1 from "@/assets/lote-acquaville-1.jpg";
 import lotePiemont1 from "@/assets/lote-piemont-1.jpg";
 import loteCabore2_1 from "@/assets/lote-cabore2-1.jpg";
+import terrenoGreenville2_1 from "@/assets/terreno-greenville2-1.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const allProperties = [
@@ -211,6 +212,21 @@ const allProperties = [
     priceNumber: 35000,
     description: "Lote de 200m² (10x20m) no Loteamento Caboré, São Gabriel. Próximo ao Colégio Integral e entrada principal da cidade.",
     highlights: ["Próx. Colégio Integral", "R$ 35 mil"],
+    dimensions: "10x20m",
+  },
+  {
+    id: 15,
+    image: terrenoGreenville2_1,
+    title: "Terreno Green Ville - R$ 80 mil",
+    location: "Cond. Green Ville, Irecê",
+    area: "200m²",
+    areaNumber: 200,
+    category: "Terreno",
+    price: "R$ 80.000",
+    priceNumber: 80000,
+    description: "Terreno de 200m² nas primeiras quadras do Green Ville. Condomínio com piscina, churrasqueira, parquinhos e segurança 24h.",
+    isGatedCommunity: true,
+    highlights: ["Primeiras Quadras", "Ótimo Preço"],
     dimensions: "10x20m",
   },
 ];
