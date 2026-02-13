@@ -2,10 +2,12 @@ import { PropertyCarousel } from "@/components/ui/property-carousel";
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { useSkipAnimations } from "@/pages/Index";
 
 const WhatAreYouLookingFor = () => {
   const ref = useRef(null);
+  const navigate = useNavigate();
   const skipAnimations = useSkipAnimations();
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -14,21 +16,25 @@ const WhatAreYouLookingFor = () => {
       title: "Terrenos",
       button: "Ver Terrenos",
       src: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2832&auto=format&fit=crop",
+      href: "/terrenos",
     },
     {
       title: "Casas",
       button: "Ver Casas",
       src: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2875&auto=format&fit=crop",
+      href: "/casas",
     },
     {
       title: "Apartamentos",
       button: "Ver Apartamentos",
       src: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=2835&auto=format&fit=crop",
+      href: "/apartamentos",
     },
     {
       title: "Vender meu Imóvel",
       button: "Saiba Mais",
       src: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2873&auto=format&fit=crop",
+      href: "https://wa.me/5574999993009?text=Olá! Gostaria de vender meu imóvel.",
     },
   ];
 
@@ -59,7 +65,16 @@ const WhatAreYouLookingFor = () => {
           animate={skipAnimations ? { opacity: 1, y: 0 } : (isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 })}
           transition={{ duration: 0.8, delay: skipAnimations ? 0 : 0.2, ease: "easeOut" }}
         >
-          <PropertyCarousel slides={slideData} />
+          <PropertyCarousel 
+            slides={slideData} 
+            onButtonClick={(href) => {
+              if (href?.startsWith("http")) {
+                window.open(href, "_blank");
+              } else if (href) {
+                navigate(href);
+              }
+            }}
+          />
         </motion.div>
       </div>
     </section>

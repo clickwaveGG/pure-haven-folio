@@ -8,6 +8,9 @@ import { PageTransitionOverlay } from "@/components/ui/page-transition-overlay";
 import Index from "./pages/Index";
 import PropertyDetails from "./pages/PropertyDetails";
 import AllProperties from "./pages/AllProperties";
+import TerrenosPage from "./pages/TerrenosPage";
+import CasasPage from "./pages/CasasPage";
+import ApartamentosPage from "./pages/ApartamentosPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +26,9 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/imoveis" element={<AllProperties />} />
+            <Route path="/terrenos" element={<TerrenosPage />} />
+            <Route path="/casas" element={<CasasPage />} />
+            <Route path="/apartamentos" element={<ApartamentosPage />} />
             <Route path="/imovel/:id" element={<PropertyDetails />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
