@@ -108,6 +108,15 @@ import loteCabore2_1 from "@/assets/lote-cabore2-1.jpg";
 import loteCabore2_2 from "@/assets/lote-cabore2-2.jpg";
 import loteCabore2_3 from "@/assets/lote-cabore2-3.jpg";
 import loteCabore2_4 from "@/assets/lote-cabore2-4.jpg";
+import terrenoGreenville2_1 from "@/assets/terreno-greenville2-1.jpg";
+import terrenoGreenville2_2 from "@/assets/terreno-greenville2-2.jpg";
+import terrenoGreenville2_3 from "@/assets/terreno-greenville2-3.jpg";
+import terrenoGreenville2_4 from "@/assets/terreno-greenville2-4.jpg";
+import terrenoGreenville2_5 from "@/assets/terreno-greenville2-5.jpg";
+import terrenoGreenville2_6 from "@/assets/terreno-greenville2-6.jpg";
+import terrenoGreenville2_7 from "@/assets/terreno-greenville2-7.jpg";
+import terrenoGreenville2_8 from "@/assets/terreno-greenville2-8.jpg";
+import terrenoGreenville2_9 from "@/assets/terreno-greenville2-9.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const properties = [
@@ -589,6 +598,41 @@ const properties = [
       { icon: "market", name: "Entrada Principal", distance: "Ao lado" },
       { icon: "bus", name: "Centro de São Gabriel", distance: "5 min de carro" },
       { icon: "hospital", name: "Serviços Essenciais", distance: "Próximo" },
+    ],
+  },
+  {
+    id: 15,
+    image: terrenoGreenville2_1,
+    images: [terrenoGreenville2_1, terrenoGreenville2_2, terrenoGreenville2_3, terrenoGreenville2_4, terrenoGreenville2_5, terrenoGreenville2_6, terrenoGreenville2_7, terrenoGreenville2_8, terrenoGreenville2_9],
+    title: "Terreno Green Ville - R$ 80 mil",
+    location: "Condomínio Residencial Green Ville, Zona Rural, Irecê, Bahia",
+    area: "200m²",
+    category: "Terreno",
+    description: "Terreno privilegiado de 200m² nas primeiras quadras do Condomínio Green Ville. Piscina, churrasqueira, parquinhos e segurança 24h. Próximo à BA-052.",
+    fullDescription: "Apresentamos a você uma oportunidade imperdível de adquirir um terreno privilegiado no Condomínio Residencial Green Ville. Com dimensões ideais de 10 metros de frente por 20 metros de fundo, totalizando 200 m², este terreno oferece o espaço perfeito para você tirar do papel o projeto da sua casa.\n\nA localização é um dos grandes diferenciais deste terreno: ele está situado em uma das primeiras quadras do condomínio, o que garante facilidade de acesso e proximidade com a portaria e as principais áreas de lazer. Para quem busca praticidade e conforto, essa é a escolha certa.\n\nCom uma infraestrutura completa, o Condomínio foi cuidadosamente planejado para oferecer tudo o que sua família precisa para viver com tranquilidade. Possui uma área de lazer completa, contando com uma piscina refrescante, perfeita para os dias quentes, e uma churrasqueira, ideal para confraternizações com amigos e familiares. Para a alegria das crianças, o condomínio dispõe de parquinhos seguros, onde a diversão é garantida.\n\nA segurança é outro ponto forte do Green Ville. Com portaria e controle de acesso, você e sua família poderão desfrutar de total tranquilidade e privacidade.\n\nSituado próximo à BA-052, uma das principais vias da região, o Green Ville permite fácil e rápido deslocamento para o centro de Irecê e outras cidades próximas. Irecê é uma cidade em constante crescimento, com um mercado imobiliário aquecido e um potencial de valorização que não para de crescer.",
+    features: ["Condomínio Fechado", "Primeiras Quadras", "Piscina", "Churrasqueira", "Parquinhos", "Segurança 24h", "Controle de Acesso", "Próximo à BA-052", "Infraestrutura Completa", "Documentação OK"],
+    price: "R$ 80.000",
+    priceNumber: 80000,
+    bedrooms: 0,
+    bathrooms: 0,
+    parking: 0,
+    dimensions: "10x20m",
+    fronts: 1,
+    hasInfrastructure: true,
+    hasDocumentation: true,
+    isGatedCommunity: true,
+    pricePerM2: "R$ 400",
+    avgPricePerM2: "R$ 500",
+    walkScore: 75,
+    coordinates: "-11.3050° S, -41.8700° W",
+    latitude: -11.3050,
+    longitude: -41.8700,
+    mapsUrl: "https://www.google.com/maps/@-11.3050,-41.8700,17z",
+    nearbyPlaces: [
+      { icon: "market", name: "BA-052", distance: "2 min de carro" },
+      { icon: "school", name: "Centro de Irecê", distance: "5 min de carro" },
+      { icon: "hospital", name: "Área de Lazer", distance: "No condomínio" },
+      { icon: "bank", name: "Portaria 24h", distance: "No local" },
     ],
   },
 ];
