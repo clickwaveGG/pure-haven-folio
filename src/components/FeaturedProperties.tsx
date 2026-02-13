@@ -31,7 +31,7 @@ const properties = [
     description: "Investimento no epicentro comercial! Sobrado com 416m² em 3 pavimentos na via de maior fluxo de Irecê.",
     floors: 3,
     facadeWidth: "6,40m",
-    price: "R$ 2.500.000",
+    price: "R$ 2.530.000",
   },
   {
     id: 2,
