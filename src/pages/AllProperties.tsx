@@ -24,6 +24,7 @@ import terrenoAltoMoura1 from "@/assets/terreno-alto-moura-1.jpg";
 import fazendaMocozeiro1 from "@/assets/fazenda-mocozeiro-1.jpg";
 import terrenoMocozeiro2_1 from "@/assets/terreno-mocozeiro2-1.jpg";
 import terrenoAlphaGarden1 from "@/assets/terreno-alpha-garden-1.jpg";
+import terrenoAlphaGarden2_1 from "@/assets/terreno-alpha-garden2-1.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const allProperties = [
@@ -149,6 +150,21 @@ const allProperties = [
     isGatedCommunity: true,
     highlights: ["Condomínio Fechado", "Lazer Completo"],
     dimensions: "10x30m",
+  },
+  {
+    id: 11,
+    image: terrenoAlphaGarden2_1,
+    title: "Terreno Alpha Garden - 378m²",
+    location: "BA-800, Meia Hora, Irecê",
+    area: "378m²",
+    areaNumber: 378,
+    category: "Terreno",
+    price: "R$ 132.300",
+    priceNumber: 132300,
+    description: "Terreno de 378m² (13,5x28m) no Condomínio Alpha Garden. Segurança 24h, piscinas, academia, quadras e aceita permuta.",
+    isGatedCommunity: true,
+    highlights: ["378m² Esquina", "Aceita Permuta"],
+    dimensions: "13,5x28m",
   },
 ];
 
