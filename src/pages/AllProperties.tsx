@@ -23,6 +23,7 @@ import casaDonaMarta1 from "@/assets/casa-dona-marta-1.jpg";
 import terrenoAltoMoura1 from "@/assets/terreno-alto-moura-1.jpg";
 import fazendaMocozeiro1 from "@/assets/fazenda-mocozeiro-1.jpg";
 import terrenoMocozeiro2_1 from "@/assets/terreno-mocozeiro2-1.jpg";
+import terrenoAlphaGarden1 from "@/assets/terreno-alpha-garden-1.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const allProperties = [
@@ -133,6 +134,21 @@ const allProperties = [
     priceNumber: 180000,
     description: "Terreno de 8 tarefas próximo à BA-800 e grandes condomínios. O mais barato da região com grande potencial de valorização!",
     highlights: ["8 Tarefas", "Mais Barato da Região"],
+  },
+  {
+    id: 10,
+    image: terrenoAlphaGarden1,
+    title: "Terreno Condomínio Alpha Garden",
+    location: "BA-800, Meia Hora, Irecê",
+    area: "300m²",
+    areaNumber: 300,
+    category: "Terreno",
+    price: "R$ 105.000",
+    priceNumber: 105000,
+    description: "Terreno exclusivo no Condomínio Alpha Garden, na BA-800. Segurança 24h, piscinas, academia, salão de festas e quadra poliesportiva.",
+    isGatedCommunity: true,
+    highlights: ["Condomínio Fechado", "Lazer Completo"],
+    dimensions: "10x30m",
   },
 ];
 
