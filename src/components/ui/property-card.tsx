@@ -1,6 +1,5 @@
 import * as React from "react";
-import { motion } from "framer-motion";
-import { ArrowRight, MapPin, Maximize, Ruler, LayoutGrid, Shield, Waves, Star, TrendingUp, School, MapPinned } from "lucide-react";
+import { ArrowRight, MapPin, Maximize, Ruler, LayoutGrid, Shield, Waves, Building, School, MapPinned } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
@@ -28,11 +27,9 @@ const PropertyCard = React.forwardRef<HTMLDivElement, PropertyCardProps>(
     {
       className,
       imageUrl,
-      mapImageUrl,
       title,
       location,
       category,
-      description,
       area,
       dimensions,
       fronts,
@@ -45,215 +42,149 @@ const PropertyCard = React.forwardRef<HTMLDivElement, PropertyCardProps>(
     },
     ref
   ) => {
+    // Build stats items based on property type
+    const statsItems: { icon: React.ReactNode; label: string }[] = [];
+
+    statsItems.push({
+      icon: <Maximize className="mr-1.5 h-4 w-4 text-muted-foreground" />,
+      label: area,
+    });
+
+    if (highlights && highlights.length >= 2) {
+      statsItems.push({
+        icon: <School className="mr-1.5 h-4 w-4 text-muted-foreground" />,
+        label: highlights[0],
+      });
+      statsItems.push({
+        icon: <MapPinned className="mr-1.5 h-4 w-4 text-muted-foreground" />,
+        label: highlights[1],
+      });
+    } else if (isGatedCommunity) {
+      statsItems.push({
+        icon: <Shield className="mr-1.5 h-4 w-4 text-muted-foreground" />,
+        label: "Segurança 24h",
+      });
+      statsItems.push({
+        icon: <Waves className="mr-1.5 h-4 w-4 text-muted-foreground" />,
+        label: "Lazer",
+      });
+    } else {
+      if (dimensions) {
+        statsItems.push({
+          icon: <Ruler className="mr-1.5 h-4 w-4 text-muted-foreground" />,
+          label: dimensions,
+        });
+      }
+      if (fronts) {
+        statsItems.push({
+          icon: <LayoutGrid className="mr-1.5 h-4 w-4 text-muted-foreground" />,
+          label: `${fronts} Frente${fronts > 1 ? "s" : ""}`,
+        });
+      }
+      if (floors) {
+        statsItems.push({
+          icon: <LayoutGrid className="mr-1.5 h-4 w-4 text-muted-foreground" />,
+          label: `${floors} Pavimento${floors > 1 ? "s" : ""}`,
+        });
+      }
+      if (facadeWidth && !floors) {
+        statsItems.push({
+          icon: <Ruler className="mr-1.5 h-4 w-4 text-muted-foreground" />,
+          label: `Fachada ${facadeWidth}`,
+        });
+      }
+    }
+
     return (
-      <motion.div
+      <div
         ref={ref}
         className={cn(
-          "group relative flex flex-col overflow-hidden rounded-2xl bg-card border border-border shadow-sm hover:shadow-lg hover:border-primary/30 transition-all duration-300 cursor-pointer",
+          "group relative w-full h-[460px] overflow-hidden rounded-2xl border border-border/20 bg-foreground shadow-xl",
+          "transition-all duration-500 ease-out hover:shadow-2xl hover:-translate-y-1 cursor-pointer",
           className
         )}
-        whileHover="hover"
-        initial="initial"
         onClick={onDetailsClick}
       >
-        {/* Top section with background image and content */}
-        <div className="relative h-56 overflow-hidden">
-          <motion.img
-            src={imageUrl}
-            alt={title}
-            loading="lazy"
-            decoding="async"
-            className="absolute inset-0 h-full w-full object-cover"
-            variants={{
-              initial: { scale: 1 },
-              hover: { scale: 1.05 },
-            }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-          />
-          
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+        {/* Background Image with Zoom on Hover */}
+        <img
+          src={imageUrl}
+          alt={title}
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
+        />
 
-          {/* Category badge */}
-          <div className="absolute top-3 left-3">
-            <span className="inline-block px-3 py-1.5 bg-primary text-primary-foreground text-xs font-medium rounded-full">
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/10 transition-opacity duration-500" />
+
+        {/* Main Content */}
+        <div className="relative flex h-full flex-col justify-between p-6 text-white">
+          {/* Top: Badge + Icon */}
+          <div className="flex justify-between items-start">
+            <span className="bg-primary/90 backdrop-blur-sm text-primary-foreground px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase shadow-sm">
               {category}
             </span>
-          </div>
-
-          {/* Content overlay */}
-          <div className="absolute bottom-0 left-0 right-0 p-5">
-            <div className="flex items-center gap-2 text-white/80 mb-2">
-              <MapPin size={14} />
-              <span className="text-sm">{location}</span>
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-black/30 backdrop-blur-md border border-white/20 transition-colors group-hover:bg-white/20">
+              <Building className="h-5 w-5 text-white/90" />
             </div>
-            <h3 className="text-xl font-display font-semibold text-white leading-tight">
-              {title}
-            </h3>
-
-            {/* Animated button on hover */}
-            <motion.div
-              className="mt-3 overflow-hidden"
-              variants={{
-                initial: { opacity: 0, height: 0 },
-                hover: { opacity: 1, height: "auto" },
-              }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-            >
-              <Button
-                size="sm"
-                className="bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onDetailsClick?.();
-                }}
-              >
-                Ver detalhes
-                <ArrowRight size={16} />
-              </Button>
-            </motion.div>
           </div>
-        </div>
 
-        {/* Bottom section with property details */}
-        <div className="flex flex-col gap-4 p-5 bg-card">
-          {/* Description and optional map */}
-          <div className="flex items-start justify-between gap-4">
-            <div className="flex-1 min-w-0">
-              {price && (
-                <p className="text-lg font-semibold text-primary mb-1" style={{ fontFamily: "Helvetica, sans-serif" }}>
-                  {price}
+          {/* Bottom: Animated Info */}
+          <div className="flex flex-col justify-end relative h-full">
+            {/* Main info (slides up on hover) */}
+            <div className="space-y-3 transition-transform duration-500 ease-out group-hover:-translate-y-[88px]">
+              <div>
+                <h3 className="text-2xl font-display font-bold text-white drop-shadow-md leading-tight mb-1">
+                  {title}
+                </h3>
+                <p className="flex items-center text-sm text-zinc-300 font-medium">
+                  <MapPin className="mr-1.5 h-4 w-4 text-primary" />
+                  {location}
                 </p>
-              )}
-              <p className="text-sm text-muted-foreground line-clamp-2">
-                {description}
-              </p>
-            </div>
-
-            {/* Mini map preview */}
-            {mapImageUrl && (
-              <div className="flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border border-border">
-                <img 
-                  src={mapImageUrl} 
-                  alt="Localização" 
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
               </div>
-            )}
-          </div>
 
-          {/* Separator */}
-          <div className="h-px bg-border" />
-
-          {/* Stats row */}
-          <div className="grid grid-cols-3 gap-2">
-            <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
-              <Maximize size={16} className="text-primary" />
-              <div className="flex flex-col">
-                <span className="text-sm font-semibold text-foreground">{area}</span>
-                <span className="text-[10px] text-muted-foreground uppercase">Área</span>
+              {/* Stats row */}
+              <div className="flex items-center gap-4 pt-2 border-t border-white/10 flex-wrap">
+                {statsItems.slice(0, 3).map((stat, i) => (
+                  <div key={i} className="flex items-center text-zinc-200 text-sm">
+                    {React.cloneElement(stat.icon as React.ReactElement, {
+                      className: "mr-1.5 h-4 w-4 text-zinc-400",
+                    })}
+                    <span>{stat.label}</span>
+                  </div>
+                ))}
               </div>
             </div>
-            
-            {/* Custom highlights - priority over other stats */}
-            {highlights && highlights.length >= 2 ? (
-              <>
-                <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
-                  <School size={16} className="text-primary" />
-                  <div className="flex flex-col">
-                    <span className="text-xs font-semibold text-foreground leading-tight">{highlights[0]}</span>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
-                  <MapPinned size={16} className="text-primary" />
-                  <div className="flex flex-col">
-                    <span className="text-xs font-semibold text-foreground leading-tight">{highlights[1]}</span>
-                  </div>
-                </div>
-              </>
-            ) : isGatedCommunity ? (
-              <>
-                <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
-                  <Shield size={16} className="text-primary" />
-                  <div className="flex flex-col">
-                    <span className="text-sm font-semibold text-foreground">24h</span>
-                    <span className="text-[10px] text-muted-foreground uppercase">Segurança</span>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
-                  <Waves size={16} className="text-primary" />
-                  <div className="flex flex-col">
-                    <span className="text-sm font-semibold text-foreground">Sim</span>
-                    <span className="text-[10px] text-muted-foreground uppercase">Lazer</span>
-                  </div>
-                </div>
-              </>
-            ) : (
-              <>
-                {dimensions && (
-                  <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
-                    <Ruler size={16} className="text-primary" />
-                    <div className="flex flex-col">
-                      <span className="text-sm font-semibold text-foreground">{dimensions}</span>
-                      <span className="text-[10px] text-muted-foreground uppercase">Dimensões</span>
-                    </div>
-                  </div>
-                )}
-                
-                {fronts && (
-                  <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
-                    <LayoutGrid size={16} className="text-primary" />
-                    <div className="flex flex-col">
-                      <span className="text-sm font-semibold text-foreground">{fronts}</span>
-                      <span className="text-[10px] text-muted-foreground uppercase">Frentes</span>
-                    </div>
-                  </div>
-                )}
 
-                {floors && (
-                  <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
-                    <LayoutGrid size={16} className="text-primary" />
-                    <div className="flex flex-col">
-                      <span className="text-sm font-semibold text-foreground">{floors}</span>
-                      <span className="text-[10px] text-muted-foreground uppercase">Pavimentos</span>
-                    </div>
-                  </div>
-                )}
-
-                {facadeWidth && !floors && (
-                  <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
-                    <Ruler size={16} className="text-primary" />
-                    <div className="flex flex-col">
-                      <span className="text-sm font-semibold text-foreground">{facadeWidth}</span>
-                      <span className="text-[10px] text-muted-foreground uppercase">Fachada</span>
-                    </div>
-                  </div>
-                )}
-
-                {!dimensions && !fronts && !floors && !facadeWidth && (
-                  <>
-                    <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
-                      <Ruler size={16} className="text-primary" />
-                      <div className="flex flex-col">
-                        <span className="text-sm font-semibold text-foreground">—</span>
-                        <span className="text-[10px] text-muted-foreground uppercase">Dimensões</span>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2 justify-center p-2 bg-muted/50 rounded-lg">
-                      <LayoutGrid size={16} className="text-primary" />
-                      <div className="flex flex-col">
-                        <span className="text-sm font-semibold text-foreground">—</span>
-                        <span className="text-[10px] text-muted-foreground uppercase">Frentes</span>
-                      </div>
-                    </div>
-                  </>
-                )}
-              </>
-            )}
+            {/* Price + Button (appear from below on hover) */}
+            <div className="absolute bottom-0 left-0 w-full translate-y-8 opacity-0 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100">
+              <div className="flex items-end justify-between pt-4 border-t border-white/10 mt-4">
+                <div>
+                  {price && (
+                    <>
+                      <p className="text-xs text-zinc-400 font-medium uppercase tracking-wider mb-0.5">
+                        Valor à Vista
+                      </p>
+                      <span className="text-2xl font-bold text-primary drop-shadow-sm">
+                        {price}
+                      </span>
+                    </>
+                  )}
+                </div>
+                <Button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onDetailsClick?.();
+                  }}
+                  className="bg-white text-foreground hover:bg-zinc-200 transition-colors shadow-lg"
+                >
+                  Ver Detalhes <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
-      </motion.div>
+      </div>
     );
   }
 );
