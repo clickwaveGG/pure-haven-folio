@@ -89,8 +89,8 @@ const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) =
           ref={containerRef}
           className="relative mx-auto w-full max-w-5xl flex items-center justify-center"
         >
-          <div className="relative w-full rounded-2xl overflow-hidden border border-border/40 shadow-sm bg-background">
-            <AnimatePresence mode="wait" custom={direction}>
+          <div className="relative w-full rounded-2xl overflow-hidden border border-border/40 shadow-sm bg-background aspect-[4/3] md:aspect-[16/10]">
+            <AnimatePresence initial={false} custom={direction}>
               <motion.img
                 key={currentIndex}
                 custom={direction}
@@ -102,11 +102,11 @@ const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) =
                 alt={`${title} - Foto ${currentIndex + 1}`}
                 loading="eager"
                 decoding="sync"
-                className="w-full h-auto max-h-[50vh] md:max-h-[70vh] lg:max-h-[75vh] object-contain mx-auto block"
+                className="absolute inset-0 w-full h-full object-contain"
                 transition={{
                   x: { type: "spring", stiffness: 350, damping: 30 },
-                  opacity: { duration: 0.2 },
-                  scale: { duration: 0.25 },
+                  opacity: { duration: 0.15 },
+                  scale: { duration: 0.2 },
                 }}
               />
             </AnimatePresence>
