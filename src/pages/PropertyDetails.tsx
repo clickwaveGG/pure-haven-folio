@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
+import { useSafeBack } from "@/hooks/use-safe-back";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
@@ -640,6 +641,7 @@ const properties = [
 const PropertyDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const goBack = useSafeBack();
   const { transitionData, endTransition, isTransitioning, clearTransition } = usePageTransition();
   const [animationPhase, setAnimationPhase] = useState<"initial" | "animating" | "complete">("initial");
   
@@ -733,7 +735,7 @@ const PropertyDetails = () => {
         <div className="container-luxury py-2 flex items-center justify-between">
           {/* Logo com botão de voltar à página principal */}
           <button
-            onClick={() => navigate(-1)}
+            onClick={goBack}
             className="flex items-center gap-2 text-foreground hover:text-primary transition-colors group"
           >
             <motion.div 

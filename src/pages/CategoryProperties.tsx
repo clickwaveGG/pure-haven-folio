@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSafeBack } from "@/hooks/use-safe-back";
 import { motion } from "framer-motion";
 import { ArrowLeft, Search, SlidersHorizontal } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -25,6 +26,7 @@ interface CategoryPropertiesProps {
 
 const CategoryProperties = ({ title, subtitle, categoryFilter, emptyMessage }: CategoryPropertiesProps) => {
   const navigate = useNavigate();
+  const goBack = useSafeBack();
   const cardRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
   const { startTransition } = usePageTransition();
   const [searchTerm, setSearchTerm] = useState("");
@@ -78,7 +80,7 @@ const CategoryProperties = ({ title, subtitle, categoryFilter, emptyMessage }: C
       >
         <div className="container-luxury py-4 flex items-center justify-between">
           <button
-            onClick={() => navigate(-1)}
+            onClick={goBack}
             className="flex items-center gap-2 text-foreground hover:text-primary transition-colors"
           >
             <ArrowLeft size={20} />
