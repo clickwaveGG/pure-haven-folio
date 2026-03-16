@@ -13,6 +13,7 @@ const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) =
   const displayImages = images && images.length > 0 ? images : [image];
   const totalImages = imageCount ?? displayImages.length;
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0); // -1 = prev, 1 = next
   const [allLoaded, setAllLoaded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const loadedCount = useRef(0);
@@ -36,15 +37,36 @@ const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) =
   }, [displayImages]);
 
   const nextSlide = useCallback(() => {
+    setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % displayImages.length);
   }, [displayImages.length]);
 
   const prevSlide = useCallback(() => {
+    setDirection(-1);
     setCurrentIndex((prev) => (prev - 1 + displayImages.length) % displayImages.length);
   }, [displayImages.length]);
 
   const goToSlide = (index: number) => {
+    setDirection(index > currentIndex ? 1 : -1);
     setCurrentIndex(index);
+  };
+
+  const slideVariants = {
+    enter: (dir: number) => ({
+      x: dir > 0 ? "40%" : "-40%",
+      opacity: 0,
+      scale: 0.95,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      scale: 1,
+    },
+    exit: (dir: number) => ({
+      x: dir > 0 ? "-40%" : "40%",
+      opacity: 0,
+      scale: 0.95,
+    }),
   };
 
   return (
