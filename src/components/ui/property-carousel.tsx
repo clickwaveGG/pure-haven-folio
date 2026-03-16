@@ -83,7 +83,7 @@ const Slide = ({ slide, index, current, handleSlideClick, handleButtonClick, pos
           }}
         />
         <img
-          className="absolute inset-0 h-full w-full object-cover md:object-contain transition-all duration-300"
+          className="absolute inset-0 h-full w-full object-cover transition-all duration-300"
           loading="lazy"
           decoding="async"
           style={{
