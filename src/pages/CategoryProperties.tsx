@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSafeBack } from "@/hooks/use-safe-back";
 import { motion } from "framer-motion";
 import { ArrowLeft, Search, SlidersHorizontal } from "lucide-react";
 import { Input } from "@/components/ui/input";
