@@ -110,13 +110,13 @@ const PropertyCard = React.forwardRef<HTMLDivElement, PropertyCardProps>(
         onClick={onDetailsClick}
       >
         {/* Image Section */}
-        <div className="relative w-full md:w-[45%] lg:w-[40%] h-[240px] md:h-auto md:min-h-[280px] overflow-hidden">
+        <div className="relative w-full md:w-[45%] lg:w-[40%] h-[240px] md:h-auto md:min-h-[280px] overflow-hidden bg-muted/30">
           <img
             src={imageUrl}
             alt={title}
             loading="lazy"
             decoding="async"
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            className="absolute inset-0 h-full w-full object-cover md:object-contain transition-transform duration-500 ease-out group-hover:scale-105 md:group-hover:scale-100"
           />
           
           {/* Gradient overlay on image */}

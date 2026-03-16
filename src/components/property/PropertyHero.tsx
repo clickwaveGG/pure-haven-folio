@@ -36,7 +36,7 @@ const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) =
       <div className="px-4 md:px-6 lg:px-8">
         {/* Main Carousel */}
         <div 
-          className="relative w-full aspect-[4/3] md:aspect-[16/10] lg:aspect-[16/9] max-h-[350px] md:max-h-[600px] lg:max-h-[700px] rounded-2xl overflow-hidden group bg-zinc-100"
+          className="relative w-full aspect-[4/3] md:aspect-[16/10] lg:aspect-[16/9] max-h-[350px] md:max-h-[600px] lg:max-h-[700px] rounded-2xl overflow-hidden group bg-muted/40 border border-border/60"
         >
           {/* Images */}
           <AnimatePresence mode="wait">
@@ -44,7 +44,9 @@ const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) =
               key={currentIndex}
               src={displayImages[currentIndex]}
               alt={`${title} - Foto ${currentIndex + 1}`}
-              className="absolute inset-0 w-full h-full object-contain md:object-cover"
+              loading="eager"
+              decoding="async"
+              className="absolute inset-0 w-full h-full object-contain"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
