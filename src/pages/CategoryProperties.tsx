@@ -26,6 +26,7 @@ interface CategoryPropertiesProps {
 
 const CategoryProperties = ({ title, subtitle, categoryFilter, emptyMessage }: CategoryPropertiesProps) => {
   const navigate = useNavigate();
+  const goBack = useSafeBack();
   const cardRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
   const { startTransition } = usePageTransition();
   const [searchTerm, setSearchTerm] = useState("");

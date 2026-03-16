@@ -641,6 +641,7 @@ const properties = [
 const PropertyDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const goBack = useSafeBack();
   const { transitionData, endTransition, isTransitioning, clearTransition } = usePageTransition();
   const [animationPhase, setAnimationPhase] = useState<"initial" | "animating" | "complete">("initial");
   
