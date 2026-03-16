@@ -102,7 +102,7 @@ const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) =
                 alt={`${title} - Foto ${currentIndex + 1}`}
                 loading="eager"
                 decoding="sync"
-                className="absolute inset-0 w-full h-full object-contain"
+                className="absolute inset-0 w-full h-full object-cover"
                 transition={{
                   x: { type: "spring", stiffness: 350, damping: 30 },
                   opacity: { duration: 0.15 },
