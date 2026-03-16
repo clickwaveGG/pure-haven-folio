@@ -71,7 +71,7 @@ const Slide = ({ slide, index, current, handleSlideClick, handleButtonClick, pos
     >
       <div
         ref={slideRef}
-        className="relative h-[50vmin] w-[40vmin] md:h-[60vmin] md:w-[45vmin] overflow-hidden rounded-2xl bg-card shadow-lg"
+        className="relative h-[55vmin] w-[38vmin] md:h-[65vmin] md:w-[36vmin] overflow-hidden rounded-2xl bg-card shadow-lg"
         style={{
           transformStyle: "preserve-3d",
         }}
@@ -83,7 +83,7 @@ const Slide = ({ slide, index, current, handleSlideClick, handleButtonClick, pos
           }}
         />
         <img
-          className="absolute inset-0 h-full w-full object-cover md:object-contain transition-all duration-300"
+          className="absolute inset-0 h-full w-full object-cover transition-all duration-300"
           loading="lazy"
           decoding="async"
           style={{
