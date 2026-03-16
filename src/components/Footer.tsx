@@ -41,8 +41,8 @@ const Footer = () => {
             </a>
           </div>
 
-          <p className="text-sm text-muted-foreground flex items-center gap-1">
-            Feito com <Heart size={14} className="text-accent fill-accent" /> © {new Date().getFullYear()} Joíle Barreto
+          <p className="text-sm text-muted-foreground">
+            © {new Date().getFullYear()} Joíle Barreto
           </p>
         </div>
       </div>
