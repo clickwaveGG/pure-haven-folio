@@ -735,7 +735,7 @@ const PropertyDetails = () => {
         <div className="container-luxury py-2 flex items-center justify-between">
           {/* Logo com botão de voltar à página principal */}
           <button
-            onClick={() => navigate(-1)}
+            onClick={goBack}
             className="flex items-center gap-2 text-foreground hover:text-primary transition-colors group"
           >
             <motion.div 
