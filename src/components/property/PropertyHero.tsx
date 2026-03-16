@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Camera, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 
 interface PropertyHeroProps {
   image: string;
@@ -13,16 +13,21 @@ const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) =
   const displayImages = images && images.length > 0 ? images : [image];
   const totalImages = imageCount ?? displayImages.length;
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const nextSlide = useCallback(() => {
+    setImageLoaded(false);
     setCurrentIndex((prev) => (prev + 1) % displayImages.length);
   }, [displayImages.length]);
 
   const prevSlide = useCallback(() => {
+    setImageLoaded(false);
     setCurrentIndex((prev) => (prev - 1 + displayImages.length) % displayImages.length);
   }, [displayImages.length]);
 
   const goToSlide = (index: number) => {
+    setImageLoaded(false);
     setCurrentIndex(index);
   };
 
@@ -34,84 +39,72 @@ const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) =
       className="relative w-full pt-16 md:pt-20"
     >
       <div className="px-4 md:px-6 lg:px-8">
-        {/* Main Carousel */}
-        <div 
-          className="relative w-full aspect-[4/3] md:aspect-[16/10] lg:aspect-[16/9] max-h-[350px] md:max-h-[600px] lg:max-h-[700px] rounded-2xl overflow-hidden group bg-muted/40 border border-border/60"
+        {/* Image Container - fits tightly around image */}
+        <div
+          ref={containerRef}
+          className="relative mx-auto w-full max-w-5xl flex items-center justify-center"
         >
-          {/* Images */}
-          <AnimatePresence mode="wait">
-            <motion.img
-              key={currentIndex}
-              src={displayImages[currentIndex]}
-              alt={`${title} - Foto ${currentIndex + 1}`}
-              loading="eager"
-              decoding="async"
-              className="absolute inset-0 w-full h-full object-contain"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            />
-          </AnimatePresence>
+          {/* Image wrapper with border */}
+          <div className="relative w-full rounded-2xl overflow-hidden border border-border/40 shadow-sm bg-background">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={currentIndex}
+                src={displayImages[currentIndex]}
+                alt={`${title} - Foto ${currentIndex + 1}`}
+                loading="eager"
+                decoding="async"
+                onLoad={() => setImageLoaded(true)}
+                className="w-full h-auto max-h-[50vh] md:max-h-[70vh] lg:max-h-[75vh] object-contain mx-auto block"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: imageLoaded ? 1 : 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+              />
+            </AnimatePresence>
 
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-
-          {/* Navigation Arrows - Always visible */}
-          {displayImages.length > 1 && (
-            <>
-              <motion.button
-                onClick={(e) => { e.stopPropagation(); prevSlide(); }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 rounded-full bg-background/80 backdrop-blur-sm shadow-lg hover:bg-background transition-colors"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
-              </motion.button>
-              <motion.button
-                onClick={(e) => { e.stopPropagation(); nextSlide(); }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 rounded-full bg-background/80 backdrop-blur-sm shadow-lg hover:bg-background transition-colors"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
-              </motion.button>
-            </>
-          )}
-
-          {/* Photo Counter Badge */}
-          <div className="absolute top-4 right-4 z-10 flex items-center gap-2 px-3 py-1.5 rounded-full bg-background/80 backdrop-blur-sm text-foreground text-sm font-medium">
-            <Camera size={16} />
-            {currentIndex + 1} / {totalImages}
-          </div>
-
-          {/* Dot Indicators */}
-          {displayImages.length > 1 && (
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2">
-              {displayImages.map((_, index) => (
+            {/* Navigation Arrows */}
+            {displayImages.length > 1 && (
+              <>
                 <motion.button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`h-2 rounded-full transition-colors ${
-                    currentIndex === index ? "bg-primary" : "bg-white/50"
-                  }`}
-                  animate={{ width: currentIndex === index ? 24 : 8 }}
-                  transition={{ duration: 0.3 }}
-                  whileHover={{ scale: 1.2 }}
-                 />
-              ))}
+                  onClick={(e) => { e.stopPropagation(); prevSlide(); }}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 z-10 p-2 md:p-2.5 rounded-full bg-background/80 backdrop-blur-sm shadow-md hover:bg-background transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 text-foreground" />
+                </motion.button>
+                <motion.button
+                  onClick={(e) => { e.stopPropagation(); nextSlide(); }}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 z-10 p-2 md:p-2.5 rounded-full bg-background/80 backdrop-blur-sm shadow-md hover:bg-background transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <ChevronRight className="w-4 h-4 md:w-5 md:h-5 text-foreground" />
+                </motion.button>
+              </>
+            )}
+
+            {/* Photo Counter Badge */}
+            <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-background/80 backdrop-blur-sm text-foreground text-xs font-medium shadow-sm">
+              <Camera size={14} />
+              {currentIndex + 1} / {totalImages}
             </div>
-          )}
+          </div>
+        </div>
 
-          {/* Thumbnail Strip - Hidden on Mobile */}
-          {displayImages.length > 1 && (
-            <div className="absolute bottom-14 left-1/2 -translate-x-1/2 z-10 hidden md:flex items-center gap-2 p-2 rounded-xl bg-background/60 backdrop-blur-md">
-              {displayImages.slice(0, 6).map((img, index) => (
+        {/* Thumbnails + Dots below the image */}
+        {displayImages.length > 1 && (
+          <div className="mx-auto max-w-5xl mt-3 space-y-3">
+            {/* Thumbnail Strip */}
+            <div className="hidden md:flex items-center justify-center gap-2">
+              {displayImages.slice(0, 7).map((img, index) => (
                 <motion.button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`relative w-16 h-12 rounded-lg overflow-hidden transition-all ${
-                    currentIndex === index ? "ring-2 ring-primary ring-offset-2 ring-offset-background/60" : "opacity-60 hover:opacity-100"
+                  className={`relative w-14 h-10 lg:w-16 lg:h-12 rounded-lg overflow-hidden transition-all border-2 ${
+                    currentIndex === index
+                      ? "border-primary shadow-sm"
+                      : "border-transparent opacity-50 hover:opacity-90"
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -123,14 +116,29 @@ const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) =
                   />
                 </motion.button>
               ))}
-              {displayImages.length > 6 && (
-                <div className="flex items-center justify-center w-16 h-12 rounded-lg bg-muted/80 text-muted-foreground text-xs font-medium">
-                  +{displayImages.length - 6}
+              {displayImages.length > 7 && (
+                <div className="flex items-center justify-center w-14 h-10 lg:w-16 lg:h-12 rounded-lg bg-muted text-muted-foreground text-xs font-medium border-2 border-transparent">
+                  +{displayImages.length - 7}
                 </div>
               )}
             </div>
-          )}
-        </div>
+
+            {/* Dot Indicators (mobile) */}
+            <div className="flex md:hidden items-center justify-center gap-1.5">
+              {displayImages.map((_, index) => (
+                <motion.button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`h-1.5 rounded-full transition-colors ${
+                    currentIndex === index ? "bg-primary" : "bg-muted-foreground/30"
+                  }`}
+                  animate={{ width: currentIndex === index ? 20 : 6 }}
+                  transition={{ duration: 0.3 }}
+                />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </motion.section>
   );
