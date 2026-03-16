@@ -13,21 +13,37 @@ const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) =
   const displayImages = images && images.length > 0 ? images : [image];
   const totalImages = imageCount ?? displayImages.length;
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const [allLoaded, setAllLoaded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const loadedCount = useRef(0);
+
+  // Preload all images on mount
+  useEffect(() => {
+    loadedCount.current = 0;
+    setAllLoaded(false);
+
+    const total = displayImages.length;
+    displayImages.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = img.onerror = () => {
+        loadedCount.current += 1;
+        if (loadedCount.current >= total) {
+          setAllLoaded(true);
+        }
+      };
+    });
+  }, [displayImages]);
 
   const nextSlide = useCallback(() => {
-    setImageLoaded(false);
     setCurrentIndex((prev) => (prev + 1) % displayImages.length);
   }, [displayImages.length]);
 
   const prevSlide = useCallback(() => {
-    setImageLoaded(false);
     setCurrentIndex((prev) => (prev - 1 + displayImages.length) % displayImages.length);
   }, [displayImages.length]);
 
   const goToSlide = (index: number) => {
-    setImageLoaded(false);
     setCurrentIndex(index);
   };
 
@@ -39,12 +55,18 @@ const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) =
       className="relative w-full pt-16 md:pt-20"
     >
       <div className="px-4 md:px-6 lg:px-8">
-        {/* Image Container - fits tightly around image */}
+        {/* Hidden preload: render all images off-screen so the browser decodes them */}
+        <div className="sr-only" aria-hidden="true">
+          {displayImages.map((src, i) => (
+            <img key={i} src={src} alt="" decoding="async" />
+          ))}
+        </div>
+
+        {/* Image Container */}
         <div
           ref={containerRef}
           className="relative mx-auto w-full max-w-5xl flex items-center justify-center"
         >
-          {/* Image wrapper with border */}
           <div className="relative w-full rounded-2xl overflow-hidden border border-border/40 shadow-sm bg-background">
             <AnimatePresence mode="wait">
               <motion.img
@@ -52,13 +74,12 @@ const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) =
                 src={displayImages[currentIndex]}
                 alt={`${title} - Foto ${currentIndex + 1}`}
                 loading="eager"
-                decoding="async"
-                onLoad={() => setImageLoaded(true)}
+                decoding="sync"
                 className="w-full h-auto max-h-[50vh] md:max-h-[70vh] lg:max-h-[75vh] object-contain mx-auto block"
                 initial={{ opacity: 0 }}
-                animate={{ opacity: imageLoaded ? 1 : 0 }}
+                animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.25 }}
+                transition={{ duration: 0.2 }}
               />
             </AnimatePresence>
 
