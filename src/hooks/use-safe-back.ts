@@ -1,25 +1,18 @@
-import { useNavigate, useLocation } from "react-router-dom";
-import { useCallback, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useCallback } from "react";
 
 /**
- * Safely navigates back. Tracks if user navigated within the app.
+ * Safely navigates back. Uses React Router's history index
+ * to determine if there's real navigation history.
  * If not (direct access), falls back to the given path.
  */
 export function useSafeBack(fallback = "/") {
   const navigate = useNavigate();
-  const location = useLocation();
-  const hasNavigated = useRef(false);
-
-  useEffect(() => {
-    // After the first render, any location change means the user navigated within the app
-    return () => {
-      hasNavigated.current = true;
-    };
-  }, [location.key]);
 
   return useCallback(() => {
-    // Check if there's meaningful history (more than just the current entry)
-    if (window.history.state?.idx > 0) {
+    // React Router stores the history index in state
+    const idx = window.history.state?.idx;
+    if (typeof idx === "number" && idx > 0) {
       navigate(-1);
     } else {
       navigate(fallback);
