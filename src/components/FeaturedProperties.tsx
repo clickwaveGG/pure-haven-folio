@@ -7,6 +7,7 @@ import { PropertyCard } from "@/components/ui/property-card";
 import terrenoAsaSul1 from "@/assets/terreno-asa-sul-1.jpg";
 import predioAdolfo1 from "@/assets/predio-adolfo-moitinho-1.jpg";
 import terrenoGreenville1 from "@/assets/terreno-greenville-1.jpg";
+import casaDonaMarta1 from "@/assets/casa-dona-marta-1.jpg";
 
 const properties = [
   {
@@ -43,6 +44,17 @@ const properties = [
     description: "Terreno privilegiado nas primeiras quadras do condomínio. Piscina, churrasqueira, parquinhos e segurança 24h.",
     isGatedCommunity: true,
     price: "R$ 85.000",
+  },
+  {
+    id: 6,
+    image: casaDonaMarta1,
+    title: "Casa de Alto Padrão Cond. Dona Marta",
+    location: "Cond. Dona Marta, Irecê",
+    area: "600m²",
+    category: "Casa",
+    description: "Exclusiva casa de alto padrão com 5 quartos, 2 suítes, piscina, espaço gourmet e sacada panorâmica.",
+    highlights: ["Alto Padrão", "Piscina + Gourmet"],
+    price: "R$ 1.350.000",
   },
 ];
 
