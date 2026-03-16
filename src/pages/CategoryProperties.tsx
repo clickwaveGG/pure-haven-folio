@@ -152,7 +152,7 @@ const CategoryProperties = ({ title, subtitle, categoryFilter, emptyMessage }: C
           </div>
 
           {filteredProperties.length > 0 ? (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {filteredProperties.map((property, index) => (
                 <motion.div
                   key={property.id}
