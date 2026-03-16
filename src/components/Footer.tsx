@@ -1,4 +1,4 @@
-import { Instagram, Linkedin, MessageCircle, Heart } from "lucide-react";
+import { Instagram } from "lucide-react";
 import logoJoile from "@/assets/logo-joile-barreto.png";
 
 const Footer = () => {
