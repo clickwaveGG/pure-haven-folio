@@ -91,7 +91,9 @@ const AllProperties = () => {
             onClick={goBack}
             className="flex items-center gap-2 text-foreground hover:text-primary transition-colors"
           >
-            <ArrowLeft size={20} />
+            <div className="flex items-center justify-center w-10 h-10 md:w-8 md:h-8 rounded-full bg-primary/10 flex-shrink-0">
+              <ArrowLeft size={20} className="text-primary md:w-4 md:h-4" />
+            </div>
             <span className="font-medium hidden sm:inline">Voltar</span>
           </button>
 

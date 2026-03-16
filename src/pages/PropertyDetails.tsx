@@ -739,13 +739,13 @@ const PropertyDetails = () => {
             className="flex items-center gap-2 text-foreground hover:text-primary transition-colors group"
           >
             <motion.div 
-              className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors"
+              className="flex items-center justify-center w-10 h-10 md:w-8 md:h-8 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors flex-shrink-0"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
-              <ArrowLeft size={16} className="text-primary" />
+              <ArrowLeft size={20} className="text-primary md:w-4 md:h-4" />
             </motion.div>
-            <img src={logo} alt="Joíle Barreto" className="h-10 md:h-12 object-contain" />
+            <img src={logo} alt="Joíle Barreto" className="h-8 md:h-12 object-contain" />
           </button>
           
           <span className="text-xs text-muted-foreground">{property.category}</span>
