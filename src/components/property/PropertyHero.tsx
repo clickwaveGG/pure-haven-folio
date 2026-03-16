@@ -13,6 +13,7 @@ const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) =
   const displayImages = images && images.length > 0 ? images : [image];
   const totalImages = imageCount ?? displayImages.length;
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0); // -1 = prev, 1 = next
   const [allLoaded, setAllLoaded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const loadedCount = useRef(0);
@@ -36,15 +37,36 @@ const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) =
   }, [displayImages]);
 
   const nextSlide = useCallback(() => {
+    setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % displayImages.length);
   }, [displayImages.length]);
 
   const prevSlide = useCallback(() => {
+    setDirection(-1);
     setCurrentIndex((prev) => (prev - 1 + displayImages.length) % displayImages.length);
   }, [displayImages.length]);
 
   const goToSlide = (index: number) => {
+    setDirection(index > currentIndex ? 1 : -1);
     setCurrentIndex(index);
+  };
+
+  const slideVariants = {
+    enter: (dir: number) => ({
+      x: dir > 0 ? "40%" : "-40%",
+      opacity: 0,
+      scale: 0.95,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      scale: 1,
+    },
+    exit: (dir: number) => ({
+      x: dir > 0 ? "-40%" : "40%",
+      opacity: 0,
+      scale: 0.95,
+    }),
   };
 
   return (
@@ -68,18 +90,24 @@ const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) =
           className="relative mx-auto w-full max-w-5xl flex items-center justify-center"
         >
           <div className="relative w-full rounded-2xl overflow-hidden border border-border/40 shadow-sm bg-background">
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" custom={direction}>
               <motion.img
                 key={currentIndex}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
                 src={displayImages[currentIndex]}
                 alt={`${title} - Foto ${currentIndex + 1}`}
                 loading="eager"
                 decoding="sync"
                 className="w-full h-auto max-h-[50vh] md:max-h-[70vh] lg:max-h-[75vh] object-contain mx-auto block"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
+                transition={{
+                  x: { type: "spring", stiffness: 350, damping: 30 },
+                  opacity: { duration: 0.2 },
+                  scale: { duration: 0.25 },
+                }}
               />
             </AnimatePresence>
 
