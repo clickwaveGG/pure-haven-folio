@@ -90,18 +90,24 @@ const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) =
           className="relative mx-auto w-full max-w-5xl flex items-center justify-center"
         >
           <div className="relative w-full rounded-2xl overflow-hidden border border-border/40 shadow-sm bg-background">
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" custom={direction}>
               <motion.img
                 key={currentIndex}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
                 src={displayImages[currentIndex]}
                 alt={`${title} - Foto ${currentIndex + 1}`}
                 loading="eager"
                 decoding="sync"
                 className="w-full h-auto max-h-[50vh] md:max-h-[70vh] lg:max-h-[75vh] object-contain mx-auto block"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
+                transition={{
+                  x: { type: "spring", stiffness: 350, damping: 30 },
+                  opacity: { duration: 0.2 },
+                  scale: { duration: 0.25 },
+                }}
               />
             </AnimatePresence>
 
