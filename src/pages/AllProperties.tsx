@@ -120,7 +120,7 @@ const AllProperties = () => {
               Imóveis em Irecê
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Explore nossa seleção completa de imóveis em Irecê e região
+              Explore nossa seleção completa de Imóveis em Irecê e região
             </p>
           </motion.div>
 

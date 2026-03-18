@@ -28,7 +28,7 @@ const faqs = [
   },
   {
     question: "Qual é a área de atuação?",
-    answer: "Atuo principalmente em Brasília e região, incluindo Águas Claras, Sudoeste, Lago Sul, Lago Norte e cidades do entorno. Para outras localidades, trabalho em parceria com corretores de confiança.",
+    answer: "Atuo principalmente em Irecê e região, na Bahia. Para outras localidades, trabalho em parceria com Corretores de confiança.",
   },
 ];
 
