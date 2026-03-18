@@ -23,7 +23,7 @@ const faqs = [
     answer: "Depende de vários fatores, mas geralmente o processo leva de 30 a 90 dias, desde encontrar o Imóvel ideal até a assinatura do contrato. Faço o possível para agilizar cada etapa.",
   },
   {
-    question: "Vocês ajudam a vender imóveis também?",
+    question: "Vocês ajudam a vender Imóveis também?",
     answer: "Sim! Ofereço assessoria completa para venda, incluindo avaliação de mercado, fotos profissionais, divulgação e condução das negociações.",
   },
   {
