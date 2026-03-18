@@ -5,9 +5,9 @@ import brokerPhoto from "@/assets/broker-photo.png";
 import { useSkipAnimations } from "@/pages/Index";
 
 const stats = [
-  { value: 8, suffix: "+", label: "Anos de experiência" },
   { value: 150, suffix: "+", label: "Famílias atendidas" },
   { value: 98, suffix: "%", label: "Clientes satisfeitos" },
+  { value: 100, suffix: "%", label: "Dedicação ao cliente" },
 ];
 
 const AnimatedCounter = ({ value, suffix, inView, skipAnimations }: { value: number; suffix: string; inView: boolean; skipAnimations: boolean }) => {
@@ -86,11 +86,11 @@ const About = () => {
               Prazer, sou Joíle Barreto
             </h2>
             <p className="text-subheadline mb-6">
-              Corretor afiliado à RE/MAX Gardense em Irecê, Bahia. Há anos ajudo 
-              pessoas a encontrarem o imóvel ideal na nossa região. Seja você um 
-              jovem casal comprando o primeiro apartamento ou uma família buscando 
-              mais espaço, meu compromisso é o mesmo: entender suas necessidades 
-              e transformar sonhos em realidade.
+              Corretor afiliado à RE/MAX Gardense em Irecê, Bahia. Com energia 
+              e determinação, ajudo pessoas a encontrarem o Imóvel ideal na nossa 
+              região. Seja você um jovem casal comprando o primeiro apartamento ou 
+              uma família buscando mais espaço, meu compromisso é o mesmo: entender 
+              suas necessidades e transformar sonhos em realidade.
             </p>
             <p className="text-muted-foreground text-sm leading-relaxed mb-8">
               Como parte da maior rede imobiliária do mundo, ofereço acesso a 
@@ -125,7 +125,7 @@ const About = () => {
               </blockquote>
               <div className="divider-primary mb-2" />
               <p className="text-sm text-muted-foreground">
-                Joíle Barreto | RE/MAX Gardense | CRECI BA
+                Joíle Barreto | RE/MAX Gardense | CRECI BA 34117
               </p>
             </div>
 

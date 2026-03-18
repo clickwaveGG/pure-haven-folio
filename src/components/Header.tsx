@@ -41,7 +41,7 @@ const Header = () => {
           <a href="#hero" className="flex items-center">
             <img
               src={logoJoile}
-              alt="Joile Barreto, Corretor de Imóveis"
+              alt="Joíle Barreto, Corretor de Imóveis"
               className="h-24 md:h-20 w-auto"
             />
           </a>

@@ -101,10 +101,10 @@ const FeaturedProperties = () => {
             <span className="w-8 h-0.5 bg-primary rounded-full" />
           </span>
           <h2 className="text-headline text-foreground mb-4">
-            Imóveis em Irecê e região
+            Imóveis em Irecê e Região
           </h2>
           <p className="text-subheadline max-w-2xl mx-auto">
-            Uma seleção de imóveis para diferentes necessidades e momentos de vida na nossa cidade.
+            Uma seleção de Imóveis para diferentes necessidades e momentos de vida na nossa cidade.
           </p>
         </motion.div>
 
@@ -146,7 +146,7 @@ const FeaturedProperties = () => {
             onClick={() => navigate("/imoveis")} 
             className="welcome-button-outline"
           >
-            Ver todos os imóveis
+            Ver todos os Imóveis
           </button>
         </motion.div>
       </div>
