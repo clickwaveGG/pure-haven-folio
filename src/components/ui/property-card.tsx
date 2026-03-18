@@ -1,10 +1,9 @@
 import * as React from "react";
-import { ArrowRight, MapPin, Maximize, Ruler, LayoutGrid, Shield, Waves, Building, School, MapPinned, MessageCircle } from "lucide-react";
+import { ArrowRight, MapPin, Maximize, Ruler, LayoutGrid, Shield, Waves, Building, School, MapPinned } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
-import { Icons } from "@/components/ui/icons";
 
 interface PropertyCardProps {
   className?: string;
