@@ -19,8 +19,8 @@ const faqs = [
     answer: "Não necessariamente. Existem diversas opções de financiamento disponíveis. Posso ajudá-lo a entender as melhores condições e indicar parceiros de confiança para orientar sobre financiamento.",
   },
   {
-    question: "Quanto tempo leva para comprar um imóvel?",
-    answer: "Depende de vários fatores, mas geralmente o processo leva de 30 a 90 dias, desde encontrar o imóvel ideal até a assinatura do contrato. Faço o possível para agilizar cada etapa.",
+    question: "Quanto tempo leva para comprar um Imóvel?",
+    answer: "Depende de vários fatores, mas geralmente o processo leva de 30 a 90 dias, desde encontrar o Imóvel ideal até a assinatura do contrato. Faço o possível para agilizar cada etapa.",
   },
   {
     question: "Vocês ajudam a vender imóveis também?",
