@@ -11,8 +11,8 @@ import { useSkipAnimations } from "@/pages/Index";
 
 const faqs = [
   {
-    question: "Como funciona o processo de compra de um imóvel?",
-    answer: "Começamos com uma conversa para entender suas necessidades, orçamento e preferências. Depois, seleciono imóveis que fazem sentido para você, agendamos visitas e acompanho toda a negociação e documentação até a entrega das chaves.",
+    question: "Como funciona o processo de compra de um Imóvel?",
+    answer: "Começamos com uma conversa para entender suas necessidades, orçamento e preferências. Depois, seleciono Imóveis que fazem sentido para você, agendamos visitas e acompanho toda a negociação e documentação até a entrega das chaves.",
   },
   {
     question: "Preciso ter todo o dinheiro para comprar um imóvel?",
