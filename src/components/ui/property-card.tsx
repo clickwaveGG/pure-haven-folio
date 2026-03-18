@@ -177,7 +177,7 @@ const PropertyCard = React.forwardRef<HTMLDivElement, PropertyCardProps>(
             </div>
           </div>
 
-          {/* Bottom: Price + Buttons */}
+          {/* Bottom: Price + Button */}
           <div className="flex items-end justify-between pt-4 mt-4 border-t border-border">
             <div>
               {price && (
@@ -191,29 +191,17 @@ const PropertyCard = React.forwardRef<HTMLDivElement, PropertyCardProps>(
                 </>
               )}
             </div>
-            <div className="flex items-center gap-2">
-              <a
-                href={`https://wa.me/5574999993009?text=${encodeURIComponent(`Olá Joíle! Vi o Imóvel "${title}" em ${location} no seu site e gostaria de mais informações. Pode me ajudar?`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="inline-flex items-center gap-1.5 rounded-md bg-[#25D366] px-3 py-2 text-xs font-semibold text-white hover:bg-[#1da851] transition-colors shadow-sm"
-              >
-                <Icons.whatsapp className="h-3.5 w-3.5" />
-                WhatsApp
-              </a>
-              <Button
-                size="sm"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onDetailsClick?.();
-                }}
-                className="bg-primary text-primary-foreground hover:bg-primary/90 transition-colors shadow-sm group/btn"
-              >
-                Ver Detalhes
-                <ArrowRight className="ml-1.5 h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5" />
-              </Button>
-            </div>
+            <Button
+              size="sm"
+              onClick={(e) => {
+                e.stopPropagation();
+                onDetailsClick?.();
+              }}
+              className="bg-primary text-primary-foreground hover:bg-primary/90 transition-colors shadow-sm group/btn"
+            >
+              Ver Detalhes
+              <ArrowRight className="ml-1.5 h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5" />
+            </Button>
           </div>
         </div>
       </motion.div>
