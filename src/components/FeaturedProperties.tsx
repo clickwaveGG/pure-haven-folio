@@ -104,7 +104,7 @@ const FeaturedProperties = () => {
             Imóveis em Irecê e Região
           </h2>
           <p className="text-subheadline max-w-2xl mx-auto">
-            Uma seleção de imóveis para diferentes necessidades e momentos de vida na nossa cidade.
+            Uma seleção de Imóveis para diferentes necessidades e momentos de vida na nossa cidade.
           </p>
         </motion.div>
 
