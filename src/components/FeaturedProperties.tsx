@@ -146,7 +146,7 @@ const FeaturedProperties = () => {
             onClick={() => navigate("/imoveis")} 
             className="welcome-button-outline"
           >
-            Ver todos os imóveis
+            Ver todos os Imóveis
           </button>
         </motion.div>
       </div>

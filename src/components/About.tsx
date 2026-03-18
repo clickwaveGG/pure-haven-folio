@@ -125,7 +125,7 @@ const About = () => {
               </blockquote>
               <div className="divider-primary mb-2" />
               <p className="text-sm text-muted-foreground">
-                Joíle Barreto | RE/MAX Gardense | CRECI BA
+                Joíle Barreto | RE/MAX Gardense | CRECI BA 34117
               </p>
             </div>
 

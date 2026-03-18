@@ -170,7 +170,7 @@ const Hero = () => {
       ]}
       image={{
         src: currentHeroImage,
-        alt: "Joíle Barreto - Corretor RE/MAX Gardense em Irecê, BA",
+        alt: "Joíle Barreto - Corretor de Imóveis RE/MAX Gardense em Irecê, BA",
       }}
     />
   );
