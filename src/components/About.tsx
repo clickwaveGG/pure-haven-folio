@@ -93,7 +93,7 @@ const About = () => {
               suas necessidades e transformar sonhos em realidade.
             </p>
             <p className="text-muted-foreground text-sm leading-relaxed mb-8">
-              Como parte da maior rede imobiliária do mundo, ofereço acesso a 
+              Como parte da maior rede imobiliária do mundo, temos acesso a 
               ferramentas exclusivas, treinamento de excelência e uma metodologia 
               comprovada. Trabalho com transparência, proximidade e dedicação em 
               cada atendimento. Você pode contar comigo do início ao fim.
