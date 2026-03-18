@@ -688,7 +688,7 @@ const PropertyDetails = () => {
     );
   }
 
-  const whatsappMessage = encodeURIComponent(`Olá! Tenho interesse no imóvel: ${property.title} - ${property.location}`);
+  const whatsappMessage = encodeURIComponent(`Olá Joíle! Vi o ${property.category === "Terreno" || property.category === "Lote" ? "terreno" : "Imóvel"} "${property.title}" em ${property.location} no seu site e gostaria de mais informações. Pode me ajudar?`);
   const whatsappLink = `https://wa.me/5574999993009?text=${whatsappMessage}`;
 
   // Calculate initial transform based on card position
