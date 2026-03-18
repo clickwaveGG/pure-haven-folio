@@ -153,7 +153,7 @@ const Hero = () => {
         },
       }}
       title="Seu imóvel em Irecê está aqui"
-      description="Sou Joíle Barreto, corretor RE/MAX dedicado a ajudar famílias e investidores a encontrar o imóvel perfeito em Irecê e região. Atendimento próximo, transparente e focado nas suas necessidades."
+      description="Sou Joíle Barreto, Corretor RE/MAX dedicado a ajudar famílias e investidores a encontrar o Imóvel perfeito em Irecê e região. Atendimento próximo, transparente e focado nas suas necessidades."
       actions={[
         {
           text: "Ver Imóveis",
