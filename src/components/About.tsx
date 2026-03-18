@@ -86,11 +86,11 @@ const About = () => {
               Prazer, sou Joíle Barreto
             </h2>
             <p className="text-subheadline mb-6">
-              Corretor afiliado à RE/MAX Gardense em Irecê, Bahia. Há anos ajudo 
-              pessoas a encontrarem o imóvel ideal na nossa região. Seja você um 
-              jovem casal comprando o primeiro apartamento ou uma família buscando 
-              mais espaço, meu compromisso é o mesmo: entender suas necessidades 
-              e transformar sonhos em realidade.
+              Corretor afiliado à RE/MAX Gardense em Irecê, Bahia. Com energia 
+              e determinação, ajudo pessoas a encontrarem o Imóvel ideal na nossa 
+              região. Seja você um jovem casal comprando o primeiro apartamento ou 
+              uma família buscando mais espaço, meu compromisso é o mesmo: entender 
+              suas necessidades e transformar sonhos em realidade.
             </p>
             <p className="text-muted-foreground text-sm leading-relaxed mb-8">
               Como parte da maior rede imobiliária do mundo, ofereço acesso a 
