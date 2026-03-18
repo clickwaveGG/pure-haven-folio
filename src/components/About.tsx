@@ -5,9 +5,9 @@ import brokerPhoto from "@/assets/broker-photo.png";
 import { useSkipAnimations } from "@/pages/Index";
 
 const stats = [
-  { value: 8, suffix: "+", label: "Anos de experiência" },
   { value: 150, suffix: "+", label: "Famílias atendidas" },
   { value: 98, suffix: "%", label: "Clientes satisfeitos" },
+  { value: 100, suffix: "%", label: "Dedicação ao cliente" },
 ];
 
 const AnimatedCounter = ({ value, suffix, inView, skipAnimations }: { value: number; suffix: string; inView: boolean; skipAnimations: boolean }) => {
