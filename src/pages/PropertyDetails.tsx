@@ -118,6 +118,27 @@ import terrenoGreenville2_6 from "@/assets/terreno-greenville2-6.jpg";
 import terrenoGreenville2_7 from "@/assets/terreno-greenville2-7.jpg";
 import terrenoGreenville2_8 from "@/assets/terreno-greenville2-8.jpg";
 import terrenoGreenville2_9 from "@/assets/terreno-greenville2-9.jpg";
+import casaKagidu1 from "@/assets/casa-kagidu-1.jpg";
+import casaKagidu2 from "@/assets/casa-kagidu-2.jpg";
+import casaKagidu3 from "@/assets/casa-kagidu-3.jpg";
+import casaKagidu4 from "@/assets/casa-kagidu-4.jpg";
+import casaKagidu5 from "@/assets/casa-kagidu-5.jpg";
+import casaKagidu6 from "@/assets/casa-kagidu-6.jpg";
+import casaKagidu7 from "@/assets/casa-kagidu-7.jpg";
+import casaKagidu8 from "@/assets/casa-kagidu-8.jpg";
+import casaKagidu9 from "@/assets/casa-kagidu-9.jpg";
+import casaKagidu10 from "@/assets/casa-kagidu-10.jpg";
+import casaKagidu11 from "@/assets/casa-kagidu-11.jpg";
+import casaKagidu12 from "@/assets/casa-kagidu-12.jpg";
+import casaKagidu13 from "@/assets/casa-kagidu-13.jpg";
+import casaKagidu14 from "@/assets/casa-kagidu-14.jpg";
+import casaKagidu15 from "@/assets/casa-kagidu-15.jpg";
+import casaKagidu16 from "@/assets/casa-kagidu-16.jpg";
+import casaKagidu17 from "@/assets/casa-kagidu-17.jpg";
+import casaKagidu18 from "@/assets/casa-kagidu-18.jpg";
+import casaKagidu19 from "@/assets/casa-kagidu-19.jpg";
+import casaKagidu20 from "@/assets/casa-kagidu-20.jpg";
+import casaKagidu21 from "@/assets/casa-kagidu-21.jpg";
 import logo from "@/assets/logo-joile-barreto.png";
 
 const properties = [
@@ -634,6 +655,38 @@ const properties = [
       { icon: "school", name: "Centro de Irecê", distance: "5 min de carro" },
       { icon: "hospital", name: "Área de Lazer", distance: "No condomínio" },
       { icon: "bank", name: "Portaria 24h", distance: "No local" },
+    ],
+  },
+  {
+    id: 16,
+    image: casaKagidu1,
+    images: [casaKagidu1, casaKagidu2, casaKagidu3, casaKagidu4, casaKagidu5, casaKagidu6, casaKagidu7, casaKagidu8, casaKagidu9, casaKagidu10, casaKagidu11, casaKagidu12, casaKagidu13, casaKagidu14, casaKagidu15, casaKagidu16, casaKagidu17, casaKagidu18, casaKagidu19, casaKagidu20, casaKagidu21],
+    title: "Residência Áurea — Casa Contemporânea no Condomínio Kagidu",
+    location: "SN Rua Umbuzeiro, Asa Sul, Irecê, Bahia",
+    area: "250m²",
+    category: "Casa",
+    description: "Casa contemporânea em condomínio valorizado, com 250m² de terreno e 210m² construídos. Sala com pé-direito alto e ambientes integrados: estar, jantar, cozinha e área gourmet. 1 suíte master com closet e acesso à jacuzzi, 1 suíte e 1 demi-suíte.",
+    fullDescription: "Com arquitetura contemporânea e linhas modernas, esta residência foi cuidadosamente projetada para oferecer conforto, funcionalidade e integração entre os ambientes, reunindo características que valorizam o bem-estar e a qualidade de vida. Localizada em um dos condomínios mais valorizados da região, o imóvel combina estética, praticidade e um projeto arquitetônico que privilegia amplitude, iluminação natural e ventilação.\n\nConstruída em um terreno de 250 m², com 210 m² de área construída, a casa se destaca logo na entrada pelo pé-direito alto na sala, um elemento arquitetônico que proporciona maior sensação de espaço, elegância e luminosidade ao ambiente social. A iluminação natural e a ventilação cruzada tornam os ambientes ainda mais agradáveis e acolhedores no dia a dia.\n\nO projeto foi pensado para valorizar a integração entre os espaços, trazendo sala de estar, sala de jantar e cozinha em conceito aberto, criando um ambiente moderno e funcional, ideal para convivência familiar. Esses ambientes se conectam diretamente com a área gourmet coberta, proporcionando um espaço perfeito para receber amigos, reunir a família e aproveitar momentos especiais com conforto e praticidade.\n\nNa área íntima, o imóvel foi planejado para garantir privacidade e conforto aos moradores. A casa dispõe de três suítes, sendo uma suíte master com closet e acesso direto à área da jacuzzi, criando um ambiente exclusivo e relaxante. Além disso, conta com uma suíte adicional e uma demi-suíte, oferecendo uma configuração funcional para famílias ou para quem deseja receber visitas com comodidade.\n\nA área externa complementa o projeto com um espaço pensado para lazer e descanso. O destaque fica para a jacuzzi com capacidade para quatro pessoas, criando um ambiente reservado e aconchegante, ideal para relaxar ao final do dia.\n\nO imóvel dispõe ainda de lavabo, área de serviço e garagem para dois veículos. A implantação da casa foi planejada com um dos lados soltos, favorecendo a circulação de ar e a entrada de luz natural, fatores que contribuem diretamente para o conforto térmico e para a valorização do projeto arquitetônico.\n\nA residência está situada próxima à portaria do Condomínio Kagidu, um condomínio que oferece infraestrutura de lazer e convivência para toda a família, contando com piscina, quadra poliesportiva, salão de festas com churrasqueira e parque infantil, além de segurança e tranquilidade para os moradores.\n\nTrata-se de um imóvel que reúne arquitetura moderna, ambientes bem planejados, lazer e conforto, sendo uma excelente oportunidade para quem busca morar com segurança, sofisticação e qualidade de vida em um condomínio completo.",
+    features: ["Arquitetura Contemporânea", "Pé-Direito Alto", "3 Suítes (1 Master c/ Closet)", "3 Banheiros", "Conceito Aberto", "Área Gourmet Coberta", "Jacuzzi p/ 4 Pessoas", "Garagem 2 Veículos", "Lavabo", "Condomínio Fechado", "Piscina do Condomínio", "Quadra Poliesportiva"],
+    price: "R$ 1.300.000",
+    priceNumber: 1300000,
+    bedrooms: 3,
+    bathrooms: 3,
+    parking: 2,
+    builtArea: "210m²",
+    isGatedCommunity: true,
+    pricePerM2: "R$ 5.200",
+    avgPricePerM2: "R$ 5.500",
+    walkScore: 82,
+    coordinates: "-11.3039° S, -41.8559° W",
+    latitude: -11.3039,
+    longitude: -41.8559,
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Condom%C3%ADnio+Kagidu,+Asa+Sul,+Irec%C3%AA,+Bahia",
+    nearbyPlaces: [
+      { icon: "hospital", name: "Piscina e Quadra", distance: "No condomínio" },
+      { icon: "market", name: "Salão de Festas", distance: "No condomínio" },
+      { icon: "bank", name: "Portaria 24h", distance: "No local" },
+      { icon: "school", name: "Centro de Irecê", distance: "5 min de carro" },
     ],
   },
 ];

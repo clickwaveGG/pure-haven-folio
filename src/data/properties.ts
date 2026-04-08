@@ -12,6 +12,7 @@ import loteAcquaville1 from "@/assets/lote-acquaville-1.jpg";
 import lotePiemont1 from "@/assets/lote-piemont-1.jpg";
 import loteCabore2_1 from "@/assets/lote-cabore2-1.jpg";
 import terrenoGreenville2_1 from "@/assets/terreno-greenville2-1.jpg";
+import casaKagidu1 from "@/assets/casa-kagidu-1.jpg";
 
 export interface Property {
   id: number;
@@ -231,5 +232,21 @@ export const allProperties: Property[] = [
     isGatedCommunity: true,
     highlights: ["Primeiras Quadras", "Ótimo Preço"],
     dimensions: "10x20m",
+  },
+  {
+    id: 16,
+    image: casaKagidu1,
+    title: "Residência Áurea — Casa Contemporânea Cond. Kagidu",
+    location: "Asa Sul, Irecê",
+    area: "250m²",
+    areaNumber: 250,
+    category: "Casa",
+    price: "R$ 1.300.000",
+    priceNumber: 1300000,
+    description: "Casa contemporânea com arquitetura moderna no Condomínio Kagidu. 210m² construídos, pé-direito alto, 3 suítes, jacuzzi e área gourmet coberta.",
+    highlights: ["Condomínio Fechado", "Jacuzzi"],
+    bedrooms: 3,
+    bathrooms: 3,
+    isGatedCommunity: true,
   },
 ];
