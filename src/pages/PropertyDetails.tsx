@@ -681,7 +681,7 @@ const properties = [
     coordinates: "-11.3039° S, -41.8559° W",
     latitude: -11.3039,
     longitude: -41.8559,
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Condom%C3%ADnio+Kagidu,+Asa+Sul,+Irec%C3%AA,+Bahia",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Condom%C3%ADnio+Kagidu,+Irec%C3%AA,+Bahia",
     nearbyPlaces: [
       { icon: "hospital", name: "Piscina e Quadra", distance: "No condomínio" },
       { icon: "market", name: "Salão de Festas", distance: "No condomínio" },
