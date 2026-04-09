@@ -17,12 +17,12 @@ import AgentContact from "@/components/property/AgentContact";
 
 // Assets
 import property3 from "@/assets/property-3.jpg";
-import terrenoAsaSul1 from "@/assets/terreno-asa-sul-1.jpg";
-import terrenoAsaSul2 from "@/assets/terreno-asa-sul-2.jpg";
-import terrenoAsaSul3 from "@/assets/terreno-asa-sul-3.jpg";
-import predioAdolfo1 from "@/assets/predio-adolfo-moitinho-1.jpg";
-import predioAdolfo2 from "@/assets/predio-adolfo-moitinho-2.jpg";
-import predioAdolfo3 from "@/assets/predio-adolfo-moitinho-3.jpg";
+import terrenoAsaSul1 from "@/assets/terreno-asa-sul-1.webp";
+import terrenoAsaSul2 from "@/assets/terreno-asa-sul-2.webp";
+import terrenoAsaSul3 from "@/assets/terreno-asa-sul-3.webp";
+import predioAdolfo1 from "@/assets/predio-adolfo-moitinho-1.webp";
+import predioAdolfo2 from "@/assets/predio-adolfo-moitinho-2.webp";
+import predioAdolfo3 from "@/assets/predio-adolfo-moitinho-3.webp";
 import terrenoGreenville1 from "@/assets/terreno-greenville-1.jpg";
 import terrenoGreenville2 from "@/assets/terreno-greenville-2.jpg";
 import terrenoGreenville3 from "@/assets/terreno-greenville-3.jpg";
@@ -812,8 +812,8 @@ const PropertyDetails = () => {
         title={property.title}
       />
 
-      {/* WhatsApp CTA below images */}
-      <div className="container-luxury mt-6">
+      {/* WhatsApp CTA below images — mobile only */}
+      <div className="container-luxury mt-6 lg:hidden">
         <a
           href={whatsappLink}
           target="_blank"
@@ -884,6 +884,7 @@ const PropertyDetails = () => {
             <AgentContact
               whatsappLink={whatsappLink}
               phoneNumber="+5574999993009"
+              propertyPrice={property.price}
             />
           </div>
         </div>

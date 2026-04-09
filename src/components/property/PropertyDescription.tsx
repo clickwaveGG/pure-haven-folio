@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import { Quote } from "lucide-react";
 
 interface PropertyDescriptionProps {
   description: string;
@@ -7,24 +7,42 @@ interface PropertyDescriptionProps {
 }
 
 const PropertyDescription = ({ description, fullDescription }: PropertyDescriptionProps) => {
+  const paragraphs = fullDescription.split("\n\n").filter(Boolean);
+
   return (
     <motion.section
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.3, duration: 0.5 }}
-      className="space-y-4"
+      className="space-y-6"
     >
-      <h2 className="text-2xl font-display font-semibold text-foreground">Sobre a Propriedade</h2>
-      
-      <div className="space-y-4 text-muted-foreground leading-relaxed">
-        <p>{description}</p>
-        <p>{fullDescription}</p>
+      <h2 className="text-2xl font-display font-semibold text-foreground">Sobre este Imóvel</h2>
+
+      {/* Lead callout */}
+      <div className="relative pl-5 border-l-4 border-primary rounded-r-xl bg-primary/5 py-4 pr-10">
+        <Quote
+          size={28}
+          className="absolute top-3 right-3 text-primary/15"
+          strokeWidth={1.5}
+        />
+        <p className="text-[15px] text-foreground font-medium leading-relaxed">{description}</p>
       </div>
 
-      <button className="inline-flex items-center gap-1 text-primary font-medium text-sm hover:gap-2 transition-all">
-        Ver características técnicas
-        <ChevronRight size={16} />
-      </button>
+      {/* Full description */}
+      <div className="space-y-4">
+        {paragraphs.map((paragraph, index) => (
+          <p
+            key={index}
+            className={`leading-relaxed ${
+              index === 0
+                ? "text-sm text-foreground/90 font-medium"
+                : "text-sm text-muted-foreground"
+            }`}
+          >
+            {paragraph}
+          </p>
+        ))}
+      </div>
     </motion.section>
   );
 };

@@ -53,10 +53,10 @@ const WhatAreYouLookingFor = () => {
             <span className="w-8 h-0.5 bg-primary rounded-full" />
           </span>
           <h2 className="text-headline text-foreground">
-            O que você procura?
+            O que você está buscando?
           </h2>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            Encontre o imóvel ideal para você. Navegue pelas categorias e descubra as melhores oportunidades do mercado.
+            Selecione a categoria e explore as melhores oportunidades disponíveis em Irecê e região.
           </p>
         </motion.div>
 

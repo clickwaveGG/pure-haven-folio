@@ -77,7 +77,7 @@ const InvestmentAnalysis = ({
 
         {/* Walk Score & Nearby */}
         <div className="space-y-4">
-          <div className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm">
+          <div className="flex items-center gap-4 p-4 bg-card rounded-xl shadow-sm border border-border">
             <div className={`text-4xl font-bold ${getScoreColor(walkScore)}`} style={{ fontFamily: "Helvetica, sans-serif" }}>
               {walkScore}
             </div>

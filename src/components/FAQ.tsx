@@ -11,24 +11,24 @@ import { useSkipAnimations } from "@/pages/Index";
 
 const faqs = [
   {
-    question: "Como funciona o processo de compra de um Imóvel?",
-    answer: "Começamos com uma conversa para entender suas necessidades, orçamento e preferências. Depois, seleciono Imóveis que fazem sentido para você, agendamos visitas e acompanho toda a negociação e documentação até a entrega das chaves.",
+    question: "Como funciona o processo de compra de um imóvel?",
+    answer: "Tudo começa com uma conversa. Entendo suas necessidades, orçamento e o que realmente importa para você. A partir daí, seleciono imóveis que fazem sentido — sem perda de tempo. Acompanho todas as visitas, cuido de toda a negociação e da documentação até a entrega das chaves.",
   },
   {
-    question: "Preciso ter todo o dinheiro para comprar um Imóvel?",
-    answer: "Não necessariamente. Existem diversas opções de financiamento disponíveis. Posso ajudá-lo a entender as melhores condições e indicar parceiros de confiança para orientar sobre financiamento.",
+    question: "Preciso ter todo o valor disponível para comprar?",
+    answer: "Não. Existem diversas modalidades de financiamento, incluindo Caixa Econômica, bancos privados e consórcios. Posso orientá-lo sobre as melhores opções e indicar parceiros de confiança para simular as condições ideais para o seu perfil.",
   },
   {
-    question: "Quanto tempo leva para comprar um Imóvel?",
-    answer: "Depende de vários fatores, mas geralmente o processo leva de 30 a 90 dias, desde encontrar o Imóvel ideal até a assinatura do contrato. Faço o possível para agilizar cada etapa.",
+    question: "Quanto tempo leva todo o processo?",
+    answer: "Em média, de 30 a 90 dias — desde a escolha do imóvel até a assinatura do contrato. O prazo varia de acordo com a forma de pagamento e a documentação das partes. Trabalho para agilizar cada etapa sem comprometer a segurança do negócio.",
   },
   {
-    question: "Vocês ajudam a vender Imóveis também?",
-    answer: "Sim! Ofereço assessoria completa para venda, incluindo avaliação de mercado, fotos profissionais, divulgação e condução das negociações.",
+    question: "Vocês também ajudam a vender imóveis?",
+    answer: "Sim. Ofereço assessoria completa para proprietários que querem vender: avaliação de mercado justa, fotos e divulgação profissional, e condução das negociações para fechar o melhor negócio. Entre em contato para conversarmos.",
   },
   {
     question: "Qual é a área de atuação?",
-    answer: "Atuo principalmente em Irecê e região, na Bahia. Para outras localidades, trabalho em parceria com Corretores de confiança.",
+    answer: "Atuo principalmente em Irecê e região, na Bahia. Para imóveis em outras localidades, trabalho em parceria com corretores de confiança para garantir o mesmo nível de atendimento.",
   },
 ];
 
@@ -53,11 +53,11 @@ const FAQ = () => {
               Dúvidas Frequentes
             </span>
             <h2 className="text-headline text-foreground mb-4">
-              Perguntas comuns sobre o processo
+              Respostas para as dúvidas mais comuns
             </h2>
             <p className="text-subheadline">
-              Entendo que comprar ou vender um imóvel pode gerar muitas dúvidas. 
-              Aqui estão as respostas para as perguntas mais frequentes.
+              Comprar ou vender um imóvel é uma das decisões mais importantes da vida.
+              Aqui estão as respostas que mais me pedem — com clareza e sem enrolação.
             </p>
           </motion.div>
 

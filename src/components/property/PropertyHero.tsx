@@ -76,7 +76,7 @@ const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) =
       transition={{ duration: 0.6 }}
       className="relative w-full pt-16 md:pt-20"
     >
-      <div className="px-4 md:px-6 lg:px-8">
+      <div className="px-0 md:px-6 lg:px-8">
         {/* Hidden preload: render all images off-screen so the browser decodes them */}
         <div className="sr-only" aria-hidden="true">
           {displayImages.map((src, i) => (
@@ -89,7 +89,7 @@ const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) =
           ref={containerRef}
           className="relative mx-auto w-full max-w-5xl flex items-center justify-center"
         >
-          <div className="relative w-full rounded-2xl overflow-hidden border border-border/40 shadow-sm bg-background aspect-[4/3] md:aspect-[16/10]">
+          <div className="relative w-full md:rounded-2xl overflow-hidden border-y md:border border-border/40 shadow-sm bg-background aspect-[4/3] md:aspect-[16/10]">
             <AnimatePresence initial={false} custom={direction}>
               <motion.img
                 key={currentIndex}
@@ -143,7 +143,7 @@ const PropertyHero = ({ image, images, title, imageCount }: PropertyHeroProps) =
 
         {/* Thumbnails + Dots below the image */}
         {displayImages.length > 1 && (
-          <div className="mx-auto max-w-5xl mt-3 space-y-3">
+          <div className="mx-auto max-w-5xl mt-3 space-y-3 px-4 md:px-0">
             {/* Thumbnail Strip */}
             <div className="hidden md:flex items-center justify-center gap-2">
               {displayImages.slice(0, 7).map((img, index) => (

@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { usePageTransition } from "@/contexts/PageTransitionContext";
 import { useSkipAnimations } from "@/pages/Index";
 import { PropertyCard } from "@/components/ui/property-card";
-import terrenoAsaSul1 from "@/assets/terreno-asa-sul-1.jpg";
-import predioAdolfo1 from "@/assets/predio-adolfo-moitinho-1.jpg";
+import terrenoAsaSul1 from "@/assets/terreno-asa-sul-1.webp";
+import predioAdolfo1 from "@/assets/predio-adolfo-moitinho-1.webp";
 import terrenoGreenville1 from "@/assets/terreno-greenville-1.jpg";
 import casaDonaMarta1 from "@/assets/casa-dona-marta-1.jpg";
 
@@ -101,14 +101,14 @@ const FeaturedProperties = () => {
             <span className="w-8 h-0.5 bg-primary rounded-full" />
           </span>
           <h2 className="text-headline text-foreground mb-4">
-            Imóveis em Irecê e Região
+            Imóveis Disponíveis em Irecê
           </h2>
           <p className="text-subheadline max-w-2xl mx-auto">
-            Uma seleção de Imóveis para diferentes necessidades e momentos de vida na nossa cidade.
+            Uma seleção atual de imóveis para diferentes necessidades e momentos de vida — da primeira casa ao investimento estratégico.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-5">
           {properties.map((property, index) => (
             <motion.div
               key={property.id}

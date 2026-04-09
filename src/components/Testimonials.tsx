@@ -7,21 +7,21 @@ import { useSkipAnimations } from "@/pages/Index";
 const testimonials = [
   {
     id: 1,
-    quote: "Um profissional incrível! Nos ajudou a encontrar nossa primeira casa com muita paciência e atenção.",
+    quote: "Joíle nos ajudou a comprar nossa primeira casa com muita paciência. Ele entendeu o que queríamos desde o início e nunca empurrou nada que não fosse certo pra gente.",
     author: "Mariana S.",
     role: "Professora",
     rating: 5,
   },
   {
     id: 2,
-    quote: "Muito atencioso e transparente em todo o processo. Recomendo para quem busca um corretor de confiança.",
+    quote: "Processo muito claro, sem surpresas. Ele acompanhou tudo — da visita ao cartório. Recomendo para quem quer um corretor que realmente se importa.",
     author: "Carlos A.",
     role: "Engenheiro",
     rating: 5,
   },
   {
     id: 3,
-    quote: "Encontrou o apartamento perfeito para nossa família. Atendimento excepcional do início ao fim.",
+    quote: "Encontrou exatamente o que nossa família precisava em Irecê. Comunicação rápida, atendimento próximo e resolveu cada detalhe sem complicação.",
     author: "Roberto F.",
     role: "Empresário",
     rating: 5,
@@ -50,7 +50,7 @@ const Testimonials = () => {
                 Depoimentos
               </span>
               <h2 className="text-headline text-foreground">
-                O que nossos clientes dizem
+                O que dizem quem passou por aqui
               </h2>
             </div>
             <div className="lg:text-right">

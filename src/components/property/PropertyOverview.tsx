@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, TrendingUp, Maximize, Bed, Bath, Car, Ruler, LayoutGrid, Zap, FileCheck, Map, Building2, Square, Layers, Shield, Waves, Home, Droplets, Sun, Wifi, Tractor, LucideIcon } from "lucide-react";
+import { MapPin, Maximize, Bed, Bath, Car, Ruler, LayoutGrid, Zap, FileCheck, Map, Building2, Square, Layers, Shield, Waves, Home, Droplets, Sun, Wifi, Tractor, LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface PropertyOverviewProps {
@@ -311,14 +311,11 @@ const PropertyOverview = ({
       </div>
 
       {/* Price */}
-      <div className="space-y-2">
-        <p className="text-3xl md:text-4xl text-primary font-semibold" style={{ fontFamily: "Helvetica, sans-serif" }}>
+      <div className="space-y-1">
+        <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">Valor à vista</p>
+        <p className="text-3xl md:text-4xl text-primary font-bold leading-none" style={{ fontFamily: "Helvetica, sans-serif" }}>
           {price}
         </p>
-        <div className="flex items-center gap-2 text-sm text-emerald-600 dark:text-emerald-500">
-          <TrendingUp size={16} />
-          <span>Valorização de 12% na zona</span>
-        </div>
       </div>
 
       {/* Key Features */}

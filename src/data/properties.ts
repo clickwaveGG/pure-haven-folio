@@ -1,5 +1,5 @@
-import terrenoAsaSul1 from "@/assets/terreno-asa-sul-1.jpg";
-import predioAdolfo1 from "@/assets/predio-adolfo-moitinho-1.jpg";
+import terrenoAsaSul1 from "@/assets/terreno-asa-sul-1.webp";
+import predioAdolfo1 from "@/assets/predio-adolfo-moitinho-1.webp";
 import terrenoGreenville1 from "@/assets/terreno-greenville-1.jpg";
 import terrenoSaoGabriel1 from "@/assets/terreno-sao-gabriel-1.jpg";
 import casaDonaMarta1 from "@/assets/casa-dona-marta-1.jpg";

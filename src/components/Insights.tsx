@@ -8,16 +8,16 @@ const insights = [
   {
     id: 1,
     category: "Dicas",
-    title: "5 dicas para comprar seu primeiro imóvel com segurança",
-    excerpt: "O que você precisa saber antes de dar esse passo importante na sua vida.",
-    date: "15 Jan 2024",
+    title: "5 erros que todo comprador de primeiro imóvel comete (e como evitá-los)",
+    excerpt: "Antes de assinar qualquer contrato, há detalhes que fazem toda a diferença. Veja o que você precisa saber.",
+    date: "15 Jan 2025",
   },
   {
     id: 2,
     category: "Guia",
-    title: "Como escolher o bairro ideal para sua família",
-    excerpt: "Critérios importantes além da localização: escolas, segurança e qualidade de vida.",
-    date: "08 Jan 2024",
+    title: "Como escolher o bairro certo para a sua família em Irecê",
+    excerpt: "Localização é só o começo. Escolas, segurança, infraestrutura e potencial de valorização — veja o que avaliar.",
+    date: "08 Jan 2025",
   },
 ];
 
@@ -42,7 +42,7 @@ const Insights = () => {
               Blog & Dicas
             </span>
             <h2 className="text-headline text-foreground">
-              Conteúdo para ajudar você
+              Informação para tomar a melhor decisão
             </h2>
           </div>
           <a

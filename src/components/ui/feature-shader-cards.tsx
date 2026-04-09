@@ -14,22 +14,22 @@ const features: Feature[] = [
   {
     title: "Busca Personalizada",
     description:
-      "Entendo suas necessidades e encontro imóveis que realmente fazem sentido para você e sua família.",
+      "Ouço antes de oferecer. Entendo seu perfil, orçamento e momento de vida para encontrar opções que realmente fazem sentido.",
     icon: <Home className="w-5 h-5" />,
   },
   {
-    title: "Transparência Total",
-    description: "Você acompanha cada etapa do processo com clareza. Sem surpresas, sem letras miúdas.",
+    title: "Processo Transparente",
+    description: "Cada etapa explicada com clareza. Sem surpresas, sem letras miúdas — você sabe exatamente onde está no processo.",
     icon: <Shield className="w-5 h-5" />,
   },
   {
-    title: "Acompanhamento Completo",
-    description: "Estou ao seu lado da primeira visita até a entrega das chaves, cuidando de toda a documentação.",
+    title: "Suporte do Início ao Fim",
+    description: "Da primeira visita à entrega das chaves: cuido de toda a documentação e estou disponível para você em cada etapa.",
     icon: <Handshake className="w-5 h-5" />,
   },
   {
-    title: "Melhor Negociação",
-    description: "Experiência de mercado para garantir as melhores condições na sua compra ou venda.",
+    title: "Negociação Estratégica",
+    description: "Conhecimento profundo do mercado de Irecê para garantir as melhores condições na sua compra ou venda.",
     icon: <TrendingUp className="w-5 h-5" />,
   },
 ]
@@ -53,11 +53,11 @@ export default function FeaturesCards() {
             <span className="w-8 h-0.5 bg-primary rounded-full" />
           </span>
           <h2 className="text-headline text-foreground mb-6">
-            Um atendimento feito para você
+            Como trabalho com você
           </h2>
           <p className="text-subheadline max-w-2xl mx-auto">
-            Cada pessoa tem uma história única. Por isso, meu trabalho é 
-            ouvir, entender e encontrar a melhor solução para você.
+            Cada cliente tem uma necessidade diferente. Meu trabalho é
+            entender a sua e encontrar o caminho mais seguro para realizá-la.
           </p>
         </div>
 

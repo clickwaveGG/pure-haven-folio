@@ -197,7 +197,7 @@ const AllProperties = () => {
 
           {/* Properties Grid */}
           {filteredProperties.length > 0 ? (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {filteredProperties.map((property, index) => (
                 <motion.div
                   key={property.id}
@@ -220,6 +220,8 @@ const AllProperties = () => {
                     isGatedCommunity={property.isGatedCommunity}
                     highlights={property.highlights}
                     price={property.price}
+                    bedrooms={property.bedrooms}
+                    bathrooms={property.bathrooms}
                     onDetailsClick={() => handlePropertyClick(property)}
                   />
                 </motion.div>

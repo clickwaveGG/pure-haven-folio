@@ -1,14 +1,14 @@
 import * as React from "react";
-import { ArrowRight, MapPin, Maximize, Ruler, LayoutGrid, Shield, Waves, Building, School, MapPinned } from "lucide-react";
+import {
+  MapPin, Maximize2, ArrowRight, BedDouble, Bath,
+  Ruler, Shield, Building2, Trees, Waves, CheckCircle2,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 
 interface PropertyCardProps {
   className?: string;
   imageUrl: string;
-  mapImageUrl?: string;
   title: string;
   location: string;
   category: string;
@@ -21,187 +21,160 @@ interface PropertyCardProps {
   isGatedCommunity?: boolean;
   highlights?: string[];
   price?: string;
+  bedrooms?: number;
+  bathrooms?: number;
   onDetailsClick?: () => void;
 }
+
+const categoryConfig: Record<string, { color: string; icon: React.ReactNode }> = {
+  "Terreno":        { color: "bg-emerald-600",  icon: <Trees  size={11} /> },
+  "Terreno Rural":  { color: "bg-lime-700",      icon: <Trees  size={11} /> },
+  "Casa":           { color: "bg-primary",        icon: <Building2 size={11} /> },
+  "Apartamento":    { color: "bg-blue-600",       icon: <Building2 size={11} /> },
+  "Prédio Comercial":{ color: "bg-slate-700",    icon: <Building2 size={11} /> },
+  "Fazenda":        { color: "bg-amber-700",      icon: <Trees  size={11} /> },
+};
 
 const PropertyCard = React.forwardRef<HTMLDivElement, PropertyCardProps>(
   (
     {
-      className,
-      imageUrl,
-      title,
-      location,
-      category,
-      description,
-      area,
-      dimensions,
-      fronts,
-      floors,
-      facadeWidth,
-      isGatedCommunity,
-      highlights,
-      price,
+      className, imageUrl, title, location, category, description,
+      area, dimensions, fronts, floors, facadeWidth,
+      isGatedCommunity, highlights, price, bedrooms, bathrooms,
       onDetailsClick,
     },
     ref
   ) => {
-    const statsItems: { icon: React.ReactNode; label: string }[] = [];
+    const cat = categoryConfig[category] ?? { color: "bg-primary", icon: <Building2 size={11} /> };
 
-    statsItems.push({
-      icon: <Maximize className="h-3.5 w-3.5" />,
-      label: area,
-    });
+    // Build stat chips
+    const chips: { icon: React.ReactNode; label: string }[] = [
+      { icon: <Maximize2 size={12} />, label: area },
+    ];
+    if (bedrooms)           chips.push({ icon: <BedDouble  size={12} />, label: `${bedrooms} quartos` });
+    if (bathrooms)          chips.push({ icon: <Bath       size={12} />, label: `${bathrooms} banheiros` });
+    if (dimensions && !bedrooms) chips.push({ icon: <Ruler size={12} />, label: dimensions });
+    if (fronts)             chips.push({ icon: <Ruler      size={12} />, label: `${fronts} frente${fronts > 1 ? "s" : ""}` });
+    if (floors)             chips.push({ icon: <Building2  size={12} />, label: `${floors} pav.` });
+    if (isGatedCommunity)   chips.push({ icon: <Shield     size={12} />, label: "Cond. fechado" });
+    if (facadeWidth && !floors) chips.push({ icon: <Ruler  size={12} />, label: `Fachada ${facadeWidth}` });
 
-    if (highlights && highlights.length >= 2) {
-      statsItems.push({
-        icon: <School className="h-3.5 w-3.5" />,
-        label: highlights[0],
-      });
-      statsItems.push({
-        icon: <MapPinned className="h-3.5 w-3.5" />,
-        label: highlights[1],
-      });
-    } else if (isGatedCommunity) {
-      statsItems.push({
-        icon: <Shield className="h-3.5 w-3.5" />,
-        label: "Segurança 24h",
-      });
-      statsItems.push({
-        icon: <Waves className="h-3.5 w-3.5" />,
-        label: "Lazer",
-      });
-    } else {
-      if (dimensions) {
-        statsItems.push({
-          icon: <Ruler className="h-3.5 w-3.5" />,
-          label: dimensions,
-        });
-      }
-      if (fronts) {
-        statsItems.push({
-          icon: <LayoutGrid className="h-3.5 w-3.5" />,
-          label: `${fronts} Frente${fronts > 1 ? "s" : ""}`,
-        });
-      }
-      if (floors) {
-        statsItems.push({
-          icon: <LayoutGrid className="h-3.5 w-3.5" />,
-          label: `${floors} Pavimento${floors > 1 ? "s" : ""}`,
-        });
-      }
-      if (facadeWidth && !floors) {
-        statsItems.push({
-          icon: <Ruler className="h-3.5 w-3.5" />,
-          label: `Fachada ${facadeWidth}`,
-        });
-      }
-    }
+    const topChips = chips.slice(0, 3);
 
     return (
       <motion.div
         ref={ref}
-        whileHover={{ y: -4 }}
+        onClick={onDetailsClick}
+        whileHover={{ y: -6 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
         className={cn(
-          "group flex flex-col md:flex-row w-full overflow-hidden rounded-2xl border border-border bg-card shadow-sm",
-          "transition-shadow duration-500 ease-out hover:shadow-xl cursor-pointer",
+          "group relative flex flex-col w-full overflow-hidden rounded-2xl bg-card cursor-pointer",
+          "border border-border shadow-sm hover:shadow-2xl transition-shadow duration-500",
           className
         )}
-        onClick={onDetailsClick}
       >
-        {/* Image Section */}
-        <div className="relative w-full md:w-[45%] lg:w-[40%] h-[240px] md:h-auto md:min-h-[280px] overflow-hidden bg-muted/30">
+        {/* ── IMAGE ── */}
+        <div className="relative h-56 sm:h-60 overflow-hidden bg-muted/20">
           <img
             src={imageUrl}
             alt={title}
             loading="lazy"
             decoding="async"
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
-          
-          {/* Gradient overlay on image */}
-          <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-card/10" />
-          
-          {/* Category badge */}
-          <div className="absolute top-4 left-4 flex gap-2">
-            <Badge className="bg-primary/90 backdrop-blur-sm text-primary-foreground px-3 py-1.5 text-xs font-bold tracking-widest uppercase shadow-sm border-0">
+
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+
+          {/* Top row: category + available */}
+          <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
+            <span className={cn(
+              "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold text-white shadow-md",
+              cat.color
+            )}>
+              {cat.icon}
               {category}
-            </Badge>
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/90 backdrop-blur-sm px-2.5 py-1 text-[11px] font-semibold text-slate-800 shadow-md">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+              Disponível
+            </span>
           </div>
 
-          {/* Hover overlay with action */}
-          <div className="absolute inset-0 flex items-center justify-center bg-foreground/0 transition-colors duration-500 group-hover:bg-foreground/20">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileHover={{ opacity: 1, scale: 1 }}
-              className="hidden group-hover:flex items-center gap-2 rounded-full bg-card/90 backdrop-blur-sm px-5 py-2.5 text-sm font-semibold text-card-foreground shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            >
-              <Building className="h-4 w-4" />
-              Ver Imóvel
-            </motion.div>
+          {/* Bottom: price over image */}
+          <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between">
+            {price && (
+              <div>
+                <p className="text-[10px] font-medium text-white/70 uppercase tracking-wider mb-0.5">
+                  Valor à vista
+                </p>
+                <p className="text-xl font-bold text-white drop-shadow-md leading-none">
+                  {price}
+                </p>
+              </div>
+            )}
           </div>
         </div>
 
-        {/* Content Section */}
-        <div className="flex flex-1 flex-col justify-between p-5 md:p-6">
-          <div className="space-y-3">
-            {/* Title */}
-            <h3 className="text-lg md:text-xl font-display font-bold text-card-foreground leading-tight line-clamp-2 group-hover:text-primary transition-colors duration-300">
-              {title}
-            </h3>
+        {/* ── CONTENT ── */}
+        <div className="flex flex-col flex-1 p-5">
 
-            {/* Location */}
-            <p className="flex items-center text-sm text-muted-foreground font-medium">
-              <MapPin className="mr-1.5 h-4 w-4 text-primary flex-shrink-0" />
-              {location}
-            </p>
+          {/* Title */}
+          <h3 className="text-base font-bold text-foreground leading-snug line-clamp-2 group-hover:text-primary transition-colors duration-300 mb-2">
+            {title}
+          </h3>
 
-            {/* Description */}
-            <p className="text-sm text-muted-foreground/80 leading-relaxed line-clamp-2">
-              {description}
-            </p>
-
-            {/* Stats */}
-            <div className="flex items-center gap-3 flex-wrap">
-              {statsItems.slice(0, 3).map((stat, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground bg-secondary/80 rounded-full px-3 py-1.5"
-                >
-                  {React.cloneElement(stat.icon as React.ReactElement, {
-                    className: "h-3.5 w-3.5 text-primary",
-                  })}
-                  <span>{stat.label}</span>
-                </div>
-              ))}
-            </div>
+          {/* Location */}
+          <div className="flex items-center gap-1.5 text-muted-foreground mb-3">
+            <MapPin size={13} className="text-primary flex-shrink-0" />
+            <span className="text-xs font-medium truncate">{location}</span>
           </div>
 
-          {/* Bottom: Price + Button */}
-          <div className="flex items-end justify-between pt-4 mt-4 border-t border-border">
-            <div>
-              {price && (
-                <>
-                  <p className="text-[10px] text-muted-foreground font-medium uppercase tracking-wider mb-0.5">
-                    Valor à Vista
-                  </p>
-                  <span className="text-xl md:text-2xl font-bold text-primary">
-                    {price}
-                  </span>
-                </>
-              )}
+          {/* Description */}
+          <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2 mb-4">
+            {description}
+          </p>
+
+          {/* Stat chips */}
+          <div className="flex flex-wrap gap-2 mb-4">
+            {topChips.map((chip, i) => (
+              <span
+                key={i}
+                className="inline-flex items-center gap-1.5 rounded-lg bg-secondary px-2.5 py-1.5 text-[11px] font-medium text-muted-foreground"
+              >
+                <span className="text-primary">{chip.icon}</span>
+                {chip.label}
+              </span>
+            ))}
+          </div>
+
+          {/* Highlights */}
+          {highlights && highlights.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 mb-4">
+              {highlights.slice(0, 2).map((h, i) => (
+                <span
+                  key={i}
+                  className="inline-flex items-center gap-1 rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-[11px] font-medium text-primary"
+                >
+                  <CheckCircle2 size={10} />
+                  {h}
+                </span>
+              ))}
             </div>
-            <Button
-              size="sm"
-              onClick={(e) => {
-                e.stopPropagation();
-                onDetailsClick?.();
-              }}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 transition-colors shadow-sm group/btn"
+          )}
+
+          {/* Spacer */}
+          <div className="flex-1" />
+
+          {/* Divider + CTA */}
+          <div className="pt-3 border-t border-border">
+            <button
+              onClick={(e) => { e.stopPropagation(); onDetailsClick?.(); }}
+              className="w-full flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 transition-all duration-200 group/btn"
             >
-              Ver Detalhes
-              <ArrowRight className="ml-1.5 h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5" />
-            </Button>
+              Ver detalhes do imóvel
+              <ArrowRight size={15} className="transition-transform duration-200 group-hover/btn:translate-x-1" />
+            </button>
           </div>
         </div>
       </motion.div>
@@ -210,5 +183,4 @@ const PropertyCard = React.forwardRef<HTMLDivElement, PropertyCardProps>(
 );
 
 PropertyCard.displayName = "PropertyCard";
-
 export { PropertyCard };

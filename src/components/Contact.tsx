@@ -45,11 +45,11 @@ const Contact = () => {
               Contato
             </span>
             <h2 className="text-headline text-foreground mb-4">
-              Vamos conversar sobre seu próximo imóvel?
+              Pronto para dar o próximo passo?
             </h2>
             <p className="text-subheadline mb-10">
-              Estou aqui para ajudar você a encontrar o lar perfeito. 
-              Entre em contato sem compromisso, terei prazer em ouvir você.
+              Entre em contato sem compromisso. Seja para comprar, vender ou
+              tirar dúvidas — estou disponível para ouvir e ajudar.
             </p>
 
             <div className="space-y-5">
@@ -117,8 +117,8 @@ const Contact = () => {
           >
             <form onSubmit={handleSubmit} className="welcome-card p-6 md:p-8 space-y-5">
               <div className="text-center mb-2">
-                <h3 className="text-xl font-serif text-foreground mb-1">Envie uma mensagem</h3>
-                <p className="text-sm text-muted-foreground">Respondo em até 24 horas</p>
+                <h3 className="text-xl font-serif text-foreground mb-1">Mande sua mensagem</h3>
+                <p className="text-sm text-muted-foreground">Respondo em até 24 horas — geralmente muito antes.</p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-4">
