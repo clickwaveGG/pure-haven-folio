@@ -662,7 +662,7 @@ const properties = [
     image: casaKagidu1,
     images: [casaKagidu1, casaKagidu2, casaKagidu3, casaKagidu4, casaKagidu5, casaKagidu6, casaKagidu7, casaKagidu8, casaKagidu9, casaKagidu10, casaKagidu11, casaKagidu12, casaKagidu13, casaKagidu14, casaKagidu15, casaKagidu16, casaKagidu17, casaKagidu18, casaKagidu19, casaKagidu20, casaKagidu21],
     title: "Residência Áurea — Casa Contemporânea no Condomínio Kagidu",
-    location: "SN Rua Umbuzeiro, Asa Sul, Irecê, Bahia",
+    location: "Condomínio Kagidu, Irecê, Bahia",
     area: "250m²",
     category: "Casa",
     description: "Casa contemporânea em condomínio valorizado, com 250m² de terreno e 210m² construídos. Sala com pé-direito alto e ambientes integrados: estar, jantar, cozinha e área gourmet. 1 suíte master com closet e acesso à jacuzzi, 1 suíte e 1 demi-suíte.",

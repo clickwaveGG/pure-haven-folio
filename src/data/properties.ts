@@ -237,7 +237,7 @@ export const allProperties: Property[] = [
     id: 16,
     image: casaKagidu1,
     title: "Residência Áurea — Casa Contemporânea Cond. Kagidu",
-    location: "Asa Sul, Irecê",
+    location: "Cond. Kagidu, Irecê",
     area: "250m²",
     areaNumber: 250,
     category: "Casa",
